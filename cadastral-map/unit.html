@@ -15,37 +15,35 @@
         h1, h2, h3, .serif { font-family: 'Noto Serif TC', serif; font-weight: 900; }
         .top-nav { background: #fff; padding: 12px 5%; text-align: center; border-bottom: 1px solid rgba(27, 48, 34, 0.1); position: sticky; top: 0; z-index: 1000; }
         
-        /* 驗證區 */
+        /* 驗證視窗 */
         .auth-overlay { width: 90%; max-width: 400px; margin: 60px auto; padding: 40px 30px; background: #fff; box-shadow: 0 20px 40px rgba(0,0,0,0.05); text-align: center; border-radius: 8px; }
         .auth-overlay input { width: 100%; padding: 15px; margin: 10px 0; border: 1px solid #ddd; font-size: 16px; border-radius: 4px; outline: none; border-color: var(--gold-accent); }
         .auth-btn { width: 100%; padding: 16px; background: var(--forest-deep); color: var(--gold-accent); border: none; font-weight: 700; cursor: pointer; letter-spacing: 2px; border-radius: 4px; }
         
+        /* 主內容區 */
         #protected-content { display: none; padding: 30px 5%; max-width: 1000px; margin: 0 auto; }
         .section-header { border-left: 5px solid var(--gold-accent); padding-left: 15px; margin-bottom: 30px; }
-        
-        /* 數據卡片 */
         .data-summary { display: grid; grid-template-columns: 1fr; gap: 15px; margin-bottom: 30px; }
         .data-card { background: #fff; padding: 25px 15px; text-align: center; border-radius: 4px; box-shadow: 0 4px 15px rgba(0,0,0,0.02); }
         .data-val { font-family: 'Noto Serif TC', serif; font-size: 2rem; color: var(--gold-accent); font-weight: 900; }
         .data-label { font-size: 0.85rem; color: var(--forest-mid); margin-bottom: 8px; }
 
-        /* 圖片展演區 - 單頁大圖感 */
+        /* 圖片展演 - 獨立單頁感 */
         .photo-stack { display: flex; flex-direction: column; gap: 30px; margin-bottom: 40px; }
         .photo-item { background: #fff; padding: 20px; border-radius: 4px; box-shadow: 0 4px 15px rgba(0,0,0,0.03); text-align: center; }
         .photo-item img { width: 100%; height: auto; border-radius: 2px; margin-top: 15px; display: block; border: 1px solid #eee; cursor: zoom-in; }
         .photo-caption { font-weight: 700; color: var(--forest-deep); font-size: 1.1rem; border-bottom: 1px solid #eee; padding-bottom: 10px; }
 
-        /* 表格區 */
+        /* 表格與卡片 */
         .table-wrap { background: #fff; padding: 20px 15px; border-radius: 4px; overflow-x: auto; margin-bottom: 30px; }
         table { width: 100%; border-collapse: collapse; min-width: 500px; }
         th { background: #f8f9f8; color: var(--forest-deep); padding: 15px 10px; text-align: left; border-bottom: 2px solid var(--gold-accent); }
         td { padding: 15px 10px; border-bottom: 1px solid #f0f0f0; }
-
         .rights-card { background: #fff; padding: 25px; border-radius: 4px; border-top: 3px solid var(--gold-accent); margin-bottom: 20px; }
         .rights-card.high-contrast { background: var(--contrast-bg); color: #e0e0e0; }
         .gold-highlight { color: var(--gold-accent); font-weight: 700; }
 
-        /* 燈箱 */
+        /* 燈箱功能 */
         .lightbox { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 2000; justify-content: center; align-items: center; }
         .lightbox img { max-width: 95%; max-height: 90vh; object-fit: contain; }
 
@@ -80,7 +78,7 @@
         <div class="photo-stack">
             <div class="photo-item">
                 <p class="photo-caption">全區單元配置圖</p>
-                <img src="48Unit-Map.jpg" onclick="openLightbox(this.src)" alt="全區單元圖">
+                <img src="48Unit-Map.jpg" onclick="openLightbox(this.src)" alt="全區圖">
             </div>
             <div class="photo-item">
                 <p class="photo-caption">單元尺寸圖</p>
@@ -88,7 +86,7 @@
             </div>
             <div class="photo-item">
                 <p class="photo-caption">原地貌 3D 模擬/空拍</p>
-                <img id="display-img-drone" src="" onclick="openLightbox(this.src)" alt="3D地貌圖">
+                <img id="display-img-3d" src="" onclick="openLightbox(this.src)" alt="3D圖">
             </div>
         </div>
 
@@ -127,9 +125,7 @@
             document.getElementById('val-totalArea').innerText = data.totalArea;
             document.getElementById('display-share1').innerText = data.shareRatio;
             document.getElementById('display-share2').innerText = data.shareRatio;
-            
-            // 圖片路徑：因為 HTML 跟圖片都在同一資料夾，直接寫檔名
-            document.getElementById('display-img-drone').src = data.imgDrone;
+            document.getElementById('display-img-3d').src = data.imgDrone;
 
             let rows = "";
             data.landDetails.forEach(item => {
@@ -139,8 +135,7 @@
         }
 
         function validate() {
-            const input = document.getElementById('pass-input').value;
-            if (data && input === data.password) {
+            if (data && document.getElementById('pass-input').value === data.password) {
                 document.getElementById('auth-box').style.display = 'none';
                 document.getElementById('protected-content').style.display = 'block';
                 window.scrollTo(0,0);
@@ -148,10 +143,7 @@
                 document.getElementById('error').style.display = 'block';
             }
         }
-        function openLightbox(src) { 
-            document.getElementById('lightbox-img').src = src; 
-            document.getElementById('lightbox').style.display = 'flex'; 
-        }
+        function openLightbox(src) { document.getElementById('lightbox-img').src = src; document.getElementById('lightbox').style.display = 'flex'; }
     </script>
 </body>
 </html>
