@@ -44,7 +44,7 @@ const unitDatabase = {
         "title": "地號 487-21-1、487-22 ‧ 核心領袖單元",
         "price": "2,219.16",
         "unitPrice": "9.03",
-        "totalArea": "245.7",
+        "totalArea": "245.70",
         "shareRatio": "1560 / 100,000",
         "imgDrone": "C2-1.png",
         "password": "2219",
@@ -105,8 +105,8 @@ const unitDatabase = {
         "imgDrone": "H3.png",
         "password": "2190",
         "landDetails": [
-            { "landId": "487-105", "rightsArea": "91.706", "publicArea": "32.212", "sumArea": "123.92" },
-            { "landId": "487-106", "rightsArea": "91.833", "publicArea": "32.257", "sumArea": "124.09" }
+            { "landId": "487-106", "rightsArea": "91.706", "publicArea": "32.212", "sumArea": "123.92" },
+            { "landId": "487-107", "rightsArea": "91.833", "publicArea": "32.257", "sumArea": "124.09" }
         ]
     },
     "H10": {
