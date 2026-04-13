@@ -121,7 +121,7 @@ const unitDatabase = {
         "password": "2201",
         "landDetails": [
             { "landId": "487-104", "rightsArea": "92.060", "publicArea": "32.336", "sumArea": "124.4" },
-            { "landId": "487-105", "rightsArea": "92.444", "publicArea": "32.471", "sumArea": "124.92" }
+            { "landId": "487-105", "rightsArea": "92.440", "publicArea": "32.471", "sumArea": "124.92" }
         ]
     },
     "H3": {
