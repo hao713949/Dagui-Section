@@ -42,24 +42,15 @@
         td { padding: 15px 10px; border-bottom: 1px solid #f0f0f0; }
         .total-row { background: #fcfbf7; font-weight: 700; color: var(--forest-deep); border-top: 2px solid #eee; }
 
-        /* 權益卡片 */
         .rights-card { background: #fff; padding: 25px; border-radius: 4px; border-top: 3px solid var(--gold-accent); margin-bottom: 20px; }
-        .rights-card h3 { margin-bottom: 10px; color: var(--forest-deep); }
-        .rights-card p { font-size: 0.95rem; color: #666; margin-top: 10px; }
-        
-        /* 自益信託：深底白字樣式 */
         .rights-card.high-contrast { background: var(--contrast-bg); color: #FFFFFF; }
         .rights-card.high-contrast h3 { color: var(--gold-accent); }
-        .rights-card.high-contrast p { color: #d1d1d1; }
-        
         .gold-highlight { color: var(--gold-accent); font-weight: 700; font-size: 1.2rem; }
 
         .lightbox { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 2000; justify-content: center; align-items: center; }
         .lightbox img { max-width: 95%; max-height: 90vh; }
 
-        @media (min-width: 768px) {
-            .data-summary { grid-template-columns: repeat(3, 1fr); }
-        }
+        @media (min-width: 768px) { .data-summary { grid-template-columns: repeat(3, 1fr); } }
     </style>
 </head>
 <body>
@@ -86,18 +77,9 @@
         </div>
 
         <div class="photo-stack">
-            <div class="photo-item">
-                <p class="photo-caption">全區單元配置圖</p>
-                <img src="48Unit-Map.jpg" onclick="openLightbox(this.src)">
-            </div>
-            <div class="photo-item">
-                <p class="photo-caption">單元尺寸圖</p>
-                <img src="45UnitsizeMap.jpg" onclick="openLightbox(this.src)">
-            </div>
-            <div class="photo-item">
-                <p class="photo-caption">原地貌 3D 空拍</p>
-                <img id="display-img-3d" src="" onclick="openLightbox(this.src)">
-            </div>
+            <div class="photo-item"><p class="photo-caption">全區單元配置圖</p><img src="48Unit-Map.jpg" onclick="openLightbox(this.src)"></div>
+            <div class="photo-item"><p class="photo-caption">單元尺寸圖</p><img src="45UnitsizeMap.jpg" onclick="openLightbox(this.src)"></div>
+            <div class="photo-item"><p class="photo-caption">原地貌 3D 空拍</p><img id="display-img-3d" src="" onclick="openLightbox(this.src)"></div>
         </div>
 
         <div class="table-wrap">
@@ -105,14 +87,7 @@
             <table>
                 <thead><tr><th>地號</th><th>權狀面積(坪)</th><th>公設分配(坪)</th><th>合計總面積(坪)</th></tr></thead>
                 <tbody id="table-body"></tbody>
-                <tfoot>
-                    <tr class="total-row">
-                        <td>合計</td>
-                        <td id="sum-rights">0</td>
-                        <td id="sum-public">0</td>
-                        <td id="sum-all">0</td>
-                    </tr>
-                </tfoot>
+                <tfoot><tr class="total-row"><td>合計</td><td id="sum-rights">0</td><td id="sum-public">0</td><td id="sum-all">0</td></tr></tfoot>
             </table>
         </div>
 
@@ -137,35 +112,65 @@
     <div id="lightbox" class="lightbox" onclick="this.style.display='none'"><img id="lightbox-img"></div>
 
     <script src="data.js"></script>
-
     <script>
         const params = new URLSearchParams(window.location.search);
-        const data = unitDatabase[params.get('id')];
+        const unitId = params.get('id');
+        let currentUnitData = null;
 
-        if (data) {
-            document.getElementById('auth-hint').innerText = `請輸入編號 ${data.id} 之授權密碼`;
-            document.getElementById('display-id').innerText = `認購單元 - ${data.id}`;
-            document.getElementById('display-title').innerText = data.title;
-            document.getElementById('val-price').innerText = data.price;
-            document.getElementById('val-unitPrice').innerText = data.unitPrice;
-            document.getElementById('val-totalArea').innerText = data.totalArea;
-            document.getElementById('display-share1').innerText = data.shareRatio;
-            document.getElementById('display-share2').innerText = data.shareRatio;
-            document.getElementById('display-img-3d').src = data.imgDrone;
+        // 初始化頁面資料
+        function initPage() {
+            if (typeof unitDatabase === 'undefined') {
+                console.error("data.js 未正確載入");
+                return;
+            }
+            
+            currentUnitData = unitDatabase[unitId];
 
-            let totalRights = 0;
-            let totalPublic = 0;
-            let totalAll = 0;
-            let rows = "";
+            if (currentUnitData) {
+                document.getElementById('auth-hint').innerText = `請輸入編號 ${currentUnitData.id} 之授權密碼`;
+                document.getElementById('display-id').innerText = `認購單元 - ${currentUnitData.id}`;
+                document.getElementById('display-title').innerText = currentUnitData.title;
+                document.getElementById('val-price').innerText = currentUnitData.price;
+                document.getElementById('val-unitPrice').innerText = currentUnitData.unitPrice;
+                document.getElementById('val-totalArea').innerText = currentUnitData.totalArea;
+                document.getElementById('display-share1').innerText = currentUnitData.shareRatio;
+                document.getElementById('display-share2').innerText = currentUnitData.shareRatio;
+                document.getElementById('display-img-3d').src = currentUnitData.imgDrone;
 
-            data.landDetails.forEach(item => {
-                totalRights += parseFloat(item.rightsArea);
-                totalPublic += parseFloat(item.publicArea);
-                totalAll += parseFloat(item.sumArea);
-                rows += `<tr><td>${item.landId}</td><td>${item.rightsArea}</td><td>${item.publicArea}</td><td>${item.sumArea}</td></tr>`;
-            });
+                let totalRights = 0, totalPublic = 0, totalAll = 0, rows = "";
+                currentUnitData.landDetails.forEach(item => {
+                    totalRights += parseFloat(item.rightsArea);
+                    totalPublic += parseFloat(item.publicArea);
+                    totalAll += parseFloat(item.sumArea);
+                    rows += `<tr><td>${item.landId}</td><td>${item.rightsArea}</td><td>${item.publicArea}</td><td>${item.sumArea}</td></tr>`;
+                });
 
-            document.getElementById('table-body').innerHTML = rows;
-            document.getElementById('sum-rights').innerText = totalRights.toFixed(3);
-            document.getElementById('sum-public').innerText = totalPublic.toFixed(3);
-            document.getElementById('sum-all').innerText = totalAll.toFixed(3
+                document.getElementById('table-body').innerHTML = rows;
+                document.getElementById('sum-rights').innerText = totalRights.toFixed(3);
+                document.getElementById('sum-public').innerText = totalPublic.toFixed(3);
+                document.getElementById('sum-all').innerText = totalAll.toFixed(3);
+                document.getElementById('display-profit').innerText = (totalAll * 1.46).toFixed(2);
+            }
+        }
+
+        function validate() {
+            const inputPass = document.getElementById('pass-input').value;
+            if (currentUnitData && inputPass === currentUnitData.password) {
+                document.getElementById('auth-box').style.display = 'none';
+                document.getElementById('protected-content').style.display = 'block';
+                window.scrollTo(0, 0);
+            } else {
+                document.getElementById('error').style.display = 'block';
+            }
+        }
+
+        function openLightbox(src) { 
+            document.getElementById('lightbox-img').src = src; 
+            document.getElementById('lightbox').style.display = 'flex'; 
+        }
+
+        // 確保在資料載入後執行
+        window.onload = initPage;
+    </script>
+</body>
+</html>
