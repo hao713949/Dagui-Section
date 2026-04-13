@@ -114,7 +114,7 @@
     <script src="data.js"></script>
     <script>
         const params = new URLSearchParams(window.location.search);
-        const unitId = params.get('id');
+        const unitId = params.get('id') ? params.get('id').toUpperCase() : null;
         let currentUnitData = null;
 
         window.onload = function() {
