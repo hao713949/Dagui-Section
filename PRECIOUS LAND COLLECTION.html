@@ -28,33 +28,33 @@
 
         h1, h2, h3, h4, .serif { font-family: 'Noto Serif TC', serif; font-weight: 900; }
 
-        /* --- 頂部導覽列 --- */
+        /* --- 頂部導覽列 (針對手機優化) --- */
         .top-nav {
             position: fixed;
             top: 0; width: 100%;
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
             z-index: 9999;
-            padding: 15px 5%;
+            padding: 12px 5%;
             display: flex;
             justify-content: center;
             border-bottom: 1px solid rgba(27, 48, 34, 0.1);
+            overflow-x: auto; /* 手機端可滑動導覽 */
+            white-space: nowrap;
         }
         .top-nav a {
             text-decoration: none;
             color: var(--forest-deep);
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             font-weight: 700;
-            margin: 0 12px;
-            letter-spacing: 1.5px;
-            transition: 0.3s;
+            margin: 0 10px;
+            letter-spacing: 1px;
         }
-        .top-nav a:hover { color: var(--gold-accent); }
 
-        /* --- 香檳金左側裝飾線標題 (Title Wrapper) --- */
+        /* --- 截圖規範：香檳金左側裝飾線 --- */
         .decoration-line {
             position: relative;
-            padding-left: 25px;
+            padding-left: 20px;
             margin-top: 15px;
         }
         .decoration-line::before {
@@ -63,63 +63,82 @@
             left: 0;
             top: 5px;
             bottom: 5px;
-            width: 4px;
+            width: 3px;
             background-color: var(--gold-accent);
-            border-radius: 2px;
         }
 
-        /* --- 首頁 Hero --- */
+        /* --- 首頁 Hero (字體優化) --- */
         .hero {
             height: 100vh;
             display: flex;
             align-items: center;
             background: linear-gradient(to right, rgba(249, 248, 244, 0.98) 30%, rgba(249, 248, 244, 0.4) 100%),
                         url('https://images.unsplash.com/photo-1542273917363-3b1817f69a2d?auto=format&fit=crop&q=80&w=2000');
-            background-size: cover; background-position: center; padding: 0 10%;
+            background-size: cover; background-position: center; padding: 0 8%;
         }
-        /* 大標題與副標題顏色相同：皆為深綠 */
-        .hero h1 { font-size: clamp(3rem, 6vw, 4.5rem); color: var(--forest-deep); letter-spacing: 12px; line-height: 1.25; margin-bottom: 30px; }
-        .hero .sub-text { font-size: clamp(1.1rem, 2vw, 1.3rem); color: var(--forest-deep); font-weight: 700; letter-spacing: 2px; opacity: 0.9; }
+        /* 調整首頁標題在不同裝置的大小 */
+        .hero h1 { 
+            font-size: clamp(2.2rem, 8vw, 4.2rem); 
+            color: var(--forest-deep); 
+            letter-spacing: 8px; 
+            line-height: 1.3; 
+            margin-bottom: 25px; 
+        }
+        .hero .sub-text { 
+            font-size: clamp(0.95rem, 3vw, 1.25rem); 
+            color: var(--forest-deep); 
+            font-weight: 700; 
+            letter-spacing: 1px;
+            opacity: 0.85;
+        }
 
-        section { padding: 120px 10% 100px 10%; position: relative; border-bottom: 1px solid rgba(0,0,0,0.03); }
-        .section-tag { font-size: 0.85rem; letter-spacing: 5px; color: var(--gold-accent); display: block; margin-bottom: 20px; font-weight: 700; text-transform: uppercase; }
-        h2 { font-size: 2.8rem; color: var(--forest-deep); margin-bottom: 50px; line-height: 1.3; }
+        /* --- 區塊設定 --- */
+        section { padding: 80px 8% 60px 8%; position: relative; border-bottom: 1px solid rgba(0,0,0,0.03); }
+        .section-tag { font-size: 0.75rem; letter-spacing: 4px; color: var(--gold-accent); display: block; margin-bottom: 15px; font-weight: 700; }
+        
+        /* 調整各分頁標題大小 */
+        h2 { 
+            font-size: clamp(1.8rem, 5vw, 2.6rem); 
+            color: var(--forest-deep); 
+            margin-bottom: 40px; 
+            line-height: 1.4; 
+        }
 
-        .grid-layout { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-        .info-card { background: #fff; padding: 45px; border-radius: 4px; box-shadow: 0 10px 30px rgba(0,0,0,0.03); }
-        .info-card h3 { color: var(--forest-mid); margin-bottom: 20px; font-size: 1.5rem; letter-spacing: 2px; }
+        .grid-layout { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+        .info-card { background: #fff; padding: 35px; border-radius: 4px; box-shadow: 0 10px 30px rgba(0,0,0,0.03); }
+        .info-card h3 { color: var(--forest-mid); margin-bottom: 15px; font-size: 1.35rem; }
 
         /* --- 第三頁：建築規範 --- */
-        .reg-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
-        .reg-box { background-color: var(--forest-deep); padding: 50px 20px; text-align: center; border-radius: 4px; min-height: 380px; display: flex; flex-direction: column; align-items: center; transition: 0.3s; }
-        .reg-num { display: block; color: var(--gold-accent); font-family: 'Noto Serif TC', serif; font-size: 3.2rem; font-weight: 900; line-height: 1; margin-bottom: 15px; }
-        .reg-title { color: #FFFFFF; font-weight: 700; font-size: 1.2rem; margin-bottom: 25px; letter-spacing: 1px; }
-        .reg-desc { color: rgba(255,255,255,0.85); font-size: 0.9rem; line-height: 1.7; text-align: justify; }
+        .reg-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; }
+        .reg-box { background-color: var(--forest-deep); padding: 40px 15px; text-align: center; border-radius: 4px; display: flex; flex-direction: column; align-items: center; }
+        .reg-num { display: block; color: var(--gold-accent); font-family: 'Noto Serif TC', serif; font-size: 2.2rem; font-weight: 900; line-height: 1; margin-bottom: 10px; }
+        .reg-title { color: #FFFFFF; font-weight: 700; font-size: 1rem; margin-bottom: 15px; letter-spacing: 1px; }
+        .reg-desc { color: rgba(255,255,255,0.8); font-size: 0.85rem; line-height: 1.6; }
 
         /* --- 第五頁：資產表格 --- */
-        .table-container { background: white; padding: 40px; border-radius: 8px; overflow-x: auto; box-shadow: 0 20px 50px rgba(0,0,0,0.05); }
-        table { width: 100%; border-collapse: collapse; min-width: 900px; }
-        th { background: var(--forest-deep); color: white; padding: 20px; text-align: left; }
-        td { padding: 20px; border-bottom: 1px solid #f0f0f0; }
+        .table-container { background: white; padding: 20px; border-radius: 8px; overflow-x: auto; box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
+        table { width: 100%; border-collapse: collapse; min-width: 800px; font-size: 0.9rem; }
+        th { background: var(--forest-deep); color: white; padding: 15px; text-align: left; }
+        td { padding: 15px; border-bottom: 1px solid #f0f0f0; }
         .total-row { background: #fdfdfd; font-weight: 900; color: var(--forest-deep); border-top: 2px solid var(--forest-deep); }
 
-        /* --- 第七頁：交易安全 (深色高級感) --- */
-        .security-section { background-color: var(--bg-dark-section); color: #fff; padding: 120px 10%; }
-        .sec-h2 { color: #2e4a36; margin-bottom: 40px; border: none; font-size: 2.8rem; }
+        /* --- 第七頁：交易安全 (深色) --- */
+        .security-section { background-color: var(--bg-dark-section); color: #fff; padding: 80px 8%; }
+        .sec-h2 { color: #2e4a36; margin-bottom: 30px; font-size: 2.2rem; }
         .highlight-gold { color: var(--gold-accent); font-weight: 700; }
-        .sec-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
-        .sec-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); padding: 45px 35px; border-radius: 4px; }
-        .sec-card h4 { color: var(--gold-accent); font-size: 1.4rem; margin-bottom: 25px; font-weight: 700; letter-spacing: 1px; }
+        .sec-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); padding: 30px; border-radius: 4px; }
+        .sec-card h4 { color: var(--gold-accent); font-size: 1.2rem; margin-bottom: 15px; }
 
         /* --- 地圖 --- */
-        .map-container { width: 100%; height: 500px; margin-top: 40px; border: 1px solid #eee; position: relative; overflow: hidden; }
-        .map-btn { display: inline-block; padding: 18px 50px; background: var(--forest-deep); color: var(--gold-accent); text-decoration: none; font-weight: 700; margin-top: 2rem; letter-spacing: 2px; }
+        .map-container { width: 100%; height: 400px; margin-top: 30px; border: 1px solid #eee; }
+        .map-btn { display: inline-block; padding: 15px 40px; background: var(--forest-deep); color: var(--gold-accent); text-decoration: none; font-weight: 700; margin-top: 1.5rem; letter-spacing: 1px; border-radius: 2px; }
 
-        @media (max-width: 1200px) {
-            .reg-grid { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
-            .hero h1 { font-size: 2.8rem; }
-            .top-nav { flex-wrap: wrap; padding: 10px; }
-            .top-nav a { margin: 5px; font-size: 0.75rem; }
+        @media (max-width: 768px) {
+            .reg-grid { grid-template-columns: repeat(2, 1fr); } /* 手機改為兩欄 */
+            .hero { padding: 0 5%; }
+            section { padding: 60px 5% 40px 5%; }
+            .top-nav { justify-content: flex-start; }
+            .hero h1 { letter-spacing: 4px; }
         }
     </style>
 </head>
@@ -140,7 +159,7 @@
         <div class="hero-content">
             <h1 class="serif">大貴段<br>森林莊園合購案</h1>
             <div class="decoration-line">
-                <p class="sub-text">近兩萬坪庭園別墅聚落 ‧ 規劃僅48單元區 ‧ 限量24席認購</p>
+                <p class="sub-text">近兩萬坪別墅聚落 ‧ 48單元規劃 ‧ 24席珍稀認購</p>
             </div>
         </div>
     </header>
@@ -148,7 +167,7 @@
     <section id="page2">
         <span class="section-tag">STRATEGIC VISION</span>
         <h2>核心理念：萬坪合構，共創地利。</h2>
-        <p style="font-size: 1.3rem; margin-bottom: 60px; color: var(--forest-mid); max-width: 1000px;">
+        <p style="font-size: 1.1rem; margin-bottom: 40px; color: var(--forest-mid);">
             憑藉兩萬坪土地開發規模，透過統籌合購模式，將土地取得成本優化至最具競爭力之水平，實現投資利潤與土地價值的實質回饋。
         </p>
         <div class="grid-layout">
@@ -174,27 +193,27 @@
             <div class="reg-box">
                 <span class="reg-num">20%</span>
                 <p class="reg-title">建蔽率</p>
-                <p class="reg-desc">低密度開發，確保建築物僅佔土地面積五分之一，留給自然更多呼吸空間。</p>
+                <p class="reg-desc">極致低密度開發，確保建築物僅佔土地面積五分之一。</p>
             </div>
             <div class="reg-box">
                 <span class="reg-num">40%</span>
                 <p class="reg-title">容積率</p>
-                <p class="reg-desc">限制建築高度與體量，不適用其他容積獎勵，確保聚落景觀的齊一性。</p>
+                <p class="reg-desc">嚴格限制建築高度與體量，確保聚落景觀的齊一性。</p>
             </div>
             <div class="reg-box">
                 <span class="reg-num">5M</span>
                 <p class="reg-title">建築退縮</p>
-                <p class="reg-desc">建築主體自建築線退縮 5 米，營造開闊寬裕的庭園進深感與視野。</p>
+                <p class="reg-desc">自道路境界線退縮 5 米，營造開闊庭園進深感。</p>
             </div>
             <div class="reg-box">
                 <span class="reg-num">1.5M</span>
                 <p class="reg-title">人行步道</p>
-                <p class="reg-desc">沿路設置完整人行空間，實現人車分道式的森林漫遊體驗感。</p>
+                <p class="reg-desc">設置完整人行空間，實現人車分道式的漫遊體感。</p>
             </div>
             <div class="reg-box">
                 <span class="reg-num">免計</span>
-                <p class="reg-title">停車空間容積</p>
-                <p class="reg-desc">停車空間不計入容積，最大化室內居住使用效益，同時維護社區整潔車道。</p>
+                <p class="reg-title">停車空間</p>
+                <p class="reg-desc">停車空間不計入容積，最大化室內居住使用效益。</p>
             </div>
         </div>
     </section>
@@ -202,18 +221,18 @@
     <section id="page4">
         <span class="section-tag">SITE DOCUMENTATION</span>
         <h2>地籍圖資與分區證明</h2>
-        <div style="background:#fff; padding: 40px; border: 1px solid #eee; text-align: center; margin-bottom: 30px;">
-            <h3 class="serif" style="margin-bottom:25px; color: var(--forest-deep);">公設地及合購地標示圖</h3>
-            <img src="https://raw.githubusercontent.com/hao713949/DAKENG-VILLA/main/map.jpg" alt="地籍圖示" style="width:100%; max-height:800px; object-fit: contain;">
-            <p style="color: var(--gold-accent); font-weight: 700; margin-top: 20px;">※ 買賣總價款已完整包含「公設地」及「合購地」。</p>
+        <div style="background:#fff; padding: 25px; border: 1px solid #eee; text-align: center; margin-bottom: 20px;">
+            <h3 class="serif" style="margin-bottom:15px; color: var(--forest-deep); font-size: 1.1rem;">公設地及合購地標示圖</h3>
+            <img src="https://raw.githubusercontent.com/hao713949/DAKENG-VILLA/main/map.jpg" alt="地籍圖示" style="width:100%; max-height:600px; object-fit: contain;">
+            <p style="color: var(--gold-accent); font-weight: 700; margin-top: 15px; font-size: 0.95rem;">※ 買賣總價款已完整包含「公設地」及「合購地」。</p>
         </div>
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px;">
-            <div style="background:#fff; padding:20px; border:1px solid #eee; text-align:center;">
-                <h3 class="serif" style="font-size: 1.1rem; margin-bottom:15px;">大坑細部計畫圖</h3>
+        <div class="grid-layout">
+            <div style="background:#fff; padding:15px; border:1px solid #eee; text-align:center;">
+                <h3 class="serif" style="font-size: 0.95rem; margin-bottom:10px;">大坑細部計畫圖</h3>
                 <img src="https://raw.githubusercontent.com/hao713949/DAKENG-VILLA/main/Zoning.jpg" style="width:100%;">
             </div>
-            <div style="background:#fff; padding:20px; border:1px solid #eee; text-align:center;">
-                <h3 class="serif" style="font-size: 1.1rem; margin-bottom:15px;">都發局使用分區證明</h3>
+            <div style="background:#fff; padding:15px; border:1px solid #eee; text-align:center;">
+                <h3 class="serif" style="font-size: 0.95rem; margin-bottom:10px;">都發局使用分區證明</h3>
                 <img src="https://raw.githubusercontent.com/hao713949/DAKENG-VILLA/main/Zoning1.jpg" style="width:100%;">
             </div>
         </div>
@@ -228,12 +247,12 @@
                     <tr><th>資產分類</th><th>筆數</th><th>面積（坪）</th><th>權利管理</th></tr>
                 </thead>
                 <tbody>
-                    <tr><td>A. 特二種住宅用地</td><td>91 筆</td><td>15,753.14</td><td>48單元；專有面積 ＋ 公設持分 14 筆</td></tr>
-                    <tr><td>B. 公設預撥地</td><td>3 筆</td><td>1,153.63</td><td>信託登記管理</td></tr>
-                    <tr><td>C. 特二（變）住宅用地</td><td>1 筆</td><td>857.12</td><td>地號 487-223，自益信託登記管理</td></tr>
-                    <tr><td>D. 會館用地</td><td>2 筆</td><td>570.00</td><td>地號 487-100, 487-101，完工後按比例持分分配</td></tr>
-                    <tr><td>E. 農業用地</td><td>5 筆</td><td>1,444.42</td><td>地號 492 等五筆，自益信託登記管理</td></tr>
-                    <tr class="total-row"><td>總計合購規模</td><td>116 筆</td><td>19,779.15</td><td>需一次性買賣</td></tr>
+                    <tr><td>A. 特二種住宅用地</td><td>91 筆</td><td>15,753.14</td><td>專有面積 ＋ 持分公設 14 筆</td></tr>
+                    <tr><td>B. 公設預撥地</td><td>3 筆</td><td>1,153.63</td><td>以統一信託登記管理</td></tr>
+                    <tr><td>C. 特二（變）住宅用地</td><td>1 筆</td><td>857.12</td><td>地號 487-223，以自益信託登記管理</td></tr>
+                    <tr><td>D. 會館用地</td><td>2 筆</td><td>570.00</td><td>興建完成後按比例持分</td></tr>
+                    <tr><td>E. 農業用地</td><td>5 筆</td><td>1,444.42</td><td>地號 492 等五筆，以自益信託管理</td></tr>
+                    <tr class="total-row"><td>總計合購規模</td><td>116 筆</td><td>19,779.15</td><td>統整一次性交易</td></tr>
                 </tbody>
             </table>
         </div>
@@ -249,8 +268,8 @@
             </div>
             <div class="info-card">
                 <h3>付款構成</h3>
-                <p><strong>主約購地款：</strong>含主地、公設地、公設預撥地、會館用地、487-223 特二(變)、農地等。</p>
-                <p style="margin-top: 15px;"><strong>附約款：</strong>社區建設維護費、基礎工程讓渡費及其他相關費用。</p>
+                <p><strong>主約購地款：</strong>含主地、公設地、會館用地、農地等。</p>
+                <p style="margin-top: 10px;"><strong>附約款：</strong>社區建設費、基礎工程讓渡費及其他相關費用。</p>
             </div>
             <div class="info-card">
                 <h3>交易時程</h3>
@@ -262,13 +281,13 @@
     <section class="security-section" id="page7">
         <span class="section-tag" style="color: rgba(255,255,255,0.4);">RISK MANAGEMENT</span>
         <h2 class="sec-h2 serif">交易安全機制</h2>
-        <p style="font-size: 1.15rem; margin-bottom: 50px; color: rgba(255,255,255,0.85);">
+        <p style="font-size: 1.05rem; margin-bottom: 40px; color: rgba(255,255,255,0.8);">
             以下條款確保認購者之資金安全性—<span class="highlight-gold">若案件不成，交易取消，原款退回。</span>
         </p>
         <div class="sec-grid">
             <div class="sec-card">
                 <h4>募資未達標</h4>
-                <p>資金未能足額募集，致無法完成支付總價款或基礎工程讓渡費時，交易終止。</p>
+                <p>資金未能足額募集，致無法完成支付總價款，交易終止。</p>
             </div>
             <div class="sec-card">
                 <h4>契約未促成</h4>
@@ -280,7 +299,7 @@
             </div>
             <div class="sec-card">
                 <h4>資金保全</h4>
-                <p>買賣過程辦理價金履約保證。</p>
+                <p>上述情形發生，認購款項全額無息退還。</p>
             </div>
         </div>
     </section>
@@ -289,22 +308,21 @@
         <span class="section-tag">LOCATION</span>
         <h2>莊園地理位置</h2>
         <div class="decoration-line">
-            <p style="font-size: 1.2rem; font-weight: 500;">台中市北屯區大貴段 </p>
+            <p style="font-size: 1.1rem; font-weight: 500;">台中市北屯區大貴段 (GPS: 24.16487, 120.74649)</p>
         </div>
         <div class="map-container">
             <iframe 
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3640.0123!2d120.7443!3d24.16487!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjTCsDA5JzUzLjUiTiAxMjDCsDQ0JzQ3LjQiRQ!5e0!3m2!1szh-TW!2stw!4v1650000000000!5m2!1szh-TW!2stw" 
+                src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3640.45731778931!2d120.7443!3d24.16487!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMjTCsDA5JzUzLjUiTiAxMjDCsDQ0JzM5LjUiRQ!5e0!3m2!1szh-TW!2stw!4v1712984500000!5m2!1szh-TW!2stw" 
                 width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy">
             </iframe>
         </div>
-        <a href="https://www.google.com/maps/search/?api=1&query=24.16487,120.74649" target="_blank" class="map-btn">開啟 Google 地圖導航</a>
+        <a href="https://maps.app.goo.gl/B5zY8D8H2Uu4xGvE6" target="_blank" class="map-btn">開啟 Google 地圖導航</a>
     </section>
 
-    <footer style="padding: 80px 10%; text-align: center; background: #fff; border-top: 1px solid #eee;">
-        <p class="serif" style="font-size: 1.4rem; color: var(--forest-deep); margin-bottom: 10px;">大貴段別墅莊園 ‧ 專案代理</p>
-        <p style="color: #999; font-size: 0.9rem;">本合購說明僅供特定對象參考。</p>
-        <p style="color: #999; font-size: 0.9rem;"> 洽詢：0958-781945 </p>
-        <p style="color: #ccc; font-size: 0.8rem; margin-top: 15px; letter-spacing: 2px;">© 2026 PRECIOUS LAND COLLECTION</p>
+    <footer style="padding: 60px 8%; text-align: center; background: #fff;">
+        <p class="serif" style="font-size: 1.2rem; color: var(--forest-deep); margin-bottom: 5px;">大貴段別墅莊園 ‧ 專案代理</p>
+        <p style="color: #999; font-size: 0.85rem;">本合購說明僅供特定對象參考。</p>
+        <p style="color: #ccc; font-size: 0.75rem; margin-top: 10px; letter-spacing: 1px;">© 2026 PRECIOUS LAND COLLECTION</p>
     </footer>
 
 </body>
