@@ -74,7 +74,7 @@ const unitDatabase = {
         "unitPrice": "9.03",
         "totalArea": "263.14",
         "shareRatio": "1670 / 100,000",
-        "imgDrone": "H5.png",
+        "imgDrone": "C5.png",
         "password": "2376",
         "landDetails": [
             { "landId": "487-025", "rightsArea": "98.061", "publicArea": "34.444", "sumArea": "132.51" },
