@@ -67,6 +67,35 @@ const unitDatabase = {
             { "landId": "487-24", "rightsArea": "121.427", "publicArea": "42.651", "sumArea": "164.08" }
         ]
     },
+    "C5": {
+        "id": "C5",
+        "title": "地號 487-25、487-26 ‧ 核心領袖單元",
+        "price": "2,376.73",
+        "unitPrice": "9.03",
+        "totalArea": "263.14",
+        "shareRatio": "1670 / 100,000",
+        "imgDrone": "H5.png",
+        "password": "2376",
+        "landDetails": [
+            { "landId": "487-025", "rightsArea": "98.061", "publicArea": "34.444", "sumArea": "132.51" },
+            { "landId": "487-026", "rightsArea": "96.679", "publicArea": "33.959", "sumArea": "130.64" }
+        ]
+    },
+    "C6": {
+        "id": "C6",
+        "title": "地號 487-27、487-28、487-29 ‧ 核心領袖單元",
+        "price": "3,586.71",
+        "unitPrice": "8.83",
+        "totalArea": "406.10",
+        "shareRatio": "2578 / 100,000",
+        "imgDrone": "C6.png",
+        "password": "3586",
+        "landDetails": [
+            { "landId": "487-027", "rightsArea": "116.272", "publicArea": "40.841", "sumArea": "157.11" },
+            { "landId": "487-028", "rightsArea": "92.471", "publicArea": "32.481", "sumArea": "124.95" },
+            { "landId": "487-029", "rightsArea": "91.794", "publicArea": "32.243", "sumArea": "124.04" }
+        ]
+    },
     "H1": {
         "id": "H1",
         "title": "地號 487-102、487-103 ‧ 核心領袖單元",
