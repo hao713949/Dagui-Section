@@ -40,15 +40,15 @@
         table { width: 100%; border-collapse: collapse; min-width: 500px; }
         th { background: #f8f9f8; color: var(--forest-deep); padding: 15px 10px; text-align: left; border-bottom: 2px solid var(--gold-accent); }
         td { padding: 15px 10px; border-bottom: 1px solid #f0f0f0; }
-        .total-row { background: #fcfbf7; font-weight: 700; color: var(--forest-deep); }
+        .total-row { background: #fcfbf7; font-weight: 700; color: var(--forest-deep); border-top: 2px solid #eee; }
 
         /* 權益卡片 */
         .rights-card { background: #fff; padding: 25px; border-radius: 4px; border-top: 3px solid var(--gold-accent); margin-bottom: 20px; }
         .rights-card h3 { margin-bottom: 10px; color: var(--forest-deep); }
         .rights-card p { font-size: 0.95rem; color: #666; margin-top: 10px; }
         
-        /* 資產收益：深底白字樣式修正 */
-        .rights-card.high-contrast { background: var(--contrast-bg); color: #FFFFFF; border-top: 3px solid var(--gold-accent); }
+        /* 自益信託：深底白字樣式 */
+        .rights-card.high-contrast { background: var(--contrast-bg); color: #FFFFFF; }
         .rights-card.high-contrast h3 { color: var(--gold-accent); }
         .rights-card.high-contrast p { color: #d1d1d1; }
         
@@ -80,9 +80,9 @@
         </div>
 
         <div class="data-summary">
-            <div class="data-card"><p class="data-label">總 價</p><p class="data-val"><span id="val-price"></span><span style="font-size: 1rem;">萬</span></p></div>
-            <div class="data-card"><p class="data-label">單 價</p><p class="data-val"><span id="val-unitPrice"></span><span style="font-size: 1rem;">萬/坪</span></p></div>
-            <div class="data-card"><p class="data-label">總 面 積</p><p class="data-val"><span id="val-totalArea"></span><span style="font-size: 1rem;">坪</span></p></div>
+            <div class="data-card"><p class="data-label">認購總價</p><p class="data-val"><span id="val-price"></span><span style="font-size: 1rem;">萬</span></p></div>
+            <div class="data-card"><p class="data-label">認購單價</p><p class="data-val"><span id="val-unitPrice"></span><span style="font-size: 1rem;">萬/坪</span></p></div>
+            <div class="data-card"><p class="data-label">總面積規模</p><p class="data-val"><span id="val-totalArea"></span><span style="font-size: 1rem;">坪</span></p></div>
         </div>
 
         <div class="photo-stack">
@@ -101,7 +101,7 @@
         </div>
 
         <div class="table-wrap">
-            <h3 class="serif" style="margin-bottom:15px;">土地面積明細</h3>
+            <h3 class="serif" style="margin-bottom:15px;">地籍面積明細</h3>
             <table>
                 <thead><tr><th>地號</th><th>權狀面積(坪)</th><th>公設分配(坪)</th><th>合計總面積(坪)</th></tr></thead>
                 <tbody id="table-body"></tbody>
@@ -136,15 +136,9 @@
 
     <div id="lightbox" class="lightbox" onclick="this.style.display='none'"><img id="lightbox-img"></div>
 
-    <script>
-        const unitDatabase = {
-            "C1": { "id": "C1", "title": "地號 487-07 ‧ 核心領袖單元", "price": "1,934.88", "unitPrice": "9.03", "totalArea": "214.22", "shareRatio": "1360 / 100,000", "imgDrone": "C1.png", "password": "1934", "landDetails": [ { "landId": "487-07", "rightsArea": "158.537", "publicArea": "55.687", "sumArea": "214.224" } ] },
-            "C1-1": { "id": "C1-1", "title": "地號 487-08 ‧ 核心領袖單元", "price": "1,599.88", "unitPrice": "9.43", "totalArea": "169.62", "shareRatio": "1077 / 100,000", "imgDrone": "C1-1.png", "password": "1599", "landDetails": [ { "landId": "487-08", "rightsArea": "125.528", "publicArea": "44.092", "sumArea": "169.620" } ] },
-            "C2": { "id": "C2", "title": "地號 487-20、487-21 ‧ 核心領袖單元", "price": "2,616.12", "unitPrice": "9.03", "totalArea": "289.65", "shareRatio": "1839 / 100,000", "imgDrone": "C2.png", "password": "2616", "landDetails": [ { "landId": "487-20", "rightsArea": "152.227", "publicArea": "53.470", "sumArea": "205.697" }, { "landId": "487-21", "rightsArea": "62.128", "publicArea": "21.822", "sumArea": "83.950" } ] },
-            "C2-1": { "id": "C2-1", "title": "地號 487-21-1、487-22 ‧ 核心領袖單元", "price": "2,219.16", "unitPrice": "9.03", "totalArea": "245.7", "shareRatio": "1560 / 100,000", "imgDrone": "C2-1.png", "password": "2219", "landDetails": [ { "landId": "487-21-1", "rightsArea": "59.792", "publicArea": "21.002", "sumArea": "80.79" }, { "landId": "487-22", "rightsArea": "122.038", "publicArea": "42.866", "sumArea": "164.90" } ] },
-            "C3": { "id": "C3", "title": "地號 487-23、487-24 ‧ 核心領袖單元", "price": "2,979.58", "unitPrice": "9.03", "totalArea": "329.89", "shareRatio": "2094 / 100,000", "imgDrone": "C3.png", "password": "2979", "landDetails": [ { "landId": "487-23", "rightsArea": "122.709", "publicArea": "43.102", "sumArea": "165.81" }, { "landId": "487-24", "rightsArea": "121.427", "publicArea": "42.651", "sumArea": "164.08" } ] }
-        };
+    <script src="data.js"></script>
 
+    <script>
         const params = new URLSearchParams(window.location.search);
         const data = unitDatabase[params.get('id')];
 
@@ -159,42 +153,19 @@
             document.getElementById('display-share2').innerText = data.shareRatio;
             document.getElementById('display-img-3d').src = data.imgDrone;
 
-            // 初始化合計變數
             let totalRights = 0;
             let totalPublic = 0;
             let totalAll = 0;
             let rows = "";
 
             data.landDetails.forEach(item => {
-                // 將數值加總 (使用 parseFloat 處理小數點)
                 totalRights += parseFloat(item.rightsArea);
                 totalPublic += parseFloat(item.publicArea);
                 totalAll += parseFloat(item.sumArea);
-
                 rows += `<tr><td>${item.landId}</td><td>${item.rightsArea}</td><td>${item.publicArea}</td><td>${item.sumArea}</td></tr>`;
             });
 
-            // 寫入表格內容與合計列 (保留三位小數)
             document.getElementById('table-body').innerHTML = rows;
             document.getElementById('sum-rights').innerText = totalRights.toFixed(3);
             document.getElementById('sum-public').innerText = totalPublic.toFixed(3);
-            document.getElementById('sum-all').innerText = totalAll.toFixed(3);
-
-            // 計算預估分配收益 (合計總面積 * 1.46)
-            const profit = (totalAll * 1.46).toFixed(2);
-            document.getElementById('display-profit').innerText = profit;
-        }
-
-        function validate() {
-            if (data && document.getElementById('pass-input').value === data.password) {
-                document.getElementById('auth-box').style.display = 'none';
-                document.getElementById('protected-content').style.display = 'block';
-                window.scrollTo(0,0);
-            } else {
-                document.getElementById('error').style.display = 'block';
-            }
-        }
-        function openLightbox(src) { document.getElementById('lightbox-img').src = src; document.getElementById('lightbox').style.display = 'flex'; }
-    </script>
-</body>
-</html>
+            document.getElementById('sum-all').innerText = totalAll.toFixed(3
