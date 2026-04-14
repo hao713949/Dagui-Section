@@ -246,7 +246,7 @@ const unitDatabase = {
         "imgDrone": "E5.png",
         "password": "2780",
         "landDetails": [
-            { "landId": "487-175", "rightsArea": "121.986", "publicArea": "42.842", "sumArea": "164.81" },
+            { "landId": "487-175", "rightsArea": "121.968", "publicArea": "42.842", "sumArea": "164.81" },
             { "landId": "487-176", "rightsArea": "118.163", "publicArea": "41.505", "sumArea": "159.67" }
         ]
     },
