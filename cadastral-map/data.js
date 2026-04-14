@@ -83,7 +83,7 @@ const unitDatabase = {
     },
     "C6": {
         "id": "C6",
-        "title": "地號 487-027、487-028、487-029 ‧ 無界視野單元",
+        "title": "地號 487-027、487-028、487-029 ‧ 隱境首席單元",
         "price": "3,586.71",
         "unitPrice": "8.83",
         "totalArea": "406.10",
@@ -98,7 +98,7 @@ const unitDatabase = {
     },
     "C7": {
         "id": "C7",
-        "title": "地號 487-030、487-031 ‧ 無界視野單元",
+        "title": "地號 487-030、487-031 ‧ 隱境首席單元",
         "price": "2,208.76",
         "unitPrice": "8.83",
         "totalArea": "250.08",
@@ -112,7 +112,7 @@ const unitDatabase = {
     },
     "C8": {
         "id": "C8",
-        "title": "地號 487-032、487-033 ‧ 無界視野單元",
+        "title": "地號 487-032、487-033 ‧ 隱境首席單元",
         "price": "2,912.09",
         "unitPrice": "8.83",
         "totalArea": "329.72",
@@ -126,7 +126,7 @@ const unitDatabase = {
     },
     "C9": {
         "id": "C9",
-        "title": "地號 487-034、487-035 ‧ 無界視野單元",
+        "title": "地號 487-034、487-035 ‧ 隱境首席單元",
         "price": "2,913.28",
         "unitPrice": "8.83",
         "totalArea": "329.85",
@@ -140,7 +140,7 @@ const unitDatabase = {
     },
     "C10": {
         "id": "C10",
-        "title": "地號 487-036、487-037 ‧ 無界視野單元",
+        "title": "地號 487-036、487-037 ‧ 隱境首席單元",
         "price": "3,614.55",
         "unitPrice": "8.83",
         "totalArea": "409.25",
@@ -154,7 +154,7 @@ const unitDatabase = {
     },
     "D1": {
         "id": "D1",
-        "title": "地號 487-056、487-057 ‧ 無界視野單元*",
+        "title": "地號 487-056、487-057 ‧ 閱景單元*",
         "price": "2,953.10",
         "unitPrice": "8.65",
         "totalArea": "341.48",
@@ -168,7 +168,7 @@ const unitDatabase = {
     },
     "D1-1": {
         "id": "D1-1",
-        "title": "地號 487-057-1、487-058 ‧ 無界視野單元*",
+        "title": "地號 487-057-1、487-058 ‧ 閱景單元*",
         "price": "2,640.51",
         "unitPrice": "8.65",
         "totalArea": "305.34",
@@ -178,6 +178,20 @@ const unitDatabase = {
         "landDetails": [
             { "landId": "487-057-1", "rightsArea": "75.386", "publicArea": "26.480", "sumArea": "101.87" },
             { "landId": "487-058", "rightsArea": "150.578", "publicArea": "52.891", "sumArea": "203.47" }
+        ]
+    },
+    "D2": {
+        "id": "D2",
+        "title": "地號 487-059、487-060 ‧ 閱景單元*",
+        "price": "2,238.64",
+        "unitPrice": "9.00",
+        "totalArea": "248.80",
+        "shareRatio": "1579 / 100,000",
+        "imgDrone": "D2.png",
+        "password": "2238",
+        "landDetails": [
+            { "landId": "487-059", "rightsArea": "91.751", "publicArea": "32.228", "sumArea": "123.98" },
+            { "landId": "487-060", "rightsArea": "92.371", "publicArea": "32.446", "sumArea": "124.82" }
         ]
     },
     "H1": {
@@ -246,7 +260,7 @@ const unitDatabase = {
         "imgDrone": "E5.png",
         "password": "2780",
         "landDetails": [
-            { "landId": "487-175", "rightsArea": "121.968", "publicArea": "42.842", "sumArea": "164.81" },
+            { "landId": "487-175", "rightsArea": "121.986", "publicArea": "42.842", "sumArea": "164.81" },
             { "landId": "487-176", "rightsArea": "118.163", "publicArea": "41.505", "sumArea": "159.67" }
         ]
     },
