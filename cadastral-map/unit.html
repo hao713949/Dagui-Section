@@ -54,7 +54,7 @@
     </style>
 </head>
 <body>
-    <nav class="top-nav"><span class="serif">大貴段森林莊園 ‧ 單元查詢</span></nav>
+    <nav class="top-nav"><span class="serif">大貴段森林莊園 ‧ 認購單元基本資料</span></nav>
 
     <div id="auth-box" class="auth-overlay">
         <h3 class="serif">單元資料私密存取</h3>
@@ -78,13 +78,13 @@
 
         <div class="photo-stack">
             <div class="photo-item"><p class="photo-caption">全區單元配置圖</p><img src="48Unit-Map.jpg" onclick="openLightbox(this.src)"></div>
-            <div class="photo-item"><p class="photo-caption">單元尺寸圖</p><img src="45UnitsizeMap.jpg" onclick="openLightbox(this.src)"></div>
-            <div class="photo-item"><p class="photo-caption">原地貌 3D 空拍</p><img id="display-img-3d" src="" onclick="openLightbox(this.src)"></div>
+            <div class="photo-item"><p class="photo-caption">全區單元尺寸圖</p><img src="45UnitsizeMap.jpg" onclick="openLightbox(this.src)"></div>
+            <div class="photo-item"><p class="photo-caption">單元原地貌 3D 空拍</p><img id="display-img-3d" src="" onclick="openLightbox(this.src)"></div>
         </div>
 
         <div class="table-wrap">
-            <h3 class="serif" style="margin-bottom:15px;">地籍面積明細</h3>
-            <table>
+            <h3 class="serif" style="margin-bottom:15px;">土地面積明細</h3>
+            <table> 
                 <thead><tr><th>地號</th><th>權狀面積(坪)</th><th>公設分配(坪)</th><th>合計總面積(坪)</th></tr></thead>
                 <tbody id="table-body"></tbody>
                 <tfoot><tr class="total-row"><td>合計</td><td id="sum-rights">0</td><td id="sum-public">0</td><td id="sum-all">0</td></tr></tfoot>
@@ -92,9 +92,9 @@
         </div>
 
         <div class="rights-card">
-            <h3>公設與會館信託權益</h3>
+            <h3>預撥地與會館信託權益</h3>
             <div>● 持分比例：<span id="display-share1" class="gold-highlight"></span></div>
-            <p>內容包含社區大門、聯外道路、公設、公園及私人會館設施等權益保障;會館完工後按比例持分。</p>
+            <p>內容包含三筆公設預撥地及私人會館用地等權益保障;會館完工後按比例持分。</p>
         </div>
 
         <div class="rights-card high-contrast">
@@ -104,7 +104,7 @@
             <div style="margin-top:15px; padding-top:15px; border-top:1px solid #444;">
                 <span style="color:var(--gold-accent)">預估可分配收益：</span>
                 <span id="display-profit" style="font-size:1.4rem; font-weight:700;"></span> 萬
-                <br><small>(自益信託用地處分後，稅前約每坪 1.46 萬計之)</small>
+                <br><small>(自益信託用地處分後，預估稅前可分配收益，每坪約 1.46 萬)</small>
             </div>
         </div>
     </main>
