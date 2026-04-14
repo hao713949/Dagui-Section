@@ -49,7 +49,7 @@ const unitDatabase = {
         "imgDrone": "C2-1.png",
         "password": "2219",
         "landDetails": [
-            { "landId": "487-021-1", "rightsArea": "59.792", "publicArea": "21.002", "sumArea": "80.79" },
+            { "landId": "487-021-1", "rightsArea": "59.792", "publicArea": "21.002", "sumArea": "80.794" },
             { "landId": "487-022", "rightsArea": "122.038", "publicArea": "42.866", "sumArea": "164.90" }
         ]
     },
@@ -64,7 +64,7 @@ const unitDatabase = {
         "password": "2979",
         "landDetails": [
             { "landId": "487-023", "rightsArea": "122.709", "publicArea": "43.102", "sumArea": "165.81" },
-            { "landId": "487-024", "rightsArea": "121.427", "publicArea": "42.651", "sumArea": "164.08" }
+            { "landId": "487-024", "rightsArea": "121.427", "publicArea": "42.651", "sumArea": "164.078" }
         ]
     },
     "C5": {
@@ -83,7 +83,7 @@ const unitDatabase = {
     },
     "C6": {
         "id": "C6",
-        "title": "地號 487-027、487-028、487-029 ‧ 庭院景觀單元",
+        "title": "地號 487-027、487-028、487-029 ‧ 無界視野單元",
         "price": "3,586.71",
         "unitPrice": "8.83",
         "totalArea": "406.10",
@@ -98,7 +98,7 @@ const unitDatabase = {
     },
     "C7": {
         "id": "C7",
-        "title": "地號 487-030、487-031 ‧ 庭院景觀單元",
+        "title": "地號 487-030、487-031 ‧ 無界視野單元",
         "price": "2,208.76",
         "unitPrice": "8.83",
         "totalArea": "250.08",
@@ -112,7 +112,7 @@ const unitDatabase = {
     },
     "C8": {
         "id": "C8",
-        "title": "地號 487-032、487-033 ‧ 庭院景觀單元",
+        "title": "地號 487-032、487-033 ‧ 無界視野單元",
         "price": "2,912.09",
         "unitPrice": "8.83",
         "totalArea": "329.72",
@@ -126,7 +126,7 @@ const unitDatabase = {
     },
     "C9": {
         "id": "C9",
-        "title": "地號 487-034、487-035 ‧ 庭院景觀單元",
+        "title": "地號 487-034、487-035 ‧ 無界視野單元",
         "price": "2,913.28",
         "unitPrice": "8.83",
         "totalArea": "329.85",
@@ -140,7 +140,7 @@ const unitDatabase = {
     },
     "C10": {
         "id": "C10",
-        "title": "地號 487-036、487-037 ‧ 庭院景觀單元",
+        "title": "地號 487-036、487-037 ‧ 無界視野單元",
         "price": "3,614.55",
         "unitPrice": "8.83",
         "totalArea": "409.25",
@@ -152,9 +152,37 @@ const unitDatabase = {
             { "landId": "487-037", "rightsArea": "150.911", "publicArea": "53.008", "sumArea": "203.92" }
         ]
     },
+    "D1": {
+        "id": "D1",
+        "title": "地號 487-056、487-057 ‧ 無界視野單元*",
+        "price": "2,953.10",
+        "unitPrice": "8.65",
+        "totalArea": "341.48",
+        "shareRatio": "2168 / 100,000",
+        "imgDrone": "D1.png",
+        "password": "2953",
+        "landDetails": [
+            { "landId": "487-056", "rightsArea": "178.466", "publicArea": "62.687", "sumArea": "241.15" },
+            { "landId": "487-057", "rightsArea": "74.249", "publicArea": "26.080", "sumArea": "100.33" }
+        ]
+    },
+    "D1-1": {
+        "id": "D1-1",
+        "title": "地號 487-057-1、487-058 ‧ 無界視野單元*",
+        "price": "2,640.51",
+        "unitPrice": "8.65",
+        "totalArea": "305.34",
+        "shareRatio": "1938 / 100,000",
+        "imgDrone": "D1-1.png",
+        "password": "2640",
+        "landDetails": [
+            { "landId": "487-057-1", "rightsArea": "75.386", "publicArea": "26.480", "sumArea": "101.87" },
+            { "landId": "487-058", "rightsArea": "150.578", "publicArea": "52.891", "sumArea": "203.47" }
+        ]
+    },
     "H1": {
         "id": "H1",
-        "title": "地號 487-102、487-103 ‧ 核心領袖單元",
+        "title": "地號 487-102、487-103 ‧ 巔峰視野單元",
         "price": "2,178.4",
         "unitPrice": "8.83",
         "totalArea": "246.65",
@@ -168,7 +196,7 @@ const unitDatabase = {
     },
     "H2": {
         "id": "H2",
-        "title": "地號 487-104、487-105 ‧ 核心領袖單元",
+        "title": "地號 487-104、487-105 ‧ 巔峰視野單元",
         "price": "2,201.93",
         "unitPrice": "8.83",
         "totalArea": "249.31",
@@ -182,7 +210,7 @@ const unitDatabase = {
     },
     "H3": {
         "id": "H3",
-        "title": "地號 487-106、487-107 ‧ 核心領袖單元",
+        "title": "地號 487-106、487-107 ‧ 巔峰視野單元",
         "price": "2,190.42",
         "unitPrice": "8.83",
         "totalArea": "248.01",
@@ -196,7 +224,7 @@ const unitDatabase = {
     },
     "H10": {
         "id": "H10",
-        "title": "地號 487-136、487-137 ‧ 核心領袖單元",
+        "title": "地號 487-136、487-137 ‧ 森態綠意單元",
         "price": "2,349.28",
         "unitPrice": "8.45",
         "totalArea": "278.09",
@@ -208,10 +236,38 @@ const unitDatabase = {
             { "landId": "487-137", "rightsArea": "99.901", "publicArea": "35.090", "sumArea": "134.99" }
         ]
     },
+    "E5": {
+        "id": "E5",
+        "title": "地號 487-175、487-176 ‧ 層峰聚落單元",
+        "price": "2,780.79",
+        "unitPrice": "8.57",
+        "totalArea": "324.48",
+        "shareRatio": "2060 / 100,000",
+        "imgDrone": "E5.png",
+        "password": "2780",
+        "landDetails": [
+            { "landId": "487-175", "rightsArea": "121.986", "publicArea": "42.842", "sumArea": "164.81" },
+            { "landId": "487-176", "rightsArea": "118.163", "publicArea": "41.505", "sumArea": "159.67" }
+        ]
+    },
+    "E6": {
+        "id": "E6",
+        "title": "地號 487-177、487-178 ‧ 層峰聚落單元",
+        "price": "2,706.77",
+        "unitPrice": "8.57",
+        "totalArea": "315.84",
+        "shareRatio": "2005 / 100,000",
+        "imgDrone": "E6.png",
+        "password": "2706",
+        "landDetails": [
+            { "landId": "487-177", "rightsArea": "117.821", "publicArea": "41.385", "sumArea": "159.21" },
+            { "landId": "487-178", "rightsArea": "115.918", "publicArea": "40.716", "sumArea": "156.63" }
+        ]
+    },
     "E7": {
         "id": "E7",
-        "title": "地號 487-179、487-180 ‧ 核心領袖單元",
-        "price": "2,859.86",
+        "title": "地號 487-179、487-180 ‧ 層峰聚落單元",
+        "price": "2,859.85",
         "unitPrice": "8.57",
         "totalArea": "333.70",
         "shareRatio": "2118 / 100,000",
