@@ -14,30 +14,42 @@
         body { background-color: var(--paper-texture); color: var(--text-dark); font-family: 'Noto Sans TC', sans-serif; line-height: 1.6; }
         h1, h2, h3, .serif { font-family: 'Noto Serif TC', serif; font-weight: 900; }
         .top-nav { background: #fff; padding: 12px 5%; text-align: center; border-bottom: 1px solid rgba(27, 48, 34, 0.1); position: sticky; top: 0; z-index: 1000; }
+        
+        /* 驗證區 */
         .auth-overlay { width: 90%; max-width: 400px; margin: 60px auto; padding: 40px 30px; background: #fff; box-shadow: 0 20px 40px rgba(0,0,0,0.05); text-align: center; border-radius: 8px; }
         .auth-overlay input { width: 100%; padding: 15px; margin: 10px 0; border: 1px solid #ddd; font-size: 16px; border-radius: 4px; outline: none; border-color: var(--gold-accent); }
         .auth-btn { width: 100%; padding: 16px; background: var(--forest-deep); color: var(--gold-accent); border: none; font-weight: 700; cursor: pointer; letter-spacing: 2px; border-radius: 4px; }
+        
         #protected-content { display: none; padding: 30px 5%; max-width: 1000px; margin: 0 auto; }
         .section-header { border-left: 5px solid var(--gold-accent); padding-left: 15px; margin-bottom: 30px; }
+        
+        /* 數據卡片 */
         .data-summary { display: grid; grid-template-columns: 1fr; gap: 15px; margin-bottom: 30px; }
         .data-card { background: #fff; padding: 25px 15px; text-align: center; border-radius: 4px; box-shadow: 0 4px 15px rgba(0,0,0,0.02); }
         .data-val { font-family: 'Noto Serif TC', serif; font-size: 2rem; color: var(--gold-accent); font-weight: 900; }
         .data-label { font-size: 0.85rem; color: var(--forest-mid); margin-bottom: 8px; }
+
+        /* 圖片堆疊 */
         .photo-stack { display: flex; flex-direction: column; gap: 30px; margin-bottom: 40px; }
         .photo-item { background: #fff; padding: 20px; border-radius: 4px; box-shadow: 0 4px 15px rgba(0,0,0,0.03); text-align: center; }
         .photo-item img { width: 100%; height: auto; border-radius: 2px; margin-top: 15px; display: block; border: 1px solid #eee; cursor: zoom-in; }
         .photo-caption { font-weight: 700; color: var(--forest-deep); font-size: 1.1rem; border-bottom: 1px solid #eee; padding-bottom: 10px; }
+
+        /* 表格區 */
         .table-wrap { background: #fff; padding: 20px 15px; border-radius: 4px; overflow-x: auto; margin-bottom: 30px; }
         table { width: 100%; border-collapse: collapse; min-width: 500px; }
         th { background: #f8f9f8; color: var(--forest-deep); padding: 15px 10px; text-align: left; border-bottom: 2px solid var(--gold-accent); }
         td { padding: 15px 10px; border-bottom: 1px solid #f0f0f0; }
         .total-row { background: #fcfbf7; font-weight: 700; color: var(--forest-deep); border-top: 2px solid #eee; }
+
         .rights-card { background: #fff; padding: 25px; border-radius: 4px; border-top: 3px solid var(--gold-accent); margin-bottom: 20px; }
         .rights-card.high-contrast { background: var(--contrast-bg); color: #FFFFFF; }
         .rights-card.high-contrast h3 { color: var(--gold-accent); }
         .gold-highlight { color: var(--gold-accent); font-weight: 700; font-size: 1.2rem; }
+
         .lightbox { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 2000; justify-content: center; align-items: center; }
         .lightbox img { max-width: 95%; max-height: 90vh; }
+
         @media (min-width: 768px) { .data-summary { grid-template-columns: repeat(3, 1fr); } }
     </style>
 </head>
@@ -46,13 +58,10 @@
 
     <div id="auth-box" class="auth-overlay">
         <h3 class="serif">單元資料私密存取</h3>
-        <p id="auth-hint" style="font-size: 0.85rem; color: #888; margin-bottom: 20px;">正在讀取系統資料...</p>
-        <div id="manual-id-area" style="display:none;">
-            <input type="text" id="id-input" placeholder="請輸入認購編號 (如: C1)">
-        </div>
+        <p id="auth-hint" style="font-size: 0.85rem; color: #888; margin-bottom: 20px;"></p>
         <input type="password" id="pass-input" placeholder="請輸入授權密碼">
         <button class="auth-btn" onclick="validate()">確認進入</button>
-        <p id="error" style="color: #c0392b; display: none; margin-top: 15px;">驗證失敗：編號或密碼錯誤</p>
+        <p id="error" style="color: #c0392b; display: none; margin-top: 15px;">驗證失敗：密碼錯誤</p>
     </div>
 
     <main id="protected-content">
@@ -105,74 +114,58 @@
     <script src="data.js"></script>
     <script>
         const params = new URLSearchParams(window.location.search);
-        let urlId = params.get('id');
+        const unitId = params.get('id') ? params.get('id').toUpperCase() : null;
+        let currentUnitData = null;
 
         window.onload = function() {
-            // 檢查資料庫是否讀取成功
             if (typeof unitDatabase === 'undefined') {
-                const err = document.getElementById('error');
-                err.style.display = 'block';
-                err.innerText = "錯誤：找不到資料庫 (data.js)";
+                alert("錯誤：無法讀取 data.js，請檢查檔案路徑。");
                 return;
             }
-            if (urlId) {
-                document.getElementById('auth-hint').innerText = "請輸入編號 " + urlId.toUpperCase() + " 之授權密碼";
+            currentUnitData = unitDatabase[unitId];
+            if (currentUnitData) {
+                document.getElementById('auth-hint').innerText = "請輸入編號 " + currentUnitData.id + " 之授權密碼";
+                document.getElementById('display-id').innerText = "認購單元 - " + currentUnitData.id;
+                document.getElementById('display-title').innerText = currentUnitData.title;
+                document.getElementById('val-price').innerText = currentUnitData.price;
+                document.getElementById('val-unitPrice').innerText = currentUnitData.unitPrice;
+                document.getElementById('val-totalArea').innerText = currentUnitData.totalArea;
+                document.getElementById('display-share1').innerText = currentUnitData.shareRatio;
+                document.getElementById('display-share2').innerText = currentUnitData.shareRatio;
+                document.getElementById('display-img-3d').src = currentUnitData.imgDrone;
+
+                let totalRights = 0, totalPublic = 0, totalAll = 0, rows = "";
+                currentUnitData.landDetails.forEach(item => {
+                    totalRights += parseFloat(item.rightsArea || 0);
+                    totalPublic += parseFloat(item.publicArea || 0);
+                    totalAll += parseFloat(item.sumArea || 0);
+                    rows += "<tr><td>"+item.landId+"</td><td>"+item.rightsArea+"</td><td>"+item.publicArea+"</td><td>"+item.sumArea+"</td></tr>";
+                });
+                document.getElementById('table-body').innerHTML = rows;
+                document.getElementById('sum-rights').innerText = totalRights.toFixed(3);
+                document.getElementById('sum-public').innerText = totalPublic.toFixed(3);
+                document.getElementById('sum-all').innerText = totalAll.toFixed(3);
+                document.getElementById('display-profit').innerText = (totalAll * 1.46).toFixed(2);
             } else {
-                document.getElementById('auth-hint').innerText = "請輸入認購編號與授權密碼";
-                document.getElementById('manual-id-area').style.display = 'block';
+                alert("網址參數錯誤，找不到該單元資料。");
             }
         };
 
         function validate() {
-            if (typeof unitDatabase === 'undefined') return;
-            
-            const id = (urlId || document.getElementById('id-input').value).trim().toUpperCase();
-            const pw = document.getElementById('pass-input').value.trim();
-            const data = unitDatabase[id];
-
-            if (data && data.password === pw) {
-                render(data);
+            const inputPass = document.getElementById('pass-input').value;
+            if (currentUnitData && inputPass === currentUnitData.password) {
                 document.getElementById('auth-box').style.display = 'none';
                 document.getElementById('protected-content').style.display = 'block';
                 window.scrollTo(0, 0);
             } else {
-                const err = document.getElementById('error');
-                err.style.display = 'block';
-                err.innerText = "驗證失敗：編號或密碼錯誤";
+                document.getElementById('error').style.display = 'block';
             }
         }
 
-        function render(data) {
-            document.getElementById('display-id').innerText = "認購單元 - " + data.id;
-            document.getElementById('display-title').innerText = data.title;
-            document.getElementById('val-price').innerText = data.summary.price;
-            document.getElementById('val-unitPrice').innerText = data.summary.unitPrice;
-            document.getElementById('val-totalArea').innerText = data.summary.totalArea;
-            document.getElementById('display-share1').innerText = data.summary.shareRatio;
-            document.getElementById('display-share2').innerText = data.summary.shareRatio;
-            document.getElementById('display-img-3d').src = data.visuals.droneView;
-
-            let sPriv = 0, sPub = 0, sTotal = 0, html = "";
-            data.landDetails.forEach(row => {
-                const p = parseFloat(row.private) || 0;
-                const b = parseFloat(row.public) || 0;
-                const t = parseFloat(row.total) || 0;
-                sPriv += p; sPub += b; sTotal += t;
-                html += `<tr><td>${row.id}</td><td>${p.toFixed(3)}</td><td>${b.toFixed(3)}</td><td>${t.toFixed(3)}</td></tr>`;
-            });
-            document.getElementById('table-body').innerHTML = html;
-            document.getElementById('sum-rights').innerText = sPriv.toFixed(3);
-            document.getElementById('sum-public').innerText = sPub.toFixed(3);
-            document.getElementById('sum-all').innerText = sTotal.toFixed(3);
-            document.getElementById('display-profit').innerText = (sTotal * 1.46).toFixed(2);
-        }
-
-        function openLightbox(s) { 
-            document.getElementById('lightbox-img').src = s; 
+        function openLightbox(src) { 
+            document.getElementById('lightbox-img').src = src; 
             document.getElementById('lightbox').style.display = 'flex'; 
         }
-        
-        document.getElementById('pass-input').onkeypress = (e) => { if(e.key==='Enter') validate(); };
     </script>
 </body>
 </html>
