@@ -11,7 +11,7 @@
             --forest-mid: #3E5C46;        /* 輔助綠色 */
             --gold-accent: #b5a478;       /* 指定香檳金 */
             --paper-texture: #F9F8F4;     /* 背景底色 */
-            --text-dark: #2C332D;         /* 內文顏色 */
+            --text-dark: #2C332D;          /* 內文顏色 */
             --bg-dark-section: #0F1A13;   /* 交易安全深背景 */
         }
 
@@ -51,6 +51,29 @@
             letter-spacing: 1px;
         }
 
+        /* --- 查詢按鈕樣式 --- */
+        .query-btn {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 12px 28px;
+            background-color: var(--forest-deep);
+            color: var(--gold-accent);
+            text-decoration: none;
+            border: 1px solid var(--gold-accent);
+            border-radius: 4px;
+            font-family: 'Noto Serif TC', serif;
+            font-weight: 700;
+            font-size: 0.95rem;
+            letter-spacing: 2px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        .query-btn:hover {
+            background-color: var(--gold-accent);
+            color: var(--forest-deep);
+            transform: translateY(-2px);
+        }
+
         /* --- 截圖規範：香檳金左側裝飾線 --- */
         .decoration-line {
             position: relative;
@@ -76,7 +99,6 @@
                         url('https://images.unsplash.com/photo-1542273917363-3b1817f69a2d?auto=format&fit=crop&q=80&w=2000');
             background-size: cover; background-position: center; padding: 0 8%;
         }
-        /* 調整首頁標題在不同裝置的大小 */
         .hero h1 { 
             font-size: clamp(2.2rem, 8vw, 4.2rem); 
             color: var(--forest-deep); 
@@ -96,7 +118,6 @@
         section { padding: 80px 8% 60px 8%; position: relative; border-bottom: 1px solid rgba(0,0,0,0.03); }
         .section-tag { font-size: 0.75rem; letter-spacing: 4px; color: var(--gold-accent); display: block; margin-bottom: 15px; font-weight: 700; }
         
-        /* 調整各分頁標題大小 */
         h2 { 
             font-size: clamp(1.8rem, 5vw, 2.6rem); 
             color: var(--forest-deep); 
@@ -161,6 +182,9 @@
             <div class="decoration-line">
                 <p class="sub-text">近兩萬坪別墅聚落 ‧ 48單元規劃 ‧ 24席珍稀認購</p>
             </div>
+            <a href="https://hao713949.github.io/DAKENG-VILLA/project/unit.html" class="query-btn">
+                認購單元資料查詢 ⇄
+            </a>
         </div>
     </header>
 
