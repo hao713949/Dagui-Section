@@ -46,7 +46,7 @@
 
     <div id="auth-box" class="auth-overlay">
         <h3 class="serif">單元資料私密存取</h3>
-        <p id="auth-hint" style="font-size: 0.85rem; color: #888; margin-bottom: 20px;">正在讀取單元編號...</p>
+        <p id="auth-hint" style="font-size: 0.85rem; color: #888; margin-bottom: 20px;">正在讀取系統資料...</p>
         <div id="manual-id-area" style="display:none;">
             <input type="text" id="id-input" placeholder="請輸入認購編號 (如: C1)">
         </div>
@@ -108,22 +108,24 @@
         let urlId = params.get('id');
 
         window.onload = function() {
+            // 檢查資料庫是否讀取成功
             if (typeof unitDatabase === 'undefined') {
-                alert("錯誤：無法讀取 data.js");
+                const err = document.getElementById('error');
+                err.style.display = 'block';
+                err.innerText = "錯誤：找不到資料庫 (data.js)";
                 return;
             }
             if (urlId) {
-                // 如果網址有 ID，顯示提示並隱藏編號輸入框
                 document.getElementById('auth-hint').innerText = "請輸入編號 " + urlId.toUpperCase() + " 之授權密碼";
             } else {
-                // 如果網址沒 ID，顯示編號輸入框
                 document.getElementById('auth-hint').innerText = "請輸入認購編號與授權密碼";
                 document.getElementById('manual-id-area').style.display = 'block';
             }
         };
 
         function validate() {
-            // 優次從網址抓 ID，若無則從輸入框抓
+            if (typeof unitDatabase === 'undefined') return;
+            
             const id = (urlId || document.getElementById('id-input').value).trim().toUpperCase();
             const pw = document.getElementById('pass-input').value.trim();
             const data = unitDatabase[id];
@@ -141,7 +143,6 @@
         }
 
         function render(data) {
-            // 核心對接邏輯：必須與 data.js 結構完全一致
             document.getElementById('display-id').innerText = "認購單元 - " + data.id;
             document.getElementById('display-title').innerText = data.title;
             document.getElementById('val-price').innerText = data.summary.price;
@@ -153,7 +154,6 @@
 
             let sPriv = 0, sPub = 0, sTotal = 0, html = "";
             data.landDetails.forEach(row => {
-                // 讀取最新的 private, public, total 欄位
                 const p = parseFloat(row.private) || 0;
                 const b = parseFloat(row.public) || 0;
                 const t = parseFloat(row.total) || 0;
@@ -172,7 +172,6 @@
             document.getElementById('lightbox').style.display = 'flex'; 
         }
         
-        // 支援按下 Enter 鍵登入
         document.getElementById('pass-input').onkeypress = (e) => { if(e.key==='Enter') validate(); };
     </script>
 </body>
