@@ -13,7 +13,6 @@
             --paper-texture: #F9F8F4;     /* 背景底色 */
             --text-dark: #2C332D;          /* 內文顏色 */
             --bg-dark-section: #0F1A13;   /* 交易安全深背景 */
-            --danger-red: #8B0000;        /* 警示紅 */
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -146,20 +145,10 @@
 
         /* --- 第七頁：交易安全 (深色) --- */
         .security-section { background-color: var(--bg-dark-section); color: #fff; padding: 80px 8%; }
-        .sec-h2 { color: #fff; margin-bottom: 30px; font-size: 2.2rem; }
+        .sec-h2 { color: #2e4a36; margin-bottom: 30px; font-size: 2.2rem; }
         .highlight-gold { color: var(--gold-accent); font-weight: 700; }
-        .sec-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
         .sec-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); padding: 30px; border-radius: 4px; }
         .sec-card h4 { color: var(--gold-accent); font-size: 1.2rem; margin-bottom: 15px; }
-
-        /* --- 市場資訊新增樣式 --- */
-        .market-info-section { background-color: #f4f3ee; }
-        .market-table { width: 100%; border-collapse: collapse; min-width: 900px; }
-        .market-table th { background: var(--forest-deep); color: #fff; text-align: center; }
-        .market-table td { text-align: center; border-bottom: 1px solid #eee; }
-        .market-table .highlight { background: rgba(181, 164, 120, 0.1); font-weight: 700; color: var(--forest-deep); }
-        .metaphor-box { margin-top: 30px; padding: 30px; background: #FFF5F5; border-left: 6px solid var(--danger-red); }
-        .news-card { background: #fff; padding: 25px; border-radius: 4px; box-shadow: 0 4px 12px rgba(0,0,0,0.03); }
 
         /* --- 地圖 --- */
         .map-container { width: 100%; height: 400px; margin-top: 30px; border: 1px solid #eee; }
@@ -184,7 +173,7 @@
         <a href="#page5">土地分類</a>
         <a href="#page6">配合事項</a>
         <a href="#page7">交易安全</a>
-        <a href="#market-info">市場資訊</a> <a href="#page8">地理位置</a>
+        <a href="#page8">地理位置</a>
     </nav>
 
     <header class="hero" id="page1">
@@ -295,15 +284,15 @@
 
     <section id="page6">
         <span class="section-tag">INVESTMENT TERMS</span>
-        <h2>須配合事項聲明</h2>
+        <h2>配合事項聲明</h2>
         <div class="grid-layout">
             <div class="info-card">
-                <h3>賣方出售條件</h3>
+                <h3>售地條件</h3>
                 <p>116 筆土地採一次性出售，不開放個別筆數處分。</p>
             </div>
             <div class="info-card">
                 <h3>付款構成</h3>
-                <p><strong>主約購地款：</strong>含主地、公設地、會館用地、農地等。</p>
+                <p><strong>主約購地款：</strong>含主地、公設地、公設預撥地、會館用地、農地等。</p>
                 <p style="margin-top: 10px;"><strong>附約款：</strong>社區建設費、基礎工程讓渡費及其他相關費用。</p>
             </div>
             <div class="info-card">
@@ -317,7 +306,7 @@
         <span class="section-tag" style="color: rgba(255,255,255,0.4);">RISK MANAGEMENT</span>
         <h2 class="sec-h2 serif">交易安全機制</h2>
         <p style="font-size: 1.05rem; margin-bottom: 40px; color: rgba(255,255,255,0.8);">
-            以下條款確保認購者之資金安全性—<span class="highlight-gold">若案件不成，交易取消，原款退回。</span>
+            以下條款確保認購者之資金安全性—<span class="highlight-gold">若案件不成，交易取消，認購款 100% 原款退回。</span>
         </p>
         <div class="sec-grid">
             <div class="sec-card">
@@ -337,62 +326,6 @@
                 <p>上述情形發生，認購款項全額無息退還。</p>
             </div>
         </div>
-    </section>
-
-    <section id="market-info" class="market-info-section">
-        <span class="section-tag">MARKET INSIGHTS</span>
-        <h2>市場資訊 ‧ 區域實價案例</h2>
-        
-        <div class="grid-layout" style="margin-bottom: 40px;">
-            <div class="news-card">
-                <h4 class="serif">水湳地價驚見 300 萬大關</h4>
-                <p style="font-size:0.9rem; margin-top:10px;">強大的溢潤效應正帶動北屯大貴段地價重估，森林系莊園因其稀缺性，補漲潛力巨大。</p>
-            </div>
-            <div class="news-card">
-                <h4 class="serif">北屯 14 期別墅行情分析</h4>
-                <p style="font-size:0.9rem; margin-top:10px;">低密度、高綠覆區已成為高資產族避險首選。本案具備同等環境素質，取得成本卻更具優勢。</p>
-            </div>
-        </div>
-
-        <div class="table-container">
-            <h3 class="serif" style="margin-bottom:20px; color: var(--forest-deep);">區域實價案例：樸山村</h3>
-            <table class="market-table">
-                <thead>
-                    <tr>
-                        <th>標的地號<br>(北屯大富段)</th>
-                        <th>交易總價<br>(萬元)</th>
-                        <th>建物總面積<br>(坪)</th>
-                        <th>A.土地總面積<br>(坪)</th>
-                        <th>B.基地面積<br>(內政部標示)</th>
-                        <th>C.土地差額<br>(公設持分)</th>
-                        <th class="highlight">土地公設比<br>(C ÷ A)</th>
-                        <th class="highlight">基地土地單價<br>(萬元/坪)</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><strong>96-67 地號</strong></td>
-                        <td>9,200</td>
-                        <td>147.54</td>
-                        <td>659.62</td>
-                        <td>311.99</td>
-                        <td>347.63</td>
-                        <td class="highlight">52.70%</td>
-                        <td class="highlight">18.41</td>
-                    </tr>
-                    <tr>
-                        <td><strong>96-68 地號</strong></td>
-                        <td>9,800</td>
-                        <td>146.93</td>
-                        <td>596.89</td>
-                        <td>282.37</td>
-                        <td>314.52</td>
-                        <td class="highlight">52.69%</td>
-                        <td class="highlight">22.68</td>
-                    </tr>
-                </tbody>
-            </table>
-
     </section>
 
     <section id="page8">
