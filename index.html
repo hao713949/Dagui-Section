@@ -9,13 +9,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@600;900&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --forest-deep: #1B3022;       /* 標題深綠 */
-            --forest-mid: #3E5C46;        /* 輔助綠色 */
-            --gold-accent: #b5a478;       /* 指定香檳金 */
-            --paper-texture: #F9F8F4;     /* 背景底色 */
-            --text-dark: #2C332D;          /* 內文顏色 */
-            --bg-dark-section: #0F1A13;   /* 交易安全深背景 */
-            --danger-red: #8B0000;        /* 警示紅 */
+            --forest-deep: #1B3022;        /* 標題深綠 */
+            --forest-mid: #3E5C46;          /* 輔助綠色 */
+            --gold-accent: #b5a478;        /* 指定香檳金 */
+            --paper-texture: #F9F8F4;      /* 背景底色 */
+            --text-dark: #2C332D;           /* 內文顏色 */
+            --bg-dark-section: #0F1A13;    /* 交易安全深背景 */
+            --danger-red: #8B0000;         /* 警示紅 */
         }
 
         /* 基礎優化 */
@@ -48,7 +48,6 @@
             border-bottom: 1px solid rgba(27, 48, 34, 0.1);
             overflow-x: auto;
             white-space: nowrap;
-            /* 隱藏滾動條但保持功能 */
             scrollbar-width: none; 
         }
         .top-nav::-webkit-scrollbar { display: none; }
@@ -104,17 +103,65 @@
             background-color: var(--gold-accent);
         }
 
-        /* --- Hero --- */
+        /* --- Hero & 輪播樣式 --- */
         .hero {
             height: 100vh;
             display: flex;
             align-items: center;
-            background: linear-gradient(to right, rgba(249, 248, 244, 0.98) 30%, rgba(249, 248, 244, 0.4) 100%),
-                        url('https://images.unsplash.com/photo-1542273917363-3b1817f69a2d?auto=format&fit=crop&q=80&w=2000');
-            background-size: cover; 
-            background-position: center; 
+            position: relative;
             padding: 0 8%;
+            overflow: hidden;
         }
+
+        /* 背景輪播容器 */
+        .carousel-bg {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: -1;
+        }
+
+        .carousel-item {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            animation: carouselFade 30s infinite; /* 總時長 30秒，每張約 5秒 */
+        }
+
+        /* 疊加層：保留原本的文字易讀性遮罩 */
+        .hero::after {
+            content: "";
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: linear-gradient(to right, rgba(249, 248, 244, 0.98) 30%, rgba(249, 248, 244, 0.4) 100%);
+            z-index: 0;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        /* 設定動畫延遲，實現循環淡入淡出 */
+        .carousel-item:nth-child(1) { background-image: url('https://raw.githubusercontent.com/hao713949/Dagui-Section/main/villa.jpg'); animation-delay: 0s; }
+        .carousel-item:nth-child(2) { background-image: url('https://raw.githubusercontent.com/hao713949/Dagui-Section/main/villa0.jpg'); animation-delay: 5s; }
+        .carousel-item:nth-child(3) { background-image: url('https://raw.githubusercontent.com/hao713949/Dagui-Section/main/villa1.jpg'); animation-delay: 10s; }
+        .carousel-item:nth-child(4) { background-image: url('https://raw.githubusercontent.com/hao713949/Dagui-Section/main/villa2.jpg'); animation-delay: 15s; }
+        .carousel-item:nth-child(5) { background-image: url('https://raw.githubusercontent.com/hao713949/Dagui-Section/main/villa3.jpg'); animation-delay: 20s; }
+        .carousel-item:nth-child(6) { background-image: url('https://raw.githubusercontent.com/hao713949/Dagui-Section/main/villa4.jpg'); animation-delay: 25s; }
+
+        @keyframes carouselFade {
+            0% { opacity: 0; }
+            5% { opacity: 1; }
+            16% { opacity: 1; }
+            21% { opacity: 0; }
+            100% { opacity: 0; }
+        }
+
         .hero h1 { 
             font-size: clamp(2.2rem, 8vw, 4.2rem); 
             color: var(--forest-deep); 
@@ -161,7 +208,7 @@
         .sec-card h4 { color: var(--gold-accent); font-size: 1.2rem; margin-bottom: 15px; }
 
         /* --- 市場資訊樣式 --- */
-        .market-info-section { background-color: #f4f3ee; }
+        .market-info-section { background-color: #f4f3ee; padding-bottom: 0; }
         .market-table { width: 100%; border-collapse: collapse; min-width: 900px; }
         .market-table th { background: var(--forest-deep); color: #fff; text-align: center; font-size: 0.85rem; }
         .market-table td { text-align: center; border-bottom: 1px solid #eee; padding: 18px 10px; }
@@ -182,19 +229,51 @@
         .news-card p { font-size: 0.9rem; color: #666; margin-bottom: 20px; }
         .news-link { color: var(--forest-mid); text-decoration: none; font-weight: 700; font-size: 0.85rem; border-bottom: 1px solid var(--gold-accent); align-self: flex-start; }
 
+        /* --- 投資觀點樣式 --- */
+        .invest-insight-section { padding: 40px 8% 60px 8%; background-color: #f4f3ee; }
+        .invest-insight-box {
+            background: var(--forest-deep);
+            color: #fff;
+            padding: 50px 40px;
+            border-radius: 4px;
+            border-left: 8px solid var(--gold-accent);
+            position: relative;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+        }
+        .invest-tag-new {
+            font-size: 1.1rem;
+            letter-spacing: 4px;
+            color: var(--gold-accent);
+            display: block;
+            margin-bottom: 20px;
+            font-weight: 900;
+            font-family: 'Noto Serif TC', serif;
+        }
+        .invest-title-new {
+            color: #fff;
+            font-size: clamp(1.6rem, 4vw, 2.2rem); 
+            margin-bottom: 25px;
+            line-height: 1.4;
+        }
+        .invest-content-new {
+            font-size: 1.15rem;
+            line-height: 1.9;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
         /* --- 地圖 --- */
         .map-container { width: 100%; height: 400px; margin-top: 30px; border: 1px solid #eee; background: #eee; }
         .map-btn { display: inline-block; padding: 15px 40px; background: var(--forest-deep); color: var(--gold-accent); text-decoration: none; font-weight: 700; margin-top: 1.5rem; letter-spacing: 1px; border-radius: 2px; transition: 0.3s; }
         .map-btn:hover { opacity: 0.9; }
 
         @media (max-width: 768px) {
-            .reg-grid { grid-template-columns: repeat(2, 1fr); }
+            .reg-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
             .hero { padding: 0 5%; }
             section { padding: 60px 5% 40px 5%; }
             .top-nav { justify-content: flex-start; padding: 12px 20px; }
             .hero h1 { letter-spacing: 4px; }
-            .reg-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
             .reg-box:last-child { grid-column: span 2; }
+            .invest-insight-box { padding: 40px 30px; }
         }
     </style>
 </head>
@@ -209,10 +288,20 @@
         <a href="#page6">配合事項</a>
         <a href="#page7">交易安全</a>
         <a href="#market-info">市場資訊</a>
+        <a href="#invest-insight">投資觀點</a>
         <a href="#page8">地理位置</a>
     </nav>
 
     <header class="hero" id="page1">
+        <div class="carousel-bg">
+            <div class="carousel-item"></div>
+            <div class="carousel-item"></div>
+            <div class="carousel-item"></div>
+            <div class="carousel-item"></div>
+            <div class="carousel-item"></div>
+            <div class="carousel-item"></div>
+        </div>
+
         <div class="hero-content">
             <h1 class="serif">大貴段<br>森林莊園合購案</h1>
             <div class="decoration-line">
@@ -228,7 +317,7 @@
         <span class="section-tag">STRATEGIC VISION</span>
         <h2>核心理念：萬坪合構，共創地利『透過結構化整合，實現資產流動最大化』</h2>
         <p style="font-size: 1.1rem; margin-bottom: 40px; color: var(--forest-mid);">
-            憑藉兩萬坪土地開發規模，透過合購模式，將土地取得成本優化至最具競爭力之水平，實現投資利潤與土地價值的實質回饋。
+            憑藉兩萬坪土地開發規模，透過合購模式，將土地取得成本優化至最具競爭力之水平，實現投資利利潤與土地價值的實質回饋。
         </p>
         <div class="grid-layout">
             <div class="info-card">
@@ -366,17 +455,22 @@
 
     <section id="market-info" class="market-info-section">
         <span class="section-tag">MARKET INSIGHTS</span>
-        <h2>市場資訊 </h2>
+        <h2>市場資訊</h2>
         
         <div class="market-news-grid">
             <div class="news-card">
+                <h4>大坑百億豪墅開發<br>康養住宅成新寵</h4>
+                <p>指標建商相繼進駐大坑，不僅象徵區域格局的提升，更代表百億資金對該區「康養別墅」市場的集體共識。</p>
+                <a href="https://www.fbs168.com/news/7394" target="_blank" rel="noopener noreferrer" class="news-link">閱讀新聞原文 ↗</a>
+            </div>
+            <div class="news-card">
                 <h4>百億醫療特區<br>周邊房價看俏</h4>
                 <p>隨著署立醫院等百億級醫療資源投入，大坑特區已從單純觀光轉向高端康養居住區，地價具備強勁支撐。</p>
-                <a href="https://money.udn.com/money/story/5635/8749962" target="_blank" rel="noopener noreferrer" class="news-link">閱讀新聞原文 ↗</a>
+                <a href="https://money.udn.com/money/story/5635/8749962" target="_blank" rel="/Users/yoona/Desktop/index備份.txtnoopener noreferrer" class="news-link">閱讀新聞原文 ↗</a>
             </div>
             <div class="news-card">
                 <h4>大陸建設＆精湛建設 頭嵙山案<br>打造台中版「青山鎮」</h4>
-                <p>指標建商進駐意味著開發規格的升級。大陸建設預計在此打造高隱私、高規格的森林別墅聚落，拉抬區域天花板。</p>
+                <p>指標建商進駐意味著開發規格的升級。大陸建設預計在此打造高隱私、高規格的森林別墅聚落，拉抬區域格局。</p>
                 <a href="https://tw.stock.yahoo.com/news/%E5%91%B3%E4%B8%B9%E9%9B%86%E5%9C%98-%E6%89%93%E9%80%A0%E7%99%BE%E5%84%84%E9%96%8B%E7%99%BC%E8%A8%88%E7%95%AB-201000205.html" target="_blank" rel="noopener noreferrer" class="news-link">閱讀新聞原文 ↗</a>
             </div>
             <div class="news-card">
@@ -385,9 +479,22 @@
                 <a href="https://news.cnyes.com/news/id/5561629" target="_blank" rel="noopener noreferrer" class="news-link">閱讀新聞原文 ↗</a>
             </div>
         </div>
+    </section>
 
+    <section id="invest-insight" class="invest-insight-section">
+        <div class="invest-insight-box">
+            <span class="invest-tag-new">INVESTMENT INSIGHT</span>
+            <h3 class="serif invest-title-new">跟隨百億資本的眼光：<br>「當資本已為大坑豪墅格局定調，您只需選擇最正確的入場方式。」</h3>
+            <p class="invest-content-new">
+                大陸建設、雲品國際、精湛建設相繼進駐，這不僅是單純的房產開發，更是對大坑未來價值的「集體背書」。<br>
+                在高端康養與高端住宅共鳴的當下，選擇具備『完善基礎建設的特二種住宅區』，是提前佈局資產紅利的唯一路徑。
+            </p>
+        </div>
+    </section>
+
+    <section class="market-info-section" style="padding-top: 0;">
         <div class="table-container" style="border-top: 1px solid #ddd; padding-top: 40px;">
-            <h3 class="serif" style="margin-bottom:25px; color: var(--forest-deep); text-align: center;">區域實價案例：樸山村 </h3>
+            <h3 class="serif" style="margin-bottom:25px; color: var(--forest-deep); text-align: center;">區域實價案例：樸山村</h3>
             <table class="market-table">
                 <thead>
                     <tr>
@@ -439,11 +546,11 @@
         <div class="map-container">
             <iframe 
                 title="Google Map Location"
-                src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3640.457193699049!2d120.74391497534887!3d24.164868449497718!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMjTCsDA5JzUzLjUiTiAxMjDCsDQ0JzQ3LjQiRQ!5e0!3m2!1szh-TW!2stw!4v1713253800000!5m2!1szh-TW!2stw" 
+                src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3640.165306914595!2d120.74734375588382!3d24.1653069145951!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMjTCsDA5JzU1LjEiTiAxMjDCsDQ0JzUwLjQiRQ!5e0!3m2!1szh-TW!2stw!4v1713437558838!5m2!1szh-TW!2stw" 
                 width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy">
             </iframe>
         </div>
-        <a href="https://www.google.com/maps/search/?api=1&query=24.164868449497718,120.7464899206019" target="_blank" rel="noopener noreferrer" class="map-btn">開啟 Google 地圖導航</a>
+        <a href="https://www.google.com/maps/search/?api=1&query=24.1653069145951,120.74734375588382" target="_blank" rel="noopener noreferrer" class="map-btn">開啟 Google 地圖導航</a>
     </section>
 
     <footer style="padding: 60px 8%; text-align: center; background: #fff;">
