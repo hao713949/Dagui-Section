@@ -133,7 +133,6 @@
             overflow: hidden;
         }
 
-        /* 背景輪播容器 */
         .carousel-bg {
             position: absolute;
             top: 0; left: 0;
@@ -148,10 +147,9 @@
             background-size: cover;
             background-position: center;
             opacity: 0;
-            animation: carouselFade 30s infinite; /* 總時長 30秒，每張約 5秒 */
+            animation: carouselFade 30s infinite; 
         }
 
-        /* 疊加層：保留原本的文字易讀性遮罩 */
         .hero::after {
             content: "";
             position: absolute;
@@ -166,7 +164,6 @@
             z-index: 2;
         }
 
-        /* 設定動畫延遲，實現循環淡入淡出 */
         .carousel-item:nth-child(1) { background-image: url('https://raw.githubusercontent.com/hao713949/Dagui-Section/main/villa.jpg'); animation-delay: 0s; }
         .carousel-item:nth-child(2) { background-image: url('https://raw.githubusercontent.com/hao713949/Dagui-Section/main/villa0.jpg'); animation-delay: 5s; }
         .carousel-item:nth-child(3) { background-image: url('https://raw.githubusercontent.com/hao713949/Dagui-Section/main/villa1.jpg'); animation-delay: 10s; }
@@ -205,21 +202,18 @@
         .info-card { background: #fff; padding: 35px; border-radius: 4px; box-shadow: 0 10px 30px rgba(0,0,0,0.03); }
         .info-card h3 { color: var(--forest-mid); margin-bottom: 15px; font-size: 1.35rem; }
 
-        /* --- 建築規範 --- */
         .reg-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; }
         .reg-box { background-color: var(--forest-deep); padding: 40px 15px; text-align: center; border-radius: 4px; display: flex; flex-direction: column; align-items: center; }
         .reg-num { display: block; color: var(--gold-accent); font-family: 'Noto Serif TC', serif; font-size: 2.2rem; font-weight: 900; line-height: 1; margin-bottom: 10px; }
         .reg-title { color: #FFFFFF; font-weight: 700; font-size: 1rem; margin-bottom: 15px; letter-spacing: 1px; }
         .reg-desc { color: rgba(255,255,255,0.8); font-size: 0.85rem; line-height: 1.6; }
 
-        /* --- 表格 --- */
         .table-container { background: white; padding: 20px; border-radius: 8px; overflow-x: auto; box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
         table { width: 100%; border-collapse: collapse; min-width: 800px; font-size: 0.9rem; }
         th { background: var(--forest-deep); color: white; padding: 15px; text-align: left; }
         td { padding: 15px; border-bottom: 1px solid #f0f0f0; }
         .total-row { background: #fdfdfd; font-weight: 900; color: var(--forest-deep); border-top: 2px solid var(--forest-deep); }
 
-        /* --- 交易安全 --- */
         .security-section { background-color: var(--bg-dark-section); color: #fff; padding: 80px 8%; }
         .sec-h2 { color: #fff; margin-bottom: 30px; font-size: 2.2rem; }
         .highlight-gold { color: var(--gold-accent); font-weight: 700; }
@@ -227,7 +221,6 @@
         .sec-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); padding: 30px; border-radius: 4px; }
         .sec-card h4 { color: var(--gold-accent); font-size: 1.2rem; margin-bottom: 15px; }
 
-        /* --- 市場資訊樣式 --- */
         .market-info-section { background-color: #f4f3ee; padding-bottom: 0; }
         .market-table { width: 100%; border-collapse: collapse; min-width: 900px; }
         .market-table th { background: var(--forest-deep); color: #fff; text-align: center; font-size: 0.85rem; }
@@ -249,7 +242,6 @@
         .news-card p { font-size: 0.9rem; color: #666; margin-bottom: 20px; }
         .news-link { color: var(--forest-mid); text-decoration: none; font-weight: 700; font-size: 0.85rem; border-bottom: 1px solid var(--gold-accent); align-self: flex-start; }
 
-        /* --- 投資觀點樣式 --- */
         .invest-insight-section { padding: 40px 8% 60px 8%; background-color: #f4f3ee; }
         .invest-insight-box {
             background: var(--forest-deep);
@@ -281,7 +273,6 @@
             color: rgba(255, 255, 255, 0.9);
         }
 
-        /* --- 地圖 --- */
         .map-container { width: 100%; height: 400px; margin-top: 30px; border: 1px solid #eee; background: #eee; }
         .map-btn { display: inline-block; padding: 15px 40px; background: var(--forest-deep); color: var(--gold-accent); text-decoration: none; font-weight: 700; margin-top: 1.5rem; letter-spacing: 1px; border-radius: 2px; transition: 0.3s; }
         .map-btn:hover { opacity: 0.9; }
@@ -330,7 +321,7 @@
         <div class="hero-content">
             <h1 class="serif">大貴段<br>森林莊園合購案</h1>
             <div class="decoration-line">
-                <p class="sub-text">近兩萬坪別墅聚落 ‧ 48單元規劃 ‧ 24席珍稀認購</p>
+                <p class="sub-text">兩萬坪別墅聚落 ‧ 規劃48單元 ‧ 24席珍稀認購</p>
             </div>
             <a href="https://hao713949.github.io/DAKENG-VILLA/project/unit.html" class="query-btn">
                 認購單元資料查詢 ⇄
@@ -342,12 +333,12 @@
         <span class="section-tag">STRATEGIC VISION</span>
         <h2>核心理念：萬坪合構，共創地利『透過結構化整合，實現資產流動最大化』</h2>
         <p style="font-size: 1.1rem; margin-bottom: 40px; color: var(--forest-mid);">
-            憑藉兩萬坪土地開發規模，透過合購模式，將土地取得成本優化至最具競爭力之水平，實現投資利利潤與土地價值的實質回饋。
+            憑藉兩萬坪土地開發規模，透過合購模式，將土地取得成本優化至最具競爭力之水平，實現投資利潤與土地價值的實質回饋。
         </p>
         <div class="grid-layout">
             <div class="info-card">
                 <h3>地段覺醒</h3>
-                <p>鄰近市區、緊貼署立醫院，卻僅需市區一成的價格。在自然靜謐中，提前佈局百億公共建設紅利。</p>
+                <p>鄰近市區、緊貼市立醫院，卻僅需市區一成的價格。在自然靜謐中，提前佈局百億公共建設紅利。</p>
             </div>
             <div class="info-card">
                 <h3>流動轉化</h3>
@@ -569,7 +560,7 @@
             <h3 class="serif" style="margin: 15px 0; color: var(--forest-deep); font-size: 1.1rem;">環 境 圖</h3>
             <img src="map2.jpg" alt="莊園總體規劃圖" class="clickable-map" onclick="openLightbox(this.src)" loading="lazy" style="width:100%; height:auto; border-radius: 4px;">
             <p style="color: #666; margin: 15px 0; font-size: 0.9rem; line-height: 1.6;">
-                ※ 離市立醫院，74快速道路約6分鐘。(點擊地圖可放大檢視)
+                ※ 離市立醫院，74快速道路約6-8分鐘。(點擊地圖可放大檢視)
             </p>
         </div>
     </section>
@@ -583,11 +574,11 @@
         <div class="map-container">
             <iframe 
                 title="Google Map Location"
-                src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3640.165306914595!2d120.74734375588382!3d24.1653069145951!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMjTCsDA5JzU1LjEiTiAxMjDCsDQ0JzUwLjQiRQ!5e0!3m2!1szh-TW!2stw!4v1713437558838!5m2!1szh-TW!2stw" 
+                src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3640.2185567303036!2d120.74348141151604!3d24.164660842880795!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMjTCsDA5JzUyLjgiTiAxMjDCsDQ0JzQ1LjgiRQ!5e0!3m2!1szh-TW!2stw!4v1714546056339!5m2!1szh-TW!2stw" 
                 width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy">
             </iframe>
         </div>
-        <a href="https://www.google.com/maps/search/?api=1&query=24.1653069145951,120.74734375588382" target="_blank" rel="noopener noreferrer" class="map-btn">開啟 Google 地圖導航</a>
+        <a href="https://www.google.com/maps/search/?api=1&query=24.164660847576158,120.7460563396627" target="_blank" rel="noopener noreferrer" class="map-btn">開啟 Google 地圖導航</a>
     </section>
 
     <footer style="padding: 60px 8%; text-align: center; background: #fff;">
@@ -602,16 +593,15 @@
             const lightboxImg = document.getElementById('lightbox-img');
             lightboxImg.src = src;
             lightbox.style.display = 'flex';
-            document.body.style.overflow = 'hidden'; // 防止背景滾動
+            document.body.style.overflow = 'hidden'; 
         }
 
         function closeLightbox() {
             const lightbox = document.getElementById('lightbox');
             lightbox.style.display = 'none';
-            document.body.style.overflow = 'auto'; // 恢復滾動
+            document.body.style.overflow = 'auto'; 
         }
 
-        // 按下 ESC 鍵也可關閉燈箱
         document.addEventListener('keydown', function(e) {
             if (e.key === "Escape") {
                 closeLightbox();
