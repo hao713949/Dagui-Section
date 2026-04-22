@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>大貴段 • 萬坪共老莊園：一場關於「尊嚴養老」與「資產定錨」的革命</title>
+    <title>大貴段 • 萬坪共老莊園：一場關於「尊嚴養老」與「資產定錨」的價值升級</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@600;900&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
@@ -15,7 +15,7 @@
             --paper-texture: #F9F8F4;      /* 背景底色 */
             --text-dark: #2C332D;            /* 內文顏色 */
             --bg-dark-section: #0F1A13;    /* 交易安全深背景 */
-            --danger-red: #8B0000;          /* 警示紅 */
+            --danger-red: #8B0000;         /* 警示紅 */
         }
 
         /* 基礎優化 */
@@ -86,8 +86,8 @@
         /* --- 按鈕樣式 --- */
         .query-btn {
             display: inline-block;
-            margin-top: 40px;
-            padding: 12px 32px;
+            margin-top: 30px;
+            padding: 12px 28px;
             background-color: var(--forest-deep);
             color: var(--gold-accent);
             text-decoration: none;
@@ -95,7 +95,7 @@
             border-radius: 4px;
             font-family: 'Noto Serif TC', serif;
             font-weight: 700;
-            font-size: 1rem;
+            font-size: 0.95rem;
             letter-spacing: 2px;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
@@ -110,9 +110,17 @@
 
         .decoration-line {
             position: relative;
-            padding-left: 25px;
-            margin-top: 30px;
-            border-left: 4px solid var(--gold-accent);
+            padding-left: 20px;
+            margin-top: 15px;
+        }
+        .decoration-line::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 5px;
+            bottom: 5px;
+            width: 3px;
+            background-color: var(--gold-accent);
         }
 
         /* --- Hero & 輪播樣式 --- */
@@ -147,18 +155,16 @@
             position: absolute;
             top: 0; left: 0;
             width: 100%; height: 100%;
-            /* 調整漸層以突顯文字，模擬陽明山雲霧感 */
-            background: linear-gradient(to right, rgba(249, 248, 244, 0.95) 35%, rgba(249, 248, 244, 0.3) 100%);
+            background: linear-gradient(to right, rgba(249, 248, 244, 0.98) 30%, rgba(249, 248, 244, 0.4) 100%);
             z-index: 0;
         }
 
         .hero-content {
             position: relative;
             z-index: 2;
-            max-width: 950px;
+            max-width: 900px;
         }
 
-        /* 模擬陽明山別墅群空拍感之圖片配置 */
         .carousel-item:nth-child(1) { background-image: url('https://raw.githubusercontent.com/hao713949/Dagui-Section/main/villa.jpg'); animation-delay: 0s; }
         .carousel-item:nth-child(2) { background-image: url('https://raw.githubusercontent.com/hao713949/Dagui-Section/main/villa0.jpg'); animation-delay: 5s; }
         .carousel-item:nth-child(3) { background-image: url('https://raw.githubusercontent.com/hao713949/Dagui-Section/main/villa1.jpg'); animation-delay: 10s; }
@@ -174,35 +180,19 @@
             100% { opacity: 0; }
         }
 
-        /* 標題排版優化 */
-        .main-title { 
-            font-size: clamp(2.5rem, 6vw, 4.2rem); 
+        .hero h1 { 
+            font-size: clamp(2rem, 5vw, 3.2rem); 
             color: var(--forest-deep); 
-            letter-spacing: 6px; 
-            line-height: 1.1; 
-            margin-bottom: 15px; 
+            letter-spacing: 4px; 
+            line-height: 1.3; 
+            margin-bottom: 25px; 
         }
-        .sub-title {
-            font-size: clamp(1.2rem, 3vw, 1.8rem);
-            color: var(--forest-mid);
-            letter-spacing: 2px;
-            margin-bottom: 10px;
-            display: block;
-        }
-        .call-to-action {
-            font-size: clamp(1rem, 2.2vw, 1.4rem);
-            color: var(--gold-accent);
-            font-weight: 700;
-            letter-spacing: 3px;
-            margin-bottom: 30px;
-        }
-        .hero .quote-text { 
-            font-size: clamp(0.95rem, 2vw, 1.1rem); 
-            color: var(--text-dark); 
-            font-weight: 400; 
-            letter-spacing: 0.5px;
-            max-width: 650px;
-            line-height: 2;
+        .hero .sub-text { 
+            font-size: clamp(0.9rem, 2.5vw, 1.15rem); 
+            color: var(--forest-deep); 
+            font-weight: 700; 
+            letter-spacing: 1px;
+            opacity: 0.9;
         }
 
         section { padding: 80px 8% 60px 8%; position: relative; border-bottom: 1px solid rgba(0,0,0,0.03); }
@@ -293,7 +283,7 @@
             .hero { padding: 0 5%; }
             section { padding: 60px 5% 40px 5%; }
             .top-nav { justify-content: flex-start; padding: 12px 20px; }
-            .main-title { letter-spacing: 3px; }
+            .hero h1 { letter-spacing: 2px; }
             .reg-box:last-child { grid-column: span 2; }
             .invest-insight-box { padding: 40px 30px; }
         }
@@ -307,7 +297,7 @@
 
     <nav class="top-nav">
         <a href="#page1">首頁</a>
-        <a href="#page2">共老理念</a>
+        <a href="#page2">核心理念</a>
         <a href="#page3">建築規範</a>
         <a href="#page4">圖資證明</a>
         <a href="#page5">土地分類</a>
@@ -329,7 +319,7 @@
             <div class="carousel-item"></div>
         </div>
 
-        <div class="hero-content">
+       <div class="hero-content">
             <span class="sub-title serif">一場關於「尊嚴養老」與 「資產定錨」的價值升級</span>
             <h1 class="main-title serif">兩萬坪共老莊園</h1>
             <p class="call-to-action">預約一座與知己共老的世外桃源！</p>
@@ -356,7 +346,7 @@
         <div class="grid-layout">
             <div class="info-card">
                 <h3>醫療保險</h3>
-                <p>距離台中市立醫院（百億醫療特區）僅 2.7 公里，黃金 10 分鐘車程，為長輩的健康築起最強防線。</p>
+                <p>距離台中市立醫院（百億醫療特區）僅 2.7 公里，黃金 6 分鐘車程，為長輩的健康築起最強防線。</p>
             </div>
             <div class="info-card">
                 <h3>交通中軸</h3>
@@ -379,9 +369,6 @@
                 <p>入口門戶建地已定錨在 15-18 萬，您以 <strong>平均 8.5 萬</strong> 原始開發價進場，入手的瞬間，資產已立於不敗之地。</p>
             </div>
             <div class="info-card" style="border-top: 4px solid var(--gold-accent);">
-                <h3>隱性容積</h3>
-                <p>特二住宅區專屬優勢，<strong>「不計容積車庫」</strong>將坪效極大化，打造出大面寬、高隱私的莊園深度。</p>
-            </div>
         </div>
 
         <h2 style="margin-top: 80px;">【理念：自立造屋，賦予資產多元靈魂】</h2>
@@ -392,7 +379,7 @@
             </div>
             <div class="info-card">
                 <h3>共享社交</h3>
-                <p>規劃 200 坪私人招待所（會館），作為共購知己社交、康養與照應的核心。</p>
+                <p>規劃 200 坪私人招待所（私人會館），作為共購知己社交、康養與照應的核心。</p>
             </div>
             <div class="info-card">
                 <h3>用途廣泛</h3>
@@ -442,11 +429,182 @@
                 以供一般住宅、住宅別墅、原開發許可核准項目(含原核准建築計畫），及門診、零售、日常服務之場所使用為限
             </p>
         </div>
+
         <div style="background:#fff; padding: 25px; border: 1px solid #eee; text-align: center; margin-bottom: 20px;">
             <h3 class="serif" style="margin-bottom:15px; color: var(--forest-deep); font-size: 1.1rem;">公設地及合購地標示圖</h3>
             <img src="map.webp" alt="地籍圖示" loading="lazy" style="width:100%; max-height:600px; object-fit: contain;">
             <p style="color: var(--gold-accent); font-weight: 700; margin-top: 15px; font-size: 0.95rem;">※ 買賣總價款已完整包含「公設地」及「合購地」。</p>
         </div>
+        <div class="grid-layout">
+            <div style="background:#fff; padding:15px; border:1px solid #eee; text-align:center;">
+                <h3 class="serif" style="font-size: 0.95rem; margin-bottom:10px;">大坑細部計畫圖</h3>
+                <img src="Zoning.jpg" alt="大坑細部計畫圖" loading="lazy" style="width:100%;">
+            </div>
+            <div style="background:#fff; padding:15px; border:1px solid #eee; text-align:center;">
+                <h3 class="serif" style="font-size: 0.95rem; margin-bottom:10px;">都發局使用分區證明</h3>
+                <img src="Zoning1.jpg" alt="都發局使用分區證明" loading="lazy" style="width:100%;">
+            </div>
+        </div>
+    </section>
+
+    <section id="page5" style="background: #F1F2ED;">
+        <span class="section-tag">ASSET PORTFOLIO</span>
+        <h2>資產分類：116 筆土地資產分類</h2>
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr><th>資產分類</th><th>筆數</th><th>面積（坪）</th><th>權利管理</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>A. 特二種住宅用地</td><td>91 筆</td><td>15,753.14</td><td>48單元；專有面積，公設（14 筆）</td></tr>
+                    <tr><td>B. 公設預撥地</td><td>3 筆</td><td>1,153.63</td><td>以統一信託登記管理</td></tr>
+                    <tr><td>C. 特二（變）住宅用地</td><td>1 筆</td><td>857.12</td><td>地號 487-223，以自益信託登記管理</td></tr>
+                    <tr><td>D. 會館用地</td><td>2 筆</td><td>570.00</td><td>興建完成後按比例持分</td></tr>
+                    <tr><td>E. 農業用地</td><td>5 筆</td><td>1,444.42</td><td>地號 492 等五筆，以自益信託管理</td></tr>
+                    <tr class="total-row"><td>總計合購規模</td><td>116 筆</td><td>19,779.15</td><td>統整一次性交易</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <section id="page6">
+        <span class="section-tag">INVESTMENT TERMS</span>
+        <h2>配合事項聲明</h2>
+        <div class="grid-layout">
+            <div class="info-card">
+                <h3>賣方出售條件</h3>
+                <p>116 筆土地採一次性出售，不開放個別筆數處分。</p>
+            </div>
+            <div class="info-card">
+                <h3>付款構成</h3>
+                <p><strong>主約購地款：</strong>含權狀面積、公設地、公設預撥地、會館用地、農地等。</p>
+                <p style="margin-top: 10px;"><strong>附約款：</strong>社區建設費、基礎工程讓渡費及其他相關費用。</p>
+            </div>
+            <div class="info-card">
+                <h3>交易時程</h3>
+                <p>預計 4.5 個月完成完整交易流程。</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="security-section" id="page7">
+        <span class="section-tag" style="color: rgba(255,255,255,0.4);">RISK MANAGEMENT</span>
+        <h2 class="sec-h2 serif">交易安全機制</h2>
+        <p style="font-size: 1.05rem; margin-bottom: 40px; color: rgba(255,255,255,0.8);">
+            以下條款確保認購者之資金安全性—<span class="highlight-gold">若案件不成，交易取消，100% 原款退回。</span>
+        </p>
+        <div class="sec-grid">
+            <div class="sec-card">
+                <h4>募資未達標</h4>
+                <p>資金未能足額募集，致無法完成支付總價款，交易終止。</p>
+            </div>
+            <div class="sec-card">
+                <h4>契約未促成</h4>
+                <p>期限內未能與業主簽訂正式買賣契約，交易終止。</p>
+            </div>
+            <div class="sec-card">
+                <h4>第三方因素</h4>
+                <p>地主拒售或不可歸責於承辦人之事由，交易終止。</p>
+            </div>
+            <div class="sec-card">
+                <h4>資金保全</h4>
+                <p>上述情形發生，認購款項全額無息退還。</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="market-info" class="market-info-section">
+        <span class="section-tag">MARKET INSIGHTS</span>
+        <h2>市場資訊</h2>
+        <div class="market-news-grid">
+            <div class="news-card">
+                <h4>大坑百億豪墅開發<br>康養住宅成新寵</h4>
+                <p>指標建商相繼進駐大坑，不僅象徵區域格局的提升，更代表百億資金對該區「康養別墅」市場的集體共識。</p>
+                <a href="https://www.fbs168.com/news/7394" target="_blank" rel="noopener noreferrer" class="news-link">閱讀新聞原文 ↗</a>
+            </div>
+            <div class="news-card">
+                <h4>百億醫療特區<br>周邊房價看俏</h4>
+                <p>隨著署立醫院等百億級醫療資源投入，大坑特區已從單純觀光轉向高端康養居住區，地價具備強勁支撐。</p>
+                <a href="https://money.udn.com/money/story/5635/8749962" target="_blank" rel="noopener noreferrer" class="news-link">閱讀新聞原文 ↗</a>
+            </div>
+            <div class="news-card">
+                <h4>大陸建設＆精湛建設 頭嵙山案<br>打造台中版「青山鎮」</h4>
+                <p>指標建商進駐意味著開發規格的升級。大陸建設預計在此打造高隱私、高規格的森林別墅聚落，拉抬區域格局。</p>
+                <a href="https://tw.stock.yahoo.com/news/%E5%91%B3%E4%B8%B9%E9%9B%86%E5%9C%98-%E6%89%93%E9%80%A0%E7%99%BE%E5%84%84%E9%96%8B%E7%99%BC%E8%A8%88%E7%95%AB-201000205.html" target="_blank" rel="noopener noreferrer" class="news-link">閱讀新聞原文 ↗</a>
+            </div>
+            <div class="news-card">
+                <h4>雲品國際「大坑森邸」<br>全台唯一 White Party 宴會廳</h4>
+                <p>雲品國際在頭嵙山打造頂級溫泉Villa與宴會空間，證明該區域具備承載國際級高端生活產業的土壤。</p>
+                <a href="https://news.cnyes.com/news/id/5561629" target="_blank" rel="noopener noreferrer" class="news-link">閱讀新聞原文 ↗</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="invest-insight" class="invest-insight-section">
+        <div class="invest-insight-box">
+            <span class="invest-tag-new">INVESTMENT INSIGHT</span>
+            <h3 class="serif invest-title-new">跟隨百億資本的眼光：<br>「當資本已為大坑豪墅格局定調，您只需選擇最正確的入場方式。」</h3>
+            <p class="invest-content-new">
+                大陸建設、雲品國際、精湛建設相繼進駐，這不僅是單純的房產開發，更是對大坑未來價值的「集體背書」。<br>
+                在高端康養與高端住宅共鳴的當下，選擇具備『完善基礎建設的特二種住宅區』，是提前佈局資產紅利的唯一路徑。
+            </p>
+        </div>
+    </section>
+
+    <section class="market-info-section" style="padding-top: 0;">
+        <div class="table-container" style="border-top: 1px solid #ddd; padding-top: 40px;">
+            <h3 class="serif" style="margin-bottom:25px; color: var(--forest-deep); text-align: center;">區域實價案例：樸山村 『 土地實際價格 18 ~ 22 萬 』</h3>
+            <table class="market-table">
+                <thead>
+                    <tr>
+                        <th>標的地號</th>
+                        <th>交易總價 (萬元)</th>
+                        <th>建物總面積 (坪)</th>
+                        <th>A.土地總面積 (坪)</th>
+                        <th>B.基地面積</th>
+                        <th>C.土地持分</th>
+                        <th class="highlight">土地公設比</th>
+                        <th class="highlight">基地土地單價<br>(萬元/坪)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>96-67 地號</strong></td>                        <td>9,200</td>                        <td>147.54</td>                        <td>659.62</td>                        <td>311.99</td>                        <td>347.63</td>                        <td class="highlight">52.70%</td>                        <td class="highlight">18.41</td>
+                    </tr>
+                    <tr>
+                        <td><strong>96-68 地號</strong></td>                        <td>9,800</td>                        <td>146.93</td>                        <td>596.89</td>                        <td>282.37</td>                        <td>314.52</td>                        <td class="highlight">52.69%</td>                        <td class="highlight">22.68</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <section id="planning-doc" style="background-color: #F9F8F4;">
+        <span class="section-tag">SITE PLANNING</span>
+        <h2>大坑風景區環境圖</h2>
+        <div style="background:#fff; padding: 10px; border: 1px solid #eee; border-radius: 8px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.05);">
+            <h3 class="serif" style="margin: 15px 0; color: var(--forest-deep); font-size: 1.1rem;">環 境 圖</h3>
+            <img src="map2.jpg" alt="莊園總體規劃圖" class="clickable-map" onclick="openLightbox(this.src)" loading="lazy" style="width:100%; height:auto; border-radius: 4px;">
+            <p style="color: #666; margin: 15px 0; font-size: 0.9rem; line-height: 1.6;">
+                ※ 離市立醫院，74快速道路約6-8分鐘。(點擊地圖可放大檢視)
+            </p>
+        </div>
+    </section>
+
+    <section id="page8">
+        <span class="section-tag">LOCATION</span>
+        <h2>莊園地理位置</h2>
+        <div class="decoration-line">
+            <p style="font-size: 1.1rem; font-weight: 500;">台中市北屯區</p>
+        </div>
+        <div class="map-container">
+            <iframe 
+                title="Google Map Location"
+                src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3640.2185567303036!2d120.74348141151604!3d24.164660842880795!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMjTCsDA5JzUyLjgiTiAxMjDCsDQ0JzQ1LjgiRQ!5e0!3m2!1szh-TW!2stw!4v1714546056339!5m2!1szh-TW!2stw" 
+                width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy">
+            </iframe>
+        </div>
+        <a href="https://www.google.com/maps/search/?api=1&query=24.164660847576158,120.7460563396627" target="_blank" rel="noopener noreferrer" class="map-btn">開啟 Google 地圖導航</a>
     </section>
 
     <footer style="padding: 60px 8%; text-align: center; background: #fff;">
