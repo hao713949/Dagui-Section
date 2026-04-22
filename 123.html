@@ -1,0 +1,77 @@
+<section id="location-aerial" style="background-color: #fff; padding-top: 40px;">
+    <span class="section-tag">AERIAL VIEW</span>
+    <h2>【空拍地段實景：百億核心半徑】</h2>
+    
+    <div style="position: relative; width: 100%; max-width: 1100px; margin: 0 auto; border-radius: 12px; overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.15);">
+        <img src="aerial_view.jpg" alt="太原路-74快速道路-市立醫院空拍圖" class="clickable-map" onclick="openLightbox(this.src)" style="width: 100%; display: block;">
+        
+        <style>
+            .map-marker {
+                position: absolute;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                transform: translate(-50%, -100%);
+                cursor: pointer;
+                transition: 0.3s;
+                z-index: 10;
+            }
+            .marker-label {
+                background: var(--forest-deep);
+                color: var(--gold-accent);
+                padding: 4px 12px;
+                border-radius: 20px;
+                font-size: 0.85rem;
+                font-weight: 700;
+                white-space: nowrap;
+                box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+                border: 1px solid var(--gold-accent);
+                margin-bottom: 5px;
+            }
+            .marker-dot {
+                width: 12px;
+                height: 12px;
+                background: var(--gold-accent);
+                border-radius: 50%;
+                border: 2px solid #fff;
+                box-shadow: 0 0 10px var(--gold-accent);
+                animation: pulse 2s infinite;
+            }
+            @keyframes pulse {
+                0% { transform: scale(1); opacity: 1; box-shadow: 0 0 0 0 rgba(181, 164, 120, 0.7); }
+                70% { transform: scale(1.2); opacity: 0.8; box-shadow: 0 0 0 15px rgba(181, 164, 120, 0); }
+                100% { transform: scale(1); opacity: 1; box-shadow: 0 0 0 0 rgba(181, 164, 120, 0); }
+            }
+
+            /* 具體座標調整 (請根據您的圖片內容調整 top 與 left 百分比) */
+            .pos-hospital { top: 45%; left: 35%; }
+            .pos-highway { top: 30%; left: 65%; }
+            .pos-taiyuan { top: 60%; left: 55%; }
+            .pos-site { top: 75%; left: 25%; } /* 本案基地位置 */
+        </style>
+
+        <div class="map-marker pos-hospital">
+            <div class="marker-label">台中市立醫院 (百億醫療特區)</div>
+            <div class="marker-dot"></div>
+        </div>
+
+        <div class="map-marker pos-highway">
+            <div class="marker-label">74 快速道路</div>
+            <div class="marker-dot"></div>
+        </div>
+
+        <div class="map-marker pos-taiyuan">
+            <div class="marker-label">50米 太原路</div>
+            <div class="marker-dot"></div>
+        </div>
+
+        <div class="map-marker pos-site">
+            <div class="marker-label" style="background: var(--danger-red); color: #fff; border-color: #fff;">大貴段本案基地</div>
+            <div class="marker-dot" style="background: var(--danger-red);"></div>
+        </div>
+    </div>
+    
+    <p style="text-align: center; color: #666; margin-top: 20px; font-size: 0.9rem;">
+        ※ 實景拍攝標示圖。醫療資源與交通動脈環繞，確保資產增值與養老尊嚴。
+    </p>
+</section>
