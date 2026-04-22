@@ -135,7 +135,8 @@
             background-size: cover;
             background-position: center;
             opacity: 0;
-            animation: carouselFade 30s infinite; 
+            /* 修改點：優化動畫時間與曲線 */
+            animation: carouselFade 30s cubic-bezier(0.4, 0, 0.2, 1) infinite; 
         }
         .hero::after {
             content: "";
@@ -154,8 +155,10 @@
         .carousel-item:nth-child(6) { background-image: url('https://raw.githubusercontent.com/hao713949/Dagui-Section/main/villa4.jpg'); animation-delay: 25s; }
 
         @keyframes carouselFade {
+            /* 修改點：調整關鍵影格比例，縮減全顯示時間，使淡入淡出更輕盈 (約減少15%) */
             0%, 16.6% { opacity: 0; }
-            5%, 11.6% { opacity: 1; }
+            4%, 12.6% { opacity: 1; }
+            16.61%, 100% { opacity: 0; }
         }
 
         .hero h1 { 
@@ -282,14 +285,14 @@
         </div>
 
        <div class="hero-content">
-            <span class="sub-title serif">一場關於「尊嚴養老」與 「資產定錨」的價值升級</span>
+            <span class="sub-title serif">尊嚴養老 ‧ 資產定錨 ‧ 價值升級</span>
             <h1 class="main-title serif">兩萬坪共老莊園</h1>
-            <p style="font-weight: 700; color: var(--forest-mid); font-size: 1.2rem; letter-spacing: 2px;">預約一座與知己共老的世外桃源！</p>
+            <p style="font-weight: 700; color: var(--forest-mid); font-size: 1.2rem; letter-spacing: 2px;">與知己共老，在森林裡預約世外桃源</p>
             
             <div class="decoration-line">
                 <p style="font-size: 1.05rem; max-width: 700px;">
                     <strong>【經歷過，才懂什麼是真正的價值】</strong><br>
-                    財富的終點不是數字，而是能與志同道合的朋友，在一個有山水、有溫度、更有安全感的地方，優雅地老去。這不是建商的預售案，而是一場由「明白人」發起的萬坪共購計畫。在北屯大貴段，我們不只買下土地，更為下半輩子的尊嚴，共同開拓一個「共老」的新世界。
+                    財富的終點不是數字，而是優雅地老去。我們在北屯大貴段整合萬坪土地，繞過建商開發利潤，為下半輩子的尊嚴，共同開拓一個有溫度、更有安全感的「共老」新世界。
                 </p>
             </div>
             
@@ -491,7 +494,7 @@
             <div class="news-card">
                 <h4>大陸建設＆精湛建設<br>打造台中版「青山鎮」</h4>
                 <p>指標建商預計打造高隱私、高規格森林別墅聚落，區域價值正處於爆發前夕。</p>
-                <a href="https://tw.stock.yahoo.com/news/%E5%91%B3%E4%B8%B9%E9%9B%86%E5%9C%98-%E6%89%93%E9%80%A0%E7%99%BE%E5%84%84%E9%96%8B%E7%99%BC%E8%A8%88%E7%95%AB-201000205.html" target="_blank" class="news-link">閱讀新聞原文 ↗</a>
+                <a href="https://tw.stock.yahoo.com/news/%E5%91%B3%E4%B8%B9%E9%9B%86%E5%9C%98-%E6%89%93%E9%80%A0%E7%99%BE%E5%84%84%E9%96%8B%E7%99%AF%E8%A8%88%E7%95%AB-201000205.html" target="_blank" class="news-link">閱讀新聞原文 ↗</a>
             </div>
             <div class="news-card">
                 <h4>雲品國際「大坑森邸」<br>頂級高端生活產業</h4>
@@ -532,6 +535,8 @@
                 </tbody>
             </table>
         </div>
+<p style="font-size: 1.05rem; max-width: 500px;">
+                    <strong>【基地單價已扣除公設地（以公告現值）及建築成本（以18萬/坪】</strong><br>
     </section>
 
     <section id="planning-doc">
