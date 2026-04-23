@@ -122,7 +122,7 @@
             background-color: var(--gold-accent);
         }
 
-        /* --- Hero --- */
+        /* --- Hero 修正版 --- */
         .hero {
             height: 100vh;
             min-height: 600px;
@@ -131,9 +131,14 @@
             position: relative;
             padding: 0 8%;
             overflow: hidden;
-            margin-top: -10px;
+            background-color: var(--paper-texture); /* 確保加載前有底色 */
         }
-        .carousel-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; }
+        .carousel-bg { 
+            position: absolute; 
+            top: 0; left: 0; 
+            width: 100%; height: 100%; 
+            z-index: 1; /* 提升到底色之上 */
+        }
         .carousel-item {
             position: absolute;
             top: 0; left: 0;
@@ -141,17 +146,21 @@
             background-size: cover;
             background-position: center;
             opacity: 0;
-            animation: carouselFade 36s infinite;
+            /* 修正動畫：總時長不變，但增加單張顯示的佔比 */
+            animation: carouselFade 36s infinite ease-in-out;
         }
+        
+        /* 增加 ::after 遮罩透明度，避免 0.3 的背景被白色吃掉 */
         .hero::after {
             content: "";
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(to right, rgba(249, 248, 244, 0.98) 35%, rgba(249, 248, 244, 0.4) 100%);
-            z-index: 0;
+            background: linear-gradient(to right, rgba(249, 248, 244, 0.85) 35%, rgba(249, 248, 244, 0.1) 100%);
+            z-index: 2;
         }
-        .hero-content { position: relative; z-index: 2; max-width: 850px; }
+        .hero-content { position: relative; z-index: 3; max-width: 850px; }
 
+        /* 圖片路徑 */
         .carousel-item:nth-child(1) { background-image: url('https://raw.githubusercontent.com/hao713949/Dagui-Section/main/villa.jpg'); animation-delay: 0s; }
         .carousel-item:nth-child(2) { background-image: url('https://raw.githubusercontent.com/hao713949/Dagui-Section/main/villa0.jpg'); animation-delay: 6s; }
         .carousel-item:nth-child(3) { background-image: url('https://raw.githubusercontent.com/hao713949/Dagui-Section/main/villa1.jpg'); animation-delay: 12s; }
@@ -159,11 +168,12 @@
         .carousel-item:nth-child(5) { background-image: url('https://raw.githubusercontent.com/hao713949/Dagui-Section/main/villa3.jpg'); animation-delay: 24s; }
         .carousel-item:nth-child(6) { background-image: url('https://raw.githubusercontent.com/hao713949/Dagui-Section/main/villa4.jpg'); animation-delay: 30s; }
 
+        /* 修正後的動畫邏輯：0.3 透明度並維持更久 */
         @keyframes carouselFade {
             0% { opacity: 0; transform: scale(1); }
-            5% { opacity: 0.3; }
-            16.6% { opacity: 0.3; }
-            21.6% { opacity: 0; transform: scale(1.05); }
+            4% { opacity: 0.3; } /* 快速淡入 */
+            16.6% { opacity: 0.3; } /* 維持可見 */
+            21.6% { opacity: 0; transform: scale(1.05); } /* 緩慢淡出並放大 */
             100% { opacity: 0; }
         }
 
@@ -255,7 +265,6 @@
         @media (max-width: 768px) {
             section { padding: 60px 6%; }
             .hero { padding: 0 6%; text-align: left; }
-            .hero::after { background: rgba(249, 248, 244, 0.94); }
             .top-nav { justify-content: flex-start; }
             .reg-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
             .invest-insight-box { padding: 30px 20px; }
@@ -264,14 +273,13 @@
             .decoration-line { padding-left: 15px; }
         }
 
-        /* 修正手機端隱藏文字問題 */
         @media (max-width: 480px) {
             .hero h1 { font-size: 2rem; }
             .reg-grid { grid-template-columns: 1fr; }
             .reg-box { 
                 padding: 25px 20px; 
                 text-align: left; 
-                display: block; /* 取消 flex，改回垂直流 */
+                display: block;
             }
             .reg-num { 
                 display: inline-block; 
@@ -286,12 +294,12 @@
                 vertical-align: middle;
             }
             .reg-desc { 
-                display: block !important; /* 強制顯示 */
+                display: block !important;
                 color: rgba(255,255,255,0.8); 
                 font-size: 0.9rem; 
                 line-height: 1.6;
                 padding-top: 8px;
-                border-top: 1px solid rgba(181, 164, 120, 0.3); /* 輕微分隔線 */
+                border-top: 1px solid rgba(181, 164, 120, 0.3);
             }
         }
     </style>
@@ -538,7 +546,7 @@
 
             <div class="news-card">
                 <h4>北屯區大豐段 <span class="price-highlight">14.4萬</span><br>大坑特二住宅區 A</h4>
-                <p>適合規劃為私人農場、養老居所或作為置產設倉使用。</p>
+                <p>適合規劃為私人農場、養老居所 or 作為置產設倉使用。</p>
                 <a href="https://hao713949.github.io/Dagui-Section/%E5%A4%A7%E8%B1%90778-5.html" target="_blank" class="news-link">開啟連結 ↗</a>
             </div>
 
@@ -591,7 +599,7 @@
             </table>
         </div>
         <p style="font-size: 0.9rem; max-width: 600px; margin: 15px auto 0; text-align: center;">
-            <strong>【基地單價已扣除公設地及按18萬/坪計算之建築成本】</strong>
+            <strong>【基地單價已扣除公設地及建築成本-按18萬/坪計算】</strong>
         </p>
     </section>
 
