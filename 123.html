@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-    <title>大貴段 • 兩萬坪共老莊園：一場關於「尊嚴養養老」與「資產定錨」建立的價值升級</title>
+    <title>大貴段 • 兩萬坪共老莊園｜尊嚴養老與資產定錨</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@600;900&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
@@ -14,11 +14,10 @@
             --gold-accent: #b5a478;
             --paper-texture: #F9F8F4;
             --text-dark: #2C332D;
-            --bg-dark-section: #0F1A13;
             --nav-height: 60px;
         }
 
-        /* 基礎效能優化 */
+        /* 全域基礎設置 */
         * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
         html { scroll-behavior: smooth; }
         body {
@@ -27,268 +26,214 @@
             font-family: 'Noto Sans TC', sans-serif;
             line-height: 1.7;
             overflow-x: hidden;
-            -webkit-font-smoothing: antialiased;
         }
+        h1, h2, h3, .serif { font-family: 'Noto Serif TC', serif; font-weight: 900; }
 
-        h1, h2, h3, h4, .serif { font-family: 'Noto Serif TC', serif; font-weight: 900; }
-
-        /* --- 頂部導覽列 --- */
+        /* --- 11項完整導覽列：支援手機滑動 --- */
         .top-nav {
-            position: fixed;
-            top: 0; width: 100%;
+            position: fixed; top: 0; width: 100%;
             background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            z-index: 10000;
-            height: var(--nav-height);
-            display: flex;
-            align-items: center;
-            border-bottom: 1px solid rgba(27, 48, 34, 0.1);
-            overflow-x: auto;
-            white-space: nowrap;
-            scrollbar-width: none;
+            backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+            z-index: 10000; height: var(--nav-height);
+            display: flex; align-items: center;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            overflow-x: auto; white-space: nowrap;
+            scrollbar-width: none; /* Firefox */
         }
-        .top-nav::-webkit-scrollbar { display: none; }
+        .top-nav::-webkit-scrollbar { display: none; } /* Chrome/Safari */
         .top-nav a {
-            text-decoration: none;
-            color: var(--forest-deep);
-            font-size: 0.85rem;
-            padding: 0 15px;
-            font-weight: 700;
-            transition: color 0.3s;
+            text-decoration: none; color: var(--forest-deep);
+            font-size: 0.85rem; font-weight: 700; padding: 0 15px;
+            flex-shrink: 0; transition: 0.3s;
         }
+        .top-nav a:hover { color: var(--gold-accent); }
 
-        /* --- 輪播區域優化 --- */
-        .main-carousel-section {
-            padding-top: var(--nav-height);
-            background: #000;
-            position: relative;
-            height: 75vh;
-            min-height: 400px;
-            overflow: hidden;
-            /* 強制硬體加速 */
+        /* --- 輪播區：9張照片優化 --- */
+        .hero-carousel {
+            margin-top: var(--nav-height);
+            height: 75vh; min-height: 500px;
+            background: #000; position: relative; overflow: hidden;
             transform: translateZ(0);
         }
-
-        .carousel-container {
-            width: 100%;
-            height: 100%;
-            position: relative;
+        .slide {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            opacity: 0; transition: opacity 1.2s ease-in-out;
+            background-size: cover; background-position: center;
+            display: flex; align-items: flex-end; padding: 0 0 50px 8%;
         }
-
-        .carousel-slide {
-            position: absolute;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-            background-size: cover;
-            background-position: center;
-            display: flex;
-            align-items: flex-end;
-            padding: 0 0 40px 8%;
-            /* 效能優化關鍵 */
-            will-change: opacity;
-        }
-
-        .carousel-slide.active { 
-            opacity: 1; 
-            visibility: visible;
-        }
-
-        .carousel-slide::after {
-            content: "";
-            position: absolute;
-            bottom: 0; left: 0; width: 100%; height: 50%;
+        .slide.active { opacity: 1; z-index: 1; }
+        .slide::after {
+            content: ""; position: absolute; bottom: 0; left: 0; width: 100%; height: 50%;
             background: linear-gradient(to top, rgba(0,0,0,0.6), transparent);
-            pointer-events: none;
+        }
+        .slide-info { position: relative; z-index: 2; color: #fff; }
+        .slide-tag { 
+            background: var(--gold-accent); color: var(--forest-deep);
+            padding: 5px 15px; font-size: 0.8rem; font-weight: 900; 
         }
 
-        .slide-tag {
-            position: relative;
-            z-index: 5;
-            color: var(--gold-accent);
-            background: rgba(27, 48, 34, 0.85);
-            padding: 8px 20px;
-            font-size: 1rem;
-            letter-spacing: 2px;
-            border-left: 4px solid var(--gold-accent);
-        }
+        /* --- 內容區間樣式 --- */
+        section { padding: 80px 8%; scroll-margin-top: var(--nav-height); }
+        .section-tag { color: var(--gold-accent); font-size: 0.75rem; letter-spacing: 3px; font-weight: 700; display: block; margin-bottom: 10px; }
+        h2 { font-size: 2rem; margin-bottom: 30px; color: var(--forest-deep); }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
+        .card { background: #fff; padding: 30px; border-radius: 4px; box-shadow: 0 5px 15px rgba(0,0,0,0.03); }
 
-        /* --- 內文區域 --- */
-        .hero-intro { padding: 60px 8%; }
-        .hero-intro h1 { font-size: clamp(2rem, 7vw, 3.5rem); color: var(--forest-deep); line-height: 1.2; margin-bottom: 20px; }
-        
-        .query-btn {
-            display: inline-block;
-            margin-top: 25px;
-            padding: 16px 32px;
-            background: var(--forest-deep);
-            color: var(--gold-accent);
-            text-decoration: none;
-            border-radius: 4px;
-            font-weight: 700;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-        }
-
-        /* 通用卡片與格狀佈局 */
-        section { padding: 60px 8%; }
-        .grid-layout { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
-        .info-card { background: #fff; padding: 25px; border-radius: 4px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
-
-        /* 圖資優化 */
-        .clickable-map { 
-            width: 100%; 
-            height: auto; 
-            cursor: zoom-in; 
-            transition: transform 0.3s ease;
-            display: block;
-        }
-        .clickable-map:hover { transform: scale(1.01); }
-
-        /* 燈箱優化 */
-        .lightbox-overlay {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.9);
-            display: none;
-            justify-content: center;
-            align-items: center;
-            z-index: 20000;
-            padding: 10px;
-        }
-        .lightbox-overlay img { max-width: 100%; max-height: 95vh; object-fit: contain; }
-
-        /* RWD 手機端調整 */
+        /* 響應式優化 */
         @media (max-width: 768px) {
-            .main-carousel-section { height: 50vh; }
-            .hero-intro { padding: 40px 6%; }
-            section { padding: 40px 6%; }
-            .reg-grid { 
-                display: grid; 
-                grid-template-columns: repeat(2, 1fr); 
-                gap: 10px; 
-            }
-            .reg-box { padding: 20px 10px; }
-            .top-nav a { padding: 0 10px; font-size: 0.8rem; }
+            .hero-carousel { height: 60vh; }
+            section { padding: 50px 6%; }
+            h2 { font-size: 1.6rem; }
         }
 
-        /* 表格響應式 */
-        .table-container { overflow-x: auto; background: white; border-radius: 8px; }
-        table { width: 100%; min-width: 600px; border-collapse: collapse; }
-        th, td { padding: 12px; text-align: left; border-bottom: 1px solid #eee; font-size: 0.9rem; }
-        .total-row { background: #f9f9f9; font-weight: bold; }
+        /* 燈箱 */
+        .lightbox {
+            position: fixed; top:0; left:0; width:100%; height:100%;
+            background: rgba(0,0,0,0.9); display:none; z-index:20000;
+            justify-content:center; align-items:center; cursor: zoom-out;
+        }
+        .lightbox img { max-width:90%; max-height:90%; object-fit:contain; }
     </style>
 </head>
 <body>
 
-    <div id="lightbox" class="lightbox-overlay" onclick="closeLightbox()">
-        <img id="lightbox-img" src="" alt="放大圖示">
-    </div>
+    <div class="lightbox" id="lb" onclick="this.style.display='none'"><img id="lb-img"></div>
 
     <nav class="top-nav">
-        <a href="#page1">首頁</a>
+        <a href="#page1">首頁高度</a>
         <a href="#page2">核心理念</a>
         <a href="#page3">建築規範</a>
+        <a href="#hillside">山坡建築</a>
+        <a href="#defense">隱形防禦</a>
         <a href="#page4">圖資證明</a>
         <a href="#page5">土地分類</a>
         <a href="#page7">交易安全</a>
-        <a href="#market-info">市場資訊</a>
+        <a href="#market">市場資訊</a>
+        <a href="#env-map">環境圖資</a>
+        <a href="#page8">地理位置</a>
     </nav>
 
-    <header class="main-carousel-section" id="page1">
-        <div class="carousel-container" id="mainCarousel">
-            <div class="carousel-slide active" style="background-image: url('https://raw.githubusercontent.com/hao713949/Dagui-Section/main/IMG_6480.JPG')">
-                <span class="slide-tag">會館示意圖</span>
-            </div>
-            <div class="carousel-slide" data-bg="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/IMG_6481.JPG">
-                <span class="slide-tag">會館示意圖</span>
-            </div>
-            <div class="carousel-slide" data-bg="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/IMG_6482.JPG">
-                <span class="slide-tag">會館示意圖</span>
-            </div>
-            <div class="carousel-slide" data-bg="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/vaiil01.jpg">
-                <span class="slide-tag">森活工藝</span>
-            </div>
-            <div class="carousel-slide" data-bg="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/vaiil1.jpg">
-                <span class="slide-tag">森活工藝</span>
-            </div>
+    <header class="hero-carousel" id="page1">
+        <div class="slide active" style="background-image: url('https://raw.githubusercontent.com/hao713949/Dagui-Section/main/IMG_6480.JPG')">
+            <div class="slide-info"><span class="slide-tag">會館示意 01</span></div>
+        </div>
+        <div class="slide" data-src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/IMG_6481.JPG">
+            <div class="slide-info"><span class="slide-tag">會館示意 02</span></div>
+        </div>
+        <div class="slide" data-src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/IMG_6482.JPG">
+            <div class="slide-info"><span class="slide-tag">會館示意 03</span></div>
+        </div>
+        <div class="slide" data-src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/IMG_6483.JPG">
+            <div class="slide-info"><span class="slide-tag">會館示意 04</span></div>
+        </div>
+        <div class="slide" data-src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/vaiil01.jpg">
+            <div class="slide-info"><span class="slide-tag">森活工藝 01</span></div>
+        </div>
+        <div class="slide" data-src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/vaiil1.jpg">
+            <div class="slide-info"><span class="slide-tag">森活工藝 02</span></div>
+        </div>
+        <div class="slide" data-src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/vaiil2.jpg">
+            <div class="slide-info"><span class="slide-tag">森活工藝 03</span></div>
+        </div>
+        <div class="slide" data-src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/vaiil3.jpg">
+            <div class="slide-info"><span class="slide-tag">森活工藝 04</span></div>
+        </div>
+        <div class="slide" data-src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/vaiil4.jpg">
+            <div class="slide-info"><span class="slide-tag">森活工藝 05</span></div>
         </div>
     </header>
 
-    <section class="hero-intro">
-        <span class="serif" style="color:var(--forest-mid); letter-spacing: 2px;">尊嚴養老 ‧ 資產定錨 ‧ 價值升級</span>
-        <h1 class="serif">兩萬坪共老莊園</h1>
-        <p>與知己共老，在森林裡預約世外桃源</p>
-        <a href="https://hao713949.github.io/DAKENG-VILLA/project/unit.html" class="query-btn">認購單元資料查詢 ⇄</a>
+    <section id="page2">
+        <span class="section-tag">VISION</span>
+        <h2>核心理念</h2>
+        <div class="card"><p>垂直整合實現地主利益最大化，包含資源整合、合約承攬、專業監管。</p></div>
     </section>
 
-    <section id="page4">
-        <span class="section-tag">SITE DOCUMENTATION</span>
-        <h2>地籍圖資與分區證明</h2>
-        <div style="background:#fff; padding: 15px; border: 1px solid #eee; margin-bottom: 20px;">
-             <img src="map.webp" alt="地籍圖示" class="clickable-map" onclick="openLightbox(this.src)" loading="lazy">
+    <section id="page3" style="background:#f4f4f4;">
+        <span class="section-tag">REGULATION</span>
+        <h2>建築規範</h2>
+        <div class="grid">
+            <div class="card"><h3>特二種住宅</h3><p>建蔽率 20% / 容積率 40%</p></div>
         </div>
     </section>
 
+    <section id="hillside">
+        <span class="section-tag">ENGINEERING</span>
+        <h2>山坡建築</h2>
+        <p>高規格擋土工程、三維防潮系統、微氣候設計。</p>
+    </section>
+
+    <section id="defense" style="background:var(--forest-deep); color:#fff;">
+        <span class="section-tag">SECURITY</span>
+        <h2>隱形防禦</h2>
+        <p>金庫級物理保全、獨立維生避難空間、氣密生存工程。</p>
+    </section>
+
+    <section id="page4">
+        <span class="section-tag">DOCS</span>
+        <h2>圖資證明</h2>
+        <img src="map.webp" style="width:100%; cursor:pointer;" onclick="showLb(this.src)">
+    </section>
+
+    <section id="page5">
+        <span class="section-tag">LAND USE</span>
+        <h2>土地分類</h2>
+        <p>116 筆土地：包含特二住宅用地、公設預撥地、會館用地。</p>
+    </section>
+
+    <section id="page7" style="background:#f4f4f4;">
+        <span class="section-tag">TRUST</span>
+        <h2>交易安全</h2>
+        <p>募資未達標或契約未促成，認購款全額原款退還。</p>
+    </section>
+
+    <section id="market">
+        <span class="section-tag">MARKET</span>
+        <h2>市場資訊</h2>
+        <a href="#">大貴段風景區土地最新行情 ↗</a>
+    </section>
+
+    <section id="env-map">
+        <span class="section-tag">ENVIRONMENT</span>
+        <h2>環境圖資</h2>
+        <img src="map2.jpg" style="width:100%; cursor:pointer;" onclick="showLb(this.src)">
+    </section>
+
+    <section id="page8">
+        <span class="section-tag">LOCATION</span>
+        <h2>地理位置</h2>
+        <div style="height:300px; background:#ddd;">Google Maps 預留位置</div>
+    </section>
+
     <script>
-        // 1. 輪播邏輯優化：延遲載入背景圖與觸控支援
-        const slides = document.querySelectorAll('.carousel-slide');
-        let currentSlide = 0;
-        let startX = 0;
+        // 輪播邏輯
+        const slides = document.querySelectorAll('.slide');
+        let current = 0;
 
-        // 動態載入圖片函數
-        function loadSlideBg(slide) {
-            const bg = slide.getAttribute('data-bg');
-            if (bg) {
-                slide.style.backgroundImage = `url('${bg}')`;
-                slide.removeAttribute('data-bg');
-            }
+        function loadImg(el) {
+            const src = el.getAttribute('data-src');
+            if(src) { el.style.backgroundImage = `url('${src}')`; el.removeAttribute('data-src'); }
         }
 
-        function showSlide(index) {
-            slides[currentSlide].classList.remove('active');
-            currentSlide = (index + slides.length) % slides.length;
-            loadSlideBg(slides[currentSlide]); // 切換時才載入圖檔
-            slides[currentSlide].classList.add('active');
+        function nextSlide() {
+            slides[current].classList.remove('active');
+            current = (current + 1) % slides.length;
+            loadImg(slides[current]); // 切換時才載入圖片
+            slides[current].classList.add('active');
         }
 
-        // 自動播放
-        let slideInterval = setInterval(() => showSlide(currentSlide + 1), 5000);
+        // 自動輪播
+        setInterval(nextSlide, 5000);
 
-        // 手機觸控支援
-        const container = document.getElementById('mainCarousel');
-        container.addEventListener('touchstart', e => {
-            startX = e.touches[0].clientX;
-            clearInterval(slideInterval);
-        }, {passive: true});
-
-        container.addEventListener('touchend', e => {
-            const endX = e.changedTouches[0].clientX;
-            if (startX - endX > 50) showSlide(currentSlide + 1);
-            else if (endX - startX > 50) showSlide(currentSlide - 1);
-            slideInterval = setInterval(() => showSlide(currentSlide + 1), 5000);
-        }, {passive: true});
-
-        // 預載第二張圖
-        window.addEventListener('load', () => {
-            if(slides.length > 1) loadSlideBg(slides[1]);
-        });
-
-        // 2. 燈箱邏輯
-        function openLightbox(src) {
-            const lb = document.getElementById('lightbox');
-            const img = document.getElementById('lightbox-img');
-            img.src = src;
+        // 燈箱功能
+        function showLb(src) {
+            const lb = document.getElementById('lb');
+            document.getElementById('lb-img').src = src;
             lb.style.display = 'flex';
-            document.body.style.overflow = 'hidden';
         }
 
-        function closeLightbox() {
-            document.getElementById('lightbox').style.display = 'none';
-            document.body.style.overflow = 'auto';
-        }
+        // 預載第 2 張圖片
+        window.onload = () => { if(slides[1]) loadImg(slides[1]); };
     </script>
 </body>
 </html>
