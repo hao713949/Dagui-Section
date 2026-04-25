@@ -134,7 +134,7 @@
             background-color: var(--paper-texture);
         }
         .carousel-bg { 
-            position: absolute; 
+            position: absolute;
             top: 0; left: 0; 
             width: 100%; height: 100%; 
             z-index: 1;
@@ -222,9 +222,11 @@
             gap: 8px;
             overflow-x: auto;
             padding-bottom: 5px;
-            scrollbar-width: none;
+            scrollbar-width: thin;
+            scrollbar-color: var(--gold-accent) transparent;
         }
-        .thumb-scroll::-webkit-scrollbar { display: none; }
+        .thumb-scroll::-webkit-scrollbar { height: 4px; }
+        .thumb-scroll::-webkit-scrollbar-thumb { background: var(--gold-accent); border-radius: 10px; }
 
         .thumb-item {
             flex: 0 0 80px;
@@ -274,14 +276,14 @@
         }
 
         .hero h1 { 
-            font-size: clamp(2rem, 6vw, 3.2rem); 
+            font-size: clamp(2rem, 6vw, 3.2rem);
             color: var(--forest-deep); 
             letter-spacing: 2px; 
             line-height: 1.2; 
             margin-bottom: 15px; 
         }
         .hero .sub-title { 
-            font-size: clamp(0.9rem, 2.5vw, 1.2rem); 
+            font-size: clamp(0.9rem, 2.5vw, 1.2rem);
             color: var(--forest-mid); 
             display: block;
             margin-bottom: 8px;
@@ -375,29 +377,12 @@
             .hero h1 { font-size: 1.8rem; }
             .reg-grid { grid-template-columns: 1fr; }
             .thumb-item { flex: 0 0 60px; }
-            .reg-box { 
-                padding: 25px 20px; 
-                text-align: left; 
-                display: block;
-            }
-            .reg-num { 
-                display: inline-block; 
-                margin-bottom: 5px; 
-                margin-right: 15px; 
-                font-size: 1.8rem;
-            }
-            .reg-title { 
-                display: inline-block; 
-                margin-bottom: 12px; 
-                font-size: 1rem;
-                vertical-align: middle;
-            }
+            .reg-box { padding: 25px 20px; text-align: left; display: block; }
+            .reg-num { display: inline-block; margin-bottom: 5px; margin-right: 15px; font-size: 1.8rem; }
+            .reg-title { display: inline-block; margin-bottom: 12px; font-size: 1rem; vertical-align: middle; }
             .reg-desc { 
-                display: block !important;
-                color: rgba(255,255,255,0.8); 
-                font-size: 0.9rem; 
-                line-height: 1.6;
-                padding-top: 8px;
+                display: block !important; color: rgba(255,255,255,0.8); 
+                font-size: 0.9rem; line-height: 1.6; padding-top: 8px;
                 border-top: 1px solid rgba(181, 164, 120, 0.3);
             }
         }
@@ -454,21 +439,21 @@
             <div class="hero-gallery">
                 <div class="main-display">
                     <button class="nav-arrow prev-arrow" onclick="changeSlide(-1)">&lt;</button>
-                    <img id="active-main-img" src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/vaiil01.jpg" alt="森活工藝" onclick="openLightbox(this.src)">
+                    <img id="active-main-img" src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/IMG_6480.JPG" alt="會館示意" onclick="openLightbox(this.src)">
                     <button class="nav-arrow next-arrow" onclick="changeSlide(1)">&gt;</button>
-                    <div class="gallery-label" id="main-label">森活工藝</div>
+                    <div class="gallery-label" id="main-label">會館示意</div>
                 </div>
 
                 <div class="thumb-scroll" id="thumb-container">
-                    <div class="thumb-item active" onclick="updateMain(0)"><img src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/vaiil01.jpg"></div>
-                    <div class="thumb-item" onclick="updateMain(5)"><img src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/IMG_6480.JPG"></div>
-                    <div class="thumb-item" onclick="updateMain(6)"><img src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/IMG_6481.JPG"></div>
-                    <div class="thumb-item" onclick="updateMain(7)"><img src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/IMG_6482.JPG"></div>
-                    <div class="thumb-item" onclick="updateMain(8)"><img src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/IMG_6484.JPG"></div>
-                    <div class="thumb-item" onclick="updateMain(1)"><img src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/villa.jpg"></div>
-                    <div class="thumb-item" onclick="updateMain(2)"><img src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/villa2.jpg"></div>
-                    <div class="thumb-item" onclick="updateMain(3)"><img src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/villa3.jpg"></div>
-                    <div class="thumb-item" onclick="updateMain(4)"><img src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/villa4.jpg"></div>
+                    <div class="thumb-item active" onclick="updateMain(0)"><img src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/IMG_6480.JPG"></div>
+                    <div class="thumb-item" onclick="updateMain(1)"><img src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/IMG_6481.JPG"></div>
+                    <div class="thumb-item" onclick="updateMain(2)"><img src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/IMG_6482.JPG"></div>
+                    <div class="thumb-item" onclick="updateMain(3)"><img src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/IMG_6484.JPG"></div>
+                    <div class="thumb-item" onclick="updateMain(4)"><img src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/vaiil01.jpg"></div>
+                    <div class="thumb-item" onclick="updateMain(5)"><img src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/villa.jpg"></div>
+                    <div class="thumb-item" onclick="updateMain(6)"><img src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/villa2.jpg"></div>
+                    <div class="thumb-item" onclick="updateMain(7)"><img src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/villa3.jpg"></div>
+                    <div class="thumb-item" onclick="updateMain(8)"><img src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/villa4.jpg"></div>
                 </div>
             </div>
        </div>
@@ -760,9 +745,8 @@
     </footer>
 
     <script>
-        // 相簿圖片資料庫
         const galleryImages = [
-            {url: 'https://raw.githubusercontent.com/hao713949/Dagui-Section/main/IMG_6480.JPG', title: '會館示意圖'},
+            {url: 'https://raw.githubusercontent.com/hao713949/Dagui-Section/main/IMG_6480.JPG', title: '會館示意'},
             {url: 'https://raw.githubusercontent.com/hao713949/Dagui-Section/main/IMG_6481.JPG', title: '會館示意'},
             {url: 'https://raw.githubusercontent.com/hao713949/Dagui-Section/main/IMG_6482.JPG', title: '會館示意'},
             {url: 'https://raw.githubusercontent.com/hao713949/Dagui-Section/main/IMG_6484.JPG', title: '會館示意'},
@@ -772,7 +756,7 @@
             {url: 'https://raw.githubusercontent.com/hao713949/Dagui-Section/main/villa3.jpg', title: '森活工藝'},
             {url: 'https://raw.githubusercontent.com/hao713949/Dagui-Section/main/villa4.jpg', title: '森活工藝'},
         ];
-
+        
         let currentGalleryIndex = 0;
 
         function updateMain(index) {
@@ -780,8 +764,8 @@
             const mainImg = document.getElementById('active-main-img');
             const label = document.getElementById('main-label');
             const thumbs = document.querySelectorAll('.thumb-item');
-
-            // 切換主圖帶淡入
+            
+            // 切換主圖帶淡入效果
             mainImg.style.opacity = '0';
             setTimeout(() => {
                 mainImg.src = galleryImages[currentGalleryIndex].url;
@@ -793,7 +777,7 @@
             thumbs.forEach((t, i) => {
                 t.classList.toggle('active', i === currentGalleryIndex);
             });
-            
+
             // 縮圖自動滾動至可見區域
             const container = document.getElementById('thumb-container');
             const activeThumb = thumbs[currentGalleryIndex];
@@ -812,14 +796,13 @@
             updateMain(newIndex);
         }
 
-        // 原有燈箱功能
         function openLightbox(src) {
             const lightbox = document.getElementById('lightbox');
             const lightboxImg = document.getElementById('lightbox-img');
             if(!src) return;
             lightboxImg.src = src;
             lightbox.style.display = 'flex';
-            document.body.style.overflow = 'hidden'; 
+            document.body.style.overflow = 'hidden';
         }
 
         function closeLightbox() {
