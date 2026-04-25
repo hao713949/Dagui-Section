@@ -167,46 +167,97 @@
         }
         .hero-content { flex: 1; max-width: 650px; }
 
-        /* --- 側邊相簿網格 --- */
+        /* --- 優化版側邊相簿樣式 --- */
         .hero-gallery {
             flex: 1;
             max-width: 500px;
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
             background: rgba(255,255,255,0.5);
             padding: 15px;
             border-radius: 8px;
             backdrop-filter: blur(5px);
             border: 1px solid rgba(181, 164, 120, 0.2);
         }
-        .gallery-item {
+
+        .main-display {
             position: relative;
-            aspect-ratio: 1/1;
+            width: 100%;
+            aspect-ratio: 16 / 10;
             overflow: hidden;
-            border-radius: 4px;
-            cursor: zoom-in;
+            border-radius: 6px;
             border: 1px solid #ddd;
+            cursor: zoom-in;
         }
-        .gallery-item img {
+
+        .main-display img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.5s ease;
+            transition: opacity 0.4s ease;
         }
-        .gallery-item:hover img { transform: scale(1.1); }
+
+        .nav-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(27, 48, 34, 0.6);
+            color: var(--gold-accent);
+            padding: 10px 15px;
+            cursor: pointer;
+            font-size: 1.2rem;
+            font-weight: bold;
+            user-select: none;
+            transition: 0.3s;
+            z-index: 10;
+            border: none;
+        }
+        .nav-arrow:hover { background: var(--forest-deep); }
+        .prev-arrow { left: 0; border-radius: 0 4px 4px 0; }
+        .next-arrow { right: 0; border-radius: 4px 0 0 4px; }
+
+        .thumb-scroll {
+            display: flex;
+            gap: 8px;
+            overflow-x: auto;
+            padding-bottom: 5px;
+            scrollbar-width: none;
+        }
+        .thumb-scroll::-webkit-scrollbar { display: none; }
+
+        .thumb-item {
+            flex: 0 0 80px;
+            aspect-ratio: 1/1;
+            border-radius: 4px;
+            overflow: hidden;
+            cursor: pointer;
+            opacity: 0.6;
+            transition: 0.3s;
+            border: 2px solid transparent;
+        }
+        .thumb-item.active {
+            opacity: 1;
+            border-color: var(--gold-accent);
+        }
+        .thumb-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
         .gallery-label {
             position: absolute;
             bottom: 0; left: 0; right: 0;
             background: rgba(27, 48, 34, 0.8);
             color: var(--gold-accent);
-            font-size: 0.65rem;
-            padding: 2px 5px;
+            font-size: 0.75rem;
+            padding: 4px 5px;
             text-align: center;
             font-weight: 700;
         }
 
-        /* 圖片路徑 */
+        /* 輪播背景圖片路徑 */
         .carousel-item:nth-child(1) { background-image: url('https://raw.githubusercontent.com/hao713949/Dagui-Section/main/villa.jpg'); animation-delay: 0s; }
         .carousel-item:nth-child(2) { background-image: url('https://raw.githubusercontent.com/hao713949/Dagui-Section/main/villa0.jpg'); animation-delay: 6s; }
         .carousel-item:nth-child(3) { background-image: url('https://raw.githubusercontent.com/hao713949/Dagui-Section/main/villa1.jpg'); animation-delay: 12s; }
@@ -323,7 +374,7 @@
         @media (max-width: 480px) {
             .hero h1 { font-size: 1.8rem; }
             .reg-grid { grid-template-columns: 1fr; }
-            .hero-gallery { grid-template-columns: repeat(3, 1fr); }
+            .thumb-item { flex: 0 0 60px; }
             .reg-box { 
                 padding: 25px 20px; 
                 text-align: left; 
@@ -401,41 +452,23 @@
             </div>
 
             <div class="hero-gallery">
-                <div class="gallery-item" onclick="openLightbox('https://raw.githubusercontent.com/hao713949/Dagui-Section/main/vaiil01.jpg')">
-                    <img src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/vaiil01.jpg" alt="森活工藝" loading="lazy">
-                    <div class="gallery-label">森活工藝</div>
+                <div class="main-display">
+                    <button class="nav-arrow prev-arrow" onclick="changeSlide(-1)">&lt;</button>
+                    <img id="active-main-img" src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/vaiil01.jpg" alt="森活工藝" onclick="openLightbox(this.src)">
+                    <button class="nav-arrow next-arrow" onclick="changeSlide(1)">&gt;</button>
+                    <div class="gallery-label" id="main-label">森活工藝</div>
                 </div>
-                <div class="gallery-item" onclick="openLightbox('https://raw.githubusercontent.com/hao713949/Dagui-Section/main/villa.jpg')">
-                    <img src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/villa.jpg" alt="森活工藝" loading="lazy">
-                    <div class="gallery-label">森活工藝</div>
-                </div>
-                <div class="gallery-item" onclick="openLightbox('https://raw.githubusercontent.com/hao713949/Dagui-Section/main/villa2.jpg')">
-                    <img src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/villa2.jpg" alt="森活工藝" loading="lazy">
-                    <div class="gallery-label">森活工藝</div>
-                </div>
-                <div class="gallery-item" onclick="openLightbox('https://raw.githubusercontent.com/hao713949/Dagui-Section/main/villa3.jpg')">
-                    <img src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/villa3.jpg" alt="森活工藝" loading="lazy">
-                    <div class="gallery-label">森活工藝</div>
-                </div>
-                <div class="gallery-item" onclick="openLightbox('https://raw.githubusercontent.com/hao713949/Dagui-Section/main/villa4.jpg')">
-                    <img src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/villa4.jpg" alt="森活工藝" loading="lazy">
-                    <div class="gallery-label">森活工藝</div>
-                </div>
-                <div class="gallery-item" onclick="openLightbox('https://raw.githubusercontent.com/hao713949/Dagui-Section/main/IMG_6480.JPG')">
-                    <img src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/IMG_6480.JPG" alt="會館示意" loading="lazy">
-                    <div class="gallery-label">會館示意</div>
-                </div>
-                <div class="gallery-item" onclick="openLightbox('https://raw.githubusercontent.com/hao713949/Dagui-Section/main/IMG_6481.JPG')">
-                    <img src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/IMG_6481.JPG" alt="會館示意" loading="lazy">
-                    <div class="gallery-label">會館示意</div>
-                </div>
-                <div class="gallery-item" onclick="openLightbox('https://raw.githubusercontent.com/hao713949/Dagui-Section/main/IMG_6482.JPG')">
-                    <img src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/IMG_6482.JPG" alt="會館示意" loading="lazy">
-                    <div class="gallery-label">會館示意</div>
-                </div>
-                <div class="gallery-item" onclick="openLightbox('https://raw.githubusercontent.com/hao713949/Dagui-Section/main/IMG_6484.JPG')">
-                    <img src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/IMG_6484.JPG" alt="會館示意" loading="lazy">
-                    <div class="gallery-label">會館示意</div>
+
+                <div class="thumb-scroll" id="thumb-container">
+                    <div class="thumb-item active" onclick="updateMain(0)"><img src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/vaiil01.jpg"></div>
+                    <div class="thumb-item" onclick="updateMain(5)"><img src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/IMG_6480.JPG"></div>
+                    <div class="thumb-item" onclick="updateMain(6)"><img src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/IMG_6481.JPG"></div>
+                    <div class="thumb-item" onclick="updateMain(7)"><img src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/IMG_6482.JPG"></div>
+                    <div class="thumb-item" onclick="updateMain(8)"><img src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/IMG_6484.JPG"></div>
+                    <div class="thumb-item" onclick="updateMain(1)"><img src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/villa.jpg"></div>
+                    <div class="thumb-item" onclick="updateMain(2)"><img src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/villa2.jpg"></div>
+                    <div class="thumb-item" onclick="updateMain(3)"><img src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/villa3.jpg"></div>
+                    <div class="thumb-item" onclick="updateMain(4)"><img src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/villa4.jpg"></div>
                 </div>
             </div>
        </div>
@@ -727,6 +760,59 @@
     </footer>
 
     <script>
+        // 相簿圖片資料庫
+        const galleryImages = [
+            {url: 'https://raw.githubusercontent.com/hao713949/Dagui-Section/main/IMG_6480.JPG', title: '會館示意圖'},
+            {url: 'https://raw.githubusercontent.com/hao713949/Dagui-Section/main/IMG_6481.JPG', title: '會館示意'},
+            {url: 'https://raw.githubusercontent.com/hao713949/Dagui-Section/main/IMG_6482.JPG', title: '會館示意'},
+            {url: 'https://raw.githubusercontent.com/hao713949/Dagui-Section/main/IMG_6484.JPG', title: '會館示意'},
+            {url: 'https://raw.githubusercontent.com/hao713949/Dagui-Section/main/vaiil01.jpg', title: '森活工藝'},
+            {url: 'https://raw.githubusercontent.com/hao713949/Dagui-Section/main/villa.jpg', title: '森活工藝'},
+            {url: 'https://raw.githubusercontent.com/hao713949/Dagui-Section/main/villa2.jpg', title: '森活工藝'},
+            {url: 'https://raw.githubusercontent.com/hao713949/Dagui-Section/main/villa3.jpg', title: '森活工藝'},
+            {url: 'https://raw.githubusercontent.com/hao713949/Dagui-Section/main/villa4.jpg', title: '森活工藝'},
+        ];
+
+        let currentGalleryIndex = 0;
+
+        function updateMain(index) {
+            currentGalleryIndex = index;
+            const mainImg = document.getElementById('active-main-img');
+            const label = document.getElementById('main-label');
+            const thumbs = document.querySelectorAll('.thumb-item');
+
+            // 切換主圖帶淡入
+            mainImg.style.opacity = '0';
+            setTimeout(() => {
+                mainImg.src = galleryImages[currentGalleryIndex].url;
+                label.innerText = galleryImages[currentGalleryIndex].title;
+                mainImg.style.opacity = '1';
+            }, 200);
+
+            // 更新縮圖 Active 狀態
+            thumbs.forEach((t, i) => {
+                t.classList.toggle('active', i === currentGalleryIndex);
+            });
+            
+            // 縮圖自動滾動至可見區域
+            const container = document.getElementById('thumb-container');
+            const activeThumb = thumbs[currentGalleryIndex];
+            if(activeThumb) {
+                container.scrollTo({
+                    left: activeThumb.offsetLeft - (container.offsetWidth / 2) + (activeThumb.offsetWidth / 2),
+                    behavior: 'smooth'
+                });
+            }
+        }
+
+        function changeSlide(step) {
+            let newIndex = currentGalleryIndex + step;
+            if (newIndex >= galleryImages.length) newIndex = 0;
+            if (newIndex < 0) newIndex = galleryImages.length - 1;
+            updateMain(newIndex);
+        }
+
+        // 原有燈箱功能
         function openLightbox(src) {
             const lightbox = document.getElementById('lightbox');
             const lightboxImg = document.getElementById('lightbox-img');
