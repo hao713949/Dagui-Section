@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-    <title>大貴段 • 兩萬坪共老莊園｜尊嚴養老與資產定錨</title>
+    <title>大貴段 • 兩萬坪共老莊園：一場關於「尊嚴養老」與「資產定錨」建立的價值升級</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@600;900&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
@@ -14,226 +14,310 @@
             --gold-accent: #b5a478;
             --paper-texture: #F9F8F4;
             --text-dark: #2C332D;
+            --bg-dark-section: #0F1A13;
+            --danger-red: #8B0000;
             --nav-height: 60px;
         }
 
-        /* 全域基礎設置 */
-        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+        /* 基礎優化 */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
         body {
             background-color: var(--paper-texture);
             color: var(--text-dark);
-            font-family: 'Noto Sans TC', sans-serif;
+            font-family: 'Noto Sans TC', -apple-system, BlinkMacSystemFont, sans-serif;
             line-height: 1.7;
             overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
         }
-        h1, h2, h3, .serif { font-family: 'Noto Serif TC', serif; font-weight: 900; }
 
-        /* --- 11項完整導覽列：支援手機滑動 --- */
+        h1, h2, h3, h4, .serif { font-family: 'Noto Serif TC', serif; font-weight: 900; }
+
+        /* --- 頂部導覽列 --- */
         .top-nav {
-            position: fixed; top: 0; width: 100%;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
-            z-index: 10000; height: var(--nav-height);
-            display: flex; align-items: center;
-            border-bottom: 1px solid rgba(0,0,0,0.05);
-            overflow-x: auto; white-space: nowrap;
-            scrollbar-width: none; /* Firefox */
+            position: fixed;
+            top: 0; width: 100%;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            z-index: 10000;
+            height: var(--nav-height);
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid rgba(27, 48, 34, 0.1);
+            overflow-x: auto;
+            white-space: nowrap;
+            scrollbar-width: none;
         }
-        .top-nav::-webkit-scrollbar { display: none; } /* Chrome/Safari */
+        .top-nav::-webkit-scrollbar { display: none; }
         .top-nav a {
             text-decoration: none; color: var(--forest-deep);
             font-size: 0.85rem; font-weight: 700; padding: 0 15px;
-            flex-shrink: 0; transition: 0.3s;
+            height: 100%; display: flex; align-items: center;
         }
-        .top-nav a:hover { color: var(--gold-accent); }
 
-        /* --- 輪播區：9張照片優化 --- */
-        .hero-carousel {
+        /* --- 新增：9張照片滑動輪播區 --- */
+        .slider-wrapper {
             margin-top: var(--nav-height);
-            height: 75vh; min-height: 500px;
-            background: #000; position: relative; overflow: hidden;
-            transform: translateZ(0);
+            background: #000;
+            position: relative;
+            width: 100%;
         }
-        .slide {
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            opacity: 0; transition: opacity 1.2s ease-in-out;
-            background-size: cover; background-position: center;
-            display: flex; align-items: flex-end; padding: 0 0 50px 8%;
+        .main-slider {
+            height: 60vh;
+            min-height: 400px;
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            scrollbar-width: none;
+            -webkit-overflow-scrolling: touch;
         }
-        .slide.active { opacity: 1; z-index: 1; }
-        .slide::after {
-            content: ""; position: absolute; bottom: 0; left: 0; width: 100%; height: 50%;
-            background: linear-gradient(to top, rgba(0,0,0,0.6), transparent);
+        .main-slider::-webkit-scrollbar { display: none; }
+        .slide-item {
+            flex: 0 0 100%;
+            scroll-snap-align: start;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
         }
-        .slide-info { position: relative; z-index: 2; color: #fff; }
-        .slide-tag { 
-            background: var(--gold-accent); color: var(--forest-deep);
-            padding: 5px 15px; font-size: 0.8rem; font-weight: 900; 
+        /* 縮圖列 */
+        .thumb-nav {
+            display: flex;
+            gap: 5px;
+            padding: 10px 5%;
+            background: var(--bg-dark-section);
+            overflow-x: auto;
+            scrollbar-width: none;
+        }
+        .thumb-nav::-webkit-scrollbar { display: none; }
+        .thumb-item {
+            width: 80px; height: 50px;
+            flex-shrink: 0;
+            background-size: cover;
+            background-position: center;
+            cursor: pointer;
+            border: 2px solid transparent;
+            opacity: 0.6;
+            transition: 0.3s;
+        }
+        .thumb-item.active { border-color: var(--gold-accent); opacity: 1; }
+
+        /* --- 原有 Hero 內容區 (調整為標題區) --- */
+        .hero-text-section {
+            padding: 60px 8% 40px;
+            background-color: var(--paper-texture);
+        }
+        .hero-text-section h1 { font-size: clamp(2.2rem, 8vw, 3.5rem); color: var(--forest-deep); margin-bottom: 15px; }
+        .hero-text-section .sub-title { font-size: 1.2rem; color: var(--forest-mid); letter-spacing: 2px; }
+
+        /* --- 其他原本代碼保留 --- */
+        .decoration-line { position: relative; padding-left: 20px; margin: 25px 0; }
+        .decoration-line::before { content: ""; position: absolute; left: 0; top: 5px; bottom: 5px; width: 3px; background-color: var(--gold-accent); }
+        .query-btn {
+            display: inline-block; padding: 14px 28px; background-color: var(--forest-deep);
+            color: var(--gold-accent); text-decoration: none; border: 1px solid var(--gold-accent);
+            border-radius: 4px; font-weight: 700; transition: 0.3s;
         }
 
-        /* --- 內容區間樣式 --- */
-        section { padding: 80px 8%; scroll-margin-top: var(--nav-height); }
-        .section-tag { color: var(--gold-accent); font-size: 0.75rem; letter-spacing: 3px; font-weight: 700; display: block; margin-bottom: 10px; }
-        h2 { font-size: 2rem; margin-bottom: 30px; color: var(--forest-deep); }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
-        .card { background: #fff; padding: 30px; border-radius: 4px; box-shadow: 0 5px 15px rgba(0,0,0,0.03); }
+        section { padding: 80px 8%; position: relative; }
+        .section-tag { font-size: 0.75rem; letter-spacing: 4px; color: var(--gold-accent); display: block; margin-bottom: 12px; font-weight: 700; }
+        h2 { font-size: clamp(1.6rem, 5vw, 2.4rem); color: var(--forest-deep); margin-bottom: 35px; }
 
-        /* 響應式優化 */
+        .grid-layout { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+        .info-card { background: #fff; padding: 30px; border-radius: 4px; box-shadow: 0 10px 30px rgba(0,0,0,0.03); }
+
+        .reg-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; }
+        .reg-box { background-color: var(--forest-deep); padding: 30px 10px; text-align: center; border-radius: 4px; }
+        .reg-num { display: block; color: var(--gold-accent); font-size: 1.8rem; font-weight: 900; }
+        .reg-title { color: #FFFFFF; font-size: 0.9rem; }
+        .reg-desc { color: rgba(255,255,255,0.7); font-size: 0.8rem; margin-top: 8px; }
+
+        .table-container { background: white; padding: 15px; border-radius: 8px; overflow-x: auto; box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
+        table { width: 100%; border-collapse: collapse; min-width: 700px; }
+        th { background: var(--forest-deep); color: white; padding: 15px; text-align: left; }
+        td { padding: 15px; border-bottom: 1px solid #f0f0f0; font-size: 0.85rem; }
+
+        .security-section { background-color: var(--bg-dark-section); color: #fff; padding: 80px 8%; }
+        .sec-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 15px; }
+        .sec-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); padding: 25px; }
+
+        .market-news-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+        .news-card { background: #fff; padding: 30px; border-radius: 4px; border-top: 4px solid var(--gold-accent); box-shadow: 0 5px 20px rgba(0,0,0,0.05); }
+
+        .lightbox-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.95); display: none; justify-content: center; align-items: center; z-index: 20000;
+        }
+        .lightbox-overlay img { max-width: 90%; max-height: 90%; object-fit: contain; }
+        .clickable-map { cursor: zoom-in; width: 100%; }
+
         @media (max-width: 768px) {
-            .hero-carousel { height: 60vh; }
+            .main-slider { height: 40vh; }
+            .reg-grid { grid-template-columns: repeat(2, 1fr); }
             section { padding: 50px 6%; }
-            h2 { font-size: 1.6rem; }
         }
-
-        /* 燈箱 */
-        .lightbox {
-            position: fixed; top:0; left:0; width:100%; height:100%;
-            background: rgba(0,0,0,0.9); display:none; z-index:20000;
-            justify-content:center; align-items:center; cursor: zoom-out;
-        }
-        .lightbox img { max-width:90%; max-height:90%; object-fit:contain; }
     </style>
 </head>
 <body>
 
-    <div class="lightbox" id="lb" onclick="this.style.display='none'"><img id="lb-img"></div>
+    <div id="lightbox" class="lightbox-overlay" onclick="closeLightbox()">
+        <img id="lightbox-img" src="" alt="放大圖示">
+    </div>
 
     <nav class="top-nav">
-        <a href="#page1">首頁高度</a>
+        <a href="#page1">首頁</a>
         <a href="#page2">核心理念</a>
         <a href="#page3">建築規範</a>
-        <a href="#hillside">山坡建築</a>
-        <a href="#defense">隱形防禦</a>
         <a href="#page4">圖資證明</a>
         <a href="#page5">土地分類</a>
+        <a href="#page6">配合事項</a>
         <a href="#page7">交易安全</a>
-        <a href="#market">市場資訊</a>
-        <a href="#env-map">環境圖資</a>
+        <a href="#market-info">市場資訊</a>
+        <a href="#invest-insight">投資觀點</a>
+        <a href="#planning-doc">環境圖</a>
         <a href="#page8">地理位置</a>
     </nav>
 
-    <header class="hero-carousel" id="page1">
-        <div class="slide active" style="background-image: url('https://raw.githubusercontent.com/hao713949/Dagui-Section/main/IMG_6480.JPG')">
-            <div class="slide-info"><span class="slide-tag">會館示意 01</span></div>
+    <div class="slider-wrapper" id="page1">
+        <div class="main-slider" id="mainSlider">
+            <div class="slide-item" style="background-image: url('https://raw.githubusercontent.com/hao713949/Dagui-Section/main/villa.jpg')"></div>
+            <div class="slide-item" style="background-image: url('https://raw.githubusercontent.com/hao713949/Dagui-Section/main/villa0.jpg')"></div>
+            <div class="slide-item" style="background-image: url('https://raw.githubusercontent.com/hao713949/Dagui-Section/main/villa1.jpg')"></div>
+            <div class="slide-item" style="background-image: url('https://raw.githubusercontent.com/hao713949/Dagui-Section/main/villa2.jpg')"></div>
+            <div class="slide-item" style="background-image: url('https://raw.githubusercontent.com/hao713949/Dagui-Section/main/villa3.jpg')"></div>
+            <div class="slide-item" style="background-image: url('https://raw.githubusercontent.com/hao713949/Dagui-Section/main/villa4.jpg')"></div>
+            <div class="slide-item" style="background-image: url('https://raw.githubusercontent.com/hao713949/Dagui-Section/main/IMG_6480.JPG')"></div>
+            <div class="slide-item" style="background-image: url('https://raw.githubusercontent.com/hao713949/Dagui-Section/main/IMG_6481.JPG')"></div>
+            <div class="slide-item" style="background-image: url('https://raw.githubusercontent.com/hao713949/Dagui-Section/main/IMG_6482.JPG')"></div>
         </div>
-        <div class="slide" data-src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/IMG_6481.JPG">
-            <div class="slide-info"><span class="slide-tag">會館示意 02</span></div>
+        
+        <div class="thumb-nav" id="thumbNav">
+            <div class="thumb-item active" style="background-image: url('https://raw.githubusercontent.com/hao713949/Dagui-Section/main/villa.jpg')" onclick="scrollToSlide(0)"></div>
+            <div class="thumb-item" style="background-image: url('https://raw.githubusercontent.com/hao713949/Dagui-Section/main/villa0.jpg')" onclick="scrollToSlide(1)"></div>
+            <div class="thumb-item" style="background-image: url('https://raw.githubusercontent.com/hao713949/Dagui-Section/main/villa1.jpg')" onclick="scrollToSlide(2)"></div>
+            <div class="thumb-item" style="background-image: url('https://raw.githubusercontent.com/hao713949/Dagui-Section/main/villa2.jpg')" onclick="scrollToSlide(3)"></div>
+            <div class="thumb-item" style="background-image: url('https://raw.githubusercontent.com/hao713949/Dagui-Section/main/villa3.jpg')" onclick="scrollToSlide(4)"></div>
+            <div class="thumb-item" style="background-image: url('https://raw.githubusercontent.com/hao713949/Dagui-Section/main/villa4.jpg')" onclick="scrollToSlide(5)"></div>
+            <div class="thumb-item" style="background-image: url('https://raw.githubusercontent.com/hao713949/Dagui-Section/main/IMG_6480.JPG')" onclick="scrollToSlide(6)"></div>
+            <div class="thumb-item" style="background-image: url('https://raw.githubusercontent.com/hao713949/Dagui-Section/main/IMG_6481.JPG')" onclick="scrollToSlide(7)"></div>
+            <div class="thumb-item" style="background-image: url('https://raw.githubusercontent.com/hao713949/Dagui-Section/main/IMG_6482.JPG')" onclick="scrollToSlide(8)"></div>
         </div>
-        <div class="slide" data-src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/IMG_6482.JPG">
-            <div class="slide-info"><span class="slide-tag">會館示意 03</span></div>
+    </div>
+
+    <header class="hero-text-section">
+        <span class="sub-title serif">尊嚴養老 ‧ 資產定錨 ‧ 價值升級</span>
+        <h1 class="serif">兩萬坪共老莊園</h1>
+        <p style="font-weight: 700; color: var(--forest-mid); font-size: 1.1rem;">與知己共老，在森林裡預約世外桃源</p>
+        
+        <div class="decoration-line">
+            <p style="font-size: 1rem; max-width: 800px;">
+                <strong>【經歷過，才懂什麼是真正的價值】</strong><br>
+                耗時一年多整合北屯大貴段兩萬坪土地，跳脫傳統建商利潤結構，為尊嚴而生、為未來而築，共同開啟一個有溫度、也更有安全感的「共老」新生活。
+            </p>
         </div>
-        <div class="slide" data-src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/IMG_6483.JPG">
-            <div class="slide-info"><span class="slide-tag">會館示意 04</span></div>
-        </div>
-        <div class="slide" data-src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/vaiil01.jpg">
-            <div class="slide-info"><span class="slide-tag">森活工藝 01</span></div>
-        </div>
-        <div class="slide" data-src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/vaiil1.jpg">
-            <div class="slide-info"><span class="slide-tag">森活工藝 02</span></div>
-        </div>
-        <div class="slide" data-src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/vaiil2.jpg">
-            <div class="slide-info"><span class="slide-tag">森活工藝 03</span></div>
-        </div>
-        <div class="slide" data-src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/vaiil3.jpg">
-            <div class="slide-info"><span class="slide-tag">森活工藝 04</span></div>
-        </div>
-        <div class="slide" data-src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/vaiil4.jpg">
-            <div class="slide-info"><span class="slide-tag">森活工藝 05</span></div>
-        </div>
+        
+        <a href="https://hao713949.github.io/DAKENG-VILLA/project/unit.html" class="query-btn">
+            認購單元資料查詢 ⇄
+        </a>
     </header>
 
     <section id="page2">
-        <span class="section-tag">VISION</span>
-        <h2>核心理念</h2>
-        <div class="card"><p>垂直整合實現地主利益最大化，包含資源整合、合約承攬、專業監管。</p></div>
-    </section>
-
-    <section id="page3" style="background:#f4f4f4;">
-        <span class="section-tag">REGULATION</span>
-        <h2>建築規範</h2>
-        <div class="grid">
-            <div class="card"><h3>特二種住宅</h3><p>建蔽率 20% / 容積率 40%</p></div>
+        <span class="section-tag">STRATEGIC VISION</span>
+        <h2>【地段：離塵不離城，百億醫療紅利的第一圈】</h2>
+        <div class="grid-layout">
+            <div class="info-card"><h3>醫療保險</h3><p>距離台中市立醫院僅 2.7 公里，黃金 6 分鐘車程。</p></div>
+            <div class="info-card"><h3>交通中軸</h3><p>鄰 50 米太原路僅 300 公尺，銜接 74 號快速道路。</p></div>
+            <div class="info-card"><h3>名家定調</h3><p>大陸建設、精湛建設、雲品國際相繼進駐。</p></div>
         </div>
     </section>
 
-    <section id="hillside">
-        <span class="section-tag">ENGINEERING</span>
-        <h2>山坡建築</h2>
-        <p>高規格擋土工程、三維防潮系統、微氣候設計。</p>
-    </section>
-
-    <section id="defense" style="background:var(--forest-deep); color:#fff;">
-        <span class="section-tag">SECURITY</span>
-        <h2>隱形防禦</h2>
-        <p>金庫級物理保全、獨立維生避難空間、氣密生存工程。</p>
+    <section id="page3" style="background-color: #fcfbf7;">
+        <span class="section-tag">REGULATORY SUMMARY</span>
+        <h2>建築規範：建築法規管制</h2>
+        <div class="reg-grid">
+            <div class="reg-box"><span class="reg-num">20%</span><p class="reg-title">建蔽率</p></div>
+            <div class="reg-box"><span class="reg-num">40%</span><p class="reg-title">容積率</p></div>
+            <div class="reg-box"><span class="reg-num">5M</span><p class="reg-title">建築退縮</p></div>
+            <div class="reg-box"><span class="reg-num">1.5M</span><p class="reg-title">人行步道</p></div>
+            <div class="reg-box"><span class="reg-num">免計</span><p class="reg-title">停車空間</p></div>
+        </div>
     </section>
 
     <section id="page4">
-        <span class="section-tag">DOCS</span>
-        <h2>圖資證明</h2>
-        <img src="map.webp" style="width:100%; cursor:pointer;" onclick="showLb(this.src)">
+        <span class="section-tag">SITE DOCUMENTATION</span>
+        <h2>地籍圖資與分區證明</h2>
+        <div style="background:#fff; padding: 20px; border: 1px solid #eee; text-align: center; border-radius: 4px;">
+            <img src="map.webp" alt="地籍圖示" class="clickable-map" onclick="openLightbox(this.src)" loading="lazy">
+        </div>
     </section>
 
-    <section id="page5">
-        <span class="section-tag">LAND USE</span>
-        <h2>土地分類</h2>
-        <p>116 筆土地：包含特二住宅用地、公設預撥地、會館用地。</p>
+    <section id="page5" style="background: #F1F2ED;">
+        <span class="section-tag">ASSET PORTFOLIO</span>
+        <h2>資產分類：116 筆土地資產分類</h2>
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr><th>資產分類</th><th>筆數</th><th>面積（坪）</th><th>權利管理</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>A. 特二種住宅用地</td><td>91 筆</td><td>15,753.14</td><td>48單元；專有面積</td></tr>
+                    <tr class="total-row"><td>總計合購規模</td><td>116 筆</td><td>19,779.15</td><td>統整一次性交易</td></tr>
+                </tbody>
+            </table>
+        </div>
     </section>
 
-    <section id="page7" style="background:#f4f4f4;">
-        <span class="section-tag">TRUST</span>
-        <h2>交易安全</h2>
-        <p>募資未達標或契約未促成，認購款全額原款退還。</p>
+    <section class="security-section" id="page7">
+        <span class="section-tag" style="color: rgba(255,255,255,0.4);">RISK MANAGEMENT</span>
+        <h2>交易安全機制</h2>
+        <div class="sec-grid">
+            <div class="sec-card"><h4>募資未達標</h4><p>資金未能足額募集，交易終止。</p></div>
+            <div class="sec-card"><h4>契約未促成</h4><p>未能簽訂正式買賣契約，交易終止。</p></div>
+            <div class="sec-card"><h4>資金保全</h4><p>認購款項全額無息原款退還。</p></div>
+        </div>
     </section>
 
-    <section id="market">
-        <span class="section-tag">MARKET</span>
-        <h2>市場資訊</h2>
-        <a href="#">大貴段風景區土地最新行情 ↗</a>
-    </section>
-
-    <section id="env-map">
-        <span class="section-tag">ENVIRONMENT</span>
-        <h2>環境圖資</h2>
-        <img src="map2.jpg" style="width:100%; cursor:pointer;" onclick="showLb(this.src)">
-    </section>
-
-    <section id="page8">
-        <span class="section-tag">LOCATION</span>
-        <h2>地理位置</h2>
-        <div style="height:300px; background:#ddd;">Google Maps 預留位置</div>
-    </section>
+    <footer style="padding: 60px 8%; text-align: center; border-top: 1px solid #f0f0f0;">
+        <p class="serif" style="color: var(--forest-deep);">大貴段別墅莊園 ‧ 專案代理</p>
+        <p style="color: #ccc; font-size: 0.75rem; margin-top: 20px;">© 2026 PRECIOUS LAND COLLECTION. ALL RIGHTS RESERVED.</p>
+    </footer>
 
     <script>
-        // 輪播邏輯
-        const slides = document.querySelectorAll('.slide');
-        let current = 0;
+        // 輪播控制邏輯
+        const slider = document.getElementById('mainSlider');
+        const thumbs = document.querySelectorAll('.thumb-item');
 
-        function loadImg(el) {
-            const src = el.getAttribute('data-src');
-            if(src) { el.style.backgroundImage = `url('${src}')`; el.removeAttribute('data-src'); }
+        function scrollToSlide(index) {
+            const width = slider.offsetWidth;
+            slider.scrollTo({
+                left: width * index,
+                behavior: 'smooth'
+            });
+            updateActiveThumb(index);
         }
 
-        function nextSlide() {
-            slides[current].classList.remove('active');
-            current = (current + 1) % slides.length;
-            loadImg(slides[current]); // 切換時才載入圖片
-            slides[current].classList.add('active');
+        function updateActiveThumb(index) {
+            thumbs.forEach(t => t.classList.remove('active'));
+            thumbs[index].classList.add('active');
         }
 
-        // 自動輪播
-        setInterval(nextSlide, 5000);
+        // 監聽滑動事件自動更新縮圖狀態
+        slider.addEventListener('scroll', () => {
+            const index = Math.round(slider.scrollLeft / slider.offsetWidth);
+            updateActiveThumb(index);
+        });
 
-        // 燈箱功能
-        function showLb(src) {
-            const lb = document.getElementById('lb');
-            document.getElementById('lb-img').src = src;
+        // 燈箱控制
+        function openLightbox(src) {
+            const lb = document.getElementById('lightbox');
+            document.getElementById('lightbox-img').src = src;
             lb.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
         }
-
-        // 預載第 2 張圖片
-        window.onload = () => { if(slides[1]) loadImg(slides[1]); };
+        function closeLightbox() {
+            document.getElementById('lightbox').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
     </script>
 </body>
 </html>
