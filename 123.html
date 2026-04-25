@@ -7,9 +7,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@600;900&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
-    
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-
     <style>
         :root {
             --forest-deep: #1B3022;
@@ -20,9 +17,6 @@
             --bg-dark-section: #0F1A13;
             --danger-red: #8B0000;
             --nav-height: 60px;
-            /* 整合第一份代碼的變數 */
-            --main-bg: #f4f4f4;
-            --accent: #d4af37; 
         }
 
         /* 基礎優化 */
@@ -131,19 +125,19 @@
         /* --- Hero 修正版 --- */
         .hero {
             height: 100vh;
-            min-height: 600px;
+            min-height: 700px;
             display: flex;
             align-items: center;
             position: relative;
             padding: 0 8%;
             overflow: hidden;
-            background-color: var(--paper-texture); 
+            background-color: var(--paper-texture);
         }
         .carousel-bg { 
             position: absolute; 
             top: 0; left: 0; 
             width: 100%; height: 100%; 
-            z-index: 1; 
+            z-index: 1;
         }
         .carousel-item {
             position: absolute;
@@ -159,11 +153,60 @@
             content: "";
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(to right, rgba(249, 248, 244, 0.85) 35%, rgba(249, 248, 244, 0.1) 100%);
+            background: linear-gradient(to right, rgba(249, 248, 244, 0.92) 40%, rgba(249, 248, 244, 0.1) 100%);
             z-index: 2;
         }
-        .hero-content { position: relative; z-index: 3; max-width: 850px; }
+        .hero-container {
+            position: relative;
+            z-index: 3;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            gap: 40px;
+        }
+        .hero-content { flex: 1; max-width: 650px; }
 
+        /* --- 側邊相簿網格 --- */
+        .hero-gallery {
+            flex: 1;
+            max-width: 500px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            background: rgba(255,255,255,0.5);
+            padding: 15px;
+            border-radius: 8px;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(181, 164, 120, 0.2);
+        }
+        .gallery-item {
+            position: relative;
+            aspect-ratio: 1/1;
+            overflow: hidden;
+            border-radius: 4px;
+            cursor: zoom-in;
+            border: 1px solid #ddd;
+        }
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        .gallery-item:hover img { transform: scale(1.1); }
+        .gallery-label {
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            background: rgba(27, 48, 34, 0.8);
+            color: var(--gold-accent);
+            font-size: 0.65rem;
+            padding: 2px 5px;
+            text-align: center;
+            font-weight: 700;
+        }
+
+        /* 圖片路徑 */
         .carousel-item:nth-child(1) { background-image: url('https://raw.githubusercontent.com/hao713949/Dagui-Section/main/villa.jpg'); animation-delay: 0s; }
         .carousel-item:nth-child(2) { background-image: url('https://raw.githubusercontent.com/hao713949/Dagui-Section/main/villa0.jpg'); animation-delay: 6s; }
         .carousel-item:nth-child(3) { background-image: url('https://raw.githubusercontent.com/hao713949/Dagui-Section/main/villa1.jpg'); animation-delay: 12s; }
@@ -180,14 +223,14 @@
         }
 
         .hero h1 { 
-            font-size: clamp(2.2rem, 8vw, 3.5rem); 
+            font-size: clamp(2rem, 6vw, 3.2rem); 
             color: var(--forest-deep); 
             letter-spacing: 2px; 
             line-height: 1.2; 
             margin-bottom: 15px; 
         }
         .hero .sub-title { 
-            font-size: clamp(0.95rem, 3vw, 1.3rem); 
+            font-size: clamp(0.9rem, 2.5vw, 1.2rem); 
             color: var(--forest-mid); 
             display: block;
             margin-bottom: 8px;
@@ -259,88 +302,28 @@
             margin-top: 20px; letter-spacing: 1px; border-radius: 4px; 
         }
 
-        /* --- 整合：第一份代碼的 Swiper 樣式 --- */
-        .project-container {
-            width: 100%;
-            margin: 20px 0 40px;
-        }
-        .main-swiper {
-            width: 100%;
-            height: 450px;
-            border-radius: 8px;
-            overflow: hidden;
-            position: relative;
-        }
-        .main-swiper .swiper-slide img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-        }
-        .photo-info {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: linear-gradient(transparent, rgba(0,0,0,0.8));
-            color: white;
-            padding: 40px 20px 20px;
-            pointer-events: none;
-            z-index: 10;
-        }
-        .photo-title {
-            font-size: 1.2rem;
-            letter-spacing: 2px;
-            font-weight: 500;
-            font-family: 'Noto Serif TC', serif;
-        }
-        .thumb-swiper {
-            margin-top: 15px;
-            height: 80px;
-            box-sizing: border-box;
-        }
-        .thumb-swiper .swiper-slide {
-            width: 20%;
-            height: 100%;
-            opacity: 0.4;
-            cursor: pointer;
-            transition: opacity 0.3s;
-        }
-        .thumb-swiper .swiper-slide-thumb-active {
-            opacity: 1;
-            border: 2px solid var(--gold-accent);
-        }
-        .thumb-swiper .swiper-slide img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 4px;
-        }
-        .swiper-button-next, .swiper-button-prev {
-            color: #fff;
-            text-shadow: 0 0 5px rgba(0,0,0,0.5);
-        }
-
         /* --- RWD 手機版優化 --- */
         @media (max-width: 1024px) {
             .reg-grid { grid-template-columns: repeat(3, 1fr); }
+            .hero-container { flex-direction: column; align-items: flex-start; }
+            .hero-gallery { max-width: 100%; }
         }
 
         @media (max-width: 768px) {
             section { padding: 60px 6%; }
-            .hero { padding: 0 6%; text-align: left; }
+            .hero { padding: 80px 6% 40px; height: auto; min-height: 100vh; }
             .top-nav { justify-content: flex-start; }
             .reg-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
             .invest-insight-box { padding: 30px 20px; }
             .market-news-grid { grid-template-columns: 1fr; }
             .sec-grid { grid-template-columns: 1fr; }
             .decoration-line { padding-left: 15px; }
-            .main-swiper { height: 300px; }
         }
 
         @media (max-width: 480px) {
-            .hero h1 { font-size: 2rem; }
+            .hero h1 { font-size: 1.8rem; }
             .reg-grid { grid-template-columns: 1fr; }
+            .hero-gallery { grid-template-columns: repeat(3, 1fr); }
             .reg-box { 
                 padding: 25px 20px; 
                 text-align: left; 
@@ -399,81 +382,63 @@
             <div class="carousel-item"></div>
         </div>
 
-       <div class="hero-content">
-            <span class="sub-title serif">尊嚴養老 ‧ 資產定錨 ‧ 價值升級</span>
-
-            <div class="project-container">
-                <div class="swiper main-swiper">
-                    <div class="swiper-wrapper">
-                        <div class="swiper-slide">
-                            <img src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/IMG_6480.JPG" alt="會館示意圖">
-                            <div class="photo-info"><div class="photo-title">會館示意圖</div></div>
-                        </div>
-                        <div class="swiper-slide">
-                            <img src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/IMG_6481.JPG" alt="會館示意圖">
-                            <div class="photo-info"><div class="photo-title">會館示意圖</div></div>
-                        </div>
-                        <div class="swiper-slide">
-                            <img src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/IMG_6482.JPG" alt="會館示意圖">
-                            <div class="photo-info"><div class="photo-title">會館示意圖</div></div>
-                        </div>
-                        <div class="swiper-slide">
-                            <img src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/IMG_6484.JPG" alt="會館示意圖">
-                            <div class="photo-info"><div class="photo-title">會館示意圖</div></div>
-                        </div>
-                        <div class="swiper-slide">
-                            <img src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/vaiil01.jpg" alt="森活工藝">
-                            <div class="photo-info"><div class="photo-title">森活工藝</div></div>
-                        </div>
-                        <div class="swiper-slide">
-                            <img src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/vaiil3.jpg" alt="森活工藝">
-                            <div class="photo-info"><div class="photo-title">森活工藝</div></div>
-                        </div>
-                        <div class="swiper-slide">
-                            <img src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/vaiil1.jpg" alt="森活工藝">
-                            <div class="photo-info"><div class="photo-title">森活工藝</div></div>
-                        </div>
-                        <div class="swiper-slide">
-                            <img src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/vaiil2.jpg" alt="森活工藝">
-                            <div class="photo-info"><div class="photo-title">森活工藝</div></div>
-                        </div>
-                        <div class="swiper-slide">
-                            <img src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/vaiil4.jpg" alt="森活工藝">
-                            <div class="photo-info"><div class="photo-title">森活工藝</div></div>
-                        </div>
-                    </div>
-                    <div class="swiper-button-next"></div>
-                    <div class="swiper-button-prev"></div>
+       <div class="hero-container">
+           <div class="hero-content">
+                <span class="sub-title serif">尊嚴養老 ‧ 資產定錨 ‧ 價值升級</span>
+                <h1 class="main-title serif">兩萬坪共老莊園</h1>
+                <p style="font-weight: 700; color: var(--forest-mid); font-size: 1.1rem; letter-spacing: 1px;">與知己共老，在森林裡預約世外桃源</p>
+                
+                <div class="decoration-line">
+                    <p style="font-size: 1rem; max-width: 700px; color: var(--text-dark);">
+                        <strong>【經歷過，才懂什麼是真正的價值】</strong><br>
+                        財富的終點，從來不是數字，而是能否優雅地走向人生下半場。耗時一年多整合北屯大貴段兩萬坪土地，跳脫傳統建商利潤結構，為尊嚴而生、為未來而築，共同開啟一個有溫度、也更有安全感的「共老」新生活。
+                    </p>
                 </div>
-                <div class="swiper thumb-swiper">
-                    <div class="swiper-wrapper">
-                        <div class="swiper-slide"><img src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/IMG_6480.JPG"></div>
-                        <div class="swiper-slide"><img src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/IMG_6481.JPG"></div>
-                        <div class="swiper-slide"><img src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/IMG_6482.JPG"></div>
-                        <div class="swiper-slide"><img src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/IMG_6484.JPG"></div>
-                        <div class="swiper-slide"><img src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/vaiil01.jpg"></div>
-                        <div class="swiper-slide"><img src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/vaiil3.jpg"></div>
-                        <div class="swiper-slide"><img src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/vaiil1.jpg"></div>
-                        <div class="swiper-slide"><img src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/vaiil2.jpg"></div>
-                        <div class="swiper-slide"><img src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/vaiil4.jpg"></div>
-                    </div>
-                </div>
+                
+                <a href="https://hao713949.github.io/DAKENG-VILLA/project/unit.html" class="query-btn">
+                    認購單元資料查詢 ⇄
+                </a>
             </div>
 
-            <h1 class="main-title serif">兩萬坪共老莊園</h1>
-            <p style="font-weight: 700; color: var(--forest-mid); font-size: 1.1rem; letter-spacing: 1px;">與知己共老，在森林裡預約世外桃源</p>
-            
-            <div class="decoration-line">
-                <p style="font-size: 1rem; max-width: 700px; color: var(--text-dark);">
-                    <strong>【經歷過，才懂什麼是真正的價值】</strong><br>
-                    財富的終點，從來不是數字，而是能否優雅地走向人生下半場。耗時一年多整合北屯大貴段兩萬坪土地，跳脫傳統建商利潤結構，為尊嚴而生、為未來而築，共同開啟一個有溫度、也更有安全感的「共老」新生活。
-                </p>
+            <div class="hero-gallery">
+                <div class="gallery-item" onclick="openLightbox('https://raw.githubusercontent.com/hao713949/Dagui-Section/main/vaiil01.jpg')">
+                    <img src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/vaiil01.jpg" alt="森活工藝" loading="lazy">
+                    <div class="gallery-label">森活工藝</div>
+                </div>
+                <div class="gallery-item" onclick="openLightbox('https://raw.githubusercontent.com/hao713949/Dagui-Section/main/villa.jpg')">
+                    <img src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/villa.jpg" alt="森活工藝" loading="lazy">
+                    <div class="gallery-label">森活工藝</div>
+                </div>
+                <div class="gallery-item" onclick="openLightbox('https://raw.githubusercontent.com/hao713949/Dagui-Section/main/villa2.jpg')">
+                    <img src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/villa2.jpg" alt="森活工藝" loading="lazy">
+                    <div class="gallery-label">森活工藝</div>
+                </div>
+                <div class="gallery-item" onclick="openLightbox('https://raw.githubusercontent.com/hao713949/Dagui-Section/main/villa3.jpg')">
+                    <img src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/villa3.jpg" alt="森活工藝" loading="lazy">
+                    <div class="gallery-label">森活工藝</div>
+                </div>
+                <div class="gallery-item" onclick="openLightbox('https://raw.githubusercontent.com/hao713949/Dagui-Section/main/villa4.jpg')">
+                    <img src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/villa4.jpg" alt="森活工藝" loading="lazy">
+                    <div class="gallery-label">森活工藝</div>
+                </div>
+                <div class="gallery-item" onclick="openLightbox('https://raw.githubusercontent.com/hao713949/Dagui-Section/main/IMG_6480.JPG')">
+                    <img src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/IMG_6480.JPG" alt="會館示意" loading="lazy">
+                    <div class="gallery-label">會館示意</div>
+                </div>
+                <div class="gallery-item" onclick="openLightbox('https://raw.githubusercontent.com/hao713949/Dagui-Section/main/IMG_6481.JPG')">
+                    <img src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/IMG_6481.JPG" alt="會館示意" loading="lazy">
+                    <div class="gallery-label">會館示意</div>
+                </div>
+                <div class="gallery-item" onclick="openLightbox('https://raw.githubusercontent.com/hao713949/Dagui-Section/main/IMG_6482.JPG')">
+                    <img src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/IMG_6482.JPG" alt="會館示意" loading="lazy">
+                    <div class="gallery-label">會館示意</div>
+                </div>
+                <div class="gallery-item" onclick="openLightbox('https://raw.githubusercontent.com/hao713949/Dagui-Section/main/IMG_6484.JPG')">
+                    <img src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/IMG_6484.JPG" alt="會館示意" loading="lazy">
+                    <div class="gallery-label">會館示意</div>
+                </div>
             </div>
-            
-            <a href="https://hao713949.github.io/DAKENG-VILLA/project/unit.html" class="query-btn">
-                認購單元資料查詢 ⇄
-            </a>
-        </div>
+       </div>
     </header>
 
     <section id="page2">
@@ -761,35 +726,7 @@
         <p style="color: #ccc; font-size: 0.75rem; margin-top: 20px; letter-spacing: 1px;">© 2026 PRECIOUS LAND COLLECTION. ALL RIGHTS RESERVED.</p>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-
     <script>
-        // --- 整合：Swiper 初始化邏輯 ---
-        var swiperThumbs = new Swiper(".thumb-swiper", {
-            spaceBetween: 10,
-            slidesPerView: 5, 
-            freeMode: true,
-            watchSlidesProgress: true,
-            breakpoints: {
-                320: { slidesPerView: 3 },
-                768: { slidesPerView: 5 }
-            }
-        });
-
-        var swiperMain = new Swiper(".main-swiper", {
-            spaceBetween: 10,
-            navigation: {
-                nextEl: ".swiper-button-next",
-                prevEl: ".swiper-button-prev",
-            },
-            thumbs: {
-                swiper: swiperThumbs, 
-            },
-            effect: "slide", 
-            loop: true
-        });
-
-        // --- 原有的燈箱與功能邏輯 ---
         function openLightbox(src) {
             const lightbox = document.getElementById('lightbox');
             const lightboxImg = document.getElementById('lightbox-img');
