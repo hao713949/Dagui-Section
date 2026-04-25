@@ -19,35 +19,26 @@
             --nav-height: 60px;
         }
 
-        /* 基礎優化 */
+        /* 基礎設置 */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
         body {
             background-color: var(--paper-texture);
             color: var(--text-dark);
-            font-family: 'Noto Sans TC', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-family: 'Noto Sans TC', sans-serif;
             line-height: 1.7;
-            overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
         }
+        h1, h2, h3, .serif { font-family: 'Noto Serif TC', serif; font-weight: 900; }
 
-        h1, h2, h3, h4, .serif { font-family: 'Noto Serif TC', serif; font-weight: 900; }
-
-        /* --- 頂部導覽列 --- */
+        /* 導覽列 */
         .top-nav {
-            position: fixed;
-            top: 0; width: 100%;
+            position: fixed; top: 0; width: 100%;
             background: rgba(255, 255, 255, 0.98);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
-            z-index: 10000;
-            height: var(--nav-height);
-            display: flex;
-            align-items: center;
-            border-bottom: 1px solid rgba(27, 48, 34, 0.1);
-            overflow-x: auto;
-            white-space: nowrap;
-            scrollbar-width: none;
+            backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
+            z-index: 10000; height: var(--nav-height);
+            display: flex; align-items: center; border-bottom: 1px solid rgba(0,0,0,0.1);
+            overflow-x: auto; white-space: nowrap; scrollbar-width: none;
         }
         .top-nav::-webkit-scrollbar { display: none; }
         .top-nav a {
@@ -56,103 +47,60 @@
             height: 100%; display: flex; align-items: center;
         }
 
-        /* --- 新增：9張照片滑動輪播區 --- */
-        .slider-wrapper {
-            margin-top: var(--nav-height);
-            background: #000;
-            position: relative;
-            width: 100%;
-        }
+        /* 9張照片滑動輪播區 */
+        .slider-section { margin-top: var(--nav-height); background: #000; width: 100%; }
         .main-slider {
-            height: 60vh;
-            min-height: 400px;
-            display: flex;
-            overflow-x: auto;
-            scroll-snap-type: x mandatory;
-            scrollbar-width: none;
-            -webkit-overflow-scrolling: touch;
+            height: 65vh; min-height: 400px; display: flex;
+            overflow-x: auto; scroll-snap-type: x mandatory;
+            scrollbar-width: none; -webkit-overflow-scrolling: touch;
         }
         .main-slider::-webkit-scrollbar { display: none; }
-        .slide-item {
-            flex: 0 0 100%;
-            scroll-snap-align: start;
-            height: 100%;
-            background-size: cover;
-            background-position: center;
-        }
-        /* 縮圖列 */
+        .slide-item { flex: 0 0 100%; scroll-snap-align: start; background-size: cover; background-position: center; }
+        
         .thumb-nav {
-            display: flex;
-            gap: 5px;
-            padding: 10px 5%;
-            background: var(--bg-dark-section);
-            overflow-x: auto;
-            scrollbar-width: none;
+            display: flex; gap: 5px; padding: 10px 5%; background: var(--bg-dark-section);
+            overflow-x: auto; scrollbar-width: none;
         }
         .thumb-nav::-webkit-scrollbar { display: none; }
         .thumb-item {
-            width: 80px; height: 50px;
-            flex-shrink: 0;
-            background-size: cover;
-            background-position: center;
-            cursor: pointer;
-            border: 2px solid transparent;
-            opacity: 0.6;
-            transition: 0.3s;
+            width: 80px; height: 50px; flex-shrink: 0; background-size: cover; background-position: center;
+            cursor: pointer; opacity: 0.5; transition: 0.3s; border: 2px solid transparent;
         }
-        .thumb-item.active { border-color: var(--gold-accent); opacity: 1; }
+        .thumb-item.active { opacity: 1; border-color: var(--gold-accent); }
 
-        /* --- 原有 Hero 內容區 (調整為標題區) --- */
-        .hero-text-section {
-            padding: 60px 8% 40px;
-            background-color: var(--paper-texture);
-        }
-        .hero-text-section h1 { font-size: clamp(2.2rem, 8vw, 3.5rem); color: var(--forest-deep); margin-bottom: 15px; }
-        .hero-text-section .sub-title { font-size: 1.2rem; color: var(--forest-mid); letter-spacing: 2px; }
-
-        /* --- 其他原本代碼保留 --- */
-        .decoration-line { position: relative; padding-left: 20px; margin: 25px 0; }
-        .decoration-line::before { content: ""; position: absolute; left: 0; top: 5px; bottom: 5px; width: 3px; background-color: var(--gold-accent); }
-        .query-btn {
-            display: inline-block; padding: 14px 28px; background-color: var(--forest-deep);
-            color: var(--gold-accent); text-decoration: none; border: 1px solid var(--gold-accent);
-            border-radius: 4px; font-weight: 700; transition: 0.3s;
-        }
-
-        section { padding: 80px 8%; position: relative; }
+        /* 內容區塊 */
+        section { padding: 80px 8%; position: relative; scroll-margin-top: var(--nav-height); }
         .section-tag { font-size: 0.75rem; letter-spacing: 4px; color: var(--gold-accent); display: block; margin-bottom: 12px; font-weight: 700; }
         h2 { font-size: clamp(1.6rem, 5vw, 2.4rem); color: var(--forest-deep); margin-bottom: 35px; }
 
+        .hero-text { padding: 60px 8% 40px; }
+        .decoration-line { border-left: 3px solid var(--gold-accent); padding-left: 20px; margin: 25px 0; }
+        
         .grid-layout { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
         .info-card { background: #fff; padding: 30px; border-radius: 4px; box-shadow: 0 10px 30px rgba(0,0,0,0.03); }
 
         .reg-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; }
         .reg-box { background-color: var(--forest-deep); padding: 30px 10px; text-align: center; border-radius: 4px; }
         .reg-num { display: block; color: var(--gold-accent); font-size: 1.8rem; font-weight: 900; }
-        .reg-title { color: #FFFFFF; font-size: 0.9rem; }
-        .reg-desc { color: rgba(255,255,255,0.7); font-size: 0.8rem; margin-top: 8px; }
+        .reg-title { color: #FFFFFF; font-size: 0.9rem; margin-top: 5px; }
 
         .table-container { background: white; padding: 15px; border-radius: 8px; overflow-x: auto; box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
         table { width: 100%; border-collapse: collapse; min-width: 700px; }
         th { background: var(--forest-deep); color: white; padding: 15px; text-align: left; }
         td { padding: 15px; border-bottom: 1px solid #f0f0f0; font-size: 0.85rem; }
 
-        .security-section { background-color: var(--bg-dark-section); color: #fff; padding: 80px 8%; }
-        .sec-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 15px; }
-        .sec-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); padding: 25px; }
-
         .market-news-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
         .news-card { background: #fff; padding: 30px; border-radius: 4px; border-top: 4px solid var(--gold-accent); box-shadow: 0 5px 20px rgba(0,0,0,0.05); }
+        .price-highlight { color: var(--danger-red); font-weight: 900; font-size: 1.2rem; }
 
         .lightbox-overlay {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: rgba(0, 0, 0, 0.95); display: none; justify-content: center; align-items: center; z-index: 20000;
         }
         .lightbox-overlay img { max-width: 90%; max-height: 90%; object-fit: contain; }
-        .clickable-map { cursor: zoom-in; width: 100%; }
 
         @media (max-width: 768px) {
-            .main-slider { height: 40vh; }
+            .main-slider { height: 45vh; }
             .reg-grid { grid-template-columns: repeat(2, 1fr); }
             section { padding: 50px 6%; }
         }
@@ -160,9 +108,7 @@
 </head>
 <body>
 
-    <div id="lightbox" class="lightbox-overlay" onclick="closeLightbox()">
-        <img id="lightbox-img" src="" alt="放大圖示">
-    </div>
+    <div id="lightbox" class="lightbox-overlay" onclick="closeLightbox()"><img id="lightbox-img"></div>
 
     <nav class="top-nav">
         <a href="#page1">首頁</a>
@@ -178,7 +124,7 @@
         <a href="#page8">地理位置</a>
     </nav>
 
-    <div class="slider-wrapper" id="page1">
+    <div class="slider-section" id="page1">
         <div class="main-slider" id="mainSlider">
             <div class="slide-item" style="background-image: url('https://raw.githubusercontent.com/hao713949/Dagui-Section/main/villa.jpg')"></div>
             <div class="slide-item" style="background-image: url('https://raw.githubusercontent.com/hao713949/Dagui-Section/main/villa0.jpg')"></div>
@@ -190,8 +136,7 @@
             <div class="slide-item" style="background-image: url('https://raw.githubusercontent.com/hao713949/Dagui-Section/main/IMG_6481.JPG')"></div>
             <div class="slide-item" style="background-image: url('https://raw.githubusercontent.com/hao713949/Dagui-Section/main/IMG_6482.JPG')"></div>
         </div>
-        
-        <div class="thumb-nav" id="thumbNav">
+        <div class="thumb-nav">
             <div class="thumb-item active" style="background-image: url('https://raw.githubusercontent.com/hao713949/Dagui-Section/main/villa.jpg')" onclick="scrollToSlide(0)"></div>
             <div class="thumb-item" style="background-image: url('https://raw.githubusercontent.com/hao713949/Dagui-Section/main/villa0.jpg')" onclick="scrollToSlide(1)"></div>
             <div class="thumb-item" style="background-image: url('https://raw.githubusercontent.com/hao713949/Dagui-Section/main/villa1.jpg')" onclick="scrollToSlide(2)"></div>
@@ -204,21 +149,13 @@
         </div>
     </div>
 
-    <header class="hero-text-section">
-        <span class="sub-title serif">尊嚴養老 ‧ 資產定錨 ‧ 價值升級</span>
+    <header class="hero-text">
+        <span class="serif" style="color:var(--forest-mid)">尊嚴養老 ‧ 資產定錨 ‧ 價值升級</span>
         <h1 class="serif">兩萬坪共老莊園</h1>
-        <p style="font-weight: 700; color: var(--forest-mid); font-size: 1.1rem;">與知己共老，在森林裡預約世外桃源</p>
-        
         <div class="decoration-line">
-            <p style="font-size: 1rem; max-width: 800px;">
-                <strong>【經歷過，才懂什麼是真正的價值】</strong><br>
-                耗時一年多整合北屯大貴段兩萬坪土地，跳脫傳統建商利潤結構，為尊嚴而生、為未來而築，共同開啟一個有溫度、也更有安全感的「共老」新生活。
-            </p>
+            <p><strong>【經歷過，才懂什麼是真正的價值】</strong><br>耗時一年多整合北屯大貴段兩萬坪土地，跳脫傳統建商利潤結構，為尊嚴而生、為未來而築，開啟更有安全感的「共老」新生活。</p>
         </div>
-        
-        <a href="https://hao713949.github.io/DAKENG-VILLA/project/unit.html" class="query-btn">
-            認購單元資料查詢 ⇄
-        </a>
+        <a href="https://hao713949.github.io/DAKENG-VILLA/project/unit.html" style="display:inline-block; padding:12px 25px; background:var(--forest-deep); color:var(--gold-accent); text-decoration:none; border-radius:4px; font-weight:700;">認購單元資料查詢 ⇄</a>
     </header>
 
     <section id="page2">
@@ -226,13 +163,13 @@
         <h2>【地段：離塵不離城，百億醫療紅利的第一圈】</h2>
         <div class="grid-layout">
             <div class="info-card"><h3>醫療保險</h3><p>距離台中市立醫院僅 2.7 公里，黃金 6 分鐘車程。</p></div>
-            <div class="info-card"><h3>交通中軸</h3><p>鄰 50 米太原路僅 300 公尺，銜接 74 號快速道路。</p></div>
-            <div class="info-card"><h3>名家定調</h3><p>大陸建設、精湛建設、雲品國際相繼進駐。</p></div>
+            <div class="info-card"><h3>交通中軸</h3><p>銜接 74 號快速道路，市心繁華僅在咫尺。</p></div>
+            <div class="info-card"><h3>名家定調</h3><p>指標建商相繼進駐。選擇最聰明的入場方式。</p></div>
         </div>
     </section>
 
-    <section id="page3" style="background-color: #fcfbf7;">
-        <span class="section-tag">REGULATORY SUMMARY</span>
+    <section id="page3" style="background:#fcfbf7;">
+        <span class="section-tag">REGULATORY</span>
         <h2>建築規範：建築法規管制</h2>
         <div class="reg-grid">
             <div class="reg-box"><span class="reg-num">20%</span><p class="reg-title">建蔽率</p></div>
@@ -244,80 +181,77 @@
     </section>
 
     <section id="page4">
-        <span class="section-tag">SITE DOCUMENTATION</span>
+        <span class="section-tag">DOCUMENTATION</span>
         <h2>地籍圖資與分區證明</h2>
-        <div style="background:#fff; padding: 20px; border: 1px solid #eee; text-align: center; border-radius: 4px;">
-            <img src="map.webp" alt="地籍圖示" class="clickable-map" onclick="openLightbox(this.src)" loading="lazy">
+        <div style="background:#fff; padding:20px; border:1px solid #eee; text-align:center;">
+            <img src="map.webp" style="width:100%; cursor:zoom-in;" onclick="openLightbox(this.src)">
+            <p style="color:var(--gold-accent); margin-top:15px; font-weight:700;">※ 總價已完整包含公設地及合購地</p>
         </div>
     </section>
 
-    <section id="page5" style="background: #F1F2ED;">
-        <span class="section-tag">ASSET PORTFOLIO</span>
-        <h2>資產分類：116 筆土地資產分類</h2>
+    <section id="page5" style="background:#F1F2ED;">
+        <span class="section-tag">PORTFOLIO</span>
+        <h2>資產分類：116 筆土地</h2>
         <div class="table-container">
             <table>
-                <thead>
-                    <tr><th>資產分類</th><th>筆數</th><th>面積（坪）</th><th>權利管理</th></tr>
-                </thead>
-                <tbody>
-                    <tr><td>A. 特二種住宅用地</td><td>91 筆</td><td>15,753.14</td><td>48單元；專有面積</td></tr>
-                    <tr class="total-row"><td>總計合購規模</td><td>116 筆</td><td>19,779.15</td><td>統整一次性交易</td></tr>
-                </tbody>
+                <tr><th>資產分類</th><th>筆數</th><th>面積（坪）</th><th>權利管理</th></tr>
+                <tr><td>A. 特二種住宅用地</td><td>91 筆</td><td>15,753.14</td><td>48單元；專有面積</td></tr>
+                <tr style="font-weight:900; background:#f9f9f9;"><td>總計合購規模</td><td>116 筆</td><td>19,779.15</td><td>統整一次性交易</td></tr>
             </table>
         </div>
     </section>
 
-    <section class="security-section" id="page7">
-        <span class="section-tag" style="color: rgba(255,255,255,0.4);">RISK MANAGEMENT</span>
-        <h2>交易安全機制</h2>
-        <div class="sec-grid">
-            <div class="sec-card"><h4>募資未達標</h4><p>資金未能足額募集，交易終止。</p></div>
-            <div class="sec-card"><h4>契約未促成</h4><p>未能簽訂正式買賣契約，交易終止。</p></div>
-            <div class="sec-card"><h4>資金保全</h4><p>認購款項全額無息原款退還。</p></div>
+    <section id="page7" style="background:var(--bg-dark-section); color:#fff;">
+        <span class="section-tag" style="color:rgba(255,255,255,0.4);">SECURITY</span>
+        <h2 style="color:#fff;">交易安全機制</h2>
+        <p>確保資金安全性：<span style="color:var(--gold-accent); font-weight:700;">若案件不成，100% 原款退回。</span></p>
+    </section>
+
+    <section id="market-info">
+        <span class="section-tag">MARKET</span>
+        <h2>市場資訊與區域案例</h2>
+        <div class="market-news-grid">
+            <div class="news-card"><h4>大貴段風景區土地</h4><p class="price-highlight">11.99 萬/坪</p></div>
+            <div class="news-card"><h4>區域實價案例：樸山村</h4><p class="price-highlight">18 ~ 22 萬/坪</p></div>
         </div>
     </section>
 
-    <footer style="padding: 60px 8%; text-align: center; border-top: 1px solid #f0f0f0;">
-        <p class="serif" style="color: var(--forest-deep);">大貴段別墅莊園 ‧ 專案代理</p>
-        <p style="color: #ccc; font-size: 0.75rem; margin-top: 20px;">© 2026 PRECIOUS LAND COLLECTION. ALL RIGHTS RESERVED.</p>
+    <section id="page8">
+        <span class="section-tag">LOCATION</span>
+        <h2>地理位置</h2>
+        <div style="height:400px; background:#eee;"><iframe src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3640.2185567303036!2d120.74348141151604!3d24.164660842880795!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMjTCsDA5JzUyLjgiTiAxMjDCsDQ0JzQ1LjgiRQ!5e0!3m2!1szh-TW!2stw!4v1714546056339!5m2!1szh-TW!2stw" width="100%" height="100%" style="border:0;"></iframe></div>
+    </section>
+
+    <footer style="padding:50px; text-align:center; border-top:1px solid #eee;">
+        <p class="serif">大貴段別墅莊園 ‧ 專案代理</p>
+        <p style="color:#ccc; font-size:0.75rem; margin-top:10px;">© 2026 PRECIOUS LAND COLLECTION.</p>
     </footer>
 
     <script>
-        // 輪播控制邏輯
         const slider = document.getElementById('mainSlider');
         const thumbs = document.querySelectorAll('.thumb-item');
 
-        function scrollToSlide(index) {
-            const width = slider.offsetWidth;
-            slider.scrollTo({
-                left: width * index,
-                behavior: 'smooth'
-            });
-            updateActiveThumb(index);
+        function scrollToSlide(idx) {
+            slider.scrollTo({ left: slider.offsetWidth * idx, behavior: 'smooth' });
+            updateThumbs(idx);
         }
 
-        function updateActiveThumb(index) {
+        function updateThumbs(idx) {
             thumbs.forEach(t => t.classList.remove('active'));
-            thumbs[index].classList.add('active');
+            thumbs[idx].classList.add('active');
         }
 
-        // 監聽滑動事件自動更新縮圖狀態
         slider.addEventListener('scroll', () => {
-            const index = Math.round(slider.scrollLeft / slider.offsetWidth);
-            updateActiveThumb(index);
+            const idx = Math.round(slider.scrollLeft / slider.offsetWidth);
+            updateThumbs(idx);
         });
 
-        // 燈箱控制
         function openLightbox(src) {
             const lb = document.getElementById('lightbox');
             document.getElementById('lightbox-img').src = src;
             lb.style.display = 'flex';
-            document.body.style.overflow = 'hidden';
         }
-        function closeLightbox() {
-            document.getElementById('lightbox').style.display = 'none';
-            document.body.style.overflow = 'auto';
-        }
+        function closeLightbox() { document.getElementById('lightbox').style.display = 'none'; }
     </script>
 </body>
 </html>
