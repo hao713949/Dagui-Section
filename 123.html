@@ -33,7 +33,7 @@
 
         h1, h2, h3, h4, .serif { font-family: 'Noto Serif TC', serif; font-weight: 900; }
 
-        /* --- 燈箱功能樣式 --- */
+        /* --- 燈箱功能樣式優化 --- */
         .lightbox-overlay {
             position: fixed;
             top: 0; left: 0;
@@ -43,15 +43,33 @@
             justify-content: center;
             align-items: center;
             z-index: 20000;
-            cursor: zoom-out;
+            cursor: default;
             padding: 20px;
         }
         .lightbox-overlay img {
-            max-width: 100%;
-            max-height: 100%;
+            max-width: 90%;
+            max-height: 85vh;
             object-fit: contain;
             box-shadow: 0 0 30px rgba(0,0,0,0.5);
+            transition: transform 0.3s ease;
         }
+        .lightbox-close {
+            position: absolute;
+            top: 20px; right: 20px;
+            color: white; font-size: 40px; cursor: pointer; z-index: 20001;
+        }
+        .lightbox-nav {
+            position: absolute;
+            top: 50%; transform: translateY(-50%);
+            background: rgba(255,255,255,0.1);
+            color: white; border: none;
+            padding: 20px 15px; cursor: pointer;
+            font-size: 2rem; transition: 0.3s;
+        }
+        .lightbox-nav:hover { background: rgba(255,255,255,0.2); }
+        .lb-prev { left: 10px; }
+        .lb-next { right: 10px; }
+
         .clickable-map { cursor: zoom-in; transition: 0.3s; width: 100%; height: auto; }
         .clickable-map:hover { opacity: 0.9; }
 
@@ -371,6 +389,7 @@
             .market-news-grid { grid-template-columns: 1fr; }
             .sec-grid { grid-template-columns: 1fr; }
             .decoration-line { padding-left: 15px; }
+            .lightbox-nav { padding: 15px 10px; font-size: 1.5rem; }
         }
 
         @media (max-width: 480px) {
@@ -390,8 +409,11 @@
 </head>
 <body>
 
-    <div id="lightbox" class="lightbox-overlay" onclick="closeLightbox()">
+    <div id="lightbox" class="lightbox-overlay">
+        <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+        <button class="lightbox-nav lb-prev" onclick="changeLightboxSlide(-1)">&#10094;</button>
         <img id="lightbox-img" src="" alt="放大圖示">
+        <button class="lightbox-nav lb-next" onclick="changeLightboxSlide(1)">&#10095;</button>
     </div>
 
     <nav class="top-nav">
@@ -438,9 +460,9 @@
 
             <div class="hero-gallery">
                 <div class="main-display">
-                    <button class="nav-arrow prev-arrow" onclick="changeSlide(-1)">&lt;</button>
-                    <img id="active-main-img" src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/IMG_6480.JPG" alt="會館示意" onclick="openLightbox(this.src)">
-                    <button class="nav-arrow next-arrow" onclick="changeSlide(1)">&gt;</button>
+                    <button class="nav-arrow prev-arrow" onclick="changeSlide(-1)"><</button>
+                    <img id="active-main-img" src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/IMG_6480.JPG" alt="會館示意" onclick="openLightboxFromHero()">
+                    <button class="nav-arrow next-arrow" onclick="changeSlide(1)">></button>
                     <div class="gallery-label" id="main-label">會館示意</div>
                 </div>
 
@@ -454,12 +476,12 @@
                     <div class="thumb-item" onclick="updateMain(6)"><img src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/villa2.jpg"></div>
                     <div class="thumb-item" onclick="updateMain(7)"><img src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/villa3.jpg"></div>
                     <div class="thumb-item" onclick="updateMain(8)"><img src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/villa4.jpg"></div>
-                    <div class="thumb-item" onclick="updateMain(8)"><img src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/villa5.jpg"></div>
-                    <div class="thumb-item" onclick="updateMain(8)"><img src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/casa1.jpg"></div>
-                    <div class="thumb-item" onclick="updateMain(8)"><img src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/casa2.jpg"></div>
-                    <div class="thumb-item" onclick="updateMain(8)"><img src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/casa3.jpg"></div>
-                    <div class="thumb-item" onclick="updateMain(8)"><img src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/casa4.jpg"></div>
-                    <div class="thumb-item" onclick="updateMain(8)"><img src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/casa5.jpg"></div>
+                    <div class="thumb-item" onclick="updateMain(9)"><img src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/villa5.jpg"></div>
+                    <div class="thumb-item" onclick="updateMain(10)"><img src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/casa1.jpg"></div>
+                    <div class="thumb-item" onclick="updateMain(11)"><img src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/casa2.jpg"></div>
+                    <div class="thumb-item" onclick="updateMain(12)"><img src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/casa3.jpg"></div>
+                    <div class="thumb-item" onclick="updateMain(13)"><img src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/casa4.jpg"></div>
+                    <div class="thumb-item" onclick="updateMain(14)"><img src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/casa5.jpg"></div>
                 </div>
             </div>
        </div>
@@ -559,17 +581,17 @@
 
         <div style="background:#fff; padding: 20px; border: 1px solid #eee; text-align: center; margin-bottom: 25px; border-radius: 4px;">
             <h3 class="serif" style="margin-bottom:15px; color: var(--forest-deep); font-size: 1.1rem;">公設地及合購地標示圖</h3>
-            <img src="map.webp" alt="地籍圖示" class="clickable-map" onclick="openLightbox(this.src)" loading="lazy">
+            <img src="map.webp" alt="地籍圖示" class="clickable-map" onclick="openSingleLightbox(this.src)" loading="lazy">
             <p style="color: var(--gold-accent); font-weight: 700; margin-top: 15px; font-size: 0.9rem;">※ 買賣總價款已完整包含「公設地」及「合購地」。</p>
         </div>
         <div class="grid-layout">
             <div style="background:#fff; padding:15px; border:1px solid #eee; text-align:center; border-radius:4px;">
                 <h3 class="serif" style="font-size: 1rem; margin-bottom:10px;">大坑細部計畫圖</h3>
-                <img src="Zoning.jpg" alt="大坑細部計畫圖" class="clickable-map" onclick="openLightbox(this.src)" loading="lazy">
+                <img src="Zoning.jpg" alt="大坑細部計畫圖" class="clickable-map" onclick="openSingleLightbox(this.src)" loading="lazy">
             </div>
             <div style="background:#fff; padding:15px; border:1px solid #eee; text-align:center; border-radius:4px;">
                 <h3 class="serif" style="font-size: 1rem; margin-bottom:10px;">都發局使用分區證明</h3>
-                <img src="Zoning1.jpg" alt="都發局使用分區證明" class="clickable-map" onclick="openLightbox(this.src)" loading="lazy">
+                <img src="Zoning1.jpg" alt="都發局使用分區證明" class="clickable-map" onclick="openSingleLightbox(this.src)" loading="lazy">
             </div>
         </div>
     </section>
@@ -647,7 +669,7 @@
         <div class="market-news-grid">
             <div class="news-card">
                 <h4>大貴段風景區土地 <span class="price-highlight">11.99萬</span> <br>需配合整體開發計畫</h4>
-                <p>北屯區罕見 11 字頭低單價建地，投資、自用皆宜，抗通膨保值首選。</p>
+                <p>北屯區罕見 11 字頭低單價建地，投資、自用皆宜，抗通罰保值首選。</p>
                 <a href="https://hao713949.github.io/Dagui-Section/%E5%A4%A7%E8%B2%B4%E9%A2%A8%E6%99%AF%E5%8D%80.html" target="_blank" class="news-link">開啟連結 ↗</a>
             </div>
 
@@ -721,7 +743,7 @@
         <h2>大坑風景區環境圖</h2>
         <div style="background:#fff; padding: 10px; border: 1px solid #eee; border-radius: 8px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.05);">
             <h3 class="serif" style="margin: 15px 0; color: var(--forest-deep); font-size: 1.1rem;">環 境 總 覽 圖</h3>
-            <img src="map2.jpg" alt="環境圖" class="clickable-map" onclick="openLightbox(this.src)" loading="lazy">
+            <img src="map2.jpg" alt="環境圖" class="clickable-map" onclick="openSingleLightbox(this.src)" loading="lazy">
             <p style="color: #666; margin: 15px 0; font-size: 0.9rem;">
                 ※ 鄰近台中市立醫院、74快速道路約 6-8 分鐘車程。(點擊可放大)
             </p>
@@ -737,11 +759,11 @@
         <div class="map-container">
             <iframe 
                 title="Google Map Location"
-                src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3640.2185567303036!2d120.74348141151604!3d24.164660842880795!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMjTCsDA5JzUyLjgiTiAxMjDCsDQ0JzQ1LjgiRQ!5e0!3m2!1szh-TW!2stw!4v1714546056339!5m2!1szh-TW!2stw" 
+                src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14559.3908868612!2d120.7397751!3d24.1770678!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x34691784918e7e17%3A0x634d0699042b4e9!2z5Y-w5Lit5biC56uL6Yar6Zmi6Y6C5Y6f5YiG6Zmi!5e0!3m2!1szh-TW!2stw!4v1714030000000!5m2!1szh-TW!2stw" 
                 width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy">
             </iframe>
         </div>
-        <a href="https://www.google.com/maps/search/?api=1&query=24.164660847576158,120.7460563396627" target="_blank" rel="noopener noreferrer" class="map-btn">開啟 Google 地圖導航</a>
+        <a href="https://maps.app.goo.gl/M4vBv5T8Z9J9p9p9" target="_blank" rel="noopener noreferrer" class="map-btn">開啟 Google 地圖導航</a>
     </section>
 
     <footer style="padding: 60px 8%; text-align: center; background: #fff; border-top: 1px solid #f0f0f0;">
@@ -770,14 +792,15 @@
         ];
         
         let currentGalleryIndex = 0;
+        let isLightboxGallery = false;
 
+        // 更新 Hero 區主圖
         function updateMain(index) {
             currentGalleryIndex = index;
             const mainImg = document.getElementById('active-main-img');
             const label = document.getElementById('main-label');
             const thumbs = document.querySelectorAll('.thumb-item');
             
-            // 切換主圖帶淡入效果
             mainImg.style.opacity = '0';
             setTimeout(() => {
                 mainImg.src = galleryImages[currentGalleryIndex].url;
@@ -785,12 +808,10 @@
                 mainImg.style.opacity = '1';
             }, 200);
 
-            // 更新縮圖 Active 狀態
             thumbs.forEach((t, i) => {
                 t.classList.toggle('active', i === currentGalleryIndex);
             });
 
-            // 縮圖自動滾動至可見區域
             const container = document.getElementById('thumb-container');
             const activeThumb = thumbs[currentGalleryIndex];
             if(activeThumb) {
@@ -801,6 +822,7 @@
             }
         }
 
+        // Hero 區箭頭切換
         function changeSlide(step) {
             let newIndex = currentGalleryIndex + step;
             if (newIndex >= galleryImages.length) newIndex = 0;
@@ -808,23 +830,54 @@
             updateMain(newIndex);
         }
 
-        function openLightbox(src) {
+        // 燈箱：從 Hero 區進入（具備連續翻頁功能）
+        function openLightboxFromHero() {
+            isLightboxGallery = true;
+            document.querySelector('.lb-prev').style.display = 'block';
+            document.querySelector('.lb-next').style.display = 'block';
+            showLightbox(galleryImages[currentGalleryIndex].url);
+        }
+
+        // 燈箱：點擊單張圖資進入（不顯示切換箭頭）
+        function openSingleLightbox(src) {
+            isLightboxGallery = false;
+            document.querySelector('.lb-prev').style.display = 'none';
+            document.querySelector('.lb-next').style.display = 'none';
+            showLightbox(src);
+        }
+
+        function showLightbox(src) {
             const lightbox = document.getElementById('lightbox');
             const lightboxImg = document.getElementById('lightbox-img');
-            if(!src) return;
             lightboxImg.src = src;
             lightbox.style.display = 'flex';
             document.body.style.overflow = 'hidden';
         }
 
         function closeLightbox() {
-            const lightbox = document.getElementById('lightbox');
-            lightbox.style.display = 'none';
+            document.getElementById('lightbox').style.display = 'none';
             document.body.style.overflow = 'auto'; 
         }
 
+        // 燈箱內左右切換
+        function changeLightboxSlide(step) {
+            if (!isLightboxGallery) return;
+            currentGalleryIndex += step;
+            if (currentGalleryIndex >= galleryImages.length) currentGalleryIndex = 0;
+            if (currentGalleryIndex < 0) currentGalleryIndex = galleryImages.length - 1;
+            
+            const lightboxImg = document.getElementById('lightbox-img');
+            lightboxImg.src = galleryImages[currentGalleryIndex].url;
+            updateMain(currentGalleryIndex); // 同步更新 Hero 區狀態
+        }
+
+        // 鍵盤支援
         document.addEventListener('keydown', function(e) {
-            if (e.key === "Escape") closeLightbox();
+            if (document.getElementById('lightbox').style.display === 'flex') {
+                if (e.key === "Escape") closeLightbox();
+                if (e.key === "ArrowLeft") changeLightboxSlide(-1);
+                if (e.key === "ArrowRight") changeLightboxSlide(1);
+            }
         });
     </script>
 </body>
