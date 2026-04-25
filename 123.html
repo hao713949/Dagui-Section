@@ -59,7 +59,7 @@
         .top-nav {
             position: fixed;
             top: 0; width: 100%;
-            background: rgba(255, 255, 255, 0.98);
+            background: rgba(255, 255, 255, 0.92);
             backdrop-filter: blur(15px);
             -webkit-backdrop-filter: blur(15px);
             z-index: 10000;
@@ -125,7 +125,7 @@
         /* --- Hero 修正版 --- */
         .hero {
             height: 100vh;
-            min-height: 600px;
+            min-height: 650px;
             display: flex;
             align-items: center;
             position: relative;
@@ -140,7 +140,6 @@
             z-index: 1;
         }
         
-        /* 輪播動畫設置：共 9 張圖，每張循環 45秒 (5秒一張) */
         .carousel-item {
             position: absolute;
             top: 0; left: 0;
@@ -148,6 +147,7 @@
             background-size: cover;
             background-position: center;
             opacity: 0;
+            transform: scale(1.05);
             animation: carouselFade 45s infinite ease-in-out;
         }
 
@@ -155,18 +155,16 @@
             content: "";
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(to right, rgba(249, 248, 244, 0.9) 30%, rgba(249, 248, 244, 0.2) 100%);
+            background: linear-gradient(to right, rgba(249, 248, 244, 0.95) 25%, rgba(249, 248, 244, 0.3) 100%);
             z-index: 2;
         }
         .hero-content { position: relative; z-index: 3; max-width: 850px; }
 
-        /* 會館示意圖 (4張) */
+        /* 輪播圖片設定 */
         .carousel-item:nth-child(1) { background-image: url('https://raw.githubusercontent.com/hao713949/Dagui-Section/main/IMG_6480.JPG'); animation-delay: 0s; }
         .carousel-item:nth-child(2) { background-image: url('https://raw.githubusercontent.com/hao713949/Dagui-Section/main/IMG_6481.JPG'); animation-delay: 5s; }
         .carousel-item:nth-child(3) { background-image: url('https://raw.githubusercontent.com/hao713949/Dagui-Section/main/IMG_6482.JPG'); animation-delay: 10s; }
         .carousel-item:nth-child(4) { background-image: url('https://raw.githubusercontent.com/hao713949/Dagui-Section/main/IMG_6483.JPG'); animation-delay: 15s; }
-        
-        /* 森活工藝 (5張) */
         .carousel-item:nth-child(5) { background-image: url('https://raw.githubusercontent.com/hao713949/Dagui-Section/main/vaiil01.jpg'); animation-delay: 20s; }
         .carousel-item:nth-child(6) { background-image: url('https://raw.githubusercontent.com/hao713949/Dagui-Section/main/vaiil1.jpg'); animation-delay: 25s; }
         .carousel-item:nth-child(7) { background-image: url('https://raw.githubusercontent.com/hao713949/Dagui-Section/main/vaiil2.jpg'); animation-delay: 30s; }
@@ -174,12 +172,13 @@
         .carousel-item:nth-child(9) { background-image: url('https://raw.githubusercontent.com/hao713949/Dagui-Section/main/vaiil4.jpg'); animation-delay: 40s; }
 
         @keyframes carouselFade {
-            0%, 11.1% { opacity: 0; }
-            2%, 9% { opacity: 0.4; transform: scale(1); } /* 增加透明度到 0.4 讓視覺更清晰一點 */
+            0% { opacity: 0; transform: scale(1.05); }
+            2%, 9% { opacity: 0.35; transform: scale(1); }
             11.11% { opacity: 0; transform: scale(1.05); }
+            100% { opacity: 0; }
         }
 
-        /* 標籤動畫切換 */
+        /* 標籤動畫 */
         .dynamic-tag::before {
             content: "會館示意圖";
             animation: tagSwitch 45s infinite;
@@ -204,51 +203,28 @@
             letter-spacing: 2px;
         }
 
+        /* 內容區塊 */
         section { padding: 80px 8%; position: relative; }
         .section-tag { font-size: 0.75rem; letter-spacing: 4px; color: var(--gold-accent); display: block; margin-bottom: 12px; font-weight: 700; text-transform: uppercase; }
         h2 { font-size: clamp(1.6rem, 5vw, 2.4rem); color: var(--forest-deep); margin-bottom: 35px; line-height: 1.4; }
 
-        /* 其餘樣式保持不變 */
         .grid-layout { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
         .info-card { background: #fff; padding: 30px; border-radius: 4px; box-shadow: 0 10px 30px rgba(0,0,0,0.03); display: flex; flex-direction: column; }
         .info-card h3 { color: var(--forest-mid); margin-bottom: 12px; font-size: 1.25rem; }
+        
         .reg-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; }
         .reg-box { background-color: var(--forest-deep); padding: 30px 10px; text-align: center; border-radius: 4px; }
         .reg-num { display: block; color: var(--gold-accent); font-family: 'Noto Serif TC', serif; font-size: 1.8rem; font-weight: 900; margin-bottom: 5px; }
         .reg-title { color: #FFFFFF; font-weight: 700; font-size: 0.9rem; margin-bottom: 8px; }
         .reg-desc { color: rgba(255,255,255,0.7); font-size: 0.8rem; line-height: 1.5; }
-        .table-container { background: white; padding: 15px; border-radius: 8px; overflow-x: auto; box-shadow: 0 10px 20px rgba(0,0,0,0.05); -webkit-overflow-scrolling: touch; }
-        table { width: 100%; border-collapse: collapse; min-width: 700px; }
-        th { background: var(--forest-deep); color: white; padding: 15px; text-align: left; font-size: 0.85rem; white-space: nowrap; }
-        td { padding: 15px; border-bottom: 1px solid #f0f0f0; font-size: 0.85rem; }
-        .total-row { background: #fdfdfd; font-weight: 900; color: var(--forest-deep); border-top: 2px solid var(--forest-deep); }
-        .security-section { background-color: var(--bg-dark-section); color: #fff; }
-        .sec-h2 { color: #fff; }
-        .highlight-gold { color: var(--gold-accent); font-weight: 700; }
-        .sec-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 15px; }
-        .sec-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); padding: 25px; border-radius: 4px; }
-        .sec-card h4 { color: var(--gold-accent); font-size: 1.1rem; margin-bottom: 12px; }
-        .market-news-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-bottom: 40px; }
-        .news-card { background: #fff; padding: 30px; border-radius: 4px; border-top: 4px solid var(--gold-accent); box-shadow: 0 5px 20px rgba(0,0,0,0.05); display: flex; flex-direction: column; }
-        .price-highlight { color: var(--danger-red); font-size: 1.3rem; font-weight: 900; }
-        .news-link { color: var(--forest-mid); text-decoration: none; font-weight: 700; font-size: 0.85rem; border-bottom: 1px solid var(--gold-accent); align-self: flex-start; margin-top: auto; padding-top: 15px;}
-        .invest-insight-box { background: var(--forest-deep); color: #fff; padding: 40px; border-radius: 4px; border-left: 6px solid var(--gold-accent); }
-        .invest-tag-new { font-size: 0.9rem; color: var(--gold-accent); display: block; margin-bottom: 15px; font-weight: 900; letter-spacing: 2px; }
-        .invest-title-new { font-size: clamp(1.3rem, 4vw, 2rem); margin-bottom: 20px; line-height: 1.4; }
-        .invest-content-new { font-size: 1rem; line-height: 1.8; color: rgba(255, 255, 255, 0.85); }
-        .map-container { width: 100%; height: 400px; margin-top: 20px; border-radius: 4px; overflow: hidden; background: #eee; }
-        .map-btn { display: block; width: 100%; max-width: 300px; padding: 16px; background: var(--forest-deep); color: var(--gold-accent); text-align: center; text-decoration: none; font-weight: 700; margin-top: 20px; letter-spacing: 1px; border-radius: 4px; }
 
         @media (max-width: 1024px) { .reg-grid { grid-template-columns: repeat(3, 1fr); } }
         @media (max-width: 768px) {
             section { padding: 60px 6%; }
-            .hero { padding: 0 6%; text-align: left; }
+            .hero { padding: 0 6%; }
             .top-nav { justify-content: flex-start; }
-            .reg-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
-            .invest-insight-box { padding: 30px 20px; }
-            .market-news-grid { grid-template-columns: 1fr; }
-            .sec-grid { grid-template-columns: 1fr; }
-            .decoration-line { padding-left: 15px; }
+            .reg-grid { grid-template-columns: repeat(2, 1fr); }
+            .hero h1 { font-size: 2.2rem; }
         }
     </style>
 </head>
@@ -266,10 +242,6 @@
         <a href="#page5">土地分類</a>
         <a href="#page6">配合事項</a>
         <a href="#page7">交易安全</a>
-        <a href="#market-info">市場資訊</a>
-        <a href="#invest-insight">投資觀點</a>
-        <a href="#planning-doc">環境圖</a>
-        <a href="#page8">地理位置</a>
     </nav>
 
     <header class="hero" id="page1">
@@ -282,13 +254,13 @@
         </div>
 
        <div class="hero-content">
-            <span class="sub-title serif dynamic-tag" style="display: inline-block; background: var(--forest-deep); color: var(--gold-accent); padding: 2px 12px; margin-bottom: 15px; font-size: 0.8rem; border-radius: 20px;"></span>
-            <span class="sub-title serif" style="margin-top: 10px;">尊嚴養老 ‧ 資產定錨 ‧ 價值升級</span>
+            <span class="sub-title serif dynamic-tag" style="display: inline-block; background: var(--forest-deep); color: var(--gold-accent); padding: 4px 16px; margin-bottom: 20px; font-size: 0.85rem; border-radius: 2px; letter-spacing: 2px;"></span>
+            <span class="sub-title serif" style="margin-top: 10px; font-weight: 700;">尊嚴養老 ‧ 資產定錨 ‧ 價值升級</span>
             <h1 class="main-title serif">兩萬坪共老莊園</h1>
-            <p style="font-weight: 700; color: var(--forest-mid); font-size: 1.1rem; letter-spacing: 1px;">與知己共老，在森林裡預約世外桃源</p>
+            <p style="font-weight: 700; color: var(--forest-mid); font-size: 1.15rem; letter-spacing: 1px;">與知己共老，在森林裡預約世外桃源</p>
             
             <div class="decoration-line">
-                <p style="font-size: 1rem; max-width: 700px; color: var(--text-dark);">
+                <p style="font-size: 1rem; max-width: 650px; color: var(--text-dark); text-align: justify;">
                     <strong>【經歷過，才懂什麼是真正的價值】</strong><br>
                     財富的終點，從來不是數字，而是能否優雅地走向人生下半場。耗時一年多整合北屯大貴段兩萬坪土地，跳脫傳統建商利潤結構，為尊嚴而生、為未來而築，共同開啟一個有溫度、也更有安全感的「共老」新生活。
                 </p>
@@ -314,7 +286,7 @@
             </div>
             <div class="info-card">
                 <h3>名家定調</h3>
-                <p>大陸建設、精湛建設、雲品國際相繼進駐。當頂尖資本在此定調豪墅格局，您只需跟隨資本的眼光，選擇最聰明的入場方式。</p>
+                <p>大陸建設、精湛建設、雲品國際相繼進駐。當頂尖資本在此定調豪墅格局，您只需跟隨資本的眼光。</p>
             </div>
         </div>
     </section>
@@ -323,38 +295,18 @@
         <span class="section-tag">REGULATORY SUMMARY</span>
         <h2>建築規範：建築法規管制</h2>
         <div class="reg-grid">
-            <div class="reg-box">
-                <span class="reg-num">20%</span>
-                <p class="reg-title">建蔽率</p>
-                <p class="reg-desc">讓 80% 的土地回歸森林：您的房子是從樹林裡長出來的。</p>
-            </div>
-            <div class="reg-box">
-                <span class="reg-num">40%</span>
-                <p class="reg-title">容積率</p>
-                <p class="reg-desc">垂直的留白，只為留住最完整的山巒景觀。</p>
-            </div>
-            <div class="reg-box">
-                <span class="reg-num">5M</span>
-                <p class="reg-title">建築退縮</p>
-                <p class="reg-desc">5 米深度退縮：以寬廣棟距，成就極致私密性。</p>
-            </div>
-            <div class="reg-box">
-                <span class="reg-num">1.5M</span>
-                <p class="reg-title">人行步道</p>
-                <p class="reg-desc">1.5 米森態廊道：讓回家成為一場林間漫步。</p>
-            </div>
-            <div class="reg-box">
-                <span class="reg-num">免計</span>
-                <p class="reg-title">停車空間</p>
-                <p class="reg-desc">停車空間不計入容積，最大化居住效益。</p>
-            </div>
+            <div class="reg-box"><span class="reg-num">20%</span><p class="reg-title">建蔽率</p></div>
+            <div class="reg-box"><span class="reg-num">40%</span><p class="reg-title">容積率</p></div>
+            <div class="reg-box"><span class="reg-num">5M</span><p class="reg-title">建築退縮</p></div>
+            <div class="reg-box"><span class="reg-num">1.5M</span><p class="reg-title">人行步道</p></div>
+            <div class="reg-box"><span class="reg-num">免計</span><p class="reg-title">停車空間</p></div>
         </div>
     </section>
 
     <section id="page4">
         <span class="section-tag">SITE DOCUMENTATION</span>
         <h2>地籍圖資與分區證明</h2>
-        <div style="background:#fff; padding: 20px; border: 1px solid #eee; text-align: center; margin-bottom: 25px; border-radius: 4px;">
+        <div style="background:#fff; padding: 20px; border: 1px solid #eee; text-align: center; border-radius: 4px;">
             <h3 class="serif" style="margin-bottom:15px; color: var(--forest-deep); font-size: 1.1rem;">公設地及合購地標示圖</h3>
             <img src="map.webp" alt="地籍圖示" class="clickable-map" onclick="openLightbox(this.src)" loading="lazy">
             <p style="color: var(--gold-accent); font-weight: 700; margin-top: 15px; font-size: 0.9rem;">※ 買賣總價款已完整包含「公設地」及「合購地」。</p>
