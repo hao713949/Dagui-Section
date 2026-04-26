@@ -55,7 +55,6 @@
             box-shadow: 0 0 30px rgba(0,0,0,0.5);
             cursor: zoom-out;
         }
-        /* 燈箱標題樣式 */
         .lightbox-caption {
             color: var(--gold-accent);
             font-family: 'Noto Serif TC', serif;
@@ -380,12 +379,13 @@
         .invest-title-new { font-size: clamp(1.3rem, 4vw, 2rem); margin-bottom: 20px; line-height: 1.4; }
         .invest-content-new { font-size: 1rem; line-height: 1.8; color: rgba(255, 255, 255, 0.85); }
 
-        .map-container { width: 100%; height: 400px; margin-top: 20px; border-radius: 4px; overflow: hidden; background: #eee; }
+        .map-container { width: 100%; height: 450px; margin-top: 20px; border-radius: 8px; overflow: hidden; background: #eee; border: 1px solid #ddd; }
         .map-btn { 
             display: block; width: 100%; max-width: 300px; padding: 16px; background: var(--forest-deep); 
             color: var(--gold-accent); text-align: center; text-decoration: none; font-weight: 700; 
-            margin-top: 20px; letter-spacing: 1px; border-radius: 4px; 
+            margin: 20px auto 0; letter-spacing: 1px; border-radius: 4px; transition: 0.3s;
         }
+        .map-btn:hover { background: var(--forest-mid); }
 
         /* --- RWD 手機版優化 --- */
         @media (max-width: 1024px) {
@@ -403,6 +403,7 @@
             .market-news-grid { grid-template-columns: 1fr; }
             .sec-grid { grid-template-columns: 1fr; }
             .decoration-line { padding-left: 15px; }
+            .map-container { height: 350px; }
         }
 
         @media (max-width: 480px) {
@@ -432,15 +433,12 @@
 
     <nav class="top-nav">
         <a href="#page1">首頁</a>
-        <a href="#page2">核心理念</a>
-        <a href="#page3">建築規範</a>
-        <a href="#page4">圖資證明</a>
-        <a href="#page5">土地分類</a>
-        <a href="#page6">配合事項</a>
-        <a href="#page7">交易安全</a>
+        <a href="#page2">戰略佈局</a>
         <a href="#market-info">市場資訊</a>
-        <a href="#invest-insight">投資觀點</a>
-        <a href="#planning-doc">環境圖</a>
+        <a href="#page5">土地分類</a>
+        <a href="#page4">圖資證明</a>
+        <a href="#page7">重要聲明</a>
+        <a href="#planning-doc">環境實景</a>
         <a href="#page8">地理位置</a>
     </nav>
 
@@ -551,132 +549,6 @@
         </div>
     </section>
 
-    <section id="page3" style="background-color: #fcfbf7;">
-        <span class="section-tag">REGULATORY SUMMARY</span>
-        <h2>建築規範：建築法規管制</h2>
-        <div class="reg-grid">
-            <div class="reg-box">
-                <span class="reg-num">20%</span>
-                <p class="reg-title">建蔽率</p>
-                <p class="reg-desc">讓 80% 的土地回歸森林：您的房子是從樹林裡長出來的。</p>
-            </div>
-            <div class="reg-box">
-                <span class="reg-num">40%</span>
-                <p class="reg-title">容積率</p>
-                <p class="reg-desc">垂直的留白，只為留住最完整的山巒景觀。</p>
-            </div>
-            <div class="reg-box">
-                <span class="reg-num">5M</span>
-                <p class="reg-title">建築退縮</p>
-                <p class="reg-desc">5 米深度退縮：以寬廣棟距，成就極致私密性。</p>
-            </div>
-            <div class="reg-box">
-                <span class="reg-num">1.5M</span>
-                <p class="reg-title">人行步道</p>
-                <p class="reg-desc">1.5 米森態廊道：讓回家成為一場林間漫步。</p>
-            </div>
-            <div class="reg-box">
-                <span class="reg-num">免計</span>
-                <p class="reg-title">停車空間</p>
-                <p class="reg-desc">停車空間不計入容積，最大化居住效益。</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="page4">
-        <span class="section-tag">SITE DOCUMENTATION</span>
-        <h2>地籍圖資與分區證明</h2>
-        <div style="margin-bottom: 30px; border-left: 4px solid var(--gold-accent); padding-left: 20px;">
-            <h3 class="serif" style="color: var(--forest-deep); font-size: 1.3rem; margin-bottom: 8px;">土地使用分區管制要點</h3>
-            <p style="font-size: 1rem; color: var(--text-dark); font-weight: 500;">
-                供一般住宅、住宅別墅、原開發許可核准項目，及門診、零售、日常服務之場所使用為限
-            </p>
-        </div>
-
-        <div style="background:#fff; padding: 20px; border: 1px solid #eee; text-align: center; margin-bottom: 25px; border-radius: 4px;">
-            <h3 class="serif" style="margin-bottom:15px; color: var(--forest-deep); font-size: 1.1rem;">公設地及合購地標示圖</h3>
-            <img src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/map.webp" alt="公設地及合購地標示圖" class="clickable-map" onclick="openLightbox(this.src, '公設地及合購地標示圖')" loading="lazy">
-            <p style="color: var(--gold-accent); font-weight: 700; margin-top: 15px; font-size: 0.9rem;">※ 買賣總價款已完整包含「公設地」及「合購地」。</p>
-        </div>
-        <div class="grid-layout">
-            <div style="background:#fff; padding:15px; border:1px solid #eee; text-align:center; border-radius:4px;">
-                <h3 class="serif" style="font-size: 1rem; margin-bottom:10px;">大坑細部計畫圖</h3>
-                <img src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/Zoning.jpg" alt="大坑細部計畫圖" class="clickable-map" onclick="openLightbox(this.src, '大坑細部計畫圖')" loading="lazy">
-            </div>
-            <div style="background:#fff; padding:15px; border:1px solid #eee; text-align:center; border-radius:4px;">
-                <h3 class="serif" style="font-size: 1rem; margin-bottom:10px;">都發局使用分區證明</h3>
-                <img src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/Zoning1.jpg" alt="都發局使用分區證明" class="clickable-map" onclick="openLightbox(this.src, '都發局使用分區證明')" loading="lazy">
-            </div>
-        </div>
-    </section>
-
-    <section id="page5" style="background: #F1F2ED;">
-        <span class="section-tag">ASSET PORTFOLIO</span>
-        <h2>資產分類：116 筆土地資產分類</h2>
-        <div class="table-container">
-            <table>
-                <thead>
-                    <tr><th>資產分類</th><th>筆數</th><th>面積（坪）</th><th>權利管理</th></tr>
-                </thead>
-                <tbody>
-                    <tr><td>A. 特二種住宅用地</td><td>91 筆</td><td>15,753.14</td><td>48單元；專有面積，公設（14 筆）</td></tr>
-                    <tr><td>B. 公設預撥地</td><td>3 筆</td><td>1,153.63</td><td>以統一信託登記管理</td></tr>
-                    <tr><td>C. 特二（變）住宅用地</td><td>1 筆</td><td>857.12</td><td>地號 487-223，以自益信託登記管理</td></tr>
-                    <tr><td>D. 會館用地</td><td>2 筆</td><td>570.00</td><td>興建完成後按比例持分</td></tr>
-                    <tr><td>E. 農業用地</td><td>5 筆</td><td>1,444.42</td><td>地號 492 等五筆，以自益信託管理</td></tr>
-                    <tr class="total-row"><td>總計合購規模</td><td>116 筆</td><td>19,779.15</td><td>統整一次性交易</td></tr>
-                </tbody>
-            </table>
-        </div>
-        <p style="font-size: 0.8rem; color: #999; margin-top: 10px; text-align: center;">(手機觀看請左右滑動表格)</p>
-    </section>
-
-    <section id="page6">
-        <span class="section-tag">INVESTMENT TERMS</span>
-        <h2>配合事項聲明</h2>
-        <div class="grid-layout">
-            <div class="info-card">
-                <h3>賣方出售條件</h3>
-                <p>116 筆土地採一次性出售，不開放個別筆數處分。</p>
-            </div>
-            <div class="info-card">
-                <h3>付款構成</h3>
-                <p><strong>主約購地款：</strong>含權狀面積、公設地、公設預撥地、會館用地、農地等。</p>
-                <p style="margin-top: 10px;"><strong>附約款：</strong>社區建設費、基礎工程讓渡費及相關規費。</p>
-            </div>
-            <div class="info-card">
-                <h3>交易時程</h3>
-                <p>預計 4.5 個月完成完整交易與產權過戶流程。</p>
-            </div>
-        </div>
-    </section>
-
-    <section class="security-section" id="page7">
-        <span class="section-tag" style="color: rgba(255,255,255,0.4);">RISK MANAGEMENT</span>
-        <h2 class="sec-h2 serif">交易安全機制</h2>
-        <p style="font-size: 1rem; margin-bottom: 40px; color: rgba(255,255,255,0.8);">
-            確保認購者資金安全性—<span class="highlight-gold">若案件不成，交易取消，100% 原款退回。</span>
-        </p>
-        <div class="sec-grid">
-            <div class="sec-card">
-                <h4>募資未達標</h4>
-                <p>資金未能足額募集致無法完成支付總價款，交易終止。</p>
-            </div>
-            <div class="sec-card">
-                <h4>契約未促成</h4>
-                <p>期限內未能與業主簽訂正式買賣契約，交易終止。</p>
-            </div>
-            <div class="sec-card">
-                <h4>第三方因素</h4>
-                <p>地主拒售或不可歸責於承辦人之事由，交易終止。</p>
-            </div>
-            <div class="sec-card">
-                <h4>資金保全</h4>
-                <p>上述情形發生，認購款項全額無息原款退還。</p>
-            </div>
-        </div>
-    </section>
-
     <section id="market-info" class="market-info-section">
         <span class="section-tag">MARKET INSIGHTS</span>
         <h2>市場資訊</h2>
@@ -700,7 +572,7 @@
             </div>
 
             <div class="news-card">
-                 <h4>雲品國際「大坑森邸」<br>頂級高端生活產業</h4>
+                 <h4>雲品國際「大坑森邸」<br>頂頂級高端生活產業</h4>
                 <p>雲品打造頂級溫泉Villa、White Party 宴會廳「森邸」，證明該區域具備承載國際級高端生活的潛力。</p>
                 <a href="https://news.cnyes.com/news/id/5561629" target="_blank" class="news-link">閱讀新聞原文 ↗</a>
             </div>
@@ -752,10 +624,142 @@
         </p>
     </section>
 
+    <section id="page5" style="background: #F1F2ED;">
+        <span class="section-tag">ASSET PORTFOLIO</span>
+        <h2>資產分類：116 筆土地資產分類</h2>
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr><th>資產分類</th><th>筆數</th><th>面積（坪）</th><th>權利管理</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>A. 特二種住宅用地</td><td>91 筆</td><td>15,753.14</td><td>48單元；專有面積，公設（14 筆）</td></tr>
+                    <tr><td>B. 公設預撥地</td><td>3 筆</td><td>1,153.63</td><td>以統一信託登記管理</td></tr>
+                    <tr><td>C. 特二（變）住宅用地</td><td>1 筆</td><td>857.12</td><td>地號 487-223，以自益信託登記管理</td></tr>
+                    <tr><td>D. 會館用地</td><td>2 筆</td><td>570.00</td><td>興建完成後按比例持分</td></tr>
+                    <tr><td>E. 農業用地</td><td>5 筆</td><td>1,444.42</td><td>地號 492 等五筆，以自益信託管理</td></tr>
+                    <tr class="total-row"><td>總計合購規模</td><td>116 筆</td><td>19,779.15</td><td>統整一次性交易</td></tr>
+                </tbody>
+            </table>
+        </div>
+        <p style="font-size: 0.8rem; color: #999; margin-top: 10px; text-align: center;">(手機觀看請左右滑動表格)</p>
+    </section>
+
+    <section id="page4">
+        <span class="section-tag">REGULATORY & DOCUMENTATION</span>
+        <h2>建築規範：建築法規管制</h2>
+        <div class="reg-grid" style="margin-bottom: 60px;">
+            <div class="reg-box">
+                <span class="reg-num">20%</span>
+                <p class="reg-title">建蔽率</p>
+                <p class="reg-desc">讓 80% 的土地回歸森林：您的房子是從樹林裡長出來的。</p>
+            </div>
+            <div class="reg-box">
+                <span class="reg-num">40%</span>
+                <p class="reg-title">容積率</p>
+                <p class="reg-desc">垂直的留白，只為留住最完整的山巒景觀。</p>
+            </div>
+            <div class="reg-box">
+                <span class="reg-num">5M</span>
+                <p class="reg-title">建築退縮</p>
+                <p class="reg-desc">5 米深度退縮：以寬廣棟距，成就極致私密性。</p>
+            </div>
+            <div class="reg-box">
+                <span class="reg-num">1.5M</span>
+                <p class="reg-title">人行步道</p>
+                <p class="reg-desc">1.5 米森態廊道：讓回家成為一場林間漫步。</p>
+            </div>
+            <div class="reg-box">
+                <span class="reg-num">免計</span>
+                <p class="reg-title">停車空間</p>
+                <p class="reg-desc">停車空間不計入容積，最大化居住效益。</p>
+            </div>
+        </div>
+
+        <span class="section-tag">SITE DOCUMENTATION</span>
+        <h2>地籍圖資與分區證明</h2>
+        <div style="margin-bottom: 30px; border-left: 4px solid var(--gold-accent); padding-left: 20px;">
+            <h3 class="serif" style="color: var(--forest-deep); font-size: 1.3rem; margin-bottom: 8px;">土地使用分區管制要點</h3>
+            <p style="font-size: 1rem; color: var(--text-dark); font-weight: 500;">
+                供一般住宅、住宅別墅、原開發許可核准項目，及門診、零售、日常服務之場所使用為限
+            </p>
+        </div>
+
+        <div style="background:#fff; padding: 20px; border: 1px solid #eee; text-align: center; margin-bottom: 25px; border-radius: 4px;">
+            <h3 class="serif" style="margin-bottom:15px; color: var(--forest-deep); font-size: 1.1rem;">公設地及合購地標示圖</h3>
+            <img src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/map.webp" alt="公設地及合購地標示圖" class="clickable-map" onclick="openLightbox(this.src, '公設地及合購地標示圖')" loading="lazy">
+            <p style="color: var(--gold-accent); font-weight: 700; margin-top: 15px; font-size: 0.9rem;">※ 買賣總價款已完整包含「公設地」及「合購地」。</p>
+        </div>
+        <div class="grid-layout">
+            <div style="background:#fff; padding:15px; border:1px solid #eee; text-align:center; border-radius:4px;">
+                <h3 class="serif" style="font-size: 1rem; margin-bottom:10px;">大坑細部計畫圖</h3>
+                <img src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/Zoning.jpg" alt="大坑細部計畫圖" class="clickable-map" onclick="openLightbox(this.src, '大坑細部計畫圖')" loading="lazy">
+            </div>
+            <div style="background:#fff; padding:15px; border:1px solid #eee; text-align:center; border-radius:4px;">
+                <h3 class="serif" style="font-size: 1rem; margin-bottom:10px;">都發局使用分區證明</h3>
+                <img src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/Zoning1.jpg" alt="都發局使用分區證明" class="clickable-map" onclick="openLightbox(this.src, '都發局使用分區證明')" loading="lazy">
+            </div>
+        </div>
+    </section>
+
+    <section id="page7" class="security-section">
+        <span class="section-tag" style="color: rgba(255,255,255,0.4);">INVESTMENT TERMS & SECURITY</span>
+        <h2 class="sec-h2 serif">配合事項聲明</h2>
+        <div class="grid-layout" style="margin-bottom: 60px; color: var(--text-dark);">
+            <div class="info-card">
+                <h3>賣方出售條件</h3>
+                <p>116 筆土地採一次性出售，不開放個別筆數處分。</p>
+            </div>
+            <div class="info-card">
+                <h3>付款構成</h3>
+                <p><strong>主約購地款：</strong>含權狀面積、公設地、公設預撥地、會館用地、農地等。</p>
+                <p style="margin-top: 10px;"><strong>附約款：</strong>社區建設費、基礎工程讓渡費及相關規費。</p>
+            </div>
+            <div class="info-card">
+                <h3>交易時程</h3>
+                <p>預計 4.5 個月完成完整交易與產權過戶流程。</p>
+            </div>
+        </div>
+
+        <h2 class="sec-h2 serif">交易安全機制</h2>
+        <p style="font-size: 1rem; margin-bottom: 40px; color: rgba(255,255,255,0.8);">
+            確保認購者資金安全性—<span class="highlight-gold">若案件不成，交易取消，100% 原款退回。</span>
+        </p>
+        <div class="sec-grid">
+            <div class="sec-card">
+                <h4>募資未達標</h4>
+                <p>資金未能足額募集致無法完成支付總價款，交易終止。</p>
+            </div>
+            <div class="sec-card">
+                <h4>契約未促成</h4>
+                <p>期限內未能與業主簽訂正式買賣契約，交易終止。</p>
+            </div>
+            <div class="sec-card">
+                <h4>第三方因素</h4>
+                <p>地主拒售或不可歸責於承辦人之事由，交易終止。</p>
+            </div>
+            <div class="sec-card">
+                <h4>資金保全</h4>
+                <p>上述情形發生，認購款項全額無息原款退還。</p>
+            </div>
+        </div>
+    </section>
+
     <section id="planning-doc">
-        <span class="section-tag">SITE PLANNING</span>
-        <h2>大坑風景區環境圖</h2>
+        <span class="section-tag">SITE PLANNING & SCENERY</span>
+        <h2>共老莊園實拍攝</h2>
         <div style="background:#fff; padding: 10px; border: 1px solid #eee; border-radius: 8px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.05);">
+            
+            <div style="position: relative; width: 100%; padding-bottom: 56.25%; height: 0; margin-bottom: 20px; border-radius: 4px; overflow: hidden;">
+                <iframe 
+                    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;"
+                    src="https://www.youtube.com/embed/3_-8eB5x4YA?rel=0&autoplay=1&mute=1&loop=1&playlist=3_-8eB5x4YA" 
+                    title="共老莊園實景拍攝" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                    allowfullscreen>
+                </iframe>
+            </div>
+
             <h3 class="serif" style="margin: 15px 0; color: var(--forest-deep); font-size: 1.1rem;">環 境 總 覽 圖</h3>
             <img src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/map2.jpg" alt="環境總覽圖" class="clickable-map" onclick="openLightbox(this.src, '環境總覽圖')" loading="lazy">
             <p style="color: #666; margin: 15px 0; font-size: 0.9rem;">
@@ -768,16 +772,18 @@
         <span class="section-tag">LOCATION</span>
         <h2>莊園地理位置</h2>
         <div class="decoration-line">
-            <p style="font-size: 1.1rem; font-weight: 500;">台中市北屯區</p>
+            <p style="font-size: 1.1rem; font-weight: 500;">台中市北屯區大貴段莊園預定地</p>
         </div>
         <div class="map-container">
             <iframe 
                 title="Google Map Location"
-                src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3640.2185567303036!2d120.74348141151604!3d24.164660842880795!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMjTCsDA5JzUyLjgiTiAxMjDCsDQ0JzQ1LjgiRQ!5e0!3m2!1szh-TW!2stw!4v1714546056339!5m2!1szh-TW!2stw" 
+                src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3640.407981502598!2d120.74375837534825!3d24.164719278389335!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMjTCsDA5JzUzLjAiTiAxMjDCsDQ0JzQ2LjgiRQ!5e0!3m2!1szh-TW!2stw!4v1714138000000!5m2!1szh-TW!2stw" 
                 width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy">
             </iframe>
         </div>
-        <a href="https://www.google.com/maps/search/?api=1&query=24.164660847576158,120.7460563396627" target="_blank" rel="noopener noreferrer" class="map-btn">開啟 Google 地圖導航</a>
+        <a href="https://www.google.com/maps/dir/?api=1&destination=24.164719315194734,120.74633326800519" target="_blank" rel="noopener noreferrer" class="map-btn">
+            開啟 Google 地圖導引
+        </a>
     </section>
 
     <footer style="padding: 60px 8%; text-align: center; background: #fff; border-top: 1px solid #f0f0f0;">
@@ -810,7 +816,6 @@
         let touchStartX = 0;
         let touchEndX = 0;
 
-        // 更新圖片（主顯示區與燈箱同步）
         function updateMain(index) {
             currentGalleryIndex = index;
             const mainImg = document.getElementById('active-main-img');
@@ -821,7 +826,6 @@
             
             const currentData = galleryImages[currentGalleryIndex];
 
-            // 更新首頁主圖 (帶淡入效果)
             mainImg.style.opacity = '0';
             setTimeout(() => {
                 mainImg.src = currentData.url;
@@ -829,18 +833,15 @@
                 mainImg.style.opacity = '1';
             }, 200);
 
-            // 如果燈箱開啟，同步更新燈箱內圖片與標題
             if (document.getElementById('lightbox').style.display === 'flex') {
                 lightboxImg.src = currentData.url;
                 lightboxCaption.innerText = currentData.title;
             }
 
-            // 更新縮圖 Active 狀態
             thumbs.forEach((t, i) => {
                 t.classList.toggle('active', i === currentGalleryIndex);
             });
 
-            // 縮圖滾動至可見區域
             const container = document.getElementById('thumb-container');
             const activeThumb = thumbs[currentGalleryIndex];
             if(activeThumb) {
@@ -858,11 +859,6 @@
             updateMain(newIndex);
         }
 
-        /**
-         * 燈箱控制邏輯
-         * @param {string} src 圖片路徑
-         * @param {string} title 點擊圖檔對應的標題文字
-         */
         function openLightbox(src, title) {
             const lightbox = document.getElementById('lightbox');
             const lightboxImg = document.getElementById('lightbox-img');
@@ -870,17 +866,14 @@
             const lbPrev = document.querySelector('.lb-prev');
             const lbNext = document.querySelector('.lb-next');
             
-            // 判斷是否為輪播相簿圖片
             const isGallery = galleryImages.some(img => img.url === src);
             
             if (isGallery) {
-                // 如果是相簿圖片，顯示導航按鈕並使用當前索引資料
                 lbPrev.style.display = 'flex';
                 lbNext.style.display = 'flex';
                 lightboxImg.src = galleryImages[currentGalleryIndex].url;
                 lightboxCaption.innerText = galleryImages[currentGalleryIndex].title;
             } else {
-                // 如果是獨立圖資（圖資證明、環境圖），隱藏切換按鈕，直接顯示傳入的標題
                 lbPrev.style.display = 'none';
                 lbNext.style.display = 'none';
                 lightboxImg.src = src;
@@ -892,7 +885,6 @@
         }
 
         function handleLightboxClick(event) {
-            // 如果點擊的是背景（overlay）或圖片本身，則關閉
             if (event.target.id === 'lightbox' || event.target.id === 'lightbox-img') {
                 closeLightbox();
             }
@@ -904,7 +896,6 @@
             document.body.style.overflow = 'auto'; 
         }
 
-        // 滑動手勢支援
         const lightboxEl = document.getElementById('lightbox');
 
         lightboxEl.addEventListener('touchstart', e => {
@@ -917,7 +908,6 @@
         }, {passive: true});
 
         function handleGesture() {
-            // 只有在顯示導航按鈕時（即相簿模式）才允許滑動切換
             if (document.querySelector('.lb-prev').style.display !== 'none') {
                 const threshold = 50;
                 if (touchEndX < touchStartX - threshold) {
@@ -929,11 +919,9 @@
             }
         }
 
-        // 鍵盤支援
         document.addEventListener('keydown', function(e) {
             if (document.getElementById('lightbox').style.display === 'flex') {
                 if (e.key === "Escape") closeLightbox();
-                // 只有在相簿模式下支援左右鍵
                 if (document.querySelector('.lb-prev').style.display !== 'none') {
                     if (e.key === "ArrowRight") changeSlide(1);
                     if (e.key === "ArrowLeft") changeSlide(-1);
