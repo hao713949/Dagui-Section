@@ -55,7 +55,6 @@
             box-shadow: 0 0 30px rgba(0,0,0,0.5);
             cursor: zoom-out;
         }
-        /* 燈箱標題樣式 */
         .lightbox-caption {
             color: var(--gold-accent);
             font-family: 'Noto Serif TC', serif;
@@ -380,12 +379,13 @@
         .invest-title-new { font-size: clamp(1.3rem, 4vw, 2rem); margin-bottom: 20px; line-height: 1.4; }
         .invest-content-new { font-size: 1rem; line-height: 1.8; color: rgba(255, 255, 255, 0.85); }
 
-        .map-container { width: 100%; height: 400px; margin-top: 20px; border-radius: 4px; overflow: hidden; background: #eee; }
+        .map-container { width: 100%; height: 450px; margin-top: 20px; border-radius: 8px; overflow: hidden; background: #eee; border: 1px solid #ddd; }
         .map-btn { 
             display: block; width: 100%; max-width: 300px; padding: 16px; background: var(--forest-deep); 
             color: var(--gold-accent); text-align: center; text-decoration: none; font-weight: 700; 
-            margin-top: 20px; letter-spacing: 1px; border-radius: 4px; 
+            margin: 20px auto 0; letter-spacing: 1px; border-radius: 4px; transition: 0.3s;
         }
+        .map-btn:hover { background: var(--forest-mid); }
 
         /* --- RWD 手機版優化 --- */
         @media (max-width: 1024px) {
@@ -403,6 +403,7 @@
             .market-news-grid { grid-template-columns: 1fr; }
             .sec-grid { grid-template-columns: 1fr; }
             .decoration-line { padding-left: 15px; }
+            .map-container { height: 350px; }
         }
 
         @media (max-width: 480px) {
@@ -437,7 +438,7 @@
         <a href="#page5">土地分類</a>
         <a href="#page4">圖資證明</a>
         <a href="#page7">重要聲明</a>
-        <a href="#planning-doc">環境圖</a>
+        <a href="#planning-doc">環境實景</a>
         <a href="#page8">地理位置</a>
     </nav>
 
@@ -571,7 +572,7 @@
             </div>
 
             <div class="news-card">
-                 <h4>雲品國際「大坑森邸」<br>頂級高端生活產業</h4>
+                 <h4>雲品國際「大坑森邸」<br>頂頂級高端生活產業</h4>
                 <p>雲品打造頂級溫泉Villa、White Party 宴會廳「森邸」，證明該區域具備承載國際級高端生活的潛力。</p>
                 <a href="https://news.cnyes.com/news/id/5561629" target="_blank" class="news-link">閱讀新聞原文 ↗</a>
             </div>
@@ -746,7 +747,7 @@
 
     <section id="planning-doc">
         <span class="section-tag">SITE PLANNING & SCENERY</span>
-        <h2>大坑風景區環境圖與實景攝影</h2>
+        <h2>共老莊園實拍攝</h2>
         <div style="background:#fff; padding: 10px; border: 1px solid #eee; border-radius: 8px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.05);">
             
             <div style="position: relative; width: 100%; padding-bottom: 56.25%; height: 0; margin-bottom: 20px; border-radius: 4px; overflow: hidden;">
@@ -771,16 +772,18 @@
         <span class="section-tag">LOCATION</span>
         <h2>莊園地理位置</h2>
         <div class="decoration-line">
-            <p style="font-size: 1.1rem; font-weight: 500;">台中市北屯區大貴段</p>
+            <p style="font-size: 1.1rem; font-weight: 500;">台中市北屯區大貴段莊園預定地</p>
         </div>
         <div class="map-container">
             <iframe 
                 title="Google Map Location"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m12!1m3!1d14559.885834076326!2d120.730!3d24.165!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x346917e29636906f%3A0xc48c47f7151034f5!2z5Y-w5Lit5biC5YyX5bGv5Y2A5aSn5Z2R6aKo5pmv5Y2A!5e0!3m2!1szh-TW!2stw!4v1715000000000!5m2!1szh-TW!2stw" 
+                src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3640.407981502598!2d120.74375837534825!3d24.164719278389335!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMjTCsDA5JzUzLjAiTiAxMjDCsDQ0JzQ2LjgiRQ!5e0!3m2!1szh-TW!2stw!4v1714138000000!5m2!1szh-TW!2stw" 
                 width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy">
             </iframe>
         </div>
-        <a href="https://www.google.com/maps/dir//%E5%8F%B0%E4%B8%AD%E5%B8%82%E5%8C%97%E5%B1%AF%E5%8D%80%E5%A4%A7%E8%B2%B4%E6%AE%B5/" target="_blank" rel="noopener noreferrer" class="map-btn">開啟 Google 地圖導引</a>
+        <a href="https://www.google.com/maps/dir/?api=1&destination=24.164719315194734,120.74633326800519" target="_blank" rel="noopener noreferrer" class="map-btn">
+            開啟 Google 地圖導引
+        </a>
     </section>
 
     <footer style="padding: 60px 8%; text-align: center; background: #fff; border-top: 1px solid #f0f0f0;">
@@ -813,7 +816,6 @@
         let touchStartX = 0;
         let touchEndX = 0;
 
-        // 更新圖片（主顯示區與燈箱同步）
         function updateMain(index) {
             currentGalleryIndex = index;
             const mainImg = document.getElementById('active-main-img');
@@ -824,7 +826,6 @@
             
             const currentData = galleryImages[currentGalleryIndex];
 
-            // 更新首頁主圖 (帶淡入效果)
             mainImg.style.opacity = '0';
             setTimeout(() => {
                 mainImg.src = currentData.url;
@@ -832,18 +833,15 @@
                 mainImg.style.opacity = '1';
             }, 200);
 
-            // 如果燈箱開啟，同步更新燈箱內圖片與標題
             if (document.getElementById('lightbox').style.display === 'flex') {
                 lightboxImg.src = currentData.url;
                 lightboxCaption.innerText = currentData.title;
             }
 
-            // 更新縮圖 Active 狀態
             thumbs.forEach((t, i) => {
                 t.classList.toggle('active', i === currentGalleryIndex);
             });
 
-            // 縮圖滾動至可見區域
             const container = document.getElementById('thumb-container');
             const activeThumb = thumbs[currentGalleryIndex];
             if(activeThumb) {
@@ -861,11 +859,6 @@
             updateMain(newIndex);
         }
 
-        /**
-         * 燈箱控制邏輯
-         * @param {string} src 圖片路徑
-         * @param {string} title 點擊圖檔對應的標題文字
-         */
         function openLightbox(src, title) {
             const lightbox = document.getElementById('lightbox');
             const lightboxImg = document.getElementById('lightbox-img');
@@ -873,17 +866,14 @@
             const lbPrev = document.querySelector('.lb-prev');
             const lbNext = document.querySelector('.lb-next');
             
-            // 判斷是否為輪播相簿圖片
             const isGallery = galleryImages.some(img => img.url === src);
             
             if (isGallery) {
-                // 如果是相簿圖片，顯示導航按鈕並使用當前索引資料
                 lbPrev.style.display = 'flex';
                 lbNext.style.display = 'flex';
                 lightboxImg.src = galleryImages[currentGalleryIndex].url;
                 lightboxCaption.innerText = galleryImages[currentGalleryIndex].title;
             } else {
-                // 如果是獨立圖資（圖資證明、環境圖），隱藏切換按鈕，直接顯示傳入的標題
                 lbPrev.style.display = 'none';
                 lbNext.style.display = 'none';
                 lightboxImg.src = src;
@@ -895,7 +885,6 @@
         }
 
         function handleLightboxClick(event) {
-            // 如果點擊的是背景（overlay）或圖片本身，則關閉
             if (event.target.id === 'lightbox' || event.target.id === 'lightbox-img') {
                 closeLightbox();
             }
@@ -907,7 +896,6 @@
             document.body.style.overflow = 'auto'; 
         }
 
-        // 滑動手勢支援
         const lightboxEl = document.getElementById('lightbox');
 
         lightboxEl.addEventListener('touchstart', e => {
@@ -920,7 +908,6 @@
         }, {passive: true});
 
         function handleGesture() {
-            // 只有在顯示導航按鈕時（即相簿模式）才允許滑動切換
             if (document.querySelector('.lb-prev').style.display !== 'none') {
                 const threshold = 50;
                 if (touchEndX < touchStartX - threshold) {
@@ -932,11 +919,9 @@
             }
         }
 
-        // 鍵盤支援
         document.addEventListener('keydown', function(e) {
             if (document.getElementById('lightbox').style.display === 'flex') {
                 if (e.key === "Escape") closeLightbox();
-                // 只有在相簿模式下支援左右鍵
                 if (document.querySelector('.lb-prev').style.display !== 'none') {
                     if (e.key === "ArrowRight") changeSlide(1);
                     if (e.key === "ArrowLeft") changeSlide(-1);
