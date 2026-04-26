@@ -40,6 +40,7 @@
             width: 100%; height: 100%;
             background: rgba(0, 0, 0, 0.95);
             display: none;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             z-index: 20000;
@@ -49,10 +50,20 @@
         }
         .lightbox-overlay img {
             max-width: 100%;
-            max-height: 85vh;
+            max-height: 80vh;
             object-fit: contain;
             box-shadow: 0 0 30px rgba(0,0,0,0.5);
             cursor: zoom-out;
+        }
+        /* 燈箱標題樣式 */
+        .lightbox-caption {
+            color: var(--gold-accent);
+            font-family: 'Noto Serif TC', serif;
+            font-size: 1.2rem;
+            margin-top: 20px;
+            letter-spacing: 2px;
+            font-weight: 700;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
         }
         .lightbox-nav {
             position: absolute;
@@ -415,6 +426,7 @@
     <div id="lightbox" class="lightbox-overlay" onclick="handleLightboxClick(event)">
         <button class="lightbox-nav lb-prev" onclick="changeSlide(-1); event.stopPropagation();">❮</button>
         <img id="lightbox-img" src="" alt="放大圖示" onclick="event.stopPropagation();">
+        <div id="lightbox-caption" class="lightbox-caption"></div>
         <button class="lightbox-nav lb-next" onclick="changeSlide(1); event.stopPropagation();">❯</button>
     </div>
 
@@ -463,9 +475,9 @@
             <div class="hero-gallery">
                 <div class="main-display">
                     <button class="nav-arrow prev-arrow" onclick="changeSlide(-1)"><</button>
-                    <img id="active-main-img" src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/IMG_6480.JPG" alt="會館示意" onclick="openLightbox(this.src)">
+                    <img id="active-main-img" src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/IMG_6480.JPG" alt="會館示意圖" onclick="openLightbox(this.src, '會館示意圖')">
                     <button class="nav-arrow next-arrow" onclick="changeSlide(1)">></button>
-                    <div class="gallery-label" id="main-label">會館示意</div>
+                    <div class="gallery-label" id="main-label">會館示意圖</div>
                 </div>
 
                 <div class="thumb-scroll" id="thumb-container">
@@ -583,17 +595,17 @@
 
         <div style="background:#fff; padding: 20px; border: 1px solid #eee; text-align: center; margin-bottom: 25px; border-radius: 4px;">
             <h3 class="serif" style="margin-bottom:15px; color: var(--forest-deep); font-size: 1.1rem;">公設地及合購地標示圖</h3>
-            <img src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/map.webp" alt="地籍圖示" class="clickable-map" onclick="openLightbox(this.src)" loading="lazy">
+            <img src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/map.webp" alt="公設地及合購地標示圖" class="clickable-map" onclick="openLightbox(this.src, '公設地及合購地標示圖')" loading="lazy">
             <p style="color: var(--gold-accent); font-weight: 700; margin-top: 15px; font-size: 0.9rem;">※ 買賣總價款已完整包含「公設地」及「合購地」。</p>
         </div>
         <div class="grid-layout">
             <div style="background:#fff; padding:15px; border:1px solid #eee; text-align:center; border-radius:4px;">
                 <h3 class="serif" style="font-size: 1rem; margin-bottom:10px;">大坑細部計畫圖</h3>
-                <img src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/Zoning.jpg" alt="大坑細部計畫圖" class="clickable-map" onclick="openLightbox(this.src)" loading="lazy">
+                <img src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/Zoning.jpg" alt="大坑細部計畫圖" class="clickable-map" onclick="openLightbox(this.src, '大坑細部計畫圖')" loading="lazy">
             </div>
             <div style="background:#fff; padding:15px; border:1px solid #eee; text-align:center; border-radius:4px;">
                 <h3 class="serif" style="font-size: 1rem; margin-bottom:10px;">都發局使用分區證明</h3>
-                <img src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/Zoning1.jpg" alt="都發局使用分區證明" class="clickable-map" onclick="openLightbox(this.src)" loading="lazy">
+                <img src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/Zoning1.jpg" alt="都發局使用分區證明" class="clickable-map" onclick="openLightbox(this.src, '都發局使用分區證明')" loading="lazy">
             </div>
         </div>
     </section>
@@ -745,7 +757,7 @@
         <h2>大坑風景區環境圖</h2>
         <div style="background:#fff; padding: 10px; border: 1px solid #eee; border-radius: 8px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.05);">
             <h3 class="serif" style="margin: 15px 0; color: var(--forest-deep); font-size: 1.1rem;">環 境 總 覽 圖</h3>
-            <img src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/map2.jpg" alt="環境圖" class="clickable-map" onclick="openLightbox(this.src)" loading="lazy">
+            <img src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/map2.jpg" alt="環境總覽圖" class="clickable-map" onclick="openLightbox(this.src, '環境總覽圖')" loading="lazy">
             <p style="color: #666; margin: 15px 0; font-size: 0.9rem;">
                 ※ 鄰近台中市立醫院、74快速道路約 6-8 分鐘車程。(點擊可放大)
             </p>
@@ -777,10 +789,10 @@
     <script>
         // 相簿資料
         const galleryImages = [
-            {url: 'https://raw.githubusercontent.com/hao713949/Dagui-Section/main/IMG_6480.JPG', title: '會館示意'},
-            {url: 'https://raw.githubusercontent.com/hao713949/Dagui-Section/main/IMG_6481.JPG', title: '會館示意'},
-            {url: 'https://raw.githubusercontent.com/hao713949/Dagui-Section/main/IMG_6482.JPG', title: '會館示意'},
-            {url: 'https://raw.githubusercontent.com/hao713949/Dagui-Section/main/IMG_6484.JPG', title: '會館示意'},
+            {url: 'https://raw.githubusercontent.com/hao713949/Dagui-Section/main/IMG_6480.JPG', title: '會館示意圖'},
+            {url: 'https://raw.githubusercontent.com/hao713949/Dagui-Section/main/IMG_6481.JPG', title: '會館示意圖'},
+            {url: 'https://raw.githubusercontent.com/hao713949/Dagui-Section/main/IMG_6482.JPG', title: '會館示意圖'},
+            {url: 'https://raw.githubusercontent.com/hao713949/Dagui-Section/main/IMG_6484.JPG', title: '會館示意圖'},
             {url: 'https://raw.githubusercontent.com/hao713949/Dagui-Section/main/vaiil01.jpg', title: '森活工藝'},
             {url: 'https://raw.githubusercontent.com/hao713949/Dagui-Section/main/villa.jpg', title: '森活工藝'},
             {url: 'https://raw.githubusercontent.com/hao713949/Dagui-Section/main/villa2.jpg', title: '森活工藝'},
@@ -803,6 +815,7 @@
             currentGalleryIndex = index;
             const mainImg = document.getElementById('active-main-img');
             const lightboxImg = document.getElementById('lightbox-img');
+            const lightboxCaption = document.getElementById('lightbox-caption');
             const label = document.getElementById('main-label');
             const thumbs = document.querySelectorAll('.thumb-item');
             
@@ -816,9 +829,10 @@
                 mainImg.style.opacity = '1';
             }, 200);
 
-            // 如果燈箱開啟，同步更新燈箱內圖片
-            if (lightboxImg.src) {
+            // 如果燈箱開啟，同步更新燈箱內圖片與標題
+            if (document.getElementById('lightbox').style.display === 'flex') {
                 lightboxImg.src = currentData.url;
+                lightboxCaption.innerText = currentData.title;
             }
 
             // 更新縮圖 Active 狀態
@@ -844,17 +858,41 @@
             updateMain(newIndex);
         }
 
-        // 燈箱控制邏輯
-        function openLightbox(src) {
+        /**
+         * 燈箱控制邏輯
+         * @param {string} src 圖片路徑
+         * @param {string} title 點擊圖檔對應的標題文字
+         */
+        function openLightbox(src, title) {
             const lightbox = document.getElementById('lightbox');
             const lightboxImg = document.getElementById('lightbox-img');
-            lightboxImg.src = galleryImages[currentGalleryIndex].url; // 使用當前索引的圖片
+            const lightboxCaption = document.getElementById('lightbox-caption');
+            const lbPrev = document.querySelector('.lb-prev');
+            const lbNext = document.querySelector('.lb-next');
+            
+            // 判斷是否為輪播相簿圖片
+            const isGallery = galleryImages.some(img => img.url === src);
+            
+            if (isGallery) {
+                // 如果是相簿圖片，顯示導航按鈕並使用當前索引資料
+                lbPrev.style.display = 'flex';
+                lbNext.style.display = 'flex';
+                lightboxImg.src = galleryImages[currentGalleryIndex].url;
+                lightboxCaption.innerText = galleryImages[currentGalleryIndex].title;
+            } else {
+                // 如果是獨立圖資（圖資證明、環境圖），隱藏切換按鈕，直接顯示傳入的標題
+                lbPrev.style.display = 'none';
+                lbNext.style.display = 'none';
+                lightboxImg.src = src;
+                lightboxCaption.innerText = title || "";
+            }
+            
             lightbox.style.display = 'flex';
             document.body.style.overflow = 'hidden';
         }
 
         function handleLightboxClick(event) {
-            // 如果點擊的是背景（overlay）或圖片本身，則關閉（符合原本樣式慣例）
+            // 如果點擊的是背景（overlay）或圖片本身，則關閉
             if (event.target.id === 'lightbox' || event.target.id === 'lightbox-img') {
                 closeLightbox();
             }
@@ -879,12 +917,15 @@
         }, {passive: true});
 
         function handleGesture() {
-            const threshold = 50; // 滑動超過 50 像素才切換
-            if (touchEndX < touchStartX - threshold) {
-                changeSlide(1); // 向左滑 -> 下一張
-            }
-            if (touchEndX > touchStartX + threshold) {
-                changeSlide(-1); // 向右滑 -> 上一張
+            // 只有在顯示導航按鈕時（即相簿模式）才允許滑動切換
+            if (document.querySelector('.lb-prev').style.display !== 'none') {
+                const threshold = 50;
+                if (touchEndX < touchStartX - threshold) {
+                    changeSlide(1);
+                }
+                if (touchEndX > touchStartX + threshold) {
+                    changeSlide(-1);
+                }
             }
         }
 
@@ -892,8 +933,11 @@
         document.addEventListener('keydown', function(e) {
             if (document.getElementById('lightbox').style.display === 'flex') {
                 if (e.key === "Escape") closeLightbox();
-                if (e.key === "ArrowRight") changeSlide(1);
-                if (e.key === "ArrowLeft") changeSlide(-1);
+                // 只有在相簿模式下支援左右鍵
+                if (document.querySelector('.lb-prev').style.display !== 'none') {
+                    if (e.key === "ArrowRight") changeSlide(1);
+                    if (e.key === "ArrowLeft") changeSlide(-1);
+                }
             }
         });
     </script>
