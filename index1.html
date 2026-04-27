@@ -363,10 +363,18 @@
 
         .market-news-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-bottom: 40px; }
         .news-card { 
-            background: #fff; padding: 30px; border-radius: 4px; 
+            background: #fff; padding: 25px; border-radius: 4px; 
             border-top: 4px solid var(--gold-accent);
             box-shadow: 0 5px 20px rgba(0,0,0,0.05);
             display: flex; flex-direction: column;
+        }
+        .news-card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 4px;
+            margin-bottom: 20px;
+            background: #eee;
         }
         .price-highlight { color: var(--danger-red); font-size: 1.3rem; font-weight: 900; }
         .news-link { color: var(--forest-mid); text-decoration: none; font-weight: 700; font-size: 0.85rem; border-bottom: 1px solid var(--gold-accent); align-self: flex-start; margin-top: auto; padding-top: 15px;}
@@ -554,34 +562,40 @@
         <h2>市場資訊</h2>
         <div class="market-news-grid">
             <div class="news-card">
+                <img src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/%E5%A4%A7%E8%B2%B4778.webp" alt="大貴段風景區土地" onclick="openLightbox(this.src, '大貴段風景區土地')">
                 <h4>大貴段風景區土地 <span class="price-highlight">11.99萬</span> <br>需配合整體開發計畫</h4>
                 <p>北屯區罕見 11 字頭低單價建地，投資、自用皆宜，抗通膨保值首選。</p>
                 <a href="https://hao713949.github.io/Dagui-Section/%E5%A4%A7%E8%B2%B4%E9%A2%A8%E6%99%AF%E5%8D%80.html" target="_blank" class="news-link">開啟連結 ↗</a>
             </div>
 
             <div class="news-card">
+                <img src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/%E5%8C%97%E5%9D%91%E5%B7%B7%E7%89%B9%E4%BA%8C.png" alt="北坑巷特二建地" onclick="openLightbox(this.src, '北坑巷特二建地')">
                 <h4>北坑巷特二建地 <span class="price-highlight">16萬</span> <br>景觀住宅用地</h4>
                 <p>鄰近華盛頓中學、台中美國學校，高資產族群首選區段，增值潛力高。</p>
                 <a href="https://hao713949.github.io/Dagui-Section/%E5%A4%A7%E8%B2%B4924.html" target="_blank" class="news-link">開啟連結 ↗</a>
             </div>
 
             <div class="news-card">
+                <img src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/%E5%8C%97%E5%B1%AF%E5%8D%80%E5%A4%A7%E8%B1%90%E6%AE%B5.png" alt="北屯區大豐段" onclick="openLightbox(this.src, '北屯區大豐段')">
                 <h4>北屯區大豐段 <span class="price-highlight">14.4萬</span><br>大坑特二住宅區 A</h4>
                 <p>適合規劃為私人農場、養老居所 or 作為置產設倉使用。</p>
                 <a href="https://hao713949.github.io/Dagui-Section/%E5%A4%A7%E8%B1%90778-5.html" target="_blank" class="news-link">開啟連結 ↗</a>
             </div>
 
             <div class="news-card">
+                <img src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/%E9%9B%B2%E5%93%81.png" alt="雲品國際「大坑森邸」" onclick="openLightbox(this.src, '雲品國際「大坑森邸」')">
                  <h4>雲品國際「大坑森邸」<br>頂頂級高端生活產業</h4>
                 <p>雲品打造頂級溫泉Villa、White Party 宴會廳「森邸」，證明該區域具備承載國際級高端生活的潛力。</p>
                 <a href="https://news.cnyes.com/news/id/5561629" target="_blank" class="news-link">閱讀新聞原文 ↗</a>
             </div>
             <div class="news-card">
+                <img src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/%E5%B8%82%E7%AB%8B%E9%86%AB%E9%99%A2.jpg" alt="百億醫療特區" onclick="openLightbox(this.src, '百億醫療特區')">
                 <h4>百億醫療特區<br>周邊房價看俏</h4>
                 <p>隨著百億級醫療資源投入，大坑已從單純觀光轉向高端康養居住區，地價具強勁支撐。</p>
                 <a href="https://money.udn.com/money/story/5635/8749962" target="_blank" class="news-link">閱讀新聞原文 ↗</a>
             </div>
             <div class="news-card">
+                <img src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/%E6%A8%B8%E5%B1%B1%E6%9D%91.jpg" alt="大陸建設＆精湛建設" onclick="openLightbox(this.src, '大陸建設＆精湛建設')">
                 <h4>大陸建設＆精湛建設<br>打造台中版「青山鎮」</h4>
                 <p>指標建商預計打造高隱私、高規格森林別墅聚落，區域價值正處於爆發前夕。</p>
                 <a href="https://www.wealth.com.tw/articles/eb721bcb-8bc7-40a4-b798-a708edad6472" target="_blank" class="news-link">閱讀新聞原文 ↗</a>
