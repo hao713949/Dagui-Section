@@ -368,6 +368,23 @@
             box-shadow: 0 5px 20px rgba(0,0,0,0.05);
             display: flex; flex-direction: column;
         }
+        /* 市場資訊優化：標題與圖片佈局 */
+        .news-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        .news-header h4 { flex: 1; }
+        .news-thumb {
+            width: 80px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 4px;
+            border: 1px solid #eee;
+            flex-shrink: 0;
+        }
         .price-highlight { color: var(--danger-red); font-size: 1.3rem; font-weight: 900; }
         .news-link { color: var(--forest-mid); text-decoration: none; font-weight: 700; font-size: 0.85rem; border-bottom: 1px solid var(--gold-accent); align-self: flex-start; margin-top: auto; padding-top: 15px;}
 
@@ -433,12 +450,12 @@
 
     <nav class="top-nav">
         <a href="#page1">首頁</a>
-        <a href="#page2">戰略佈局</a>
+        <a href="#page2">核心理念</a>
         <a href="#market-info">市場資訊</a>
         <a href="#page5">土地分類</a>
         <a href="#page4">圖資證明</a>
         <a href="#page7">重要聲明</a>
-        <a href="#planning-doc">環境實景</a>
+        <a href="#planning-doc">環境圖</a>
         <a href="#page8">地理位置</a>
     </nav>
 
@@ -554,35 +571,53 @@
         <h2>市場資訊</h2>
         <div class="market-news-grid">
             <div class="news-card">
-                <h4>大貴段風景區土地 <span class="price-highlight">11.99萬</span> <br>需配合整體開發計畫</h4>
+                <div class="news-header">
+                    <h4>大貴段風景區土地 <span class="price-highlight">11.99萬</span> <br>需配合整體開發計畫</h4>
+                    <img src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/map.webp" class="news-thumb" alt="縮圖">
+                </div>
                 <p>北屯區罕見 11 字頭低單價建地，投資、自用皆宜，抗通膨保值首選。</p>
                 <a href="https://hao713949.github.io/Dagui-Section/%E5%A4%A7%E8%B2%B4%E9%A2%A8%E6%99%AF%E5%8D%80.html" target="_blank" class="news-link">開啟連結 ↗</a>
             </div>
 
             <div class="news-card">
-                <h4>北坑巷特二建地 <span class="price-highlight">16萬</span> <br>景觀住宅用地</h4>
+                <div class="news-header">
+                    <h4>北坑巷特二建地 <span class="price-highlight">16萬</span> <br>景觀住宅用地</h4>
+                    <img src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/villa5.jpg" class="news-thumb" alt="縮圖">
+                </div>
                 <p>鄰近華盛頓中學、台中美國學校，高資產族群首選區段，增值潛力高。</p>
                 <a href="https://hao713949.github.io/Dagui-Section/%E5%A4%A7%E8%B2%B4924.html" target="_blank" class="news-link">開啟連結 ↗</a>
             </div>
 
             <div class="news-card">
-                <h4>北屯區大豐段 <span class="price-highlight">14.4萬</span><br>大坑特二住宅區 A</h4>
+                <div class="news-header">
+                    <h4>北屯區大豐段 <span class="price-highlight">14.4萬</span><br>大坑特二住宅區 A</h4>
+                    <img src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/map2.jpg" class="news-thumb" alt="縮圖">
+                </div>
                 <p>適合規劃為私人農場、養老居所 or 作為置產設倉使用。</p>
                 <a href="https://hao713949.github.io/Dagui-Section/%E5%A4%A7%E8%B1%90778-5.html" target="_blank" class="news-link">開啟連結 ↗</a>
             </div>
 
             <div class="news-card">
-                 <h4>雲品國際「大坑森邸」<br>頂頂級高端生活產業</h4>
+                <div class="news-header">
+                    <h4>雲品國際「大坑森邸」<br>頂頂級高端生活產業</h4>
+                    <img src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/villa0.jpg" class="news-thumb" alt="縮圖">
+                </div>
                 <p>雲品打造頂級溫泉Villa、White Party 宴會廳「森邸」，證明該區域具備承載國際級高端生活的潛力。</p>
                 <a href="https://news.cnyes.com/news/id/5561629" target="_blank" class="news-link">閱讀新聞原文 ↗</a>
             </div>
             <div class="news-card">
-                <h4>百億醫療特區<br>周邊房價看俏</h4>
+                <div class="news-header">
+                    <h4>百億醫療特區<br>周邊房價看俏</h4>
+                    <img src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/IMG_6480.JPG" class="news-thumb" alt="縮圖">
+                </div>
                 <p>隨著百億級醫療資源投入，大坑已從單純觀光轉向高端康養居住區，地價具強勁支撐。</p>
                 <a href="https://money.udn.com/money/story/5635/8749962" target="_blank" class="news-link">閱讀新聞原文 ↗</a>
             </div>
             <div class="news-card">
-                <h4>大陸建設＆精湛建設<br>打造台中版「青山鎮」</h4>
+                <div class="news-header">
+                    <h4>大陸建設＆精湛建設<br>打造台中版「青山鎮」</h4>
+                    <img src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/villa.jpg" class="news-thumb" alt="縮圖">
+                </div>
                 <p>指標建商預計打造高隱私、高規格森林別墅聚落，區域價值正處於爆發前夕。</p>
                 <a href="https://www.wealth.com.tw/articles/eb721bcb-8bc7-40a4-b798-a708edad6472" target="_blank" class="news-link">閱讀新聞原文 ↗</a>
             </div>
@@ -747,7 +782,7 @@
 
     <section id="planning-doc">
         <span class="section-tag">SITE PLANNING & SCENERY</span>
-        <h2>共老莊園實拍攝</h2>
+        <h2>大坑風景區環境圖與實景攝影</h2>
         <div style="background:#fff; padding: 10px; border: 1px solid #eee; border-radius: 8px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.05);">
             
             <div style="position: relative; width: 100%; padding-bottom: 56.25%; height: 0; margin-bottom: 20px; border-radius: 4px; overflow: hidden;">
@@ -777,7 +812,7 @@
         <div class="map-container">
             <iframe 
                 title="Google Map Location"
-                src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3640.407981502598!2d120.74375837534825!3d24.164719278389335!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMjTCsDA5JzUzLjAiTiAxMjDCsDQ0JzQ2LjgiRQ!5e0!3m2!1szh-TW!2stw!4v1714138000000!5m2!1szh-TW!2stw" 
+                src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3640.161103099951!2d120.74375837534861!3d24.164719278389704!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMjTCsDA5JzUzLjAiTiAxMjDCsDQ0JzQ2LjgiRQ!5e0!3m2!1szh-TW!2stw!4v1714371000000!5m2!1szh-TW!2stw" 
                 width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy">
             </iframe>
         </div>
