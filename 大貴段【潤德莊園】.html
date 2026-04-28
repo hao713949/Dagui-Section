@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-wide=5.0">
     <title>【北屯大貴段｜潤德莊園】預約森林裡的世外桃源：與知己為鄰，讓資產定錨</title>
+    <link rel="preload" as="image" href="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/villa.jpg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@600;900&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
@@ -71,8 +72,7 @@
             background: rgba(255, 255, 255, 0.1);
             color: white;
             border: none;
-            width: 50px;
-            height: 50px;
+            width: 50px; height: 50px;
             border-radius: 50%;
             font-size: 1.5rem;
             cursor: pointer;
@@ -109,6 +109,17 @@
             scrollbar-width: none;
         }
         .top-nav::-webkit-scrollbar { display: none; }
+        
+        /* 優化 1：導覽列滾動提示 */
+        .top-nav::after {
+            content: "";
+            position: absolute;
+            right: 0; top: 0; bottom: 0;
+            width: 30px;
+            background: linear-gradient(to left, rgba(255,255,255,0.8), transparent);
+            pointer-events: none;
+        }
+
         .top-nav a {
             text-decoration: none;
             color: var(--forest-deep);
@@ -140,6 +151,13 @@
             transition: all 0.3s ease;
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
             text-align: center;
+        }
+        
+        /* 優化 4：按鈕懸停感 */
+        .query-btn:hover {
+            background-color: var(--forest-mid);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+            transform: translateY(-2px);
         }
         .query-btn:active { transform: scale(0.98); }
 
@@ -201,7 +219,6 @@
         }
         .hero-content { flex: 1; max-width: 650px; }
 
-        /* 新增：子標題旁邊的色塊裝飾樣式 */
         .subtitle-decorated {
             display: flex;
             align-items: center;
@@ -308,7 +325,6 @@
             font-weight: 700;
         }
 
-        /* 輪播背景圖片路徑 */
         .carousel-item:nth-child(1) { background-image: url('https://raw.githubusercontent.com/hao713949/Dagui-Section/main/villa.jpg'); animation-delay: 0s; }
         .carousel-item:nth-child(2) { background-image: url('https://raw.githubusercontent.com/hao713949/Dagui-Section/main/villa0.jpg'); animation-delay: 6s; }
         .carousel-item:nth-child(3) { background-image: url('https://raw.githubusercontent.com/hao713949/Dagui-Section/main/villa1.jpg'); animation-delay: 12s; }
@@ -363,7 +379,16 @@
             background: white; padding: 15px; border-radius: 8px; 
             overflow-x: auto; box-shadow: 0 10px 20px rgba(0,0,0,0.05); 
             -webkit-overflow-scrolling: touch;
+            max-height: 80vh; /* 確保內容超出時可滾動 */
         }
+        
+        /* 優化 3：表格頭部固定 */
+        .table-container thead th {
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
         table { width: 100%; border-collapse: collapse; min-width: 700px; }
         th { background: var(--forest-deep); color: white; padding: 15px; text-align: left; font-size: 0.85rem; white-space: nowrap; }
         td { padding: 15px; border-bottom: 1px solid #f0f0f0; font-size: 0.85rem; }
@@ -384,12 +409,9 @@
             display: flex; flex-direction: column;
         }
         .news-card img {
-            width: 100%;
-            height: 180px;
-            object-fit: cover;
-            border-radius: 4px;
-            margin-bottom: 20px;
-            background: #eee;
+            width: 100%; height: 180px;
+            object-fit: cover; border-radius: 4px;
+            margin-bottom: 20px; background: #eee;
         }
         .price-highlight { color: var(--danger-red); font-size: 1.3rem; font-weight: 900; }
         .news-link { color: var(--forest-mid); text-decoration: none; font-weight: 700; font-size: 0.85rem; border-bottom: 1px solid var(--gold-accent); align-self: flex-start; margin-top: auto; padding-top: 15px;}
@@ -398,7 +420,19 @@
             background: var(--forest-deep); color: #fff; padding: 40px; 
             border-radius: 4px; border-left: 6px solid var(--gold-accent);
         }
-        .invest-tag-new { font-size: 0.9rem; color: var(--gold-accent); display: block; margin-bottom: 15px; font-weight: 900; letter-spacing: 2px; }
+
+        /* 優化 2：文字張力 (金色脈動) */
+        .invest-tag-new { 
+            font-size: 0.9rem; color: var(--gold-accent); 
+            display: block; margin-bottom: 15px; 
+            font-weight: 900; letter-spacing: 2px;
+            animation: pulse-gold 2s infinite ease-in-out;
+        }
+        @keyframes pulse-gold {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.6; }
+        }
+
         .invest-title-new { font-size: clamp(1.3rem, 4vw, 2rem); margin-bottom: 20px; line-height: 1.4; }
         .invest-content-new { font-size: 1rem; line-height: 1.8; color: rgba(255, 255, 255, 0.85); }
 
@@ -410,7 +444,6 @@
         }
         .map-btn:hover { background: var(--forest-mid); }
 
-        /* --- RWD 手機版優化 --- */
         @media (max-width: 1024px) {
             .reg-grid { grid-template-columns: repeat(3, 1fr); }
             .hero-container { flex-direction: column; align-items: flex-start; }
@@ -478,7 +511,7 @@
        <div class="hero-container">
            <div class="hero-content">
                 <span class="sub-title serif">預約森林裡的世外桃源</span>
-                <h1 class="main-title serif">   潤德莊園  </h1>
+                <h1 class="main-title serif">潤德莊園</h1>
                 
                 <div class="subtitle-decorated">
                     <div class="subtitle-color-bar"></div>
@@ -655,7 +688,7 @@
         <div class="table-container" style="margin-top: 40px; border-top: 1px solid #ddd; padding-top: 30px;">
             <h3 class="serif" style="margin-bottom:20px; color: var(--forest-deep); text-align: center; font-size: 1.1rem;">區域實價案例：樸山村 『 土地實際價格 18 ~ 22 萬 』</h3>
             <table>
-                <thead style="background: var(--forest-deep); color: white;">
+                <thead>
                     <tr>
                         <th style="color: white;">標的地號</th>
                         <th style="color: white;">交易總價(萬)</th>
