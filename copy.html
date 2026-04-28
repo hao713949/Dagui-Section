@@ -203,7 +203,7 @@
 
         .hero-gallery {
             flex: 1;
-            max-width: 500px;
+            max-width: 600px;
             display: flex;
             flex-direction: column;
             gap: 15px;
@@ -212,6 +212,7 @@
             border-radius: 8px;
             backdrop-filter: blur(5px);
             border: 1px solid rgba(181, 164, 120, 0.2);
+            margin-top: 40px;
         }
 
         .main-display {
@@ -477,33 +478,6 @@
                     認購單元價格查詢 ⇄
                 </a>
             </div>
-
-            <div class="hero-gallery">
-                <div class="main-display">
-                    <button class="nav-arrow prev-arrow" onclick="changeSlide(-1)"><</button>
-                    <img id="active-main-img" src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/IMG_6480.JPG" alt="會館示意圖" onclick="openLightbox(this.src, '會館示意圖')">
-                    <button class="nav-arrow next-arrow" onclick="changeSlide(1)">></button>
-                    <div class="gallery-label" id="main-label">會館示意圖</div>
-                </div>
-
-                <div class="thumb-scroll" id="thumb-container">
-                    <div class="thumb-item active" onclick="updateMain(0)"><img src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/IMG_6480.JPG"></div>
-                    <div class="thumb-item" onclick="updateMain(1)"><img src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/IMG_6481.JPG"></div>
-                    <div class="thumb-item" onclick="updateMain(2)"><img src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/IMG_6482.JPG"></div>
-                    <div class="thumb-item" onclick="updateMain(3)"><img src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/IMG_6484.JPG"></div>
-                    <div class="thumb-item" onclick="updateMain(4)"><img src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/vaiil01.jpg"></div>
-                    <div class="thumb-item" onclick="updateMain(5)"><img src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/villa.jpg"></div>
-                    <div class="thumb-item" onclick="updateMain(6)"><img src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/villa2.jpg"></div>
-                    <div class="thumb-item" onclick="updateMain(7)"><img src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/villa3.jpg"></div>
-                    <div class="thumb-item" onclick="updateMain(8)"><img src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/villa4.jpg"></div>
-                    <div class="thumb-item" onclick="updateMain(9)"><img src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/villa5.jpg"></div>
-                    <div class="thumb-item" onclick="updateMain(10)"><img src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/casa1.jpg"></div>
-                    <div class="thumb-item" onclick="updateMain(11)"><img src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/casa2.jpg"></div>
-                    <div class="thumb-item" onclick="updateMain(12)"><img src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/casa3.jpg"></div>
-                    <div class="thumb-item" onclick="updateMain(13)"><img src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/casa4.jpg"></div>
-                    <div class="thumb-item" onclick="updateMain(14)"><img src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/casa5.jpg"></div>
-                </div>
-            </div>
        </div>
     </header>
 
@@ -535,15 +509,15 @@
         <div class="grid-layout">
             <div class="info-card" style="border-top: 4px solid var(--gold-accent);">
                 <h3>超值門檻</h3>
-                <p>每坪開價僅 <span style="font-size: 1.2rem; color: var(--danger-red); font-weight: 900;">9.XX 萬</span> 以內，實現真正的『成本價』入主。</p>
+                <p>每坪開價僅 <span style="font-size: 1.8rem; color: var(--danger-red); font-weight: 900;">9.XX 萬</span> 以內，實現真正的『成本價』入主。</p>
             </div>
             <div class="info-card" style="border-top: 4px solid var(--gold-accent);">
                 <h3>開發紅利</h3>
-                <p>透過合購建地與農地處分回饋，預計每坪可退回約 <span style="font-size: 1.2rem; color: var(--danger-red); font-weight: 900;">1.5 萬</span>，大幅降低實際成本。</p>
+                <p>透過合購建地與農地處分回饋，預計每坪可退回約 <span style="font-size: 1.8rem; color: var(--danger-red); font-weight: 900;">1.5 萬</span>，大幅降低實際成本。</p>
             </div>
             <div class="info-card" style="border-top: 4px solid var(--gold-accent);">
                 <h3>即刻溢價</h3>
-                <p>當同區以 <span style="font-size: 1.2rem; color: var(--danger-red); font-weight: 900;">18 萬/坪</span> 定價開局，您的進場成本已預留了翻倍的價值緩衝。這不只是土地買賣，更是利用資訊位階，完成一場「未戰先勝」的資產佈局。</p>
+                <p>當同區以 <span style="font-size: 1.8rem; color: var(--danger-red); font-weight: 900;">18 萬/坪</span> 定價開局，您的進場成本已預留了翻倍的價值緩衝。這不只是土地買賣，更是利用資訊位階，完成一場「未戰先勝」的資產佈局。</p>
             </div>
         </div>
 
@@ -575,11 +549,28 @@
             </div>
         </div>
 
+        <div class="hero-gallery" style="margin: 60px auto 0;">
+            <h3 class="serif" style="text-align: center; color: var(--forest-deep); margin-bottom: 10px;">潤德精品會館</h3>
+            <div class="main-display">
+                <button class="nav-arrow prev-arrow" onclick="changeSlide(-1)"><</button>
+                <img id="active-main-img" src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/IMG_6480.JPG" alt="潤德精品會館" onclick="openLightbox(this.src, '潤德精品會館')">
+                <button class="nav-arrow next-arrow" onclick="changeSlide(1)">></button>
+                <div class="gallery-label" id="main-label">潤德精品會館</div>
+            </div>
+
+            <div class="thumb-scroll" id="thumb-container">
+                <div class="thumb-item active" onclick="updateMain(0)"><img src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/IMG_6480.JPG"></div>
+                <div class="thumb-item" onclick="updateMain(1)"><img src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/IMG_6481.JPG"></div>
+                <div class="thumb-item" onclick="updateMain(2)"><img src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/IMG_6482.JPG"></div>
+                <div class="thumb-item" onclick="updateMain(3)"><img src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/IMG_6484.JPG"></div>
+            </div>
+        </div>
+
         <div id="invest-insight" class="invest-insight-box" style="margin-top: 60px;">
             <span class="invest-tag-new">FINAL CALL</span>
             <h3 class="serif invest-title-new">五月正式認購，稀缺席次倒數</h3>
             <p class="invest-content-new">
-                在潤德莊園，買的不只是土地，而是一種「看得到、握得住」的尊嚴生活。這是一份給家人的承諾，也是一筆留給未來的戰略資產。稀缺 24 席，先到先得。邀請您，在兩萬坪森林裡，預約一場優雅的共老人生。
+                在潤德莊園，買的不職是土地，而是一種「看得到、握得住」的尊嚴生活。這是一份給家人的承諾，也是一筆留給未來的戰略資產。稀缺 24 席，先到先得。邀請您，在兩萬坪森林裡，預約一場優雅的共老人生。
             </p>
         </div>
     </section>
@@ -834,23 +825,12 @@
     </footer>
 
     <script>
-        // 相簿資料
+        // 相簿資料：僅保留潤德精品會館照片
         const galleryImages = [
-            {url: 'https://raw.githubusercontent.com/hao713949/Dagui-Section/main/IMG_6480.JPG', title: '會館示意圖'},
-            {url: 'https://raw.githubusercontent.com/hao713949/Dagui-Section/main/IMG_6481.JPG', title: '會館示意圖'},
-            {url: 'https://raw.githubusercontent.com/hao713949/Dagui-Section/main/IMG_6482.JPG', title: '會館示意圖'},
-            {url: 'https://raw.githubusercontent.com/hao713949/Dagui-Section/main/IMG_6484.JPG', title: '會館示意圖'},
-            {url: 'https://raw.githubusercontent.com/hao713949/Dagui-Section/main/vaiil01.jpg', title: '森活工藝'},
-            {url: 'https://raw.githubusercontent.com/hao713949/Dagui-Section/main/villa.jpg', title: '森活工藝'},
-            {url: 'https://raw.githubusercontent.com/hao713949/Dagui-Section/main/villa2.jpg', title: '森活工藝'},
-            {url: 'https://raw.githubusercontent.com/hao713949/Dagui-Section/main/villa3.jpg', title: '森活工藝'},
-            {url: 'https://raw.githubusercontent.com/hao713949/Dagui-Section/main/villa4.jpg', title: '森活工藝'},
-            {url: 'https://raw.githubusercontent.com/hao713949/Dagui-Section/main/villa5.jpg', title: '森活工藝'},
-            {url: 'https://raw.githubusercontent.com/hao713949/Dagui-Section/main/casa1.jpg', title: '森活工藝'},
-            {url: 'https://raw.githubusercontent.com/hao713949/Dagui-Section/main/casa2.jpg', title: '森活工藝'},
-            {url: 'https://raw.githubusercontent.com/hao713949/Dagui-Section/main/casa3.jpg', title: '森活工藝'},
-            {url: 'https://raw.githubusercontent.com/hao713949/Dagui-Section/main/casa4.jpg', title: '森活工藝'},
-            {url: 'https://raw.githubusercontent.com/hao713949/Dagui-Section/main/casa5.jpg', title: '森活工藝'},
+            {url: 'https://raw.githubusercontent.com/hao713949/Dagui-Section/main/IMG_6480.JPG', title: '潤德精品會館'},
+            {url: 'https://raw.githubusercontent.com/hao713949/Dagui-Section/main/IMG_6481.JPG', title: '潤德精品會館'},
+            {url: 'https://raw.githubusercontent.com/hao713949/Dagui-Section/main/IMG_6482.JPG', title: '潤德精品會館'},
+            {url: 'https://raw.githubusercontent.com/hao713949/Dagui-Section/main/IMG_6484.JPG', title: '潤德精品會館'}
         ];
         
         let currentGalleryIndex = 0;
