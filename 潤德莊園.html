@@ -1,9 +1,17 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
+    <meta property="og:title" content="【北屯大貴段｜潤德莊園】預約森林裡的世外桃源"> 
+    <meta property="og:description" content="以初始成本，搶佔「資產原始紅利」">
+    <meta property="og:image" content="https://hao713949.github.io/Dagui-Section/IMG_6482.JPG"> 
+    <meta property="og:url" content="https://hao713949.github.io/Dagui-Section/villa.html">
+    <meta property="og:type" content="website">
+
+    </head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-wide=5.0">
     <title>【北屯大貴段｜潤德莊園】預約森林裡的世外桃源：與知己為鄰，讓資產定錨</title>
+    <link rel="preload" as="image" href="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/villa.jpg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@600;900&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
@@ -71,8 +79,7 @@
             background: rgba(255, 255, 255, 0.1);
             color: white;
             border: none;
-            width: 50px;
-            height: 50px;
+            width: 50px; height: 50px;
             border-radius: 50%;
             font-size: 1.5rem;
             cursor: pointer;
@@ -109,6 +116,17 @@
             scrollbar-width: none;
         }
         .top-nav::-webkit-scrollbar { display: none; }
+        
+        /* 優化 1：導覽列滾動提示 */
+        .top-nav::after {
+            content: "";
+            position: absolute;
+            right: 0; top: 0; bottom: 0;
+            width: 30px;
+            background: linear-gradient(to left, rgba(255,255,255,0.8), transparent);
+            pointer-events: none;
+        }
+
         .top-nav a {
             text-decoration: none;
             color: var(--forest-deep);
@@ -140,6 +158,13 @@
             transition: all 0.3s ease;
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
             text-align: center;
+        }
+        
+        /* 優化 4：按鈕懸停感 */
+        .query-btn:hover {
+            background-color: var(--forest-mid);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+            transform: translateY(-2px);
         }
         .query-btn:active { transform: scale(0.98); }
 
@@ -201,7 +226,6 @@
         }
         .hero-content { flex: 1; max-width: 650px; }
 
-        /* 新增：子標題旁邊的色塊裝飾樣式 */
         .subtitle-decorated {
             display: flex;
             align-items: center;
@@ -308,7 +332,6 @@
             font-weight: 700;
         }
 
-        /* 輪播背景圖片路徑 */
         .carousel-item:nth-child(1) { background-image: url('https://raw.githubusercontent.com/hao713949/Dagui-Section/main/villa.jpg'); animation-delay: 0s; }
         .carousel-item:nth-child(2) { background-image: url('https://raw.githubusercontent.com/hao713949/Dagui-Section/main/villa0.jpg'); animation-delay: 6s; }
         .carousel-item:nth-child(3) { background-image: url('https://raw.githubusercontent.com/hao713949/Dagui-Section/main/villa1.jpg'); animation-delay: 12s; }
@@ -363,7 +386,16 @@
             background: white; padding: 15px; border-radius: 8px; 
             overflow-x: auto; box-shadow: 0 10px 20px rgba(0,0,0,0.05); 
             -webkit-overflow-scrolling: touch;
+            max-height: 80vh; /* 確保內容超出時可滾動 */
         }
+        
+        /* 優化 3：表格頭部固定 */
+        .table-container thead th {
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
         table { width: 100%; border-collapse: collapse; min-width: 700px; }
         th { background: var(--forest-deep); color: white; padding: 15px; text-align: left; font-size: 0.85rem; white-space: nowrap; }
         td { padding: 15px; border-bottom: 1px solid #f0f0f0; font-size: 0.85rem; }
@@ -384,12 +416,9 @@
             display: flex; flex-direction: column;
         }
         .news-card img {
-            width: 100%;
-            height: 180px;
-            object-fit: cover;
-            border-radius: 4px;
-            margin-bottom: 20px;
-            background: #eee;
+            width: 100%; height: 180px;
+            object-fit: cover; border-radius: 4px;
+            margin-bottom: 20px; background: #eee;
         }
         .price-highlight { color: var(--danger-red); font-size: 1.3rem; font-weight: 900; }
         .news-link { color: var(--forest-mid); text-decoration: none; font-weight: 700; font-size: 0.85rem; border-bottom: 1px solid var(--gold-accent); align-self: flex-start; margin-top: auto; padding-top: 15px;}
@@ -398,7 +427,19 @@
             background: var(--forest-deep); color: #fff; padding: 40px; 
             border-radius: 4px; border-left: 6px solid var(--gold-accent);
         }
-        .invest-tag-new { font-size: 0.9rem; color: var(--gold-accent); display: block; margin-bottom: 15px; font-weight: 900; letter-spacing: 2px; }
+
+        /* 優化 2：文字張力 (金色脈動) */
+        .invest-tag-new { 
+            font-size: 0.9rem; color: var(--gold-accent); 
+            display: block; margin-bottom: 15px; 
+            font-weight: 900; letter-spacing: 2px;
+            animation: pulse-gold 2s infinite ease-in-out;
+        }
+        @keyframes pulse-gold {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.6; }
+        }
+
         .invest-title-new { font-size: clamp(1.3rem, 4vw, 2rem); margin-bottom: 20px; line-height: 1.4; }
         .invest-content-new { font-size: 1rem; line-height: 1.8; color: rgba(255, 255, 255, 0.85); }
 
@@ -410,7 +451,6 @@
         }
         .map-btn:hover { background: var(--forest-mid); }
 
-        /* --- RWD 手機版優化 --- */
         @media (max-width: 1024px) {
             .reg-grid { grid-template-columns: repeat(3, 1fr); }
             .hero-container { flex-direction: column; align-items: flex-start; }
@@ -478,7 +518,7 @@
        <div class="hero-container">
            <div class="hero-content">
                 <span class="sub-title serif">預約森林裡的世外桃源</span>
-                <h1 class="main-title serif">   潤德莊園  </h1>
+                <h1 class="main-title serif">潤德莊園</h1>
                 
                 <div class="subtitle-decorated">
                     <div class="subtitle-color-bar"></div>
@@ -571,13 +611,13 @@
             <h3 class="serif" style="text-align: center; color: var(--forest-deep); margin-bottom: 15px; font-size: 1.5rem;">潤德精品會館示意圖</h3>
             <div class="main-display">
                 <button class="nav-arrow prev-arrow" onclick="changeSlide(-1)"><</button>
-                <img id="active-main-img" src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/IMG_6480.JPG" alt="潤德精品會館示意圖" onclick="openLightbox(this.src, '潤德精品會館')">
+                <img id="active-main-img" src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/IMG_6482.JPG" alt="潤德精品會館示意圖" onclick="openLightbox(this.src, '潤德精品會館')">
                 <button class="nav-arrow next-arrow" onclick="changeSlide(1)">></button>
                 <div class="gallery-label" id="main-label">潤德精品會館示意圖</div>
             </div>
             
             <p style="font-size: 1rem; margin: 10px 0 20px; color: var(--forest-mid); text-align: center; font-weight: 700; line-height: 1.6;">
-                ※ 佔地 577坪 三層現代共享會館（每層85～90坪，總市值超過1.61億元）由認購土地『附約款-工程讓渡費結餘款』提撥興建，由48單元分別共有，每月約7,000元管理費（KTV、餐廳、咖啡廳、休閒聚會空間，純自用不對外營業）。
+                ※ 佔地 577坪 三層現代共享會館（每層85～90坪，總市值超過1.61億元）由認購土地『附約款-基礎工程建設結餘款』提撥興建，由48單元分別共有，每月約7,000元管理費（KTV、餐廳、咖啡廳、休閒聚會空間，純自用不對外營業）。
             </p>
 
             <div class="thumb-scroll" id="thumb-container">
@@ -592,7 +632,7 @@
             <span class="invest-tag-new">FINAL CALL</span>
             <h3 class="serif invest-title-new">五月正式認購，稀缺席次倒數</h3>
             <p class="invest-content-new">
-                在潤德莊園，買的不僅僅是土地，而是一種「看得到、握得住」的尊嚴生活。這是一份給家人的承諾，也是一筆留給未來的戰略資產。稀缺 24 席，先到先得。邀請您，在兩萬坪森林裡，預約一場優雅的共老人生。
+                在潤德莊園，買的不僅僅是土地，而是一種「看得到、握得住」的尊嚴生活。這是一份給家人的承諾，也是一筆留給未來的戰略資產。稀缺 24 席，先到先得。邀請您，在兩萬坪森林裡，預約一場優雅的永恆靜好。
             </p>
         </div>
     </section>
@@ -655,7 +695,7 @@
         <div class="table-container" style="margin-top: 40px; border-top: 1px solid #ddd; padding-top: 30px;">
             <h3 class="serif" style="margin-bottom:20px; color: var(--forest-deep); text-align: center; font-size: 1.1rem;">區域實價案例：樸山村 『 土地實際價格 18 ~ 22 萬 』</h3>
             <table>
-                <thead style="background: var(--forest-deep); color: white;">
+                <thead>
                     <tr>
                         <th style="color: white;">標的地號</th>
                         <th style="color: white;">交易總價(萬)</th>
@@ -771,7 +811,7 @@
             <div class="info-card">
                 <h3>付款構成</h3>
                 <p><strong>主約購地款：</strong>含權狀面積、公設地、公設預撥地、會館用地、農地等。</p>
-                <p style="margin-top: 10px;"><strong>附約款：</strong>社區建設費、基礎工程讓渡費及相關規費。</p>
+                <p style="margin-top: 10px;"><strong>附約款：</strong>社區建設費、基礎工程建設費及相關規費。</p>
             </div>
             <div class="info-card">
                 <h3>交易時程</h3>
