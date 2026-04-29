@@ -115,7 +115,6 @@
         }
         .top-nav::-webkit-scrollbar { display: none; }
         
-        /* 優化 1：導覽列滾動提示 */
         .top-nav::after {
             content: "";
             position: absolute;
@@ -158,7 +157,6 @@
             text-align: center;
         }
         
-        /* 優化 4：按鈕懸停感 */
         .query-btn:hover {
             background-color: var(--forest-mid);
             box-shadow: 0 6px 20px rgba(0,0,0,0.2);
@@ -203,7 +201,8 @@
             background-size: cover;
             background-position: center;
             opacity: 0;
-            animation: carouselFade 36s infinite ease-in-out;
+            /* 修改點：加速 Hero 輪播切換 */
+            animation: carouselFade 24s infinite ease-in-out;
         }
         
         .hero::after {
@@ -331,11 +330,11 @@
         }
 
         .carousel-item:nth-child(1) { background-image: url('https://raw.githubusercontent.com/hao713949/Dagui-Section/main/villa.jpg'); animation-delay: 0s; }
-        .carousel-item:nth-child(2) { background-image: url('https://raw.githubusercontent.com/hao713949/Dagui-Section/main/villa0.jpg'); animation-delay: 6s; }
-        .carousel-item:nth-child(3) { background-image: url('https://raw.githubusercontent.com/hao713949/Dagui-Section/main/villa1.jpg'); animation-delay: 12s; }
-        .carousel-item:nth-child(4) { background-image: url('https://raw.githubusercontent.com/hao713949/Dagui-Section/main/villa2.jpg'); animation-delay: 18s; }
-        .carousel-item:nth-child(5) { background-image: url('https://raw.githubusercontent.com/hao713949/Dagui-Section/main/villa3.jpg'); animation-delay: 24s; }
-        .carousel-item:nth-child(6) { background-image: url('https://raw.githubusercontent.com/hao713949/Dagui-Section/main/villa4.jpg'); animation-delay: 30s; }
+        .carousel-item:nth-child(2) { background-image: url('https://raw.githubusercontent.com/hao713949/Dagui-Section/main/villa0.jpg'); animation-delay: 4s; }
+        .carousel-item:nth-child(3) { background-image: url('https://raw.githubusercontent.com/hao713949/Dagui-Section/main/villa1.jpg'); animation-delay: 8s; }
+        .carousel-item:nth-child(4) { background-image: url('https://raw.githubusercontent.com/hao713949/Dagui-Section/main/villa2.jpg'); animation-delay: 12s; }
+        .carousel-item:nth-child(5) { background-image: url('https://raw.githubusercontent.com/hao713949/Dagui-Section/main/villa3.jpg'); animation-delay: 16s; }
+        .carousel-item:nth-child(6) { background-image: url('https://raw.githubusercontent.com/hao713949/Dagui-Section/main/villa4.jpg'); animation-delay: 20s; }
 
         @keyframes carouselFade {
             0% { opacity: 0; transform: scale(1); }
@@ -384,10 +383,9 @@
             background: white; padding: 15px; border-radius: 8px; 
             overflow-x: auto; box-shadow: 0 10px 20px rgba(0,0,0,0.05); 
             -webkit-overflow-scrolling: touch;
-            max-height: 80vh; /* 確保內容超出時可滾動 */
+            max-height: 80vh; 
         }
         
-        /* 優化 3：表格頭部固定 */
         .table-container thead th {
             position: sticky;
             top: 0;
@@ -426,7 +424,6 @@
             border-radius: 4px; border-left: 6px solid var(--gold-accent);
         }
 
-        /* 優化 2：文字張力 (金色脈動) */
         .invest-tag-new { 
             font-size: 0.9rem; color: var(--gold-accent); 
             display: block; margin-bottom: 15px; 
@@ -449,7 +446,7 @@
         }
         .map-btn:hover { background: var(--forest-mid); }
 
-        /* --- 新增：傳承章節樣式 --- */
+        /* --- 傳承章節樣式 --- */
         .legacy-section {
             background-color: var(--paper-texture);
             display: flex;
@@ -491,7 +488,8 @@
             background-size: cover;
             background-position: center;
             opacity: 0;
-            transition: opacity 1.5s ease-in-out;
+            /* 修改點：加速照片轉場速度 */
+            transition: opacity 0.8s ease-in-out;
         }
         .legacy-slide.active { opacity: 1; }
 
@@ -677,7 +675,7 @@
             <span class="invest-tag-new">FINAL CALL</span>
             <h3 class="serif invest-title-new">五月正式認購，稀缺席次倒數</h3>
             <p class="invest-content-new">
-                在潤德莊園，買的不僅僅是土地，而是一種「看得到、握得住」的尊嚴生活。這是一份給家人的承諾，也是一筆留給未來的戰略資產。稀缺 24 席，先到先得。邀請您，在兩萬坪森林裡，預約一場優雅的永恆靜好。
+                在潤德莊園，買的不僅僅是土地，而一種「看得到、握得住」的尊嚴生活。這是一份給家人的承諾，也是一筆留給未來的戰略資產。稀缺 24 席，先到先得。邀請您，在兩萬坪森林裡，預約一場優雅的永恆靜好。
             </p>
         </div>
     </section>
@@ -932,7 +930,7 @@
     <section class="legacy-section">
         <div class="legacy-text">
             <span class="section-tag">LEGACY & HONOR</span>
-            <h2 class="legacy-title serif">居山之巔，藏鋒卓越。<br>大器天成，只待一方境地。</h2>
+            <h2 class="legacy-title serif">居山之巔 藏鋒卓越<br>大器天成 只待一方境地</h2>
             <div class="legacy-content">
                 <p>
                     從比佛利到香港太平山，如今回到北屯潤德莊園<br>
@@ -1089,7 +1087,8 @@
             legacyIndex = (legacyIndex + 1) % legacySlides.length;
             legacySlides[legacyIndex].classList.add('active');
         }
-        setInterval(nextLegacySlide, 4500);
+        // 修改點：縮短輪播間隔時間 (4500ms -> 3000ms)
+        setInterval(nextLegacySlide, 3000);
     </script>
 </body>
 </html>
