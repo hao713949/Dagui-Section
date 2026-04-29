@@ -486,7 +486,7 @@
             margin-bottom: 15px;
             color: var(--forest-mid);
         }
-        /* 更新：Legacy 照片輪播樣式 */
+        /* 更新：Legacy 照片輪播樣式 - 針對不同尺寸照片進行優化 */
         .legacy-slider-container {
             flex: 1.2;
             width: 100%;
@@ -502,13 +502,16 @@
             position: absolute;
             top: 0; left: 0;
             width: 100%; height: 100%;
-            background-size: cover;
-            background-position: center;
+            background-size: cover;      /* 核心修正：強制圖片填滿容器且不變形 */
+            background-position: center; /* 核心修正：圖片置中對齊 */
+            background-repeat: no-repeat;
             opacity: 0;
-            transition: opacity 0.5s ease-in-out;
+            transition: opacity 0.5s ease-in-out, transform 8s ease-out; /* 增加轉場動畫效果 */
+            transform: scale(1.1); /* 預設略微放大 */
         }
         .legacy-slider-item.active {
             opacity: 1;
+            transform: scale(1); /* 啟動緩慢縮小動畫，模擬電影感 */
         }
 
         @media (max-width: 1024px) {
@@ -953,7 +956,7 @@
             <h2 class="legacy-h2 serif">居山藏鋒 大器天成<br>不爭一時，只待一方境地</h2>
             <div class="legacy-quote">
                 <p>從太平山到陽明山，真正被記住的，從來不是豪宅，而是地形。</p>
-                <p>【大貴段・潤德莊園】<p>
+                <p>【大貴段・潤德莊園】</p>
                 <p>在城市之內，山林之上，一座，無法被複製的山中之地</p>
                 <p style="font-weight: 700; color: var(--forest-deep);">為家族，留下一座，足以傳承的建築。</p>
             </div>
