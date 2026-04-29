@@ -115,6 +115,7 @@
         }
         .top-nav::-webkit-scrollbar { display: none; }
         
+        /* 優化 1：導覽列滾動提示 */
         .top-nav::after {
             content: "";
             position: absolute;
@@ -157,6 +158,7 @@
             text-align: center;
         }
         
+        /* 優化 4：按鈕懸停感 */
         .query-btn:hover {
             background-color: var(--forest-mid);
             box-shadow: 0 6px 20px rgba(0,0,0,0.2);
@@ -201,8 +203,7 @@
             background-size: cover;
             background-position: center;
             opacity: 0;
-            /* 修改點：加速 Hero 輪播切換 */
-            animation: carouselFade 24s infinite ease-in-out;
+            animation: carouselFade 36s infinite ease-in-out;
         }
         
         .hero::after {
@@ -330,11 +331,11 @@
         }
 
         .carousel-item:nth-child(1) { background-image: url('https://raw.githubusercontent.com/hao713949/Dagui-Section/main/villa.jpg'); animation-delay: 0s; }
-        .carousel-item:nth-child(2) { background-image: url('https://raw.githubusercontent.com/hao713949/Dagui-Section/main/villa0.jpg'); animation-delay: 4s; }
-        .carousel-item:nth-child(3) { background-image: url('https://raw.githubusercontent.com/hao713949/Dagui-Section/main/villa1.jpg'); animation-delay: 8s; }
-        .carousel-item:nth-child(4) { background-image: url('https://raw.githubusercontent.com/hao713949/Dagui-Section/main/villa2.jpg'); animation-delay: 12s; }
-        .carousel-item:nth-child(5) { background-image: url('https://raw.githubusercontent.com/hao713949/Dagui-Section/main/villa3.jpg'); animation-delay: 16s; }
-        .carousel-item:nth-child(6) { background-image: url('https://raw.githubusercontent.com/hao713949/Dagui-Section/main/villa4.jpg'); animation-delay: 20s; }
+        .carousel-item:nth-child(2) { background-image: url('https://raw.githubusercontent.com/hao713949/Dagui-Section/main/villa0.jpg'); animation-delay: 6s; }
+        .carousel-item:nth-child(3) { background-image: url('https://raw.githubusercontent.com/hao713949/Dagui-Section/main/villa1.jpg'); animation-delay: 12s; }
+        .carousel-item:nth-child(4) { background-image: url('https://raw.githubusercontent.com/hao713949/Dagui-Section/main/villa2.jpg'); animation-delay: 18s; }
+        .carousel-item:nth-child(5) { background-image: url('https://raw.githubusercontent.com/hao713949/Dagui-Section/main/villa3.jpg'); animation-delay: 24s; }
+        .carousel-item:nth-child(6) { background-image: url('https://raw.githubusercontent.com/hao713949/Dagui-Section/main/villa4.jpg'); animation-delay: 30s; }
 
         @keyframes carouselFade {
             0% { opacity: 0; transform: scale(1); }
@@ -383,9 +384,10 @@
             background: white; padding: 15px; border-radius: 8px; 
             overflow-x: auto; box-shadow: 0 10px 20px rgba(0,0,0,0.05); 
             -webkit-overflow-scrolling: touch;
-            max-height: 80vh; 
+            max-height: 80vh; /* 確保內容超出時可滾動 */
         }
         
+        /* 優化 3：表格頭部固定 */
         .table-container thead th {
             position: sticky;
             top: 0;
@@ -424,6 +426,7 @@
             border-radius: 4px; border-left: 6px solid var(--gold-accent);
         }
 
+        /* 優化 2：文字張力 (金色脈動) */
         .invest-tag-new { 
             font-size: 0.9rem; color: var(--gold-accent); 
             display: block; margin-bottom: 15px; 
@@ -446,7 +449,7 @@
         }
         .map-btn:hover { background: var(--forest-mid); }
 
-        /* --- 傳承章節樣式 --- */
+        /* --- 新增：傳承章節樣式 --- */
         .legacy-section {
             background-color: var(--paper-texture);
             display: flex;
@@ -461,10 +464,12 @@
             min-width: 320px;
         }
         .legacy-title {
-            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            /* 優化手機端字體：使用 clamp 確保最小不低於 1.4rem，並增加斷句控制 */
+            font-size: clamp(1.4rem, 4.5vw, 2.8rem);
             color: var(--forest-deep);
-            line-height: 1.3;
+            line-height: 1.4;
             margin-bottom: 30px;
+            word-break: keep-all; /* 防止單個中文字被截斷 */
         }
         .legacy-content {
             font-size: 1.1rem;
@@ -488,8 +493,7 @@
             background-size: cover;
             background-position: center;
             opacity: 0;
-            /* 修改點：加速照片轉場速度 */
-            transition: opacity 0.8s ease-in-out;
+            transition: opacity 1.5s ease-in-out;
         }
         .legacy-slide.active { opacity: 1; }
 
@@ -510,6 +514,12 @@
             .decoration-line { padding-left: 15px; }
             .map-container { height: 350px; }
             .legacy-section { padding: 60px 6%; flex-direction: column; }
+            
+            /* 手機端標題微調，避免強制換行太難看 */
+            .legacy-title { 
+                font-size: 1.5rem; 
+                text-align: left;
+            }
         }
 
         @media (max-width: 480px) {
@@ -525,6 +535,7 @@
                 border-top: 1px solid rgba(181, 164, 120, 0.3);
             }
             .lightbox-nav { width: 40px; height: 40px; }
+            .legacy-title { font-size: 1.35rem; }
         }
     </style>
 </head>
@@ -930,7 +941,7 @@
     <section class="legacy-section">
         <div class="legacy-text">
             <span class="section-tag">LEGACY & HONOR</span>
-            <h2 class="legacy-title serif">居山之巔 藏鋒卓越<br>大器天成 只待一方境地</h2>
+            <h2 class="legacy-title serif">居山之巔，藏鋒卓越。<br>大器天成，只待一方境地。</h2>
             <div class="legacy-content">
                 <p>
                     從比佛利到香港太平山，如今回到北屯潤德莊園<br>
@@ -1087,8 +1098,7 @@
             legacyIndex = (legacyIndex + 1) % legacySlides.length;
             legacySlides[legacyIndex].classList.add('active');
         }
-        // 修改點：縮短輪播間隔時間 (4500ms -> 3000ms)
-        setInterval(nextLegacySlide, 3000);
+        setInterval(nextLegacySlide, 4500);
     </script>
 </body>
 </html>
