@@ -115,6 +115,7 @@
         }
         .top-nav::-webkit-scrollbar { display: none; }
         
+        /* 優化 1：導覽列滾動提示 */
         .top-nav::after {
             content: "";
             position: absolute;
@@ -157,6 +158,7 @@
             text-align: center;
         }
         
+        /* 優化 4：按鈕懸停感 */
         .query-btn:hover {
             background-color: var(--forest-mid);
             box-shadow: 0 6px 20px rgba(0,0,0,0.2);
@@ -382,9 +384,10 @@
             background: white; padding: 15px; border-radius: 8px; 
             overflow-x: auto; box-shadow: 0 10px 20px rgba(0,0,0,0.05); 
             -webkit-overflow-scrolling: touch;
-            max-height: 80vh; 
+            max-height: 80vh; /* 確保內容超出時可滾動 */
         }
         
+        /* 優化 3：表格頭部固定 */
         .table-container thead th {
             position: sticky;
             top: 0;
@@ -423,6 +426,7 @@
             border-radius: 4px; border-left: 6px solid var(--gold-accent);
         }
 
+        /* 優化 2：文字張力 (金色脈動) */
         .invest-tag-new { 
             font-size: 0.9rem; color: var(--gold-accent); 
             display: block; margin-bottom: 15px; 
@@ -445,62 +449,60 @@
         }
         .map-btn:hover { background: var(--forest-mid); }
 
-        /* --- 傳承章節樣式修正 --- */
+        /* 新增：Legacy Section 樣式 */
         .legacy-section {
             background-color: var(--paper-texture);
             display: flex;
             align-items: center;
-            flex-wrap: wrap;
-            gap: 40px;
+            justify-content: space-between;
+            gap: 60px;
             padding: 100px 8%;
-            border-top: 1px solid rgba(181, 164, 120, 0.3);
         }
         .legacy-text {
             flex: 1;
-            min-width: 320px;
+            max-width: 550px;
         }
-        .legacy-title {
-            font-size: clamp(1.4rem, 4.5vw, 2.8rem);
+        .legacy-tag {
+            font-size: 0.8rem;
+            letter-spacing: 3px;
+            color: var(--gold-accent);
+            margin-bottom: 20px;
+            display: block;
+            font-weight: 700;
+        }
+        .legacy-h2 {
+            font-size: clamp(2rem, 5vw, 2.8rem);
+            line-height: 1.3;
             color: var(--forest-deep);
-            line-height: 1.4;
             margin-bottom: 30px;
-            word-break: keep-all; 
         }
-        .legacy-content {
-            font-size: 1.1rem;
+        .legacy-quote {
+            border-left: 2px solid var(--gold-accent);
+            padding-left: 25px;
+            margin-top: 40px;
+        }
+        .legacy-quote p {
+            font-size: 1.05rem;
+            margin-bottom: 15px;
             color: var(--forest-mid);
-            border-left: 3px solid var(--gold-accent);
-            padding-left: 20px;
-            line-height: 2;
         }
-        .legacy-slider {
-            flex: 1;
-            min-width: 320px;
-            aspect-ratio: 4/3;
-            position: relative;
+        .legacy-video-container {
+            flex: 1.2;
+            width: 100%;
+            max-width: 750px;
+            border-radius: 12px;
             overflow: hidden;
-            border-radius: 8px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-            background-color: #000;
-        }
-        .legacy-slide {
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background-size: cover;
-            background-position: center;
-            opacity: 0;
-            z-index: 1;
-            transition: opacity 1.2s ease-in-out;
-        }
-        .legacy-slide.active {
-            opacity: 1;
-            z-index: 2;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            aspect-ratio: 16 / 9;
+            background: #000;
         }
 
         @media (max-width: 1024px) {
             .reg-grid { grid-template-columns: repeat(3, 1fr); }
             .hero-container { flex-direction: column; align-items: flex-start; }
             .hero-gallery { max-width: 100%; }
+            .legacy-section { flex-direction: column; gap: 40px; padding: 80px 6%; }
+            .legacy-text { max-width: 100%; }
         }
 
         @media (max-width: 768px) {
@@ -513,8 +515,6 @@
             .sec-grid { grid-template-columns: 1fr; }
             .decoration-line { padding-left: 15px; }
             .map-container { height: 350px; }
-            .legacy-section { padding: 60px 6%; flex-direction: column; }
-            .legacy-title { font-size: 1.5rem; text-align: left; }
         }
 
         @media (max-width: 480px) {
@@ -530,7 +530,6 @@
                 border-top: 1px solid rgba(181, 164, 120, 0.3);
             }
             .lightbox-nav { width: 40px; height: 40px; }
-            .legacy-title { font-size: 1.35rem; }
         }
     </style>
 </head>
@@ -610,6 +609,9 @@
         </div>
 
         <h2 style="margin-top: 80px;">【絕對定錨：以初始成本，搶佔「資產原始紅利」】</h2>
+        <p style="font-size: 1.1rem; margin-bottom: 30px; color: var(--forest-mid); max-width: 900px;">
+            當市場在追逐「現狀」的行情，您已洞察「未來」的位階。透過數據精準還原，周邊開發區土地已定標 18~22 萬；入主『潤德莊園』，意味著您正以最具戰略優勢的成本落點，提前鎖定未來的增值空間。
+        </p>
         <div class="grid-layout">
             <div class="info-card" style="border-top: 4px solid var(--gold-accent);">
                 <h3>超值門檻</h3>
@@ -621,7 +623,7 @@
             </div>
             <div class="info-card" style="border-top: 4px solid var(--gold-accent);">
                 <h3>即刻溢價</h3>
-                <p>當同區以 <span style="font-size: 1.2rem; color: var(--danger-red); font-weight: 900;">18 萬/坪</span> 定價開局，您的進場成本已預留了翻倍的價值緩衝。</p>
+                <p>當同區以 <span style="font-size: 1.2rem; color: var(--danger-red); font-weight: 900;">18 萬/坪</span> 定價開局，您的進場成本已預留了翻倍的價值緩衝。這不只是土地買賣，更是利用資訊位階，完成一場「未戰先勝」的資產佈局。</p>
             </div>
         </div>
 
@@ -629,27 +631,27 @@
         <div class="grid-layout">
             <div class="info-card">
                 <h3>成熟封閉社區</h3>
-                <p>潤德莊園為<strong>高隱私封閉式私人社區</strong>，目前已完工 <span style="font-weight: 700; color: var(--forest-deep);">37 戶</span>，居住率高達 <span style="font-weight: 700; color: var(--forest-deep);">90%</span>。</p>
+                <p>潤德莊園為<strong>高隱私封閉式私人社區</strong>，目前已完工 <span style="font-weight: 700; color: var(--forest-deep);">37 戶</span>，居住率高達 <span style="font-weight: 700; color: var(--forest-deep);">90%</span>，是區域內極罕見的高穩定性成熟鄰里。</p>
             </div>
             <div class="info-card">
                 <h3>機能公設完整</h3>
-                <p>社區內規劃完整，設有<strong>警衛室、資源回收室、景觀公園、籃球場、網球場</strong>與現代化<strong>污水處理廠</strong>。</p>
+                <p>社區內規劃完整，設有<strong>警衛室、資源回收室、景觀公園</strong>，更配置<strong>籃球場、網球場</strong>與現代化<strong>污水處理廠</strong>，享受莊園生活亦無需妥協便利與衛生。</p>
             </div>
             <div class="info-card">
                 <h3>容積價值放大</h3>
-                <p>具備 40% 合法容積率。透過專業規劃整合，有效容積率可達 55%~58%，讓土地開發效益最大化。</p>
+                <p>具備 40% 合法容積率。透過專業規劃整合，有效容積率可達 55%~58%，讓土地開發效益實現最大化。</p>
             </div>
             <div class="info-card">
                 <h3>社區基建完備</h3>
-                <p>擁有 8~10 米寬闊道路，自來水、電力、電信、瓦斯、下水道工程全數完備。</p>
+                <p>擁有 8~10 米寬闊道路，自來水、電力、電信、瓦斯、下水道工程全數完備，具備即刻申請開發與動工的優越條件。</p>
             </div>
             <div class="info-card">
                 <h3>隱私會館沙龍</h3>
-                <p>專屬佔地 577 坪億級現代會館，私人餐廳、精品咖啡廳、頂級 KTV，供 48 位認購者使用。</p>
+                <p>專屬佔地 577 坪億級現代會館，僅供 48 位認購者使用。私人餐廳、精品咖啡廳、頂級 KTV，是您招待知己最尊榮的私人沙龍。</p>
             </div>
             <div class="info-card">
                 <h3>用途自主定義</h3>
-                <p>土地用途廣泛，除了興建豪華別墅，更可規劃為專科診所、高隱私康養中心或私人招待所。</p>
+                <p>土地用途廣泛，除了興建豪華別墅，更可規劃為專科診所、高隱私康養中心或私人招待所，開發時程完全由您主導。</p>
             </div>
         </div>
 
@@ -663,7 +665,7 @@
             </div>
             
             <p style="font-size: 1rem; margin: 10px 0 20px; color: var(--forest-mid); text-align: center; font-weight: 700; line-height: 1.6;">
-                ※ 佔地 577坪 三層現代共享會館，由48單元分別共有。
+                ※ 佔地 577坪 三層現代共享會館（每層85～90坪，總市值超過1.61億元）由認購土地『附約款-基礎工程建設結餘款』提撥興建，由48單元分別共有，每月約7,000元管理費（KTV、餐廳、咖啡廳、休閒聚會空間，純自用不對外營業）。
             </p>
 
             <div class="thumb-scroll" id="thumb-container">
@@ -678,35 +680,64 @@
             <span class="invest-tag-new">FINAL CALL</span>
             <h3 class="serif invest-title-new">五月正式認購，稀缺席次倒數</h3>
             <p class="invest-content-new">
-                在潤德莊園，買的不僅僅是土地，而一種「看得到、握得住」的尊嚴生活。稀缺 24 席，先到先得。
+                在潤德莊園，買的不僅僅是土地，而是一種「看得到、握得住」的尊嚴生活。這是一份給家人的承諾，也是一筆留給未來的戰略資產。稀缺 24 席，先到先得。邀請您，在兩萬坪森林裡，預約一場優雅的永恆靜好。
             </p>
         </div>
     </section>
 
     <section id="market-info" class="market-info-section">
         <span class="section-tag">MARKET INSIGHTS</span>
-        <h2>市場資訊</h2>
+        <h2>市場資訊</h2> <p style="font-size: 1.1rem; margin-bottom: 40px; color: var(--forest-mid); max-width: 900px;">
+             ※ 區域待售物件 & 重大投資建設
+        </p>
         <div class="market-news-grid">
             <div class="news-card">
                 <img src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/%E5%A4%A7%E8%B2%B4778.webp" alt="大貴段風景區土地" onclick="openLightbox(this.src, '大貴段風景區土地')">
-                <h4>台中莊園隱私宅邸 <span class="price-highlight">22000萬</span> <br> <span>土地單價25萬／坪</span></h4>
-                <p>建物面積：163坪，土地面積：602坪</p>
-                <a href="https://sale.591.com.tw/home/house/detail/2/20029892.html" target="_blank" class="news-link">開啟連結 ↗</a>
+                <h4>台中莊園隱私宅邸 <span class="price-highlight">22000萬</span> <br> <span>扣除建物及裝潢6000萬，土地單價25萬／坪</span></h4>
+                <p>建物面積：163坪，土地面積：602坪，目前經營精品民宿：日租 6 - 8 萬</p>
+                <a href="https://sale.591.com.tw/home/house/detail/2/20029892.html?itm_source=sale&itm_medium=list&itm_campaign=filter_results&recommend_flag=sale_list_full#0#oU" target="_blank" class="news-link">開啟連結 ↗</a>
             </div>
 
             <div class="news-card">
                 <img src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/%E5%8C%97%E5%9D%91%E5%B7%B7%E7%89%B9%E4%BA%8C.png" alt="北坑巷特二建地" onclick="openLightbox(this.src, '北坑巷特二建地')">
                 <h4>北坑巷特二建地 <span class="price-highlight">16萬</span> <br>景觀住宅用地</h4>
-                <p>座落於北坑巷往國際球場方向，屬於零星特二種建築用地。</p>
+                <p>座落於北坑巷往國際球場方向，屬於零星特二種建築用地。 『非本合購案土地』</p>
                 <a href="https://hao713949.github.io/Dagui-Section/%E5%A4%A7%E8%B2%B4924.html" target="_blank" class="news-link">開啟連結 ↗</a>
             </div>
 
             <div class="news-card">
                 <img src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/%E5%8C%97%E5%B1%AF%E5%8D%80%E5%A4%A7%E8%B1%90%E6%AE%B5.png" alt="北屯區大豐段" onclick="openLightbox(this.src, '北屯區大豐段')">
-                <h4>森林系電梯別墅 <span class="price-highlight">8500萬</span><br>土地單價20.6萬／坪</h4>
+                <h4>森林系電梯別墅 <span class="price-highlight">8500萬</span><br>扣除建物成本，土地單價20.6萬／坪</h4>
                 <p>建物面積：130坪，土地面積：378坪 </p>
-                <a href="https://sale.591.com.tw/home/house/detail/2/19994964.html" target="_blank" class="news-link">開啟連結 ↗</a>
+                <a href="https://sale.591.com.tw/home/house/detail/2/19994964.html?itm_source=sale&itm_medium=list&itm_campaign=filter_results&recommend_flag=sale_list_full#0#oU" target="_blank" class="news-link">開啟連結 ↗</a>
             </div>
+
+            <div class="news-card">
+                <img src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/%E9%9B%B2%E5%93%81.png" alt="雲品國際「大坑森邸」" onclick="openLightbox(this.src, '雲品國際「大坑森邸」')">
+                 <h4>雲品國際「大坑森邸」<br>頂頂級高端生活產業</h4>
+                <p>雲品打造頂級溫泉Villa、White Party 宴會廳「森邸」，證明該區域具備承載國際級高端生活的潛力。</p>
+                <a href="https://news.cnyes.com/news/id/5561629" target="_blank" class="news-link">閱讀新聞原文 ↗</a>
+            </div>
+            <div class="news-card">
+                <img src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/%E5%B8%82%E7%AB%8B%E9%86%AB%E9%99%A2.jpg" alt="百億醫療特區" onclick="openLightbox(this.src, '百億醫療特區')">
+                <h4>百億醫療特區<br>周邊房價看俏</h4>
+                <p>隨著百億級醫療資源投入，大坑已從單純觀光轉向高端康養居住區，地價具強勁支撐。</p>
+                <a href="https://money.udn.com/money/story/5635/8749962" target="_blank" class="news-link">閱讀新聞原文 ↗</a>
+            </div>
+            <div class="news-card">
+                <img src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/%E6%A8%B8%E5%B1%B1%E6%9D%91.jpg" alt="大陸建設＆精湛建設" onclick="openLightbox(this.src, '大陸建設＆精湛建設')">
+                <h4>大陸建設＆精湛建設<br>打造台中版「青山鎮」</h4>
+                <p>指標建商預計打造高隱私、高規格森林別墅聚落，區域價值正處於爆發前夕。</p>
+                <a href="https://www.wealth.com.tw/articles/eb721bcb-8bc7-40a4-b798-a708edad6472" target="_blank" class="news-link">閱讀新聞原文 ↗</a>
+            </div>
+        </div>
+
+        <div class="invest-insight-box">
+            <span class="invest-tag-new">INVESTMENT INSIGHT</span>
+            <h3 class="serif invest-title-new">跟隨百億資本的眼光：<br>「當資本已為大坑生活圈定調，您只需選擇正確的入場方式。」</h3>
+            <p class="invest-content-new">
+                大陸建設、雲品、精湛相繼進駐，不僅是房產開發，更是對區域價值的集體背書。在高端康養與住宅共鳴的當下，選擇具備完善基礎建設的『住宅區』，是提前佈局資產紅利的唯一路徑。
+            </p>
         </div>
 
         <div class="table-container" style="margin-top: 40px; border-top: 1px solid #ddd; padding-top: 30px;">
@@ -714,7 +745,12 @@
             <table>
                 <thead>
                     <tr>
-                        <th>標的地號</th><th>交易總價(萬)</th><th>建物面積(坪)</th><th>土地總面積(坪)</th><th>基地面積</th><th style="background: var(--gold-accent);">基地單價(萬/坪)</th>
+                        <th style="color: white;">標的地號</th>
+                        <th style="color: white;">交易總價(萬)</th>
+                        <th style="color: white;">建物面積(坪)</th>
+                        <th style="color: white;">土地總面積(坪)</th>
+                        <th style="color: white;">基地面積</th>
+                        <th style="color: white; background: var(--gold-accent);">基地單價(萬/坪)</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -727,107 +763,203 @@
                 </tbody>
             </table>
         </div>
+        <p style="font-size: 0.9rem; max-width: 600px; margin: 15px auto 0; text-align: center;">
+            <strong>【基地單價：已扣除建築成本-按18萬/坪計算】</strong>
+        </p>
     </section>
 
     <section id="page5" style="background: #F1F2ED;">
         <span class="section-tag">ASSET PORTFOLIO</span>
-        <h2>潤德莊園土地概況</h2>
+        <h2>潤德莊園土地概況</h2> <p style="font-size: 1.1rem; margin-bottom: 40px; color: var(--forest-mid); max-width: 900px;">
+            ※ 認購單元總價已包含下列土地（專有面積＋持分＋信託）
+        </p>
         <div class="table-container">
             <table>
                 <thead>
                     <tr><th>土地分類</th><th>筆數</th><th>面積（坪）</th><th>備註</th></tr>
                 </thead>
                 <tbody>
-                    <tr><td>A. 特二種住宅用地</td><td>91 筆</td><td>15,753.14</td><td>劃分為48單元</td></tr>
+                    <tr><td>A. 特二種住宅用地</td><td>91 筆</td><td>15,753.14</td><td>劃分為48單元（包含專有及公設面積）</td></tr>
                     <tr><td>B. 公設預撥地</td><td>3 筆</td><td>1,153.63</td><td>統一以信託登記管理</td></tr>
+                    <tr><td>C. 特二（變）住宅用地</td><td>1 筆</td><td>857.12</td><td>地號 487-223，統一以自益信託登記管理</td></tr>
+                    <tr><td>D. 會館用地</td><td>2 筆</td><td>570.00</td><td>興建完成後按比例持分</td></tr>
+                    <tr><td>E. 農業用地</td><td>5 筆</td><td>1,444.42</td><td>地號 492 等五筆，以自益信託管理</td></tr>
                     <tr class="total-row"><td>總計合購規模</td><td>116 筆</td><td>19,779.15</td><td>全部採一次性交易</td></tr>
                 </tbody>
             </table>
         </div>
+        <p style="font-size: 0.8rem; color: #999; margin-top: 10px; text-align: center;">(手機觀看請左右滑動表格)</p>
     </section>
 
     <section id="page4">
         <span class="section-tag">REGULATORY & DOCUMENTATION</span>
         <h2>建築規範：建築法規管制</h2>
-        <div class="reg-grid">
+        <div class="reg-grid" style="margin-bottom: 60px;">
             <div class="reg-box">
                 <span class="reg-num">20%</span>
                 <p class="reg-title">建蔽率</p>
-                <p class="reg-desc">讓 80% 的土地回歸森林。</p>
+                <p class="reg-desc">讓 80% 的土地回歸森林：您的房子是從樹林裡長出來的。</p>
             </div>
             <div class="reg-box">
                 <span class="reg-num">40%</span>
                 <p class="reg-title">容積率</p>
-                <p class="reg-desc">垂直的留白，留住山巒景觀。</p>
+                <p class="reg-desc">垂直的留白，只為留住最完整的山巒景觀。</p>
             </div>
             <div class="reg-box">
                 <span class="reg-num">5M</span>
                 <p class="reg-title">建築退縮</p>
-                <p class="reg-desc">成就極致私密性。</p>
+                <p class="reg-desc">5 米深度退縮：以寬廣棟距，成就極致私密性。</p>
+            </div>
+            <div class="reg-box">
+                <span class="reg-num">1.5M</span>
+                <p class="reg-title">人行步道</p>
+                <p class="reg-desc">1.5 米森態廊道：讓回家成為一場林間漫步。</p>
+            </div>
+            <div class="reg-box">
+                <span class="reg-num">免計</span>
+                <p class="reg-title">停車空間</p>
+                <p class="reg-desc">停車空間不計入容積，最大化居住效益。</p>
             </div>
         </div>
 
-        <h2 style="margin-top: 60px;">地籍圖資與分區證明</h2>
-        <div style="background:#fff; padding: 20px; border: 1px solid #eee; text-align: center; border-radius: 4px;">
+        <span class="section-tag">SITE DOCUMENTATION</span>
+        <h2>地籍圖資與分區證明</h2>
+        <div style="margin-bottom: 30px; border-left: 4px solid var(--gold-accent); padding-left: 20px;">
+            <h3 class="serif" style="color: var(--forest-deep); font-size: 1.3rem; margin-bottom: 8px;">土地使用分區管制要點</h3>
+            <p style="font-size: 1rem; color: var(--text-dark); font-weight: 500;">
+                供一般住宅、住宅別墅、原開發許可核准項目，及門診、零售、日常服務之場所使用為限
+            </p>
+        </div>
+
+        <div style="background:#fff; padding: 20px; border: 1px solid #eee; text-align: center; margin-bottom: 25px; border-radius: 4px;">
             <h3 class="serif" style="margin-bottom:15px; color: var(--forest-deep); font-size: 1.1rem;">公設地及合購地標示圖</h3>
-            <img src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/map.webp" alt="公設地及合購地標示圖" class="clickable-map" onclick="openLightbox(this.src, '公設地及合購地標示圖')">
+            <img src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/map.webp" alt="公設地及合購地標示圖" class="clickable-map" onclick="openLightbox(this.src, '公設地及合購地標示圖')" loading="lazy">
+            <p style="color: var(--gold-accent); font-weight: 700; margin-top: 15px; font-size: 0.9rem;">※ 買賣總價款已完整包含「公設地」及「合購地」。</p>
+        </div>
+        <div class="grid-layout">
+            <div style="background:#fff; padding:15px; border:1px solid #eee; text-align:center; border-radius:4px;">
+                <h3 class="serif" style="font-size: 1rem; margin-bottom:10px;">大坑細部計畫圖</h3>
+                <img src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/Zoning.jpg" alt="大坑細部計畫圖" class="clickable-map" onclick="openLightbox(this.src, '大坑細部計畫圖')" loading="lazy">
+            </div>
+            <div style="background:#fff; padding:15px; border:1px solid #eee; text-align:center; border-radius:4px;">
+                <h3 class="serif" style="font-size: 1rem; margin-bottom:10px;">都發局使用分區證明</h3>
+                <img src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/Zoning1.jpg" alt="都發局使用分區證明" class="clickable-map" onclick="openLightbox(this.src, '都發局使用分區證明')" loading="lazy">
+            </div>
         </div>
     </section>
 
     <section id="page7" class="security-section">
+        <span class="section-tag" style="color: rgba(255,255,255,0.4);">INVESTMENT TERMS & SECURITY</span>
+        <h2 class="sec-h2 serif">配合事項聲明</h2>
+        <div class="grid-layout" style="margin-bottom: 60px; color: var(--text-dark);">
+            <div class="info-card">
+                <h3>賣方出售條件</h3>
+                <p>116 筆土地採一次性出售，不開放個別筆數處分。</p>
+            </div>
+            <div class="info-card">
+                <h3>付款構成</h3>
+                <p><strong>主約購地款：</strong>含權狀面積、公設地、公設預撥地、會館用地、農地等。</p>
+                <p style="margin-top: 10px;"><strong>附約款：</strong>社區建設費、基礎工程建設費及相關規費。</p>
+            </div>
+            <div class="info-card">
+                <h3>交易時程</h3>
+                <p>預計 4.5 個月完成完整交易與產權過戶流程。</p>
+            </div>
+        </div>
+
         <h2 class="sec-h2 serif">交易安全機制</h2>
+        <p style="font-size: 1rem; margin-bottom: 40px; color: rgba(255,255,255,0.8);">
+            確保認購者資金安全性—<span class="highlight-gold">若案件不成，交易取消，100% 原款退回。</span>
+        </p>
         <div class="sec-grid">
             <div class="sec-card">
+                <h4>募資未達標</h4>
+                <p>資金未能足額募集致無法完成支付總價款，交易終止。</p>
+            </div>
+            <div class="sec-card">
+                <h4>契約未促成</h4>
+                <p>期限內未能與業主簽訂正式買賣契約，交易終止。</p>
+            </div>
+            <div class="sec-card">
+                <h4>第三方因素</h4>
+                <p>地主拒售或不可歸責於承辦人之事由，交易終止。</p>
+            </div>
+            <div class="sec-card">
                 <h4>資金保全</h4>
-                <p>若案件不成，交易取消，100% 原款退回。</p>
+                <p>上述情形發生，認購款項全額無息原款退還。</p>
             </div>
         </div>
     </section>
 
     <section id="planning-doc">
+        <span class="section-tag">SITE PLANNING & SCENERY</span>
         <h2>潤德莊園實景拍攝</h2>
-        <div style="position: relative; width: 100%; padding-bottom: 56.25%; height: 0; margin-bottom: 20px; border-radius: 4px; overflow: hidden;">
-            <iframe 
-                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;"
-                src="https://www.youtube.com/embed/3_-8eB5x4YA?rel=0&autoplay=1&mute=1&loop=1&playlist=3_-8eB5x4YA" 
-                allowfullscreen>
-            </iframe>
+        <div style="background:#fff; padding: 10px; border: 1px solid #eee; border-radius: 8px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.05);">
+            
+            <div style="position: relative; width: 100%; padding-bottom: 56.25%; height: 0; margin-bottom: 20px; border-radius: 4px; overflow: hidden;">
+                <iframe 
+                    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;"
+                    src="https://www.youtube.com/embed/3_-8eB5x4YA?rel=0&autoplay=1&mute=1&loop=1&playlist=3_-8eB5x4YA" 
+                    title="潤德莊園實景拍攝" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                    allowfullscreen>
+                </iframe>
+            </div>
+
+            <h3 class="serif" style="margin: 15px 0; color: var(--forest-deep); font-size: 1.1rem;">環 境 總 覽 圖</h3>
+            <img src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/map2.jpg" alt="環境總覽圖" class="clickable-map" onclick="openLightbox(this.src, '環境總覽圖')" loading="lazy">
+            <p style="color: #666; margin: 15px 0; font-size: 0.9rem;">
+                ※ 鄰近台中市立醫院、74快速道路約 6-8 分鐘車程。(點擊可放大)
+            </p>
         </div>
     </section>
 
     <section id="page8">
+        <span class="section-tag">LOCATION</span>
         <h2>潤德莊園地理位置</h2>
-        <div class="map-container">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3640.407886472658!2d120.73815047604597!3d24.15655457317769!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x346922709214d021%3A0xc47e33e9d8e79c6d!2z6Zmi5b636I6K5ZyS!5e0!3m2!1szh-TW!2stw!4v1714101166311!5m2!1szh-TW!2stw" width="100%" height="100%" style="border:0;" loading="lazy"></iframe>
+        <div class="decoration-line">
+            <p style="font-size: 1.1rem; font-weight: 500;">台中市北屯區大貴段 潤德莊園</p>
         </div>
+        <div class="map-container">
+            <iframe 
+                title="Google Map Location"
+                src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3640.407981502598!2d120.74375837534825!3d24.164719278389335!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMjTCsDA5JzUzLjAiTiAxMjDCsDQ0JzQ2LjgiRQ!5e0!3m2!1szh-TW!2stw!4v1714138000000!5m2!1szh-TW!2stw" 
+                width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy">
+            </iframe>
+        </div>
+        <a href="https://www.google.com/maps/dir/?api=1&destination=24.164719315194734,120.74633326800519" target="_blank" rel="noopener noreferrer" class="map-btn">
+            開啟 Google 地圖導引
+        </a>
     </section>
 
     <section class="legacy-section">
         <div class="legacy-text">
-            <span class="section-tag">LEGACY & HONOR</span>
-            <h2 class="legacy-title serif">居山之巔，藏鋒卓越。<br>大器天成，只待一方境地。</h2>
-            <div class="legacy-content">
-                <p>
-                    從比佛利到香港太平山，如今回到北屯潤德莊園<br>
-                    偉大的建築，總在山坡定義。<br>
-                    <strong>為家族定錨，築起一棟世代傳承的家傳寶璽。</strong>
-                </p>
+            <span class="legacy-tag">LEGACY & HONOR</span>
+            <h2 class="legacy-h2 serif">居山之巔，藏鋒卓越。<br>大器天成，只待一方境地。</h2>
+            <div class="legacy-quote">
+                <p>從比佛利到香港太平山，如今回到北屯潤德莊園</p>
+                <p>偉大的建築，總在山坡定義。</p>
+                <p style="font-weight: 700; color: var(--forest-deep);">為家族定錨，築起一棟世代傳承的家傳寶璽。</p>
             </div>
         </div>
-        <div class="legacy-slider" id="legacy-slider">
-            <div class="legacy-slide active" style="background-image: url('https://raw.githubusercontent.com/hao713949/Dagui-Section/main/luxury1.png');"></div>
-            <div class="legacy-slide" style="background-image: url('https://raw.githubusercontent.com/hao713949/Dagui-Section/main/luxury2.png');"></div>
-            <div class="legacy-slide" style="background-image: url('https://raw.githubusercontent.com/hao713949/Dagui-Section/main/luxury3.png');"></div>
-            <div class="legacy-slide" style="background-image: url('https://raw.githubusercontent.com/hao713949/Dagui-Section/main/luxury4.png');"></div>
+        <div class="legacy-video-container">
+            <iframe 
+                style="width: 100%; height: 100%; border: 0;"
+                src="https://www.youtube.com/embed/3_-8eB5x4YA?rel=0&autoplay=1&mute=1&loop=1&controls=0&modestbranding=1&playlist=3_-8eB5x4YA" 
+                title="環境美景自動播放" 
+                allow="autoplay; encrypted-media">
+            </iframe>
         </div>
     </section>
 
     <footer style="padding: 60px 8%; text-align: center; background: #fff; border-top: 1px solid #f0f0f0;">
-        <p class="serif" style="font-size: 1.2rem; color: var(--forest-deep);">大貴段 潤德莊園 ‧ 專案代理</p>
-        <p style="color: #ccc; font-size: 0.75rem; margin-top: 20px;">© 2026 PRECIOUS LAND COLLECTION. ALL RIGHTS RESERVED.</p>
+        <p class="serif" style="font-size: 1.2rem; color: var(--forest-deep); margin-bottom: 8px;">大貴段 潤德莊園 ‧ 專案代理</p>
+        <p style="color: #999; font-size: 0.85rem;">本合購說明僅供特定對象參考。</p>
+        <p style="color: #ccc; font-size: 0.75rem; margin-top: 20px; letter-spacing: 1px;">© 2026 PRECIOUS LAND COLLECTION. ALL RIGHTS RESERVED.</p>
     </footer>
 
     <script>
+        // 相簿資料
         const galleryImages = [
             {url: 'https://raw.githubusercontent.com/hao713949/Dagui-Section/main/IMG_6482.JPG', title: '潤德精品會館'},
             {url: 'https://raw.githubusercontent.com/hao713949/Dagui-Section/main/IMG_6481.JPG', title: '潤德精品會館'},
@@ -848,6 +980,7 @@
             const thumbs = document.querySelectorAll('.thumb-item');
             
             const currentData = galleryImages[currentGalleryIndex];
+
             mainImg.style.opacity = '0';
             setTimeout(() => {
                 mainImg.src = currentData.url;
@@ -863,6 +996,15 @@
             thumbs.forEach((t, i) => {
                 t.classList.toggle('active', i === currentGalleryIndex);
             });
+
+            const container = document.getElementById('thumb-container');
+            const activeThumb = thumbs[currentGalleryIndex];
+            if(activeThumb) {
+                container.scrollTo({
+                    left: activeThumb.offsetLeft - (container.offsetWidth / 2) + (activeThumb.offsetWidth / 2),
+                    behavior: 'smooth'
+                });
+            }
         }
 
         function changeSlide(step) {
@@ -876,8 +1018,23 @@
             const lightbox = document.getElementById('lightbox');
             const lightboxImg = document.getElementById('lightbox-img');
             const lightboxCaption = document.getElementById('lightbox-caption');
-            lightboxImg.src = src;
-            lightboxCaption.innerText = title || "";
+            const lbPrev = document.querySelector('.lb-prev');
+            const lbNext = document.querySelector('.lb-next');
+            
+            const isGallery = galleryImages.some(img => img.url === src);
+            
+            if (isGallery) {
+                lbPrev.style.display = 'flex';
+                lbNext.style.display = 'flex';
+                lightboxImg.src = galleryImages[currentGalleryIndex].url;
+                lightboxCaption.innerText = galleryImages[currentGalleryIndex].title;
+            } else {
+                lbPrev.style.display = 'none';
+                lbNext.style.display = 'none';
+                lightboxImg.src = src;
+                lightboxCaption.innerText = title || "";
+            }
+            
             lightbox.style.display = 'flex';
             document.body.style.overflow = 'hidden';
         }
@@ -889,28 +1046,13 @@
         }
 
         function closeLightbox() {
-            document.getElementById('lightbox').style.display = 'none';
+            const lightbox = document.getElementById('lightbox');
+            lightbox.style.display = 'none';
             document.body.style.overflow = 'auto'; 
         }
 
-        // --- 傳承頁面無縫輪播邏輯 ---
-        let legacyIndex = 0;
-        const legacySlides = document.querySelectorAll('.legacy-slide');
-        
-        function nextLegacySlide() {
-            // 移除當前圖片的 active 類
-            legacySlides[legacyIndex].classList.remove('active');
-            // 更新索引
-            legacyIndex = (legacyIndex + 1) % legacySlides.length;
-            // 為下一張圖片添加 active 類
-            legacySlides[legacyIndex].classList.add('active');
-        }
-
-        // 設定每 4.5 秒執行一次切換 (包含 1.2 秒的淡入淡出時間)
-        setInterval(nextLegacySlide, 4500);
-
-        // --- 移動端手勢支援 ---
         const lightboxEl = document.getElementById('lightbox');
+
         lightboxEl.addEventListener('touchstart', e => {
             touchStartX = e.changedTouches[0].screenX;
         }, {passive: true});
@@ -921,16 +1063,24 @@
         }, {passive: true});
 
         function handleGesture() {
-            const threshold = 50;
-            if (touchEndX < touchStartX - threshold) changeSlide(1);
-            if (touchEndX > touchStartX + threshold) changeSlide(-1);
+            if (document.querySelector('.lb-prev').style.display !== 'none') {
+                const threshold = 50;
+                if (touchEndX < touchStartX - threshold) {
+                    changeSlide(1);
+                }
+                if (touchEndX > touchStartX + threshold) {
+                    changeSlide(-1);
+                }
+            }
         }
 
         document.addEventListener('keydown', function(e) {
             if (document.getElementById('lightbox').style.display === 'flex') {
                 if (e.key === "Escape") closeLightbox();
-                if (e.key === "ArrowRight") changeSlide(1);
-                if (e.key === "ArrowLeft") changeSlide(-1);
+                if (document.querySelector('.lb-prev').style.display !== 'none') {
+                    if (e.key === "ArrowRight") changeSlide(1);
+                    if (e.key === "ArrowLeft") changeSlide(-1);
+                }
             }
         });
     </script>
