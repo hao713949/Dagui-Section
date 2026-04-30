@@ -203,7 +203,7 @@
             background-size: cover;
             background-position: center;
             opacity: 0;
-            animation: carouselFade 36s infinite ease-in-out;
+            /* 取消輪播動畫 */
         }
         
         .hero::after {
@@ -330,20 +330,16 @@
             font-weight: 700;
         }
 
-        /* 僅更換此處的首頁背景照片 */
-        .carousel-item:nth-child(1) { background-image: url('luxury1.png'); animation-delay: 0s; }
-        .carousel-item:nth-child(2) { background-image: url('https://raw.githubusercontent.com/hao713949/Dagui-Section/main/villa0.jpg'); animation-delay: 6s; }
-        .carousel-item:nth-child(3) { background-image: url('https://raw.githubusercontent.com/hao713949/Dagui-Section/main/villa1.jpg'); animation-delay: 12s; }
-        .carousel-item:nth-child(4) { background-image: url('https://raw.githubusercontent.com/hao713949/Dagui-Section/main/villa2.jpg'); animation-delay: 18s; }
-        .carousel-item:nth-child(5) { background-image: url('https://raw.githubusercontent.com/hao713949/Dagui-Section/main/villa3.jpg'); animation-delay: 24s; }
-        .carousel-item:nth-child(6) { background-image: url('https://raw.githubusercontent.com/hao713949/Dagui-Section/main/villa4.jpg'); animation-delay: 30s; }
+        /* 僅保留首頁背景照片，取消動畫並固定透明度 */
+        .carousel-item:nth-child(1) { background-image: url('luxury1.png'); opacity: 0.65; z-index: 1; }
+        .carousel-item:nth-child(2) { background-image: url('https://raw.githubusercontent.com/hao713949/Dagui-Section/main/villa0.jpg'); display: none; }
+        .carousel-item:nth-child(3) { background-image: url('https://raw.githubusercontent.com/hao713949/Dagui-Section/main/villa1.jpg'); display: none; }
+        .carousel-item:nth-child(4) { background-image: url('https://raw.githubusercontent.com/hao713949/Dagui-Section/main/villa2.jpg'); display: none; }
+        .carousel-item:nth-child(5) { background-image: url('https://raw.githubusercontent.com/hao713949/Dagui-Section/main/villa3.jpg'); display: none; }
+        .carousel-item:nth-child(6) { background-image: url('https://raw.githubusercontent.com/hao713949/Dagui-Section/main/villa4.jpg'); display: none; }
 
         @keyframes carouselFade {
-            0% { opacity: 0; transform: scale(1); }
-            4% { opacity: 0.65; } 
-            16.6% { opacity: 0.65; } 
-            21.6% { opacity: 0; transform: scale(1.05); } 
-            100% { opacity: 0; }
+            /* 動畫已停用 */
         }
 
         .hero h1 { 
@@ -864,7 +860,7 @@
             <div class="reg-box">
                 <span class="reg-num">免計</span>
                 <p class="reg-title">停車空間</p>
-                <p class="reg-desc">停車空間不計入容積，最大化居住效益。</p>
+                <p class="reg-desc">停車空間不計入容計，最大化居住效益。</p>
             </div>
         </div>
 
