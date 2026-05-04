@@ -9,6 +9,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
     <title>【北屯大貴段｜潤德莊園】區域行情與市場資訊</title>
+    <link rel="preload" as="image" href="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/villa.jpg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@600;900&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
@@ -19,23 +20,79 @@
             --gold-accent: #b5a478;
             --paper-texture: #F9F8F4;
             --text-dark: #2C332D;
+            --bg-dark-section: #0F1A13;
             --danger-red: #8B0000;
             --nav-height: 60px;
         }
 
+        /* 基礎優化 */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
         body {
             background-color: var(--paper-texture);
             color: var(--text-dark);
-            font-family: 'Noto Sans TC', sans-serif;
+            font-family: 'Noto Sans TC', -apple-system, BlinkMacSystemFont, sans-serif;
             line-height: 1.7;
             overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            font-size: 16px;
         }
 
         h1, h2, h3, h4, .serif { font-family: 'Noto Serif TC', serif; font-weight: 900; }
 
-        /* 導覽列 */
+        /* --- 燈箱功能樣式 --- */
+        .lightbox-overlay {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 20000;
+            cursor: default;
+            padding: 20px;
+            user-select: none;
+        }
+        .lightbox-overlay img {
+            max-width: 95%;
+            max-height: 90vh;
+            object-fit: contain;
+            box-shadow: 0 0 30px rgba(0,0,0,0.5);
+            cursor: zoom-out;
+        }
+        .lightbox-caption {
+            color: var(--gold-accent);
+            font-family: 'Noto Serif TC', serif;
+            font-size: 1.2rem;
+            margin-top: 20px;
+            letter-spacing: 2px;
+            font-weight: 700;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        }
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: none;
+            width: 50px; height: 50px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 20001;
+        }
+        .lb-prev { left: 20px; }
+        .lb-next { right: 20px; }
+
+        .clickable-map { cursor: zoom-in; transition: 0.3s; width: 100%; height: auto; }
+        
+        /* --- 頂部導覽列 --- */
         .top-nav {
             position: fixed;
             top: 0; width: 100%;
@@ -48,209 +105,263 @@
             align-items: center;
             justify-content: center;
             border-bottom: 1px solid rgba(27, 48, 34, 0.1);
+            overflow-x: auto;
+            white-space: nowrap;
+            scrollbar-width: none;
         }
+        .top-nav::-webkit-scrollbar { display: none; }
         .top-nav a {
             text-decoration: none;
             color: var(--forest-deep);
             font-size: 0.95rem;
             font-weight: 700;
-            padding: 0 15px;
+            padding: 0 18px;
+            transition: color 0.3s ease;
+            height: 100%;
+            display: flex;
+            align-items: center;
         }
+        .top-nav a:hover { color: var(--gold-accent); }
 
-        section { padding: 80px 8%; max-width: 1200px; margin: auto; }
-        .section-tag { font-size: 0.8rem; letter-spacing: 4px; color: var(--gold-accent); display: block; margin-bottom: 15px; font-weight: 700; text-align: center; }
-        h2 { font-size: clamp(1.8rem, 5vw, 2.4rem); color: var(--forest-deep); margin-bottom: 40px; text-align: center; }
-
-        /* 行情卡片 */
+        /* --- 市場行情專用樣式 --- */
+        .market-visual-range {
+            background: #fff;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            margin-bottom: 50px;
+        }
         .market-cards {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 20px;
-            margin-bottom: 40px;
+            margin: 30px 0;
         }
         .market-price-card {
-            background: #fff;
+            background: var(--paper-texture);
             padding: 25px;
-            border-radius: 8px;
+            border-radius: 6px;
             text-align: center;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
-        }
-        .market-price-card h3 { color: var(--forest-deep); font-size: 1.5rem; margin: 10px 0; }
-
-        /* 參考連結網格 */
-        .reference-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 15px;
-            margin: 20px 0 40px;
-        }
-        .ref-item { text-decoration: none; color: inherit; }
-        .ref-thumb {
-            width: 100%;
-            aspect-ratio: 1;
-            background: #ddd;
-            border-radius: 4px;
-            object-fit: cover;
+            border: 1px solid #eee;
             transition: 0.3s;
         }
-        .ref-item:hover .ref-thumb { opacity: 0.8; }
-        .ref-label { font-size: 0.8rem; margin-top: 5px; display: block; font-weight: 500; }
+        .market-price-card:hover { transform: translateY(-5px); border-color: var(--gold-accent); }
+        .market-price-card p { font-size: 0.9rem; color: #666; margin-bottom: 8px; }
+        .market-price-card h3 { color: var(--forest-deep); font-size: 1.5rem; margin-bottom: 10px; }
+        .market-price-card .note { font-size: 0.85rem; color: var(--danger-red); font-weight: 500; }
 
-        /* 實價登錄區塊 */
-        .real-price-box {
-            background: #fff;
-            padding: 30px;
-            border-radius: 8px;
-            margin: 40px 0;
-            border-left: 5px solid var(--gold-accent);
+        .price-bar-container { margin: 50px 0 20px; position: relative; padding: 0 10px; }
+        .price-bar {
+            height: 8px;
+            background: linear-gradient(to right, #ccc, var(--forest-mid), var(--forest-deep));
+            border-radius: 4px;
         }
-        .real-price-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
-            margin-top: 20px;
-        }
-
-        /* 核心價值區塊 (縮減版) */
-        .mini-insight {
-            background: var(--forest-deep);
-            color: #fff;
-            padding: 30px;
-            border-radius: 8px;
-            text-align: center;
-            margin: 40px 0;
+        .price-labels {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 15px;
+            font-weight: 700;
+            color: var(--forest-mid);
+            font-family: 'Noto Serif TC', serif;
         }
 
-        /* 重大投資 */
-        .investment-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
+        /* --- 原有通用樣式 --- */
+        .query-btn {
+            display: inline-block;
+            margin-top: 25px;
+            padding: 16px 32px;
+            background-color: var(--forest-deep);
+            color: var(--gold-accent);
+            text-decoration: none;
+            border: 1px solid var(--gold-accent);
+            border-radius: 4px;
+            font-family: 'Noto Serif TC', serif;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: 0.3s;
         }
-        .invest-card {
-            background: #fff;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        .query-btn:hover { background-color: var(--forest-mid); transform: translateY(-2px); }
+
+        section { padding: 100px 8%; position: relative; }
+        .section-tag { font-size: 0.8rem; letter-spacing: 4px; color: var(--gold-accent); display: block; margin-bottom: 15px; font-weight: 700; text-transform: uppercase; }
+        h2 { font-size: clamp(1.8rem, 5vw, 2.6rem); color: var(--forest-deep); margin-bottom: 40px; }
+
+        .market-news-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; margin-bottom: 50px; }
+        .news-card { 
+            background: #fff; padding: 30px; border-radius: 4px; 
+            border-top: 4px solid var(--gold-accent);
+            box-shadow: 0 5px 25px rgba(0,0,0,0.05);
+            display: flex; flex-direction: column;
         }
-        .invest-img { width: 100%; height: 180px; object-fit: cover; }
-        .invest-content { padding: 20px; }
-        .invest-content h4 { color: var(--forest-deep); margin-bottom: 10px; }
-        .invest-link { color: var(--gold-accent); text-decoration: none; font-weight: 700; font-size: 0.9rem; }
+        .news-card img { width: 100%; height: 200px; object-fit: cover; border-radius: 4px; margin-bottom: 25px; cursor: zoom-in;}
+        .price-highlight { color: var(--danger-red); font-size: 1.4rem; font-weight: 900; }
+        .news-link { color: var(--forest-mid); text-decoration: none; font-weight: 700; margin-top: auto; padding-top: 15px; border-bottom: 1px solid var(--gold-accent); align-self: flex-start;}
+
+        .invest-insight-box {
+            background: var(--forest-deep); color: #fff; padding: 50px; 
+            border-radius: 4px; border-left: 8px solid var(--gold-accent);
+        }
+        .invest-tag-new { font-size: 1rem; color: var(--gold-accent); display: block; margin-bottom: 18px; font-weight: 900; letter-spacing: 2px;}
+        .invest-title-new { font-size: clamp(1.4rem, 4vw, 2.2rem); margin-bottom: 25px; line-height: 1.4; }
+
+        .table-container { 
+            background: white; padding: 20px; border-radius: 8px; 
+            overflow-x: auto; box-shadow: 0 12px 25px rgba(0,0,0,0.06); 
+        }
+        table { width: 100%; border-collapse: collapse; min-width: 800px; }
+        th { background: var(--forest-deep); color: white; padding: 18px; text-align: left; }
+        td { padding: 18px; border-bottom: 1px solid #f2f2f2; }
 
         @media (max-width: 768px) {
-            .reference-grid { grid-template-columns: repeat(2, 1fr); }
-            section { padding: 60px 20px; }
+            section { padding: 60px 6%; }
+            .market-visual-range { padding: 20px; }
+            .market-cards { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
 
+    <div id="lightbox" class="lightbox-overlay" onclick="handleLightboxClick(event)">
+        <button class="lightbox-nav lb-prev" onclick="changeSlide(-1); event.stopPropagation();">❮</button>
+        <img id="lightbox-img" src="" alt="放大圖示">
+        <div id="lightbox-caption" class="lightbox-caption"></div>
+        <button class="lightbox-nav lb-next" onclick="changeSlide(1); event.stopPropagation();">❯</button>
+    </div>
+
     <nav class="top-nav">
-        <a href="#">區域行情</a>
-        <a href="#investment">重大投資</a>
-        <a href="#cta">立即預約</a>
+        <a href="https://hao713949.github.io/Dagui-Section/villa.html">回首頁</a>
+        <a href="#market-range">行情分析</a>
+        <a href="#market-news">實價案例</a>
+        <a href="#investment-insight">投資洞察</a>
     </nav>
 
-    <section id="market" style="padding-top: 100px;">
+    <!-- 市場行情優化區塊 -->
+    <section id="market-range" style="padding-top: 120px;">
         <span class="section-tag">MARKET ANALYSIS</span>
-        <h2>區域行情正在拉升</h2>
+        <h2 class="serif">區域行情正在拉升</h2>
+        <p style="font-size: 1.2rem; color: var(--forest-mid); margin-bottom: 40px;">從 9 萬到 22 萬／坪，大坑地價帶已明確分層</p>
+
+        <div class="market-visual-range">
+            <div class="market-cards">
+                <div class="market-price-card">
+                    <p>風景區建地</p>
+                    <h3>9～13 萬／坪</h3>
+                    <div class="note">※ 零星土地，開發受限</div>
+                </div>
+                <div class="market-price-card" style="border-bottom: 3px solid var(--gold-accent);">
+                    <p>零星特二建地</p>
+                    <h3>14～16 萬／坪</h3>
+                    <div class="note" style="color: var(--forest-mid);">※ 適合單戶興建</div>
+                </div>
+                <div class="market-price-card" style="background: var(--forest-deep); color: #fff;">
+                    <p style="color: rgba(255,255,255,0.7);">社區型特二建地</p>
+                    <h3 style="color: var(--gold-accent);">18～22 萬／坪</h3>
+                    <div class="note" style="color: #fff;">※ 高隱私整體開發（如潤德莊園）</div>
+                </div>
+            </div>
+
+            <div class="price-bar-container">
+                <div class="price-bar"></div>
+                <div class="price-labels">
+                    <span>9萬 (風景區)</span>
+                    <span>16萬 (零星特二)</span>
+                    <span>22萬+ (社區型)</span>
+                </div>
+            </div>
+            <p style="text-align: center; margin-top: 20px; font-weight: 700; color: var(--forest-deep);">
+                同區優質別墅總價已達 6,500 萬 ～ 2.2 億
+            </p>
+        </div>
+
+        <div id="investment-insight" class="invest-insight-box">
+            <span class="invest-tag-new">CORE VALUE</span>
+            <h3 class="serif invest-title-new">用「原始紅利」席次，站上整體開發成本層級</h3>
+            <p style="font-size: 1.1rem; line-height: 1.8; color: rgba(255,255,255,0.9);">
+                當市場正以零售價格（18~22萬）成交時，潤德莊園採用「土地合購、整體開發」邏輯。您買的不是末端產品，而是直接取得與開發商同級的「資產原始股」。
+            </p>
+            <a href="https://hao713949.github.io/DAKENG-VILLA/project/unit.html" class="query-btn" style="background: var(--gold-accent); color: var(--forest-deep); border: none; margin-top: 30px;">查看席次與預約 ⇄</a>
+        </div>
+    </section>
+
+    <!-- 原有市場新聞與案例 -->
+    <section id="market-news">
+        <span class="section-tag">MARKET INSIGHTS</span>
+        <h2>區域待售物件 & 重大投資建設</h2>
         
-        <div class="market-cards">
-            <div class="market-price-card">
-                <p>風景區建地</p>
-                <h3>9～13 萬／坪</h3>
-                <small>零星土地無法興建</small>
+        <div class="market-news-grid">
+            <div class="news-card">
+                <img src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/%E5%A4%A7%E8%B2%B4778.webp" alt="大貴段風景區土地" onclick="openLightbox(this.src, '大貴段風景區土地')">
+                <h4>台中莊園隱私宅邸 <span class="price-highlight">22000萬</span></h4>
+                <p>土地面積：602坪，目前經營精品民宿。扣除建物後土地單價約 25 萬／坪。</p>
+                <a href="https://sale.591.com.tw/home/house/detail/2/20029892.html" target="_blank" class="news-link">開啟 591 連結 ↗</a>
             </div>
-            <div class="market-price-card">
-                <p>零星特二建地</p>
-                <h3>14～16 萬／坪</h3>
+
+            <div class="news-card">
+                <img src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/%E5%8C%97%E5%9D%91%E5%B7%B7%E7%89%B9%E4%BA%8C.png" alt="北坑巷特二建地" onclick="openLightbox(this.src, '北坑巷特二建地')">
+                <h4>北坑巷特二建地 <span class="price-highlight">16萬</span></h4>
+                <p>座落於北坑巷，屬於零星特二種建築用地。非本合購案土地規模。</p>
+                <a href="https://hao713949.github.io/Dagui-Section/%E5%A4%A7%E8%B2%B4924.html" target="_blank" class="news-link">查看圖資 ↗</a>
             </div>
-            <div class="market-price-card" style="background: var(--forest-deep); color: white;">
-                <p style="color: #ccc;">社區型特二建地</p>
-                <h3 style="color: var(--gold-accent);">18～22 萬／坪</h3>
-            </div>
-        </div>
 
-        <!-- 土地價格參考 -->
-        <h3 class="serif" style="margin-bottom:15px;">土地價格參考</h3>
-        <div class="reference-grid">
-            <a href="https://hao713949.github.io/Dagui-Section/%E5%A4%A7%E8%B2%B4924.html" class="ref-item">
-                <img src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/%E5%8C%97%E5%9D%91%E5%B7%B7%E7%89%B9%E4%BA%8C.png" class="ref-thumb">
-                <span class="ref-label">北坑巷特二</span>
-            </a>
-            <a href="#" class="ref-item"><img src="https://via.placeholder.com/150" class="ref-thumb"><span class="ref-label">土地行情 B</span></a>
-            <a href="#" class="ref-item"><img src="https://via.placeholder.com/150" class="ref-thumb"><span class="ref-label">土地行情 C</span></a>
-            <a href="#" class="ref-item"><img src="https://via.placeholder.com/150" class="ref-thumb"><span class="ref-label">土地行情 D</span></a>
-        </div>
-
-        <!-- 別墅價格參考 -->
-        <h3 class="serif" style="margin-bottom:15px;">別墅價格參考</h3>
-        <div class="reference-grid">
-            <a href="https://sale.591.com.tw/home/house/detail/2/20029892.html" class="ref-item">
-                <img src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/%E5%A4%A7%E8%B2%B4778.webp" class="ref-thumb">
-                <span class="ref-label">大貴段隱私宅</span>
-            </a>
-            <a href="#" class="ref-item"><img src="https://via.placeholder.com/150" class="ref-thumb"><span class="ref-label">優質別墅 B</span></a>
-            <a href="#" class="ref-item"><img src="https://via.placeholder.com/150" class="ref-thumb"><span class="ref-label">優質別墅 C</span></a>
-            <a href="#" class="ref-item"><img src="https://via.placeholder.com/150" class="ref-thumb"><span class="ref-label">優質別墅 D</span></a>
-        </div>
-
-        <!-- 實價登錄參考 -->
-        <div class="real-price-box">
-            <h3 class="serif">實價登錄參考</h3>
-            <p style="margin: 10px 0;">內文：樸山村 土地公設佔比 52%，還原地價 <strong>18~22萬</strong></p>
-            <div class="real-price-grid">
-                <a href="#" class="ref-item"><img src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/%E9%9B%B2%E5%93%81.png" class="ref-thumb"><span class="ref-label">樸山村案例 A</span></a>
-                <a href="#" class="ref-item"><img src="https://via.placeholder.com/150" class="ref-thumb"><span class="ref-label">樸山村案例 B</span></a>
+            <div class="news-card">
+                <img src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/%E9%9B%B2%E5%93%81.png" alt="雲品國際「大坑森邸」" onclick="openLightbox(this.src, '雲品國際「大坑森邸」')">
+                 <h4>雲品國際「大坑森邸」</h4>
+                <p>雲品打造頂級溫泉Villa，證明大坑具備承載國際級高端生活的潛力。</p>
+                <a href="https://news.cnyes.com/news/id/5561629" target="_blank" class="news-link">閱讀新聞原文 ↗</a>
             </div>
         </div>
 
-        <!-- 核心價值 (縮減尺寸) -->
-        <div class="mini-insight">
-            <h3 class="serif" style="color: var(--gold-accent); margin-bottom: 10px;">用「原始紅利」席次，站上整體開發成本層級</h3>
-            <p style="font-size: 0.95rem; opacity: 0.9;">當市場正以零售價格（18~22萬）成交時，潤德莊園採用「土地合購、整體開發」邏輯。您買的不是末端產品，而是直接取得與開發商同級的「資產原始股」。</p>
+        <div class="table-container">
+            <h3 class="serif" style="margin-bottom:25px; color: var(--forest-deep); text-align: center;">區域實價案例：樸山村 (土地價 18 ~ 22 萬)</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>標的地號</th>
+                        <th>交易總價(萬)</th>
+                        <th>土地總面積(坪)</th>
+                        <th style="background: var(--gold-accent);">基地單價(萬/坪)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>96-67 地號</td><td>9,200</td><td>659.62</td><td style="font-weight:700;">18.41</td></tr>
+                    <tr><td>96-68 地號</td><td>9,800</td><td>596.89</td><td style="font-weight:700;">22.68</td></tr>
+                </tbody>
+            </table>
         </div>
     </section>
 
-    <section id="investment" style="background: #fff;">
-        <span class="section-tag">MAJOR INVESTMENT</span>
-        <h2>重大投資建設</h2>
-        <div class="investment-grid">
-            <!-- 雲品 -->
-            <div class="invest-card">
-                <img src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/%E9%9B%B2%E5%93%81.png" class="invest-img">
-                <div class="invest-content">
-                    <h4>雲品國際「大坑森邸」</h4>
-                    <p style="font-size: 0.9rem; margin-bottom: 15px;">頂級溫泉Villa、White Party 宴會廳「森邸」，證明具備承載國際級高端生活潛力。</p>
-                    <a href="https://news.cnyes.com/news/id/5561629" target="_blank" class="invest-link">查看詳細報導 ↗</a>
-                </div>
-            </div>
-            <!-- 醫療特區 -->
-            <div class="invest-card">
-                <img src="https://via.placeholder.com/400x250?text=Medical+Zone" class="invest-img">
-                <div class="invest-content">
-                    <h4>百億醫療特區</h4>
-                    <p style="font-size: 0.9rem; margin-bottom: 15px;">隨著百億級醫療資源投入，大坑已轉向高端康養居住區，地價具強勁支撐。</p>
-                    <a href="https://money.udn.com/money/story/5635/8749962" target="_blank" class="invest-link">查看詳細報導 ↗</a>
-                </div>
-            </div>
-            <!-- 大陸建設 -->
-            <div class="invest-card">
-                <img src="https://via.placeholder.com/400x250?text=Villa+Cluster" class="invest-img">
-                <div class="invest-content">
-                    <h4>大陸建設＆精湛建設</h4>
-                    <p style="font-size: 0.9rem; margin-bottom: 15px;">打造台中版「青山鎮」，指標建商預計打造高隱私別墅聚落，區域價值爆發前夕。</p>
-                    <a href="https://www.wealth.com.tw/articles/eb721bcb-8bc7-40a4-b798-a708edad6472" target="_blank" class="invest-link">查看詳細報導 ↗</a>
-                </div>
-            </div>
-        </div>
-    </section>
+    <footer style="padding: 80px 8% 60px; text-align: center; background: #fff; border-top: 1px solid #f0f0f0;">
+        <p class="serif" style="font-size: 1.35rem; color: var(--forest-deep); margin-bottom: 12px;">大貴段 潤德莊園 ‧ 市場研究小組</p>
+        <p style="color: #ccc; font-size: 0.8rem; margin-top: 30px; letter-spacing: 1.5px;">© 2026 PRECIOUS LAND COLLECTION. ALL RIGHTS RESERVED.</p>
+    </footer>
 
-    <section id="cta" style="text-align: center;">
-        <a href="https://hao713949.github.io/DAKENG-VILLA/project/unit.html" style="background: var(--forest-deep); color: var(--gold-accent); padding: 20px 40px; text-decoration: none; border-radius: 4px; display: inline-block; font-weight: 700;">立即預約席次 ⇄</a>
-        <p style="margin-top: 20px; font-size: 0.85rem; color: #999;">僅 24 席 ‧ 預約制釋出</p>
-    </section>
+    <script>
+        function openLightbox(src, title) {
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            const lightboxCaption = document.getElementById('lightbox-caption');
+            
+            lightboxImg.src = src;
+            lightboxCaption.innerText = title || "";
+            lightbox.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
 
+        function handleLightboxClick(event) {
+            if (event.target.id === 'lightbox' || event.target.id === 'lightbox-img') {
+                closeLightbox();
+            }
+        }
+
+        function closeLightbox() {
+            const lightbox = document.getElementById('lightbox');
+            lightbox.style.display = 'none';
+            document.body.style.overflow = 'auto'; 
+        }
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === "Escape") closeLightbox();
+        });
+    </script>
 </body>
 </html>
