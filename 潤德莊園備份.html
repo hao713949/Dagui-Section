@@ -36,6 +36,7 @@
             overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
             font-size: 16px; 
+            text-rendering: optimizeLegibility;
         }
 
         h1, h2, h3, h4, .serif { font-family: 'Noto Serif TC', serif; font-weight: 900; }
@@ -625,11 +626,25 @@
             .hero::after {
                 background: linear-gradient(to bottom, rgba(249, 248, 244, 0.98) 35%, rgba(249, 248, 244, 0.6) 70%, rgba(249, 248, 244, 0.2) 100%);
             }
-            .hero-content { text-align: center; margin: 0 auto; }
+            .hero-content { text-align: center; margin: 0 auto; width: 100%; }
             .subtitle-decorated { justify-content: center; }
-            .decoration-line { padding-left: 0; margin: 30px auto; border-top: 1px solid var(--gold-accent); padding-top: 20px; }
+            .decoration-line { 
+                padding-left: 0; 
+                margin: 30px auto; 
+                border-top: 1px solid var(--gold-accent); 
+                padding-top: 20px; 
+                text-align: justify;
+                word-break: break-all;
+                max-width: 90%;
+            }
             .decoration-line::before { display: none; }
             
+            /* 優化圖1字距不對稱與孤字落單 */
+            .decoration-line p {
+                text-wrap: balance; /* 防止孤字 */
+                letter-spacing: 0.02em;
+            }
+
             .top-nav { justify-content: flex-start; padding: 0 10px; }
             .top-nav a { font-size: 1rem; padding: 0 15px; }
 
@@ -643,14 +658,14 @@
             .sale-item { flex-direction: column; align-items: flex-start; gap: 15px; }
             .sale-link-btn { margin-left: 0; width: 100%; text-align: center; }
             
-            h2 { font-size: 1.6rem; margin-bottom: 30px; }
+            h2 { font-size: 1.6rem; margin-bottom: 30px; text-wrap: balance; }
             .info-card h3 { font-size: 1.4rem; }
-            .info-card p { font-size: 1.05rem; }
+            .info-card p { font-size: 1.05rem; text-align: justify; }
         }
 
         @media (max-width: 480px) {
             section { padding: 60px 5%; }
-            .hero h1 { font-size: 2.1rem; letter-spacing: 1px; }
+            .hero h1 { font-size: 2.1rem; letter-spacing: 1px; text-wrap: balance; }
             .hero .sub-title { font-size: 1.1rem; letter-spacing: 2px; }
             .query-btn { width: 100%; padding: 18px 20px; font-size: 1.15rem; }
 
@@ -666,9 +681,9 @@
             .thumb-item { flex: 0 0 75px; }
             .lightbox-nav { width: 45px; height: 45px; }
             
-            .invest-title-new { font-size: 1.3rem; } 
-            .invest-content-new { font-size: 0.95rem; }
-            .legacy-h2 { font-size: 1.8rem; }
+            .invest-title-new { font-size: 1.3rem; text-wrap: balance; } 
+            .invest-content-new { font-size: 0.95rem; text-align: justify; }
+            .legacy-h2 { font-size: 1.8rem; text-wrap: balance; }
             .legacy-quote p { font-size: 1.05rem; line-height: 1.8; }
             
             .table-container { padding: 15px 10px; }
@@ -713,7 +728,7 @@
                 <h1 class="main-title serif">大貴段｜潤德莊園</h1>
                 
                 <div class="subtitle-decorated">
-                    <p style="font-weight: 700; color: var(--gold-accent); font-size: 1.25rem; letter-spacing: 1px; margin: 0;">不只是買地，更是取得價格主導權</p>
+                    <p style="font-weight: 700; color: var(--gold-accent); font-size: 1.25rem; letter-spacing: 1px; margin: 0; text-wrap: balance;">不只是買地，更是取得價格主導權</p>
                 </div>
                 
                 <div class="decoration-line">
@@ -746,7 +761,7 @@
         <span class="section-tag">STRATEGIC VISION</span>
         
         <h2>【絕對定錨：以初始成本，搶佔「資產原始紅利」】</h2>
-        <p style="font-size: 1.15rem; margin-bottom: 35px; color: var(--forest-mid); max-width: 900px; line-height: 1.8;">
+        <p style="font-size: 1.15rem; margin-bottom: 35px; color: var(--forest-mid); max-width: 900px; line-height: 1.8; text-align: justify;">
             當市場在追逐「現狀」的行情，您已洞察「未來」的位階。透過數據精準還原，周邊社區型特二建地價格來到 18~22 萬；入主『潤德莊園』，意味著您正以最具戰略優勢的成本落點，提前鎖定未來的增值空間。
         </p>
         <div class="grid-layout" style="margin-bottom: 80px;">
@@ -765,7 +780,7 @@
         </div>
 
         <h2>【地段優勢：百億醫療紅利核心，離塵不離城的防禦線】</h2>
-        <p style="font-size: 1.15rem; margin-bottom: 45px; color: var(--forest-mid); max-width: 900px; line-height: 1.8;">
+        <p style="font-size: 1.15rem; margin-bottom: 45px; color: var(--forest-mid); max-width: 900px; line-height: 1.8; text-align: justify;">
             真正的尊嚴養老，源於「進退自如」的從容。
         </p>
         <div class="grid-layout" style="margin-bottom: 80px;">
@@ -820,7 +835,7 @@
                 <div class="gallery-label" id="main-label">潤德精品會館示意圖</div>
             </div>
             
-            <p style="font-size: 1.05rem; margin: 15px 0 25px; color: var(--forest-mid); text-align: center; font-weight: 700; line-height: 1.7;">
+            <p style="font-size: 1.05rem; margin: 15px 0 25px; color: var(--forest-mid); text-align: center; font-weight: 700; line-height: 1.7; padding: 0 10px;">
                 ※ 佔地 577坪 三層現代共享會館（每層 85～90 坪，總市值超過 1.6 億元）由認購土地『附約款-基礎工程建設結餘款』提撥興建，由 48 單元分別共有，每月約 7,000 元管理費（KTV、餐廳、咖啡廳、休閒聚會空間，純自用不對外營業）。
             </p>
 
@@ -836,7 +851,7 @@
     <section id="market-info" class="market-info-section">
         <span class="section-tag">MARKET INSIGHTS</span>
         <h2>大坑風景區建地行情</h2> 
-        <p style="font-size: 1.15rem; margin-bottom: 25px; color: var(--forest-mid); max-width: 900px;">
+        <p style="font-size: 1.15rem; margin-bottom: 25px; color: var(--forest-mid); max-width: 900px; text-wrap: balance;">
              從 9 萬到 22 萬／坪，價格帶已明確分層
         </p>
 
@@ -910,7 +925,7 @@
         </div>
 
         <div class="table-container" style="margin: 40px 0; border-top: 1px solid #ddd; padding-top: 40px;">
-            <h3 class="serif" style="margin-bottom:25px; color: var(--forest-deep); text-align: center; font-size: 1.25rem;">區域實價案例：樸山村 『 土地實際價格 18 ~ 22 萬 』，土地公設比 52.7% 。</h3>
+            <h3 class="serif" style="margin-bottom:25px; color: var(--forest-deep); text-align: center; font-size: 1.25rem; text-wrap: balance;">區域實價案例：樸山村 『 土地實際價格 18 ~ 22 萬 』，土地公設比 52.7% 。</h3>
             <table>
                 <thead>
                     <tr>
@@ -939,19 +954,19 @@
             <div class="news-card">
                 <img src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/%E9%9B%B2%E5%93%81.png" alt="雲品國際「大坑森邸」" onclick="openLightbox(this.src, '雲品國際「大坑森邸」')">
                  <h4>雲品國際「大坑森邸」<br><span style="font-size: 0.95rem; color: #666; font-weight: normal;">頂級高端生活產業</span></h4>
-                <p>雲品打造頂級溫泉Villa、White Party 宴會廳「森邸」，證明該區域具備承載國際級高端生活的潛力。</p>
+                <p style="text-align: justify;">雲品打造頂級溫泉Villa、White Party 宴會廳「森邸」，證明該區域具備承載國際級高端生活的潛力。</p>
                 <a href="https://news.cnyes.com/news/id/5561629" target="_blank" class="news-link">閱讀新聞原文 ↗</a>
             </div>
             <div class="news-card">
                 <img src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/%E5%B8%82%E7%AB%8B%E9%86%AB%E9%99%A2.jpg" alt="百億醫療特區" onclick="openLightbox(this.src, '百億醫療特區')">
                 <h4>百億醫療特區<br><span style="font-size: 0.95rem; color: #666; font-weight: normal;">周邊房價看俏</span></h4>
-                <p>隨著百億級醫療資源投入，大坑已從單純觀光轉向高端康養居住區，地價具強勁支撐。</p>
+                <p style="text-align: justify;">隨著百億級醫療資源投入，大坑已從單純觀光轉向高端康養居住區，地價具強勁支撐。</p>
                 <a href="https://money.udn.com/money/story/5635/8749962" target="_blank" class="news-link">閱讀新聞原文 ↗</a>
             </div>
             <div class="news-card">
                 <img src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/%E6%A8%B8%E5%B1%B1%E6%9D%91.jpg" alt="大陸建設＆精湛建設" onclick="openLightbox(this.src, '大陸建設＆精湛建設')">
                 <h4>大陸建設＆精湛建設<br><span style="font-size: 0.95rem; color: #666; font-weight: normal;">打造台中版「青山鎮」</span></h4>
-                <p>指標建商預計打造高隱私、高規格森林別墅聚落，區域價值正處於爆發前夕。</p>
+                <p style="text-align: justify;">指標建商預計打造高隱私、高規格森林別墅聚落，區域價值正處於爆發前夕。</p>
                 <a href="https://www.wealth.com.tw/articles/eb721bcb-8bc7-40a4-b798-a708edad6472" target="_blank" class="news-link">閱讀新聞原文 ↗</a>
             </div>
         </div>
@@ -967,7 +982,7 @@
 
     <section id="page5" style="background: #F1F2ED;">
         <span class="section-tag">ASSET PORTFOLIO</span>
-        <h2>潤德莊園土地概況</h2> <p style="font-size: 1.15rem; margin-bottom: 45px; color: var(--forest-mid); max-width: 900px;">
+        <h2>潤德莊園土地概況</h2> <p style="font-size: 1.15rem; margin-bottom: 45px; color: var(--forest-mid); max-width: 900px; text-wrap: balance;">
             ※ 認購單元總價，包含 A~E 土地。
         </p>
         <div class="table-container">
@@ -1023,7 +1038,7 @@
         <h2>地籍圖資與分區證明</h2>
         <div style="margin-bottom: 35px; border-left: 4px solid var(--gold-accent); padding-left: 20px;">
             <h3 class="serif" style="color: var(--forest-deep); font-size: 1.4rem; margin-bottom: 10px;">土地使用分區管制要點</h3>
-            <p style="font-size: 1.05rem; color: var(--text-dark); font-weight: 500; line-height: 1.7;">
+            <p style="font-size: 1.05rem; color: var(--text-dark); font-weight: 500; line-height: 1.7; text-wrap: balance;">
                 供一般住宅、住宅別墅、原開發許可核准項目，及門診、零售、日常服務之場所使用為限
             </p>
         </div>
@@ -1065,7 +1080,7 @@
         </div>
 
         <h2 class="sec-h2 serif">交易安全機制</h2>
-        <p style="font-size: 1.1rem; margin-bottom: 45px; color: rgba(255,255,255,0.85); line-height: 1.8;">
+        <p style="font-size: 1.1rem; margin-bottom: 45px; color: rgba(255,255,255,0.85); line-height: 1.8; text-wrap: balance;">
             確保認購者資金安全性—<span class="highlight-gold">若案件不成，交易取消，100% 原款退回。</span>
         </p>
         <div class="sec-grid">
@@ -1105,7 +1120,7 @@
 
             <h3 class="serif" style="margin: 20px 0; color: var(--forest-deep); font-size: 1.3rem;">環 境 總 覽 圖</h3>
             <img src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/map2.jpg" alt="環境總覽圖" class="clickable-map" onclick="openLightbox(this.src, '環境總覽圖')" loading="lazy">
-            <p style="color: #666; margin: 20px 0; font-size: 1rem; line-height: 1.7;">
+            <p style="color: #666; margin: 20px 0; font-size: 1rem; line-height: 1.7; padding: 0 10px;">
                 ※ 鄰近台中市立醫院、74快速道路約 6-8 分鐘車程。(點擊可放大)
             </p>
         </div>
