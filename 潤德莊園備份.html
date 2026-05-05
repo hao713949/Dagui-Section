@@ -508,8 +508,9 @@
             50% { opacity: 0.6; }
         }
 
-        .invest-title-new { font-size: clamp(1.4rem, 4vw, 2.2rem); margin-bottom: 25px; line-height: 1.4; }
-        .invest-content-new { font-size: 1.1rem; line-height: 1.8; color: rgba(255, 255, 255, 0.9); }
+        /* 修改：下方的標題欄版面略為縮小 */
+        .invest-title-new { font-size: clamp(1.3rem, 3.5vw, 2rem); margin-bottom: 20px; line-height: 1.4; }
+        .invest-content-new { font-size: 1rem; line-height: 1.8; color: rgba(255, 255, 255, 0.9); }
 
         .map-container { width: 100%; height: 500px; margin-top: 25px; border-radius: 8px; overflow: hidden; background: #eee; border: 1px solid #ddd; }
         .map-btn { 
@@ -609,7 +610,7 @@
             .top-nav a { font-size: 1rem; padding: 0 15px; }
 
             .reg-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
-            .invest-insight-box { padding: 40px 25px; }
+            .invest-insight-box { padding: 30px 20px; } /* 縮小手機端 padding */
             .map-container { height: 400px; }
             
             /* 行情資訊手機優化 */
@@ -640,8 +641,8 @@
             .thumb-item { flex: 0 0 75px; }
             .lightbox-nav { width: 45px; height: 45px; }
             
-            .invest-title-new { font-size: 1.6rem; }
-            .invest-content-new { font-size: 1.05rem; }
+            .invest-title-new { font-size: 1.3rem; } /* 再縮小標題 */
+            .invest-content-new { font-size: 0.95rem; }
             .legacy-h2 { font-size: 1.8rem; }
             .legacy-quote p { font-size: 1.05rem; line-height: 1.8; }
             
@@ -767,7 +768,7 @@
             <span class="invest-tag-new">FINAL CALL</span>
             <h3 class="serif invest-title-new">五月正式認購，稀缺席次倒數</h3>
             <p class="invest-content-new">
-                在潤德莊園，買的不僅僅是土地，而是一種「看得到、握得住」的尊嚴生活。這是一份給家人的承諾，也是一筆留給未來的戰略資產。稀缺 24 席，先到先得。邀請您，在兩萬坪森林裡，預約一場優雅的永恆靜好。
+                在潤德莊園，買的不僅僅是土地，而一種「看得到、握得住」的尊嚴生活。這是一份給家人的承諾，也是一筆留給未來的戰略資產。稀缺 24 席，先到先得。邀請您，在兩萬坪森林裡，預約一場優雅的永恆靜好。
             </p>
         </div>
     </div>
@@ -895,6 +896,7 @@
             </div>
         </div>
 
+        <!-- 區域待售案源分析欄位 -->
         <h3 class="serif" style="margin: 60px 0 25px; color: var(--forest-deep);">區域待售案源分析</h3>
         
         <div class="sale-list">
@@ -923,6 +925,33 @@
             </div>
         </div>
 
+        <!-- 修改點一：更換位置至此處 -->
+        <div class="table-container" style="margin: 40px 0; border-top: 1px solid #ddd; padding-top: 40px;">
+            <h3 class="serif" style="margin-bottom:25px; color: var(--forest-deep); text-align: center; font-size: 1.25rem;">區域實價案例：樸山村 『 土地實際價格 18 ~ 22 萬 』，土地公設比 52.7% 。</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th style="color: white;">標的地號</th>
+                        <th style="color: white;">交易總價(萬)</th>
+                        <th style="color: white;">建物面積(坪)</th>
+                        <th style="color: white;">土地總面積(坪)</th>
+                        <th style="color: white;">基地面積</th>
+                        <th style="color: white; background: var(--gold-accent);">基地單價(萬/坪)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>96-67 地號</strong></td><td>9,200</td><td>147.54</td><td>659.62</td><td>311.99</td><td style="font-weight:700; color:var(--forest-deep);">18.41</td>
+                    </tr>
+                    <tr>
+                        <td><strong>96-68 地號</strong></td><td>9,800</td><td>146.93</td><td>596.89</td><td>282.37</td><td style="font-weight:700; color:var(--forest-deep);">22.68</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p style="font-size: 0.8rem; color: #999; margin-top: 10px; text-align: center;">(手機觀看請左右滑動表格 ⇄)</p>
+        </div>
+
+        <!-- 重大投資與建設趨勢 -->
         <h3 class="serif" style="margin-bottom: 25px; color: var(--forest-deep);">重大投資與建設趨勢</h3>
         <div class="market-news-grid">
             <div class="news-card">
@@ -951,30 +980,6 @@
             <p class="invest-content-new">
                 大陸建設、雲品、精湛相繼進駐，不僅是房產開發，更是對區域價值的集體背書。在高端康養與住宅共鳴的當下，選擇具備完善基礎建設的『住宅區』，是提前佈局資產紅利的唯一路徑。
             </p>
-        </div>
-
-        <div class="table-container" style="margin-top: 50px; border-top: 1px solid #ddd; padding-top: 40px;">
-            <h3 class="serif" style="margin-bottom:25px; color: var(--forest-deep); text-align: center; font-size: 1.25rem;">區域實價案例：樸山村 『 土地實際價格 18 ~ 22 萬 』，土地公設比 52.7% 。</h3>
-            <table>
-                <thead>
-                    <tr>
-                        <th style="color: white;">標的地號</th>
-                        <th style="color: white;">交易總價(萬)</th>
-                        <th style="color: white;">建物面積(坪)</th>
-                        <th style="color: white;">土地總面積(坪)</th>
-                        <th style="color: white;">基地面積</th>
-                        <th style="color: white; background: var(--gold-accent);">基地單價(萬/坪)</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><strong>96-67 地號</strong></td><td>9,200</td><td>147.54</td><td>659.62</td><td>311.99</td><td style="font-weight:700; color:var(--forest-deep);">18.41</td>
-                    </tr>
-                    <tr>
-                        <td><strong>96-68 地號</strong></td><td>9,800</td><td>146.93</td><td>596.89</td><td>282.37</td><td style="font-weight:700; color:var(--forest-deep);">22.68</td>
-                    </tr>
-                </tbody>
-            </table>
         </div>
     </section>
 
