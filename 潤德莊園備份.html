@@ -691,6 +691,37 @@
         }
 
     </style>
+<style>
+    /* 手機端文字排版優化 */
+    body {
+        text-rendering: optimizeLegibility;
+        -webkit-font-smoothing: antialiased;
+    }
+    
+    /* 修正內文與標題字距 */
+    p, .content, .desc, .text-block {
+        text-align: justify;
+        text-justify: inter-ideograph;
+        letter-spacing: 0.05em; /* 標準字距微調 */
+        line-height: 1.8;      /* 提升行高，增加閱讀呼吸感 */
+        word-break: break-all;
+    }
+
+    /* 針對手機端的特定優化 */
+    @media (max-width: 768px) {
+        body {
+            font-size: 16px;
+        }
+        h1, h2, h3 {
+            letter-spacing: 0.1em !important;
+            line-height: 1.4 !important;
+        }
+        p {
+            letter-spacing: 0.03em !important; /* 手機端字距稍窄以容納更多文字 */
+            margin-bottom: 1.2em;
+        }
+    }
+</style>
 </head>
 <body>
 
