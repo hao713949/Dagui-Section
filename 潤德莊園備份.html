@@ -721,6 +721,25 @@
             margin-bottom: 1.2em;
         }
     }
+
+    /* 針對首頁內文字距優化 */
+    .hero-content p {
+        text-align: center !important; /* 首頁核心標語建議置中，避免 justify 造成的異常字距 */
+        letter-spacing: 0.1em !important; /* 設定固定適中字距 */
+        line-height: 1.6;
+        word-break: keep-all; /* 避免標點符號或單詞被拆分過於破碎 */
+        white-space: normal;
+        margin: 0 auto;
+        max-width: 90%; /* 限制寬度避免貼邊 */
+    }
+
+    @media (max-width: 768px) {
+        .hero-content p {
+            font-size: 1.1rem !important;
+            letter-spacing: 0.05em !important; /* 手機端字距稍縮小，確保不破版 */
+            text-align: center !important;
+        }
+    }
 </style>
 </head>
 <body>
