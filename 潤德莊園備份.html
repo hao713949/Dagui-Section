@@ -230,10 +230,6 @@
             gap: 12px;
             margin-bottom: 12px;
         }
-        /* 註解或保留不使用色塊 */
-        .subtitle-color-bar {
-            display: none;
-        }
 
         /* --- 照片輪播區塊 --- */
         .hero-gallery {
@@ -379,11 +375,13 @@
         .reg-title { color: #FFFFFF; font-weight: 700; font-size: 1rem; margin-bottom: 10px; }
         .reg-desc { color: rgba(255,255,255,0.7); font-size: 0.85rem; line-height: 1.6; }
 
+        /* 表格手機端滑動優化 */
         .table-container { 
             background: white; padding: 20px; border-radius: 8px; 
             overflow-x: auto; box-shadow: 0 12px 25px rgba(0,0,0,0.06); 
             -webkit-overflow-scrolling: touch;
             max-height: 85vh;
+            position: relative;
         }
         
         .table-container thead th {
@@ -506,11 +504,39 @@
             50% { opacity: 0.6; }
         }
 
-        /* 修改：下方的標題欄版面略為縮小 */
         .invest-title-new { font-size: clamp(1.3rem, 3.5vw, 2rem); margin-bottom: 20px; line-height: 1.4; }
         .invest-content-new { font-size: 1rem; line-height: 1.8; color: rgba(255, 255, 255, 0.9); }
 
-        .map-container { width: 100%; height: 500px; margin-top: 25px; border-radius: 8px; overflow: hidden; background: #eee; border: 1px solid #ddd; }
+        .map-container { width: 100%; height: 500px; margin-top: 25px; border-radius: 8px; overflow: hidden; background: #eee; border: 1px solid #ddd; position: relative; }
+        
+        /* 地圖文字標籤樣式 */
+        .map-overlay-label {
+            position: absolute;
+            top: 40%;
+            left: 50%;
+            transform: translate(-50%, -100%);
+            background: var(--danger-red);
+            color: white;
+            padding: 6px 15px;
+            border-radius: 4px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            z-index: 5;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            pointer-events: none;
+            white-space: nowrap;
+        }
+        .map-overlay-label::after {
+            content: "";
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-width: 8px 8px 0;
+            border-style: solid;
+            border-color: var(--danger-red) transparent transparent;
+        }
+
         .map-btn { 
             display: block; width: 100%; max-width: 320px; padding: 18px; background: var(--forest-deep); 
             color: var(--gold-accent); text-align: center; text-decoration: none; font-weight: 700; 
@@ -608,15 +634,15 @@
             .top-nav a { font-size: 1rem; padding: 0 15px; }
 
             .reg-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
-            .invest-insight-box { padding: 30px 20px; } /* 縮小手機端 padding */
+            .invest-insight-box { padding: 30px 20px; }
             .map-container { height: 400px; }
+            .map-overlay-label { top: 45%; }
             
             /* 行情資訊手機優化 */
             .price-level-container { grid-template-columns: 1fr; }
             .sale-item { flex-direction: column; align-items: flex-start; gap: 15px; }
             .sale-link-btn { margin-left: 0; width: 100%; text-align: center; }
             
-            /* 修改：手機端 h2 字體優化 */
             h2 { font-size: 1.6rem; margin-bottom: 30px; }
             .info-card h3 { font-size: 1.4rem; }
             .info-card p { font-size: 1.05rem; }
@@ -640,68 +666,13 @@
             .thumb-item { flex: 0 0 75px; }
             .lightbox-nav { width: 45px; height: 45px; }
             
-            .invest-title-new { font-size: 1.3rem; } /* 再縮小標題 */
+            .invest-title-new { font-size: 1.3rem; } 
             .invest-content-new { font-size: 0.95rem; }
             .legacy-h2 { font-size: 1.8rem; }
             .legacy-quote p { font-size: 1.05rem; line-height: 1.8; }
             
             .table-container { padding: 15px 10px; }
             td, th { padding: 14px 10px; font-size: 0.9rem; }
-        }
-    
-        /* Optimization for Section 1 & 2: Title and Tag */
-        .intro-tag {
-            background: #1a2a1a !important; /* Dark forest green */
-            color: #d4af37 !important; /* Gold text */
-            padding: 4px 12px !important;
-            border-radius: 4px !important;
-            font-size: 0.9rem !important;
-            display: inline-block !important;
-            margin-bottom: 10px !important;
-            border: 1px solid #d4af37 !important;
-        }
-        .intro-card {
-            background-color: #f8f5f0 !important; /* Soft cream background for readability */
-            padding: 30px 20px !important;
-        }
-        .intro-card h2 {
-            color: #1a2a1a !important; /* Dark green text */
-            font-size: 1.6rem !important;
-            line-height: 1.4 !important;
-        }
-
-        /* Optimization for Section 3: "查看席次與價格" Button */
-        .btn-gold {
-            background: #d4af37 !important;
-            color: #ffffff !important;
-            padding: 12px 30px !important;
-            border-radius: 50px !important;
-            text-decoration: none !important;
-            display: inline-block !important;
-            font-weight: bold !important;
-            transition: all 0.3s ease !important;
-            border: none !important;
-            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3) !important;
-        }
-        .btn-gold:hover {
-            background: #b8962e !important;
-            transform: translateY(-2px) !important;
-        }
-
-        /* Price Bar Optimization (Mobile responsive text) */
-        .price-bar-labels {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 10px;
-            font-size: 0.8rem;
-            color: #555;
-            flex-wrap: wrap;
-        }
-        .price-bar-label-item {
-            flex: 1;
-            text-align: center;
-            padding: 5px;
-            min-width: 80px;
         }
 
     </style>
@@ -742,8 +713,7 @@
                 <h1 class="main-title serif">大貴段｜潤德莊園</h1>
                 
                 <div class="subtitle-decorated">
-                    <!-- 色塊標籤已隱藏 -->
-                    <p style="font-weight: 700; color: var(--forest-mid); font-size: 1.25rem; letter-spacing: 1px; margin: 0; color: #b5a478;">不只是買地，更是取得價格主導權</p>
+                    <p style="font-weight: 700; color: var(--gold-accent); font-size: 1.25rem; letter-spacing: 1px; margin: 0;">不只是買地，更是取得價格主導權</p>
                 </div>
                 
                 <div class="decoration-line">
@@ -895,11 +865,9 @@
             </div>
         </div>
 
-        <!-- 區域待售案源分析欄位 -->
         <h3 class="serif" style="margin: 60px 0 25px; color: var(--forest-deep);">區域待售案源分析</h3>
         
         <div class="sale-list">
-            <!-- 優先排列土地案源 -->
             <div class="sale-item">
                 <div class="sale-info">
                     <h4>橫坑巷零星建地 <span class="price-highlight">14.4萬/坪</span></h4>
@@ -924,7 +892,6 @@
                 <a href="https://hao713949.github.io/Dagui-Section/%E5%A4%A7%E8%B2%B4924.html" target="_blank" class="sale-link-btn">圖資連結 ↗</a>
             </div>
 
-            <!-- 別墅案源排列於後 -->
             <div class="sale-item">
                 <div class="sale-info">
                     <h4>台中莊園隱私宅邸 <span class="price-highlight">22,000萬</span></h4>
@@ -942,18 +909,17 @@
             </div>
         </div>
 
-        <!-- 表格區域 -->
         <div class="table-container" style="margin: 40px 0; border-top: 1px solid #ddd; padding-top: 40px;">
             <h3 class="serif" style="margin-bottom:25px; color: var(--forest-deep); text-align: center; font-size: 1.25rem;">區域實價案例：樸山村 『 土地實際價格 18 ~ 22 萬 』，土地公設比 52.7% 。</h3>
             <table>
                 <thead>
                     <tr>
-                        <th style="color: white;">標的地號</th>
-                        <th style="color: white;">交易總價(萬)</th>
-                        <th style="color: white;">建物面積(坪)</th>
-                        <th style="color: white;">土地總面積(坪)</th>
-                        <th style="color: white;">基地面積</th>
-                        <th style="color: white; background: var(--gold-accent);">基地單價(萬/坪)</th>
+                        <th>標的地號</th>
+                        <th>交易總價(萬)</th>
+                        <th>建物面積(坪)</th>
+                        <th>土地總面積(坪)</th>
+                        <th>基地面積</th>
+                        <th style="background: var(--gold-accent);">基地單價(萬/坪)</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -968,7 +934,6 @@
             <p style="font-size: 0.8rem; color: #999; margin-top: 10px; text-align: center;">(手機觀看請左右滑動表格 ⇄)</p>
         </div>
 
-        <!-- 重大投資與建設趨勢 -->
         <h3 class="serif" style="margin-bottom: 25px; color: var(--forest-deep);">重大投資與建設趨勢</h3>
         <div class="market-news-grid">
             <div class="news-card">
@@ -1153,10 +1118,12 @@
             <p style="font-size: 1.2rem; font-weight: 500;">台中市北屯區大貴段 潤德莊園</p>
         </div>
         <div class="map-container">
-            <!-- 修正後的 Google Map 定位座標 -->
+            <!-- 基地位置標籤 -->
+            <div class="map-overlay-label">基地位置</div>
+            <!-- Google Map 定位座標 24.164792308796635, 120.74600988280426 -->
             <iframe 
                 title="Google Map Location"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3640.1158654284894!2d120.74365021536767!3d24.164722612815606!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x346917e7c8524d77%3A0x7d25e0b0e504c568!2z5r2k5b636I6K5ZyS!5e0!3m2!1szh-TW!2stw!4v1714876000000!5m2!1szh-TW!2stw" 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3640.115!2d120.746010!3d24.164792!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x346917e7c8524d77%3A0x7d25e0b0e504c568!2z5r2k5b636I6K5ZyS!5e0!3m2!1szh-TW!2stw!4v1714876000000!5m2!1szh-TW!2stw" 
                 width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy">
             </iframe>
         </div>
@@ -1204,7 +1171,6 @@
     </footer>
 
     <script>
-        // 相簿資料
         const galleryImages = [
             {url: 'https://raw.githubusercontent.com/hao713949/Dagui-Section/main/IMG_6482.JPG', title: '潤德精品會館'},
             {url: 'https://raw.githubusercontent.com/hao713949/Dagui-Section/main/IMG_6481.JPG', title: '潤德精品會館'},
