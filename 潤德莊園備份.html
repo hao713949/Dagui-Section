@@ -230,11 +230,9 @@
             gap: 12px;
             margin-bottom: 12px;
         }
+        /* 註解或保留不使用色塊 */
         .subtitle-color-bar {
-            width: 6px;
-            height: 24px;
-            background-color: var(--forest-deep);
-            display: inline-block;
+            display: none;
         }
 
         /* --- 照片輪播區塊 --- */
@@ -618,7 +616,8 @@
             .sale-item { flex-direction: column; align-items: flex-start; gap: 15px; }
             .sale-link-btn { margin-left: 0; width: 100%; text-align: center; }
             
-            h2 { font-size: 2rem; margin-bottom: 30px; }
+            /* 修改：手機端 h2 字體優化 */
+            h2 { font-size: 1.6rem; margin-bottom: 30px; }
             .info-card h3 { font-size: 1.4rem; }
             .info-card p { font-size: 1.05rem; }
         }
@@ -743,8 +742,8 @@
                 <h1 class="main-title serif">大貴段｜潤德莊園</h1>
                 
                 <div class="subtitle-decorated">
-                    <div class="subtitle-color-bar"></div>
-                    <p style="font-weight: 700; color: var(--forest-mid); font-size: 1.25rem; letter-spacing: 1px; margin: 0; background: #1B3022; color: #b5a478; padding: 5px 15px;">不只是買地，更是取得價格主導權</p>
+                    <!-- 色塊標籤已隱藏 -->
+                    <p style="font-weight: 700; color: var(--forest-mid); font-size: 1.25rem; letter-spacing: 1px; margin: 0; color: #b5a478;">不只是買地，更是取得價格主導權</p>
                 </div>
                 
                 <div class="decoration-line">
