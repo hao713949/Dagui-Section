@@ -414,6 +414,7 @@
             width: 100%; height: 200px;
             object-fit: cover; border-radius: 4px;
             margin-bottom: 25px; background: #eee;
+            cursor: zoom-in;
         }
         .price-highlight { color: var(--danger-red); font-size: 1.4rem; font-weight: 900; }
         .news-link { color: var(--forest-mid); text-decoration: none; font-weight: 700; font-size: 0.95rem; border-bottom: 1px solid var(--gold-accent); align-self: flex-start; margin-top: auto; padding-top: 15px;}
@@ -641,7 +642,7 @@
             
             /* 優化圖1字距不對稱與孤字落單 */
             .decoration-line p {
-                text-wrap: balance; /* 防止孤字 */
+                text-wrap: balance; 
                 letter-spacing: 0.02em;
             }
 
@@ -702,12 +703,11 @@
     p, .content, .desc, .text-block {
         text-align: justify;
         text-justify: inter-ideograph;
-        letter-spacing: 0.05em; /* 標準字距微調 */
-        line-height: 1.8;      /* 提升行高，增加閱讀呼吸感 */
+        letter-spacing: 0.05em; 
+        line-height: 1.8;      
         word-break: break-all;
     }
 
-    /* 針對手機端的特定優化 */
     @media (max-width: 768px) {
         body {
             font-size: 16px;
@@ -717,26 +717,25 @@
             line-height: 1.4 !important;
         }
         p {
-            letter-spacing: 0.03em !important; /* 手機端字距稍窄以容納更多文字 */
+            letter-spacing: 0.03em !important; 
             margin-bottom: 1.2em;
         }
     }
 
-    /* 針對首頁內文字距優化 */
     .hero-content p {
-        text-align: center !important; /* 首頁核心標語建議置中，避免 justify 造成的異常字距 */
-        letter-spacing: 0.1em !important; /* 設定固定適中字距 */
+        text-align: center !important; 
+        letter-spacing: 0.1em !important; 
         line-height: 1.6;
-        word-break: keep-all; /* 避免標點符號或單詞被拆分過於破碎 */
+        word-break: keep-all; 
         white-space: normal;
         margin: 0 auto;
-        max-width: 90%; /* 限制寬度避免貼邊 */
+        max-width: 90%; 
     }
 
     @media (max-width: 768px) {
         .hero-content p {
             font-size: 1.1rem !important;
-            letter-spacing: 0.05em !important; /* 手機端字距稍縮小，確保不破版 */
+            letter-spacing: 0.05em !important; 
             text-align: center !important;
         }
     }
@@ -1001,23 +1000,52 @@
 
         <h3 class="serif" style="margin-bottom: 25px; color: var(--forest-deep);">重大投資與建設趨勢</h3>
         <div class="market-news-grid">
+            <!-- 新聞一 (新增) -->
             <div class="news-card">
-                <img src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/052700_20250527093422.jpg_1140x855.jpg" alt="大坑『芳庭路壹號莊園』開幕" onclick="openLightbox(this.src, '大坑『芳庭路壹號莊園』開幕搶爆')">
-                 <h4>大坑『芳庭路壹號莊園』開幕搶爆<br><span style="font-size: 0.95rem; color: #666; font-weight: normal;">雲品酒店式代管領航</span></h4>
-                <p style="text-align: justify;">雲品國際與「芳庭路壹號莊園」攜手，以酒店式代管服務重新定義豪宅生活空間，開幕即引發市場熱烈迴響，展示大坑區高端住宅的強大吸引力。</p>
+                <img src="https://github.com/hao713949/Dagui-Section/blob/main/052700_20250527093422.jpg_1140x855.jpg?raw=true" alt="大坑『芳庭路壹號莊園』" onclick="openLightbox(this.src, '大坑『芳庭路壹號莊園』')">
+                <h4>大坑『芳庭路壹號莊園』開幕搶爆</h4>
+                <p style="text-align: justify;">雲品國際與米其林主廚聯手打造頂級宴會空間，訂單已排至明年，證明區域高端消費力驚人。</p>
                 <a href="https://tw.news.yahoo.com/%E5%8F%B0%E4%B8%AD-%E8%8A%B3%E5%BA%AD%E8%B7%AF%E5%A3%B9%E8%99%9F%E8%8E%8A%E5%9C%92-2-0%E7%94%AB%E9%96%8B%E5%B9%95%E8%B6%85%E5%A4%AF-%E5%B7%B2%E8%B6%85%E9%81%8E4%E5%8D%83%E6%A1%8C%E8%A8%82%E5%96%AE%E7%AB%9F%E5%B7%B2%E8%87%B3%E6%98%8E-013100537.html" target="_blank" class="news-link">閱讀新聞原文 ↗</a>
             </div>
+
+            <!-- 新聞二 (新增) -->
+            <div class="news-card">
+                <img src="https://github.com/hao713949/Dagui-Section/blob/main/%E7%B6%A0%E7%B7%9Aplus%E7%B6%A0%E5%BB%B6%E5%85%A8%E7%B7%9A%E7%A4%BA%E6%84%8F%E5%9C%96.png?raw=true" alt="捷運綠線延伸大坑" onclick="openLightbox(this.src, '捷運綠線延伸大坑')">
+                <h4>捷運綠線延伸大坑風景區</h4>
+                <p style="text-align: justify;">中捷綠線延伸計畫正式核定，全面提升山城觀光與休憩交通品質，串連市中心生活圈。</p>
+                <a href="https://www.taichung.gov.tw/8868/8872/9962/3220283" target="_blank" class="news-link">閱讀新聞原文 ↗</a>
+            </div>
+
+            <!-- 新聞三 (新增) -->
+            <div class="news-card">
+                <img src="https://github.com/hao713949/Dagui-Section/blob/main/20250103701522.jpg?raw=true" alt="太和段複合式商場" onclick="openLightbox(this.src, '太和段複合式商場')">
+                <h4>太和段複合式商場BOT</h4>
+                <p style="text-align: justify;">市立醫院旁6.2億BOT正式簽約，將引進複合式商場機能，補足區域高端生活採買需求。</p>
+                <a href="https://www.ctee.com.tw/news/20250103701514-431206" target="_blank" class="news-link">閱讀新聞原文 ↗</a>
+            </div>
+
+            <!-- 原有新聞一 -->
             <div class="news-card">
                 <img src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/%E9%9B%B2%E5%93%81.png" alt="雲品國際「大坑森邸」" onclick="openLightbox(this.src, '雲品國際「大坑森邸」')">
                  <h4>雲品國際「大坑森邸」<br><span style="font-size: 0.95rem; color: #666; font-weight: normal;">頂級高端生活產業</span></h4>
                 <p style="text-align: justify;">雲品打造頂級溫泉Villa、White Party 宴會廳「森邸」，證明該區域具備承載國際級高端生活的潛力。</p>
                 <a href="https://news.cnyes.com/news/id/5561629" target="_blank" class="news-link">閱讀新聞原文 ↗</a>
             </div>
+
+            <!-- 原有新聞二 -->
             <div class="news-card">
                 <img src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/%E5%B8%82%E7%AB%8B%E9%86%AB%E9%99%A2.jpg" alt="百億醫療特區" onclick="openLightbox(this.src, '百億醫療特區')">
                 <h4>百億醫療特區<br><span style="font-size: 0.95rem; color: #666; font-weight: normal;">周邊房價看俏</span></h4>
                 <p style="text-align: justify;">隨著百億級醫療資源投入，大坑已從單純觀光轉向高端康養居住區，地價具強勁支撐。</p>
                 <a href="https://money.udn.com/money/story/5635/8749962" target="_blank" class="news-link">閱讀新聞原文 ↗</a>
+            </div>
+
+            <!-- 原有新聞三 -->
+            <div class="news-card">
+                <img src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/%E6%A8%B8%E5%B1%B1%E6%9D%91.jpg" alt="大陸建設＆精湛建設" onclick="openLightbox(this.src, '大陸建設＆精湛建設')">
+                <h4>大陸建設＆精湛建設<br><span style="font-size: 0.95rem; color: #666; font-weight: normal;">打造台中版「青山鎮」</span></h4>
+                <p style="text-align: justify;">指標建商預計打造高隱私、高規格森林別墅聚落，區域價值正處於爆發前夕。</p>
+                <a href="https://www.wealth.com.tw/articles/eb721bcb-8bc7-40a4-b798-a708edad6472" target="_blank" class="news-link">閱讀新聞原文 ↗</a>
             </div>
         </div>
 
@@ -1183,9 +1211,7 @@
             <p style="font-size: 1.2rem; font-weight: 500;">台中市北屯區大貴段 潤德莊園</p>
         </div>
         <div class="map-container">
-            <!-- 基地位置標籤 -->
             <div class="map-overlay-label">基地位置</div>
-            <!-- Google Map 定位座標 24.164792308796635, 120.74600988280426 -->
             <iframe 
                 title="Google Map Location"
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3640.115!2d120.746010!3d24.164792!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x346917e7c8524d77%3A0x7d25e0b0e504c568!2z5r2k5b636I6K5ZyS!5e0!3m2!1szh-TW!2stw!4v1714876000000!5m2!1szh-TW!2stw" 
