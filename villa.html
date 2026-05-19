@@ -384,6 +384,181 @@
         .reg-title { color: #FFFFFF; font-weight: 700; font-size: 1rem; margin-bottom: 10px; }
         .reg-desc { color: rgba(255,255,255,0.7); font-size: 0.85rem; line-height: 1.6; }
 
+        /* --- 行情資訊圖表樣式區 --- */
+        .chart-section-container {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin: 30px 0;
+            width: 100%;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        }
+        
+        .chart-row {
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            border-left: 6px solid #d1d5db;
+            transition: all 0.3s ease;
+        }
+        
+        /* 突出顯示重點項目（潤德莊園） */
+        .chart-row.highlight-project {
+            border-left-color: #8B0000; /* 配合網頁的 danger-red */
+            background: linear-gradient(135deg, #ffffff 0%, #fffbfb 100%);
+            box-shadow: 0 8px 30px rgba(139, 0, 0, 0.08);
+            transform: translateY(-2px);
+        }
+        
+        .chart-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .chart-title-group {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap; /* 寬度不夠時自動換行 */
+            gap: 8px;
+            flex: 1;
+        }
+        
+        .chart-label {
+            font-weight: 700;
+            font-size: 1.15rem;
+            color: #1a202c;
+            letter-spacing: 0.5px;
+        }
+        
+        .chart-sub-label {
+            font-size: 0.9rem;
+            color: #6b7280;
+            font-weight: 400;
+        }
+        
+        .market-badge {
+            font-size: 0.75rem;
+            background: #8B0000;
+            color: #ffffff;
+            padding: 3px 10px;
+            border-radius: 50px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            white-space: nowrap;
+        }
+
+        /* 價格與備註容器 */
+        .chart-price-container {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            text-align: right;
+        }
+        
+        .chart-value {
+            font-weight: 700;
+            font-size: 1.15rem;
+            color: #374151;
+            white-space: nowrap;
+        }
+        
+        .chart-row.highlight-project .chart-value {
+            color: #8B0000;
+            font-size: 1.25rem;
+            text-shadow: 0 1px 2px rgba(139, 0, 0, 0.1);
+        }
+
+        .chart-price-note {
+            font-size: 12px;
+            color: #6b7280;
+            margin-top: 4px;
+            white-space: nowrap;
+            font-weight: normal;
+        }
+        
+        /* 長條圖外殼 */
+        .chart-bar-bg {
+            width: 100%;
+            height: 10px;
+            background: #f3f4f6;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        /* 長條圖填滿顏色（預設為 18-22 萬行情的森林綠） */
+        .chart-bar-fill {
+            height: 100%;
+            background: #3E5C46; /* 森林綠 */
+            border-radius: 10px;
+            transition: width 1s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        /* 潤德莊園專屬：金棕色漸層 */
+        .chart-row.highlight-project .chart-bar-fill {
+            background: linear-gradient(90deg, #D4AF37, #AA7C11); /* 金棕色漸層 */
+        }
+
+        /* 📱 手機端間距與排版優化 */
+        @media (max-width: 600px) {
+            .chart-section-container {
+                gap: 10px; /* 縮小項目之間的行距 */
+                margin: 15px 0;
+            }
+
+            .chart-row {
+                padding: 12px 16px; /* 縮減上下內邊距 */
+                gap: 8px; /* 縮短文字與長條圖之間的距離 */
+            }
+            
+            .chart-info {
+                flex-direction: column; 
+                align-items: flex-start;
+                gap: 6px; /* 標題與價格區的垂直距離 */
+            }
+            
+            .chart-title-group {
+                gap: 4px; /* 標籤、徽章、備註之間的間距 */
+                width: 100%;
+            }
+            
+            .chart-sub-label {
+                font-size: 0.85rem;
+                width: 100%;
+                margin-top: -2px;
+            }
+
+            .chart-price-container {
+                align-items: flex-start; /* 手機版價格與備註改靠左 */
+                text-align: left;
+                width: 100%;
+                margin-top: 2px;
+            }
+            
+            .chart-value {
+                font-size: 1.1rem;
+            }
+            
+            .chart-row.highlight-project .chart-value {
+                font-size: 1.2rem;
+            }
+
+            .chart-price-note {
+                font-size: 11px;
+                margin-top: 2px;
+                display: block; /* 確保備註在手機端一定獨立成行 */
+            }
+            
+            .chart-bar-bg {
+                height: 6px; /* 手機端長條圖細一點，更顯精緻 */
+            }
+        }
+
         /* 表格手機端滑動優化 */
         .table-container { 
             background: white; padding: 20px; border-radius: 8px; 
@@ -426,44 +601,6 @@
         }
         .price-highlight { color: var(--danger-red); font-size: 1.4rem; font-weight: 900; }
         .news-link { color: var(--forest-mid); text-decoration: none; font-weight: 700; font-size: 0.95rem; border-bottom: 1px solid var(--gold-accent); align-self: flex-start; margin-top: auto; padding-top: 15px;}
-
-        /* --- 行情資訊優化樣式 --- */
-        .price-level-container {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-            margin: 40px 0;
-            position: relative;
-        }
-        .price-card {
-            background: #fff;
-            padding: 30px 20px;
-            border-radius: 12px;
-            text-align: center;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-            border: 2px solid transparent;
-            transition: transform 0.3s ease;
-        }
-        .price-card.highlight {
-            border-color: var(--danger-red);
-            transform: translateY(-5px);
-            position: relative;
-        }
-        .price-card h4 { color: #666; font-size: 1.1rem; margin-bottom: 15px; font-weight: 500; }
-        .price-card .price-tag { font-size: 1.8rem; font-weight: 900; color: var(--text-dark); margin-bottom: 10px; }
-        .price-card .land-type { font-size: 0.95rem; color: #888; }
-        
-        .timeline-bar {
-            grid-column: 1 / -1;
-            height: 6px;
-            background: #ddd;
-            margin-top: 20px;
-            border-radius: 10px;
-            position: relative;
-            display: flex;
-            justify-content: space-between;
-        }
-        .timeline-label { font-size: 0.85rem; color: #888; margin-top: 15px; }
 
         .sale-list {
             display: flex;
@@ -663,7 +800,6 @@
             .map-overlay-label { top: 45%; }
             
             /* 行情資訊手機優化 */
-            .price-level-container { grid-template-columns: 1fr; }
             .sale-item { flex-direction: column; align-items: flex-start; gap: 15px; }
             .sale-link-btn { margin-left: 0; width: 100%; text-align: center; }
             
@@ -912,345 +1048,65 @@
              從 9 萬到 22 萬／坪，價格帶已明確分層
         </p>
 
-       <style>
-    .chart-section-container {
-        display: flex;
-        flex-direction: column;
-        gap: 16px;
-        margin: 30px 0;
-        width: 100%;
-        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    }
-    
-    .chart-row {
-        background: #ffffff;
-        padding: 20px;
-        border-radius: 12px;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
-        display: flex;
-        flex-direction: column;
-        gap: 14px;
-        border-left: 6px solid #d1d5db;
-        transition: all 0.3s ease;
-    }
-    
-    /* 突出顯示重點項目（潤德莊園） */
-    .chart-row.highlight-project {
-        border-left-color: #8B0000; /* 配合網頁的 danger-red */
-        background: linear-gradient(135deg, #ffffff 0%, #fffbfb 100%);
-        box-shadow: 0 8px 30px rgba(139, 0, 0, 0.08);
-        transform: translateY(-2px);
-    }
-    
-    .chart-info {
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-start;
-        gap: 12px;
-    }
-    
-    .chart-title-group {
-        display: flex;
-        align-items: center;
-        flex-wrap: wrap; /* 寬度不夠時自動換行 */
-        gap: 8px;
-        flex: 1;
-    }
-    
-    .chart-label {
-        font-weight: 700;
-        font-size: 1.15rem;
-        color: #1a202c;
-        letter-spacing: 0.5px;
-    }
-    
-    .chart-sub-label {
-        font-size: 0.9rem;
-        color: #6b7280;
-        font-weight: 400;
-    }
-    
-    .market-badge {
-        font-size: 0.75rem;
-        background: #8B0000;
-        color: #ffffff;
-        padding: 3px 10px;
-        border-radius: 50px;
-        font-weight: 700;
-        letter-spacing: 0.5px;
-        white-space: nowrap;
-    }
-    
-    .chart-value {
-        font-weight: 700;
-        font-size: 1.15rem;
-        color: #374151;
-        white-space: nowrap;
-        text-align: right;
-    }
-    
-    .chart-row.highlight-project .chart-value {
-        color: #8B0000;
-        font-size: 1.25rem;
-        text-shadow: 0 1px 2px rgba(139, 0, 0, 0.1);
-    }
-    
-    /* 長條圖外殼 */
-    .chart-bar-bg {
-        width: 100%;
-        height: 10px;
-        background: #f3f4f6;
-        border-radius: 10px;
-        overflow: hidden;
-    }
-    
-    /* 長條圖填滿顏色（預設為 18-22 萬行情的森林綠） */
-    .chart-bar-fill {
-        height: 100%;
-        background: #3E5C46; /* 森林綠 */
-        border-radius: 10px;
-        transition: width 1s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-    
-    /* 潤德莊園專屬：金棕色漸層 */
-    .chart-row.highlight-project .chart-bar-fill {
-        background: linear-gradient(90deg, #D4AF37, #AA7C11); /* 金棕色漸層 */
-    }
-
-    /* 手機端極致優化 */
-    @media (max-width: 600px) {
-        .chart-row {
-            padding: 16px;
-            gap: 10px;
-        }
-        
-        .chart-info {
-            flex-direction: column;
-            align-items: flex-start;
-            gap: 6px;
-        }
-        
-        .chart-title-group {
-            width: 100%;
-        }
-        
-        .chart-sub-label {
-            width: 100%;
-            margin-top: -2px;
-            font-size: 0.85rem;
-        }
-        
-        .chart-value {
-            align-self: flex-end;
-            font-size: 1.05rem;
-            margin-top: 2px;
-        }
-        
-        .chart-row.highlight-project .chart-value {
-            font-size: 1.15rem;
-        }
-        
-        .chart-bar-bg {
-            height: 8px;
-        }
-    }
-<style>
-    .chart-section-container {
-        display: flex;
-        flex-direction: column;
-        gap: 16px; /* 電腦端保持原有間距 */
-        margin: 30px 0;
-        width: 100%;
-        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    }
-    
-    .chart-row {
-        background: #ffffff;
-        padding: 20px;
-        border-radius: 12px;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
-        display: flex;
-        flex-direction: column;
-        gap: 14px;
-        border-left: 6px solid #d1d5db;
-        transition: all 0.3s ease;
-    }
-    
-    .chart-row.highlight-project {
-        border-left-color: #8B0000;
-        background: linear-gradient(135deg, #ffffff 0%, #fffbfb 100%);
-        box-shadow: 0 8px 30px rgba(139, 0, 0, 0.08);
-        transform: translateY(-2px);
-    }
-    
-    .chart-info {
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-start;
-        gap: 12px;
-    }
-    
-    .chart-title-group {
-        display: flex;
-        align-items: center;
-        flex-wrap: wrap;
-        gap: 8px;
-        flex: 1;
-    }
-    
-    .chart-label {
-        font-weight: 700;
-        font-size: 1.15rem;
-        color: #1a202c;
-        letter-spacing: 0.5px;
-    }
-    
-    .chart-sub-label {
-        font-size: 0.9rem;
-        color: #6b7280;
-        font-weight: 400;
-    }
-    
-    .market-badge {
-        font-size: 0.75rem;
-        background: #8B0000;
-        color: #ffffff;
-        padding: 3px 10px;
-        border-radius: 50px;
-        font-weight: 700;
-        letter-spacing: 0.5px;
-        white-space: nowrap;
-    }
-    
-    .chart-value {
-        font-weight: 700;
-        font-size: 1.15rem;
-        color: #374151;
-        white-space: nowrap;
-        text-align: right;
-    }
-    
-    .chart-row.highlight-project .chart-value {
-        color: #8B0000;
-        font-size: 1.25rem;
-    }
-    
-    .chart-bar-bg {
-        width: 100%;
-        height: 10px;
-        background: #f3f4f6;
-        border-radius: 10px;
-        overflow: hidden;
-    }
-    
-    .chart-bar-fill {
-        height: 100%;
-        background: #3E5C46;
-        border-radius: 10px;
-        transition: width 1s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-    
-    .chart-row.highlight-project .chart-bar-fill {
-        background: linear-gradient(90deg, #D4AF37, #AA7C11);
-    }
-
-    /* 📱 手機端間距優化區 */
-    @media (max-width: 600px) {
-        .chart-section-container {
-            gap: 10px; /* 縮小項目之間的行距 */
-            margin: 15px 0;
-        }
-
-        .chart-row {
-            padding: 12px 16px; /* 縮減上下內邊距（原本20px -> 12px） */
-            gap: 8px; /* 縮短文字與長條圖之間的距離 */
-        }
-        
-        .chart-info {
-            flex-direction: column; 
-            align-items: flex-start;
-            gap: 4px; /* 標題與價格之間的垂直距離 */
-        }
-        
-        .chart-title-group {
-            gap: 4px; /* 標籤、徽章、備註之間的間距 */
-        }
-        
-        .chart-sub-label {
-            font-size: 0.8rem;
-            line-height: 1.2; /* 縮小文字行高 */
-        }
-        
-        .chart-value {
-            align-self: flex-end;
-            font-size: 1rem;
-            margin-top: -2px; /* 稍微向上提 */
-        }
-        
-        .chart-bar-bg {
-            height: 6px; /* 手機端長條圖細一點，更顯精緻 */
-        }
-    }
-</style>
-
-<div class="chart-section-container">
-    <div class="chart-row highlight-project">
-        <div class="chart-info">
-            <div class="chart-title-group">
-                <span class="chart-label">潤德莊園</span>
-                <span class="market-badge">超值首選</span>
-                <span class="chart-sub-label">（具規模之封閉式社區，均價 9 萬 ‧ 每坪另可返利 1.5 萬）</span>
+        <div class="chart-section-container">
+            <div class="chart-row highlight-project">
+                <div class="chart-info">
+                    <div class="chart-title-group">
+                        <span class="chart-label">潤德莊園</span>
+                        <span class="market-badge">超值首選</span>
+                        <span class="chart-sub-label">（具規模之封閉式社區）</span>
+                    </div>
+                    <div class="chart-price-container">
+                        <span class="chart-value">（7.5）~ 9 萬/坪</span>
+                        <span class="chart-price-note">均價 9 萬 ‧ 每坪另可返利 1.5 萬</span>
+                    </div>
+                </div>
+                <div class="chart-bar-bg">
+                    <div class="chart-bar-fill" style="width: 26%;"></div>
+                </div>
             </div>
-            <div class="chart-price-container">
-                <span class="chart-value">（7.5）~ 9 萬/坪</span>
+
+            <div class="chart-row">
+                <div class="chart-info">
+                    <div class="chart-title-group">
+                        <span class="chart-label">風景區建地</span>
+                        <span class="chart-sub-label">（零星面積無法興建）</span>
+                    </div>
+                    <span class="chart-value">9 ~ 13 萬/坪</span>
+                </div>
+                <div class="chart-bar-bg">
+                    <div class="chart-bar-fill" style="width: 37%;"></div>
+                </div>
+            </div>
+
+            <div class="chart-row">
+                <div class="chart-info">
+                    <div class="chart-title-group">
+                        <span class="chart-label">零星建地</span>
+                        <span class="chart-sub-label">（缺乏基礎建設，如同老丙建）</span>
+                    </div>
+                    <span class="chart-value">14 ~ 16 萬/坪</span>
+                </div>
+                <div class="chart-bar-bg">
+                    <div class="chart-bar-fill" style="width: 46%;"></div>
+                </div>
+            </div>
+
+            <div class="chart-row">
+                <div class="chart-info">
+                    <div class="chart-title-group">
+                        <span class="chart-label">社區型建地</span>
+                        <span class="market-badge" style="background: #1B3022;"> 樸山村 </span> 
+                        <span class="chart-sub-label">（具規模之封閉式社區）</span>
+                    </div>
+                    <span class="chart-value">18 ~ 22 萬/坪</span>
+                </div>
+                <div class="chart-bar-bg">
+                    <div class="chart-bar-fill" style="width: 63%;"></div>
+                </div>
             </div>
         </div>
-        <div class="chart-bar-bg">
-            <div class="chart-bar-fill" style="width: 26%;"></div>
-        </div>
-    </div>
-    </div>
 
-    <div class="chart-row">
-        <div class="chart-info">
-            <div class="chart-title-group">
-                <span class="chart-label">風景區建地</span>
-                <span class="chart-sub-label">（零星面積無法興建）</span>
-            </div>
-            <span class="chart-value">9 ~ 13 萬/坪</span>
-        </div>
-        <div class="chart-bar-bg">
-            <div class="chart-bar-fill" style="width: 37%;"></div>
-        </div>
-    </div>
-
-    <div class="chart-row">
-        <div class="chart-info">
-            <div class="chart-title-group">
-                <span class="chart-label">零星建地</span>
-                <span class="chart-sub-label">（缺乏基礎建設，如同老丙建）</span>
-            </div>
-            <span class="chart-value">14 ~ 16 萬/坪</span>
-        </div>
-        <div class="chart-bar-bg">
-            <div class="chart-bar-fill" style="width: 46%;"></div>
-        </div>
-    </div>
-
-    <div class="chart-row">
-        <div class="chart-info">
-            <div class="chart-title-group">
-                <span class="chart-label">社區型建地</span>
-                <span class="market-badge" style="background: #1B3022;"> 樸山村 </span> 
-                <span class="chart-sub-label">（具規模之封閉式社區）</span>
-            </div>
-            <span class="chart-value">18 ~ 22 萬/坪</span>
-        </div>
-        <div class="chart-bar-bg">
-            <div class="chart-bar-fill" style="width: 63%;"></div>
-        </div>
-    </div>
-</div>
         <h3 class="serif" style="margin: 60px 0 25px; color: var(--forest-deep);">區域待售案源分析</h3>
         
         <div class="sale-list">
@@ -1273,7 +1129,7 @@
             <div class="sale-item">
                 <div class="sale-info">
                     <h4>北坑巷特二建地 <span class="price-highlight">16 萬/坪</span></h4>
-                    <p>零星特二建築用地｜景觀住宅用途｜非本案土地</p>
+                    <p>零星特二建築用地｜景景觀住宅用途｜非本案土地</p>
                 </div>
                 <a href="https://hao713949.github.io/Dagui-Section/%E5%A4%A7%E8%B2%B4924.html" target="_blank" class="sale-link-btn">案源連結 ↗</a>
             </div>
@@ -1322,7 +1178,6 @@
 
         <h3 class="serif" style="margin-bottom: 25px; color: var(--forest-deep);">重大投資與建設趨勢</h3>
         <div class="market-news-grid">
-            <!-- 新聞一 (新增) -->
             <div class="news-card">
                 <img src="https://github.com/hao713949/Dagui-Section/blob/main/052700_20250527093422.jpg_1140x855.jpg?raw=true" alt="大坑『芳庭路壹號莊園』" onclick="openLightbox(this.src, '大坑『芳庭路壹號莊園』')">
                 <h4>大坑『芳庭路壹號莊園』開幕搶爆</h4>
@@ -1330,7 +1185,6 @@
                 <a href="https://tw.news.yahoo.com/%E5%8F%B0%E4%B8%AD-%E8%8A%B3%E5%BA%AD%E8%B7%AF%E5%A3%B9%E8%99%9F%E8%8E%8A%E5%9C%92-2-0%E7%94%AB%E9%96%8B%E5%B9%95%E8%B6%85%E5%A4%AF-%E5%B7%B2%E8%B6%85%E9%81%8E4%E5%8D%83%E6%A1%8C%E8%A8%82%E5%96%AE%E7%AB%9F%E5%B7%B2%E8%87%B3%E6%98%8E-013100537.html" target="_blank" class="news-link">閱讀新聞原文 ↗</a>
             </div>
 
-            <!-- 新聞二 (新增) -->
             <div class="news-card">
                 <img src="https://github.com/hao713949/Dagui-Section/blob/main/%E7%B6%A0%E7%B7%9Aplus%E7%B6%A0%E5%BB%B6%E5%85%A8%E7%B7%9A%E7%A4%BA%E6%84%8F%E5%9C%96.png?raw=true" alt="捷運綠線延伸大坑" onclick="openLightbox(this.src, '捷運綠線延伸大坑')">
                 <h4>捷運綠線延伸大坑風景區</h4>
@@ -1338,7 +1192,6 @@
                 <a href="https://www.taichung.gov.tw/8868/8872/9962/3220283" target="_blank" class="news-link">閱讀新聞原文 ↗</a>
             </div>
 
-            <!-- 新聞三 (新增) -->
             <div class="news-card">
                 <img src="https://github.com/hao713949/Dagui-Section/blob/main/20250103701522.jpg?raw=true" alt="太和段複合式商場" onclick="openLightbox(this.src, '太和段複合式商場')">
                 <h4>太和段複合式商場BOT</h4>
@@ -1346,7 +1199,6 @@
                 <a href="https://www.ctee.com.tw/news/20250103701514-431206" target="_blank" class="news-link">閱讀新聞原文 ↗</a>
             </div>
 
-            <!-- 原有新聞一 -->
             <div class="news-card">
                 <img src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/%E9%9B%B2%E5%93%81.png" alt="雲品國際「大坑森邸」" onclick="openLightbox(this.src, '雲品國際「大坑森邸」')">
                  <h4>雲品國際「大坑溫泉Villa」<br><span style="font-size: 0.95rem; color: #666; font-weight: normal;">頂級高端生活產業</span></h4>
@@ -1354,7 +1206,6 @@
                 <a href="https://news.cnyes.com/news/id/5561629" target="_blank" class="news-link">閱讀新聞原文 ↗</a>
             </div>
 
-            <!-- 原有新聞二 -->
             <div class="news-card">
                 <img src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/%E5%B8%82%E7%AB%8B%E9%86%AB%E9%99%A2.jpg" alt="百億醫療特區" onclick="openLightbox(this.src, '百億醫療特區')">
                 <h4>百億醫療特區<br><span style="font-size: 0.95rem; color: #666; font-weight: normal;">周邊房價看俏</span></h4>
@@ -1362,7 +1213,6 @@
                 <a href="https://money.udn.com/money/story/5635/8749962" target="_blank" class="news-link">閱讀新聞原文 ↗</a>
             </div>
 
-            <!-- 原有新聞三 -->
             <div class="news-card">
                 <img src="https://raw.githubusercontent.com/hao713949/Dagui-Section/main/%E6%A8%B8%E5%B1%B1%E6%9D%91.jpg" alt="大陸建設＆精湛建設" onclick="openLightbox(this.src, '大陸建設＆精湛建設')">
                 <h4>大陸建設＆精湛建設<br><span style="font-size: 0.95rem; color: #666; font-weight: normal;">打造台中版「青山鎮」</span></h4>
